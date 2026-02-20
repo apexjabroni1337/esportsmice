@@ -75,6 +75,22 @@ const MOUSE_IMAGE_URLS = {
   "Pulsar ZywOo Chosen Mouse": "/images/mice/pulsar-zywoo-chosen-mouse.png"
 };
 
+const GAME_IMAGE_URLS = {
+  "CS2": "/images/games/cs2.png",
+  "Valorant": "/images/games/valorant.png",
+  "Fortnite": "/images/games/fortnite.png",
+  "LoL": "/images/games/lol.png",
+  "R6 Siege": "/images/games/r6-siege.png",
+  "PUBG": "/images/games/pubg.png",
+  "Apex": "/images/games/apex.png",
+  "Dota 2": "/images/games/dota-2.png",
+  "Marvel Rivals": "/images/games/marvel-rivals.png",
+  "Overwatch 2": "/images/games/overwatch-2.png",
+  "Deadlock": "/images/games/deadlock.png",
+  "Call of Duty": "/images/games/call-of-duty.png",
+  "Rocket League": "/images/games/rocket-league.png",
+};
+
 const mice = [
   { id: 1, name: "Razer Viper V3 Pro", brand: "Razer", weight: 54, sensor: "Focus Pro 35K", dpi: 35000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 159, switches: "Gen-3 Optical", proUsage: 21, rating: 9.6, image: "🐍", color: "#00ff6a", batteryLife: 95, clicks: "100M", cable: "USB-C", releaseYear: 2024 },
   { id: 2, name: "Logitech G Pro X Superlight 2", brand: "Logitech", weight: 60, sensor: "HERO 2", dpi: 44000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 159, switches: "Lightforce Hybrid", proUsage: 17, rating: 9.5, image: "🎯", color: "#00b4ff", batteryLife: 95, clicks: "100M", cable: "USB-C", releaseYear: 2023 },
@@ -2570,7 +2586,11 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 export default function EsportsMice() {
   const [selectedMouse, setSelectedMouse] = useState(mice[0]);
-  const [activeTab, setActiveTab] = useState("overview");
+  const [activeTab, setActiveTab] = useState(() => {
+    const hash = window.location.hash.replace('#', '');
+    return ['overview','mice','rankings','sensors','players','games','brands','trends','compare'].includes(hash) ? hash : 'overview';
+  });
+  useEffect(() => { window.location.hash = activeTab; }, [activeTab]);
   const [sortBy, setSortBy] = useState("proUsage");
   const [filterBrand, setFilterBrand] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -2989,7 +3009,7 @@ export default function EsportsMice() {
                                     <button key={c.id} onClick={() => setSelectedMouse(c)}
                                       className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs transition-all hover:scale-105"
                                       style={{ background: `${cc}08`, border: `1px solid ${cc}15` }}>
-                                      <span>{c.image}</span>
+                                      {MOUSE_IMAGE_URLS[c.name] ? <img src={MOUSE_IMAGE_URLS[c.name]} alt="" className="h-6 object-contain" /> : <span>{c.image}</span>}
                                       <div>
                                         <div className="font-bold" style={{ color: cc }}>{c.name.replace(c.brand + " ", "")}</div>
                                         <div className="opacity-40">{c.weight}g · {c.sensor} · {"$"}{c.price}</div>
@@ -3026,7 +3046,7 @@ export default function EsportsMice() {
                   <div key={i} className="rounded-2xl p-6" style={{ background: `${col}06`, border: `1px solid ${col}12` }}>
                     {/* Header */}
                     <div className="flex items-center gap-3 mb-5">
-                      <span className="text-3xl">{g.icon}</span>
+                      {GAME_IMAGE_URLS[g.game] ? <img src={GAME_IMAGE_URLS[g.game]} alt={g.game} className="h-8 w-8 object-contain" /> : <span className="text-3xl">{g.icon}</span>}
                       <div className="flex-1">
                         <div className="text-xl font-black" style={{ color: col }}>{g.game}</div>
                         <div className="text-xs opacity-30">{g.players} pros tracked</div>
@@ -3117,7 +3137,7 @@ export default function EsportsMice() {
                         <div className="flex flex-col lg:flex-row gap-6">
                           <div className="lg:w-56 flex-shrink-0">
                             <div className="flex items-center gap-3 mb-2">
-                              <span className="text-3xl">{gp.icon}</span>
+                              {GAME_IMAGE_URLS[gp.game] ? <img src={GAME_IMAGE_URLS[gp.game]} alt={gp.game} className="h-8 w-8 object-contain" /> : <span className="text-3xl">{gp.icon}</span>}
                               <div>
                                 <div className="text-xl font-black" style={{ color: gp.color }}>{gp.game}</div>
                                 <div className="text-xs opacity-30">{gp.players.length} pros sampled</div>
@@ -3276,7 +3296,7 @@ export default function EsportsMice() {
                         onMouseEnter={e => e.currentTarget.style.background = `${col}08`}
                         onMouseLeave={e => e.currentTarget.style.background = i % 2 === 0 ? "#050505" : "#080808"}>
                         <td className="px-4 py-3 font-black opacity-20">{i + 1}</td>
-                        <td className="px-4 py-3 font-bold" style={{ color: col }}><span className="mr-2">{m.image}</span>{m.name}</td>
+                        <td className="px-4 py-3 font-bold" style={{ color: col }}>{MOUSE_IMAGE_URLS[m.name] ? <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="inline h-5 mr-2 object-contain" /> : <span className="mr-2">{m.image}</span>}{m.name}</td>
                         <td className="px-4 py-3 opacity-50">{m.brand}</td>
                         <td className="px-4 py-3 font-bold">{m.weight}g</td>
                         <td className="px-4 py-3 opacity-50 text-xs">{m.sensor}</td>
@@ -4029,7 +4049,7 @@ export default function EsportsMice() {
                       <button key={mi} onClick={() => { setSelectedMouse(m); setActiveTab("overview"); }}
                         className="px-3 py-1.5 rounded-lg text-xs font-bold cursor-pointer transition-all hover:scale-105"
                         style={{ background: `${BRAND_COLORS[m.brand]}12`, border: `1px solid ${BRAND_COLORS[m.brand]}20`, color: BRAND_COLORS[m.brand] }}>
-                        {m.image} {m.name} <span className="opacity-40">({m.proUsage}%)</span>
+                        {MOUSE_IMAGE_URLS[m.name] ? <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="inline h-4 mr-1 object-contain" /> : m.image} {m.name} <span className="opacity-40">({m.proUsage}%)</span>
                       </button>
                     ))}
                   </div>
@@ -4207,7 +4227,7 @@ export default function EsportsMice() {
                         {s1.mice.sort((a, b) => b.proUsage - a.proUsage).map((m, mi) => (
                           <button key={mi} onClick={() => { setSelectedMouse(m); setActiveTab("overview"); }}
                             className="px-2 py-1 rounded text-xs font-bold cursor-pointer transition-all hover:scale-105"
-                            style={{ background: `${c1}12`, color: c1 }}>{m.image} {m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |WLMouse |Zowie )/, "")}</button>
+                            style={{ background: `${c1}12`, color: c1 }}>{MOUSE_IMAGE_URLS[m.name] ? <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="inline h-4 mr-1 object-contain" /> : m.image} {m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |WLMouse |Zowie )/, "")}</button>
                         ))}
                       </div>
                     </div>
@@ -4217,7 +4237,7 @@ export default function EsportsMice() {
                         {s2.mice.sort((a, b) => b.proUsage - a.proUsage).map((m, mi) => (
                           <button key={mi} onClick={() => { setSelectedMouse(m); setActiveTab("overview"); }}
                             className="px-2 py-1 rounded text-xs font-bold cursor-pointer transition-all hover:scale-105"
-                            style={{ background: `${c2}12`, color: c2 }}>{m.image} {m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |WLMouse |Zowie )/, "")}</button>
+                            style={{ background: `${c2}12`, color: c2 }}>{MOUSE_IMAGE_URLS[m.name] ? <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="inline h-4 mr-1 object-contain" /> : m.image} {m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |WLMouse |Zowie )/, "")}</button>
                         ))}
                       </div>
                     </div>
@@ -4256,7 +4276,7 @@ export default function EsportsMice() {
                   </select>
                   {compareList[idx] && (
                     <div className="rounded-2xl p-5 text-center" style={{ background: `${BRAND_COLORS[compareList[idx].brand]}08`, border: `1px solid ${BRAND_COLORS[compareList[idx].brand]}20` }}>
-                      <span className="text-5xl block mb-3">{compareList[idx].image}</span>
+                      {MOUSE_IMAGE_URLS[compareList[idx].name] ? <img src={MOUSE_IMAGE_URLS[compareList[idx].name]} alt={compareList[idx].name} className="h-16 mx-auto mb-3 object-contain" style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.5))" }} /> : <span className="text-5xl block mb-3">{compareList[idx].image}</span>}
                       <div className="text-xl font-black" style={{ color: BRAND_COLORS[compareList[idx].brand] }}>{compareList[idx].name}</div>
                       <div className="text-xs opacity-30 mt-1">{compareList[idx].brand}</div>
                     </div>
