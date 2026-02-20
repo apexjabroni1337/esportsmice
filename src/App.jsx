@@ -2470,7 +2470,12 @@ const MouseCard = ({ mouse, onClick, isSelected }) => {
       <div className="absolute top-3 right-3 text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: `${brandCol}20`, color: brandCol }}>
         #{mice.indexOf(mouse) + 1}
       </div>
-      <div className="text-4xl mb-3">{mouse.image}</div>
+      <div className="mb-3 h-16 flex items-center">
+        <img src={`/images/mice/${mouse.name.toLowerCase().replace(/ /g,'-').replace(/\./g,'').replace(/'/g,'').replace(/[^a-z0-9\-]/g,'').replace(/--/g,'-')}.png`}
+          alt={mouse.name} className="max-h-16 object-contain" style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.5))" }}
+          onError={e => { e.target.style.display = "none"; e.target.nextSibling.style.display = "block"; }} />
+        <span style={{ display: "none", fontSize: "2.5rem" }}>{mouse.image}</span>
+      </div>
       <div className="text-base font-bold mb-0.5" style={{ color: brandCol }}>{mouse.name}</div>
       <div className="text-xs opacity-40 mb-3">{mouse.brand}</div>
       <div className="grid grid-cols-2 gap-2 text-xs">
