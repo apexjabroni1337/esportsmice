@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, LineChart, Line, CartesianGrid, Legend, AreaChart, Area } from "recharts";
+import { Home, Mouse, Trophy, Cpu, Users, Gamepad2, Building2, TrendingUp, GitCompare } from "lucide-react";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -2692,15 +2693,15 @@ export default function EsportsMice() {
   pieData.push({ name: "Other", value: (brandMarketShare.find(b => b.name === "Other") || { share: 3 }).share, fill: "#333" });
 
   const tabs = [
-    { id: "overview", label: "🏠 Overview" },
-    { id: "mice", label: "🖱️ All Mice" },
-    { id: "rankings", label: "📊 Rankings" },
-    { id: "sensors", label: "🔬 Sensors" },
-    { id: "players", label: "👤 Pro Players" },
-    { id: "games", label: "🎮 Games" },
-    { id: "brands", label: "🏢 Brands" },
-    { id: "trends", label: "📈 Trends" },
-    { id: "compare", label: "⚖️ Compare" },
+    { id: "overview", label: "Overview", icon: Home },
+    { id: "mice", label: "All Mice", icon: Mouse },
+    { id: "rankings", label: "Rankings", icon: Trophy },
+    { id: "sensors", label: "Sensors", icon: Cpu },
+    { id: "players", label: "Pro Players", icon: Users },
+    { id: "games", label: "Games", icon: Gamepad2 },
+    { id: "brands", label: "Brands", icon: Building2 },
+    { id: "trends", label: "Trends", icon: TrendingUp },
+    { id: "compare", label: "Compare", icon: GitCompare },
   ];
 
   const allBrands = ["All", ...new Set(mice.map(m => m.brand))];
@@ -2776,7 +2777,7 @@ export default function EsportsMice() {
                 color: activeTab === t.id ? "#00ff6a" : "#ffffff50",
                 border: activeTab === t.id ? "1px solid #00ff6a30" : "1px solid transparent",
               }}
-            >{t.label}</button>
+            >{(() => { const Icon = t.icon; return <span className="flex items-center gap-1.5"><Icon size={14} strokeWidth={2.5} />{t.label}</span>; })()}</button>
           ))}
         </div>
       </nav>
@@ -2853,14 +2854,13 @@ export default function EsportsMice() {
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {mice.filter(m => filterBrand === "All" || m.brand === filterBrand).map(m => (
                     <button key={m.id} onClick={() => setSelectedMouse(m)}
-                      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap hover:scale-[1.03]"
+                      className="px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap hover:scale-[1.03]"
                       style={{
                         background: selectedMouse?.id === m.id ? BRAND_COLORS[m.brand] : "#ffffff06",
                         color: selectedMouse?.id === m.id ? "#000" : "#ffffff40",
                         border: selectedMouse?.id === m.id ? "none" : "1px solid #ffffff08",
                         fontSize: 10,
                       }}>
-                      {MOUSE_IMAGE_URLS[m.name] && <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="h-4 object-contain" />}
                       {m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |Ninjutso |WLMouse |Sony |Zowie )/, "")}
                     </button>
                   ))}
