@@ -75,6 +75,26 @@ const MOUSE_IMAGE_URLS = {
   "Pulsar ZywOo Chosen Mouse": "/images/mice/pulsar-zywoo-chosen-mouse.png"
 };
 
+const BRAND_IMAGE_URLS = {
+  "Razer": "/images/brands/razer.png",
+  "Logitech": "/images/brands/logitech.png",
+  "Zowie": "/images/brands/zowie.png",
+  "Vaxee": "/images/brands/vaxee.png",
+  "Finalmouse": "/images/brands/finalmouse.png",
+  "Pulsar": "/images/brands/pulsar.png",
+  "Lamzu": "/images/brands/lamzu.png",
+  "WLMouse": "/images/brands/wlmouse.png",
+  "Corsair": "/images/brands/corsair.png",
+  "SteelSeries": "/images/brands/steelseries.png",
+  "Endgame": "/images/brands/endgame.png",
+  "Endgame Gear": "/images/brands/endgame.png",
+  "HyperX": "/images/brands/hyperx.png",
+  "Ninjutso": "/images/brands/ninjutso.png",
+  "ASUS": "/images/brands/asus.png",
+  "Sony": "/images/brands/sony.png",
+  "G-Wolves": "/images/brands/g-wolves.png",
+};
+
 const GAME_IMAGE_URLS = {
   "CS2": "/images/games/cs2.png",
   "Valorant": "/images/games/valorant.png",
@@ -2597,6 +2617,7 @@ export default function EsportsMice() {
   const [showComparison, setShowComparison] = useState(false);
   const [compareList, setCompareList] = useState([mice[0], mice[1]]);
   const [heroAnim, setHeroAnim] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [gameFilter, setGameFilter] = useState("All");
   const [playerSort, setPlayerSort] = useState({ key: null, dir: "asc" });
@@ -2607,6 +2628,11 @@ export default function EsportsMice() {
   const [compareSensor2, setCompareSensor2] = useState(null);
 
   useEffect(() => { setTimeout(() => setHeroAnim(true), 100); }, []);
+  useEffect(() => {
+    const handleScroll = () => setShowScrollTop(window.scrollY > 600);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const sortedMice = [...mice]
     .filter(m => filterBrand === "All" || m.brand === filterBrand)
@@ -2642,8 +2668,21 @@ export default function EsportsMice() {
       .sort((a, b) => b[1] - a[1])
       .slice(0, 15)
       .map(([name, count]) => {
-        const m = mice.find(mm => mm.name === name || name.includes(mm.name) || mm.name.includes(name));
-        return { name: name.replace(/(Logitech |Razer |Finalmouse )/, ""), usage: parseFloat((count / allPlayers.length * 100).toFixed(1)), fill: m ? (BRAND_COLORS[m.brand] || "#888") : "#888" };
+        const m = mice.find(mm => mm.name === name || name.includes(mm.name) || mm.name.includes(name) || mm.name.toLowerCase() === name.toLowerCase());
+        let fill = m ? (BRAND_COLORS[m.brand] || "#888") : "#888";
+        if (!m) {
+          const n = name.toLowerCase();
+          if (n.includes("zowie") || n.startsWith("ec") || n.startsWith("fk") || n.startsWith("za") || n.startsWith("s2") || n.startsWith("u2")) fill = BRAND_COLORS["Zowie"];
+          else if (n.includes("razer") || n.includes("viper") || n.includes("deathadder") || n.includes("basilisk")) fill = BRAND_COLORS["Razer"];
+          else if (n.includes("logitech") || n.includes("g pro")) fill = BRAND_COLORS["Logitech"];
+          else if (n.includes("finalmouse") || n.includes("ultralight") || n.includes("starlight")) fill = BRAND_COLORS["Finalmouse"];
+          else if (n.includes("vaxee") || n.includes("zygen") || n.includes("np-01") || n.includes("outset")) fill = BRAND_COLORS["Vaxee"];
+          else if (n.includes("lamzu") || n.includes("maya") || n.includes("atlantis")) fill = BRAND_COLORS["Lamzu"];
+          else if (n.includes("pulsar") || n.includes("xlite")) fill = BRAND_COLORS["Pulsar"];
+          else if (n.includes("steelseries") || n.includes("aerox") || n.includes("rival")) fill = BRAND_COLORS["SteelSeries"];
+          else if (n.includes("corsair") || n.includes("sabre")) fill = BRAND_COLORS["Corsair"];
+        }
+        return { name: name.replace(/(Logitech |Razer |Finalmouse |ZOWIE |Zowie )/, ""), usage: parseFloat((count / allPlayers.length * 100).toFixed(1)), fill };
       });
   })();
 
@@ -2730,7 +2769,7 @@ export default function EsportsMice() {
       <nav className="sticky top-0 z-50 border-b" style={{ background: "#050505ee", borderColor: "#ffffff0a", backdropFilter: "blur(20px)" }}>
         <div className="max-w-7xl mx-auto px-6 flex gap-1 overflow-x-auto py-2">
           {tabs.map(t => (
-            <button key={t.id} onClick={() => { setActiveTab(t.id); if (t.id === "players") setSelectedPlayer(null); }}
+            <button key={t.id} onClick={() => { setActiveTab(t.id); if (t.id === "players") setSelectedPlayer(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}
               className="px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all duration-200"
               style={{
                 background: activeTab === t.id ? "#00ff6a15" : "transparent",
@@ -2763,19 +2802,65 @@ export default function EsportsMice() {
               </ResponsiveContainer>
             </div>
 
+            {/* ── QUICK INSIGHTS ── */}
+            {(() => {
+              const mouseCounts = {};
+              allPlayers.forEach(p => { mouseCounts[p.mouse] = (mouseCounts[p.mouse] || 0) + 1; });
+              const topMouseEntry = Object.entries(mouseCounts).sort((a,b) => b[1]-a[1])[0];
+              const allEdpis = allPlayers.filter(p => p.edpi > 0 && p.edpi < 50000).map(p => p.edpi);
+              const avgEdpi = allEdpis.length ? Math.round(allEdpis.reduce((a,b) => a+b, 0) / allEdpis.length) : 0;
+              const wirelessCount = allPlayers.filter(p => { const m = mice.find(mm => mm.name === p.mouse || p.mouse.includes(mm.name)); return m?.connectivity === "Wireless"; }).length;
+              const wirelessPct = Math.round(wirelessCount / allPlayers.length * 100);
+              const lightest = [...mice].sort((a,b) => a.weight - b.weight)[0];
+              const avgDpi = Math.round(allPlayers.reduce((a,p) => a + p.dpi, 0) / allPlayers.length);
+              return (
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 my-6">
+                {[
+                  { label: "Most Used Mouse", value: topMouseEntry[0].replace(/(Logitech |Razer )/, ""), sub: `${Math.round(topMouseEntry[1]/allPlayers.length*100)}% of pros`, color: "#00ff6a", icon: "👑" },
+                  { label: "Avg Pro eDPI", value: avgEdpi, sub: allEdpis.length + " players tracked", color: "#ff4655", icon: "🎯" },
+                  { label: "Wireless Adoption", value: `${wirelessPct}%`, sub: "of tracked pros", color: "#00b4ff", icon: "📡" },
+                  { label: "Lightest Mouse", value: `${lightest.weight}g`, sub: lightest.name.replace(/(WLMouse |Finalmouse )/, ""), color: "#f472b6", icon: "🪶" },
+                  { label: "Avg Pro DPI", value: avgDpi, sub: "across all games", color: "#d4af37", icon: "⚙️" },
+                ].map((card, i) => (
+                  <div key={i} className="rounded-xl p-4 text-center transition-all hover:scale-[1.02]" style={{ background: `${card.color}06`, border: `1px solid ${card.color}12` }}>
+                    <div className="text-lg mb-1">{card.icon}</div>
+                    <div className="text-lg font-black" style={{ color: card.color }}>{card.value}</div>
+                    <div className="text-xs opacity-50 mt-0.5">{card.label}</div>
+                    <div style={{ fontSize: 9 }} className="opacity-25 mt-1">{card.sub}</div>
+                  </div>
+                ))}
+              </div>
+              );
+            })()}
+
             <SectionTitle color="#d4af37" sub="Select any mouse to see detailed performance radar and specs">Featured Mouse Spotlight</SectionTitle>
               <div className="rounded-2xl p-5 mb-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
-                {/* Minimal mouse selector pills */}
+                {/* Brand filter + mouse selector */}
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {["All", ...new Set(mice.map(m => m.brand))].map(b => (
+                    <button key={b} onClick={() => setFilterBrand(b)}
+                      className="px-2.5 py-1 rounded-full text-xs font-bold transition-all"
+                      style={{
+                        background: filterBrand === b ? (BRAND_COLORS[b] || "#fff") : "#ffffff06",
+                        color: filterBrand === b ? "#000" : "#ffffff30",
+                        border: filterBrand === b ? "none" : "1px solid #ffffff08",
+                        fontSize: 10,
+                      }}>
+                      {b}
+                    </button>
+                  ))}
+                </div>
                 <div className="flex flex-wrap gap-1.5 mb-4">
-                  {mice.map(m => (
+                  {mice.filter(m => filterBrand === "All" || m.brand === filterBrand).map(m => (
                     <button key={m.id} onClick={() => setSelectedMouse(m)}
-                      className="flex-shrink-0 px-2.5 py-1 rounded-full text-xs font-bold transition-all whitespace-nowrap"
+                      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap hover:scale-[1.03]"
                       style={{
                         background: selectedMouse?.id === m.id ? BRAND_COLORS[m.brand] : "#ffffff06",
                         color: selectedMouse?.id === m.id ? "#000" : "#ffffff40",
                         border: selectedMouse?.id === m.id ? "none" : "1px solid #ffffff08",
                         fontSize: 10,
                       }}>
+                      {MOUSE_IMAGE_URLS[m.name] && <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="h-4 object-contain" />}
                       {m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |Ninjutso |WLMouse |Sony |Zowie )/, "")}
                     </button>
                   ))}
@@ -3506,6 +3591,29 @@ export default function EsportsMice() {
           return (
           <div>
             <SectionTitle color="#00b4ff" sub={`${allPlayers.length} players across ${new Set(allPlayers.map(p=>p.game)).size} games  -  click starred players for full profiles`}>Pro Player Settings Database</SectionTitle>
+            {/* Player quick stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+              {(() => {
+                const fp = gameFilter === "All" ? allPlayers : allPlayers.filter(p => p.game === gameFilter);
+                const mc = {}; fp.forEach(p => { mc[p.mouse] = (mc[p.mouse] || 0) + 1; });
+                const topM = Object.entries(mc).sort((a,b) => b[1]-a[1])[0];
+                const edpis = fp.filter(p => p.edpi > 0 && p.edpi < 50000).map(p => p.edpi);
+                const avgE = edpis.length ? Math.round(edpis.reduce((a,b) => a+b,0)/edpis.length) : 0;
+                const countries = new Set(fp.map(p => p.country)).size;
+                const teams = new Set(fp.filter(p => p.team !== "Content" && p.team !== "Free Agent" && p.team !== "Inactive" && p.team !== "Retired").map(p => p.team)).size;
+                return [
+                  { label: "Top Mouse", value: topM ? topM[0].replace(/(Logitech |Razer )/, "") : "-", color: "#00ff6a" },
+                  { label: "Avg eDPI", value: avgE || "-", color: "#ff4655" },
+                  { label: "Countries", value: countries, color: "#00b4ff" },
+                  { label: "Active Teams", value: teams, color: "#d4af37" },
+                ].map((s, i) => (
+                  <div key={i} className="rounded-xl p-3 text-center" style={{ background: `${s.color}06`, border: `1px solid ${s.color}10` }}>
+                    <div className="text-sm font-black" style={{ color: s.color }}>{s.value}</div>
+                    <div style={{ fontSize: 10 }} className="opacity-30 mt-0.5">{s.label}</div>
+                  </div>
+                ));
+              })()}
+            </div>
             <div className="flex flex-wrap gap-3 mb-4">
               <input type="text" placeholder="Search player, team, or mouse..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
                 className="px-4 py-2 rounded-lg text-sm outline-none flex-1 min-w-48" style={{ background: "#0a0a0a", border: "1px solid #ffffff15", color: "#fff" }} />
@@ -3726,7 +3834,7 @@ export default function EsportsMice() {
                 return (
                   <div key={i} className="rounded-2xl p-6 transition-all" style={{ background: `${col}06`, border: `1px solid ${col}12` }}>
                     <div className="flex items-center gap-4 mb-4">
-                      <span className="text-4xl">{brand.icon}</span>
+                      {BRAND_IMAGE_URLS[brand.name] ? <img src={BRAND_IMAGE_URLS[brand.name]} alt={brand.name} className="h-10 w-10 object-contain" /> : <span className="text-4xl">{brand.icon}</span>}
                       <div className="flex-1">
                         <div className="text-2xl font-black" style={{ color: col }}>{brand.name}</div>
                         <div className="text-xs opacity-30">{totalUsage}% total pro usage · {brandMice.length} model{brandMice.length !== 1 ? "s" : ""} in database</div>
@@ -4285,27 +4393,51 @@ export default function EsportsMice() {
               ))}
             </div>
 
-            {compareList[0] && compareList[1] && (
+            {compareList[0] && compareList[1] && (() => {
+              const specs = [
+                { label: "Weight", key: "weight", unit: "g", lower: true },
+                { label: "Price", key: "price", unit: "$", lower: true, prefix: "$" },
+                { label: "Sensor", key: "sensor", unit: "" },
+                { label: "Max DPI", key: "dpi", unit: "" },
+                { label: "Polling Rate", key: "pollingRate", unit: " Hz" },
+                { label: "Shape", key: "shape", unit: "" },
+                { label: "Connectivity", key: "connectivity", unit: "" },
+                { label: "Switches", key: "switches", unit: "" },
+                { label: "Pro Usage", key: "proUsage", unit: "%", lower: false },
+                { label: "Rating", key: "rating", unit: "/10", lower: false },
+              ];
+              const c0 = BRAND_COLORS[compareList[0].brand];
+              const c1 = BRAND_COLORS[compareList[1].brand];
+              let wins0 = 0, wins1 = 0;
+              specs.forEach(spec => {
+                const v0 = compareList[0][spec.key], v1 = compareList[1][spec.key];
+                if (typeof v0 === "number") {
+                  const w = spec.lower ? (v0 < v1 ? 0 : v0 > v1 ? 1 : -1) : (v0 > v1 ? 0 : v0 < v1 ? 1 : -1);
+                  if (w === 0) wins0++; else if (w === 1) wins1++;
+                }
+              });
+              const verdictColor = wins0 > wins1 ? c0 : wins1 > wins0 ? c1 : "#888";
+              const verdictName = wins0 > wins1 ? compareList[0].name : wins1 > wins0 ? compareList[1].name : null;
+              return (
               <div>
+                {/* Verdict banner */}
+                <div className="rounded-xl p-4 mb-6 text-center" style={{ background: `${verdictColor}08`, border: `1px solid ${verdictColor}20` }}>
+                  <div className="text-xs uppercase tracking-widest opacity-40 mb-1">Spec Comparison Verdict</div>
+                  <div className="text-lg font-black" style={{ color: verdictColor }}>
+                    {verdictName ? `${verdictName} wins ${Math.max(wins0, wins1)}-${Math.min(wins0, wins1)}` : `Tied ${wins0}-${wins1}`}
+                  </div>
+                  <div className="flex justify-center gap-4 mt-2">
+                    <span className="text-xs" style={{ color: c0 }}>● {compareList[0].name.replace(/(Logitech |Razer )/, "")}: {wins0} wins</span>
+                    <span className="text-xs" style={{ color: c1 }}>● {compareList[1].name.replace(/(Logitech |Razer )/, "")}: {wins1} wins</span>
+                  </div>
+                </div>
+
                 <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid #ffffff08" }}>
-                  {[
-                    { label: "Weight", key: "weight", unit: "g", lower: true },
-                    { label: "Price", key: "price", unit: "$", lower: true, prefix: "$" },
-                    { label: "Sensor", key: "sensor", unit: "" },
-                    { label: "Max DPI", key: "dpi", unit: "" },
-                    { label: "Polling Rate", key: "pollingRate", unit: " Hz" },
-                    { label: "Shape", key: "shape", unit: "" },
-                    { label: "Connectivity", key: "connectivity", unit: "" },
-                    { label: "Switches", key: "switches", unit: "" },
-                    { label: "Pro Usage", key: "proUsage", unit: "%", lower: false },
-                    { label: "Rating", key: "rating", unit: "/10", lower: false },
-                  ].map((spec, i) => {
+                  {specs.map((spec, i) => {
                     const v0 = compareList[0][spec.key];
                     const v1 = compareList[1][spec.key];
                     const isNum = typeof v0 === "number";
                     const winner = !isNum ? null : spec.lower ? (v0 < v1 ? 0 : v0 > v1 ? 1 : null) : (v0 > v1 ? 0 : v0 < v1 ? 1 : null);
-                    const c0 = BRAND_COLORS[compareList[0].brand];
-                    const c1 = BRAND_COLORS[compareList[1].brand];
                     return (
                       <div key={i} className="grid grid-cols-3 items-center" style={{ background: i % 2 === 0 ? "#050505" : "#080808", borderBottom: "1px solid #ffffff05" }}>
                         <div className="px-4 py-3 text-right font-bold text-sm" style={{ color: winner === 0 ? c0 : "#ffffff80" }}>
@@ -4351,11 +4483,20 @@ export default function EsportsMice() {
                   ))}
                 </div>
               </div>
-            )}
+            )})()}
           </div>
         )}
 
       </main>
+
+      {/* ─── SCROLL TO TOP ─── */}
+      {showScrollTop && (
+        <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full flex items-center justify-center transition-all hover:scale-110"
+          style={{ background: "#00ff6a", color: "#000", boxShadow: "0 4px 20px #00ff6a40" }}>
+          ▲
+        </button>
+      )}
 
       {/* ─── FOOTER ─── */}
       <footer className="border-t py-12 px-6" style={{ borderColor: "#ffffff08", background: "#030303" }}>
