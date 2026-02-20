@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, LineChart, Line, CartesianGrid, Legend, AreaChart, Area } from "recharts";
-import { Home, Mouse, Trophy, Cpu, Users, Gamepad2, Building2, TrendingUp, GitCompare, FlaskConical } from "lucide-react";
+import { Home, Mouse, Trophy, Cpu, Users, Gamepad2, Building2, TrendingUp, GitCompare } from "lucide-react";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -3082,19 +3082,19 @@ const MouseCard = ({ mouse, onClick, isSelected }) => {
   return (
     <div
       onClick={() => onClick(mouse)}
-      className="relative cursor-pointer rounded-2xl p-3 sm:p-5 transition-all duration-300 group flex flex-col h-full"
+      className="relative cursor-pointer rounded-2xl p-3 sm:p-5 transition-all duration-300 group flex flex-col"
       style={{
         background: isSelected ? `${brandCol}15` : `linear-gradient(135deg, #0d0d0d, #1a1a1a)`,
         border: isSelected ? `2px solid ${brandCol}` : `1px solid #ffffff10`,
         transform: isSelected ? "scale(1.02)" : "scale(1)",
         boxShadow: isSelected ? `0 0 40px ${brandCol}20` : "none",
-        minHeight: 280,
+        minHeight: 240,
       }}
     >
       <div className="absolute top-3 right-3 text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: `${brandCol}20`, color: brandCol }}>
         #{mice.indexOf(mouse) + 1}
       </div>
-      <div className="mb-3 h-20 flex items-center justify-center">
+      <div className="mb-3 h-16 flex items-center justify-center">
         {MOUSE_IMAGE_URLS[mouse.name] ? (
           <img src={MOUSE_IMAGE_URLS[mouse.name]}
             alt={mouse.name} className="w-full h-full object-contain object-center" style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.5))" }}
@@ -3102,7 +3102,7 @@ const MouseCard = ({ mouse, onClick, isSelected }) => {
         ) : null}
         <span style={{ display: MOUSE_IMAGE_URLS[mouse.name] ? "none" : "flex" }}>{icon(mouse.image, 40)}</span>
       </div>
-      <div className="h-12 mb-0.5 overflow-hidden">
+      <div className="h-10 sm:h-12 mb-0.5 overflow-hidden">
         <div className="text-sm sm:text-base font-bold leading-tight" style={{ color: brandCol, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{mouse.name}</div>
       </div>
       <div className="text-xs opacity-40 mb-3">{mouse.brand}</div>
@@ -3142,16 +3142,16 @@ export default function EsportsMice() {
   const [selectedMouse, setSelectedMouse] = useState(mice[0]);
   const [activeTab, setActiveTab] = useState(() => {
     const hash = window.location.hash.replace('#', '');
-    return ['overview','mice','rankings','sensors','players','games','brands','trends','compare','lab'].includes(hash) ? hash : 'overview';
+    return ['overview','mice','rankings','sensors','players','games','brands','trends','compare','mouseDetail'].includes(hash) ? hash : 'overview';
   });
   useEffect(() => { window.location.hash = activeTab; }, [activeTab]);
   useEffect(() => {
     const handlePopState = () => {
       const hash = window.location.hash.replace('#', '');
-      if (['overview','mice','rankings','sensors','players','games','brands','trends','compare','lab'].includes(hash)) {
+      if (['overview','mice','rankings','sensors','players','games','brands','trends','compare','mouseDetail'].includes(hash)) {
         setActiveTab(hash);
-        if (hash !== 'players') setSelectedPlayer(null);
       }
+      setSelectedPlayer(null);
     };
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
@@ -3172,10 +3172,6 @@ export default function EsportsMice() {
   const [compareSensor1, setCompareSensor1] = useState(null);
   const [compareSensor2, setCompareSensor2] = useState(null);
   const [mobileMenu, setMobileMenu] = useState(false);
-  const [globalSearch, setGlobalSearch] = useState("");
-  const [globalSearchOpen, setGlobalSearchOpen] = useState(false);
-  const [searchPreview, setSearchPreview] = useState(null);
-  const globalSearchRef = useRef(null);
 
   useEffect(() => { setTimeout(() => setHeroAnim(true), 100); }, []);
   useEffect(() => {
@@ -3183,33 +3179,6 @@ export default function EsportsMice() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (globalSearchRef.current && !globalSearchRef.current.contains(e.target)) setGlobalSearchOpen(false);
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-  useEffect(() => {
-    const handleKey = (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") { e.preventDefault(); setGlobalSearchOpen(true); }
-      if (e.key === "Escape") setGlobalSearchOpen(false);
-    };
-    document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
-  }, []);
-
-  const globalSearchResults = (() => {
-    if (!globalSearch.trim()) return { mice: [], players: [], brands: [], games: [] };
-    const q = globalSearch.toLowerCase();
-    const matchedMice = mice.filter(m => m.name.toLowerCase().includes(q) || m.brand.toLowerCase().includes(q) || m.sensor.toLowerCase().includes(q)).slice(0, 5);
-    const matchedPlayers = allPlayers.filter(p => p.name.toLowerCase().includes(q) || p.team.toLowerCase().includes(q) || p.game.toLowerCase().includes(q)).slice(0, 5);
-    const matchedBrands = [...new Set(mice.map(m => m.brand))].filter(b => b.toLowerCase().includes(q)).slice(0, 4);
-    const allGames = [...new Set(allPlayers.map(p => p.game))];
-    const matchedGames = allGames.filter(g => g.toLowerCase().includes(q)).slice(0, 4);
-    return { mice: matchedMice, players: matchedPlayers, brands: matchedBrands, games: matchedGames };
-  })();
-  const hasGlobalResults = globalSearch.trim() && (globalSearchResults.mice.length || globalSearchResults.players.length || globalSearchResults.brands.length || globalSearchResults.games.length);
 
   const sortedMice = [...mice]
     .filter(m => filterBrand === "All" || m.brand === filterBrand)
@@ -3298,7 +3267,6 @@ export default function EsportsMice() {
     { id: "sensors", label: "Sensors", icon: Cpu, color: "#10b981" },
     { id: "players", label: "Pro Players", icon: Users, color: "#00b4ff" },
     { id: "games", label: "Games", icon: Gamepad2, color: "#ff4655" },
-    { id: "lab", label: "Lab", icon: FlaskConical, color: "#f97316" },
     { id: "brands", label: "Brands", icon: Building2, color: "#f59e0b" },
     { id: "trends", label: "Trends", icon: TrendingUp, color: "#f472b6" },
     { id: "compare", label: "Compare", icon: GitCompare, color: "#8b5cf6" },
@@ -3310,11 +3278,6 @@ export default function EsportsMice() {
     <div className="min-h-screen text-white" style={{ background: "#050505", fontFamily: "'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" }}>
       <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
       <style>{`
-        *, *::before, *::after {
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          text-rendering: optimizeLegibility;
-        }
         @media (max-width: 640px) {
           table { font-size: 11px !important; }
           table th, table td { padding: 6px 8px !important; white-space: nowrap; }
@@ -3346,16 +3309,11 @@ export default function EsportsMice() {
                 </span>
               ); })()}
             </div>
-            <div className="flex items-center gap-2">
-              <button onClick={() => { setGlobalSearchOpen(true); setGlobalSearch(""); }} className="p-2 rounded-lg" style={{ background: "#ffffff08" }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff60" strokeWidth="2.5" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              </button>
-              <button onClick={() => setMobileMenu(!mobileMenu)} className="p-2 rounded-lg" style={{ background: "#ffffff08" }}>
+            <button onClick={() => setMobileMenu(!mobileMenu)} className="p-2 rounded-lg" style={{ background: "#ffffff08" }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff80" strokeWidth="2" strokeLinecap="round">
                 {mobileMenu ? <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></> : <><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></>}
               </svg>
             </button>
-            </div>
           </div>
           {mobileMenu && (
             <div className="grid grid-cols-3 gap-1.5 mt-2 pb-1">
@@ -3441,7 +3399,7 @@ export default function EsportsMice() {
       {/* ─── NAV TABS ─── */}
       <nav className="hidden md:block sticky top-0 z-50 border-b" style={{ background: "#050505ee", borderColor: "#ffffff0a", backdropFilter: "blur(20px)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2">
-          <div className="flex gap-1 items-center overflow-x-auto">
+          <div className="flex gap-1 overflow-x-auto">
             {tabs.map(t => {
               const isActive = activeTab === t.id;
               const Icon = t.icon;
@@ -3460,275 +3418,9 @@ export default function EsportsMice() {
               </button>
               );
             })}
-            <button className="ml-auto flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all"
-              style={{ background: "#ffffff06", border: "1px solid #ffffff10" }}
-              onClick={() => { setGlobalSearchOpen(true); setGlobalSearch(""); }}>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ffffff40" strokeWidth="2.5" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <span className="text-xs" style={{ color: "#ffffff30" }}>Search</span>
-            </button>
           </div>
         </div>
       </nav>
-
-      {/* ─── GLOBAL SEARCH OVERLAY ─── */}
-      {globalSearchOpen && (
-        <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[10vh]" style={{ background: "rgba(0,0,0,0.85)", backdropFilter: "blur(12px)" }}
-          onClick={(e) => { if (e.target === e.currentTarget) { setGlobalSearchOpen(false); setGlobalSearch(""); setSearchPreview(null); } }}>
-          <div ref={globalSearchRef} className="mx-4 flex items-start" style={{ gap: 12 }}>
-            {/* Left: Search + Results */}
-            <div className="rounded-2xl overflow-hidden" style={{ width: 520, flexShrink: 0, background: "#111", border: "1px solid #ffffff15", boxShadow: "0 25px 80px rgba(0,0,0,0.8), 0 0 60px rgba(0,255,106,0.05)" }}>
-              {/* Search Input */}
-              <div className="flex items-center gap-3 px-5 py-4" style={{ borderBottom: "1px solid #ffffff10" }}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00ff6a" strokeWidth="2.5" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input autoFocus type="text" value={globalSearch} onChange={e => { setGlobalSearch(e.target.value); setSearchPreview(null); }}
-                  placeholder="Search mice, players, brands, games..."
-                  className="flex-1 bg-transparent outline-none text-sm text-white"
-                  style={{ caretColor: "#00ff6a" }} />
-                <button onClick={() => { setGlobalSearchOpen(false); setGlobalSearch(""); setSearchPreview(null); }}
-                  className="px-2 py-1 rounded-md text-xs font-bold" style={{ background: "#ffffff10", color: "#ffffff40" }}>ESC</button>
-              </div>
-
-              {/* Results */}
-              <div style={{ maxHeight: 420, overflowY: "auto" }}>
-                {!globalSearch.trim() && (
-                  <div className="px-5 py-6 text-center">
-                    <div className="text-xs opacity-20 mb-3">Quick Links</div>
-                    <div className="flex flex-wrap gap-2 justify-center">
-                      {tabs.map(t => {
-                        const Icon = t.icon;
-                        return (
-                          <button key={t.id} onClick={() => { setActiveTab(t.id); setGlobalSearchOpen(false); setGlobalSearch(""); setSearchPreview(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all"
-                            style={{ background: `${t.color}10`, border: `1px solid ${t.color}20`, color: t.color }}>
-                            <Icon size={12} strokeWidth={2.5} />{t.label}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-
-                {globalSearch.trim() && !hasGlobalResults && (
-                  <div className="px-5 py-8 text-center">
-                    <div className="text-2xl mb-2 opacity-20">🔍</div>
-                    <div className="text-sm opacity-30">No results for "{globalSearch}"</div>
-                    <div className="text-xs opacity-15 mt-1">Try a mouse name, player, brand, or game</div>
-                  </div>
-                )}
-
-                {globalSearchResults.mice.length > 0 && (
-                  <div className="px-2 pt-3 pb-1">
-                    <div className="px-3 pb-2 text-xs font-bold uppercase tracking-widest" style={{ color: "#c084fc80" }}>
-                      <span className="inline-flex mr-1.5 align-middle">{I.mouse(12)}</span>Mice
-                    </div>
-                    {globalSearchResults.mice.map(m => (
-                      <div key={m.id} className="flex items-center gap-3 px-3 py-2.5 rounded-xl cursor-pointer transition-all"
-                        style={{ background: searchPreview?.type === "mouse" && searchPreview?.data?.id === m.id ? "#ffffff10" : "transparent" }}
-                        onMouseEnter={e => { e.currentTarget.style.background = "#ffffff08"; setSearchPreview({ type: "mouse", data: m }); }}
-                        onMouseLeave={e => { if (!(searchPreview?.type === "mouse" && searchPreview?.data?.id === m.id)) e.currentTarget.style.background = "transparent"; }}
-                        onClick={() => { setSelectedMouse(m); setActiveTab("overview"); setGlobalSearchOpen(false); setGlobalSearch(""); setSearchPreview(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-                        <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${BRAND_COLORS[m.brand] || "#888"}15` }}>
-                          {I.mouse(16)}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="text-sm font-bold truncate" style={{ color: BRAND_COLORS[m.brand] || "#fff" }}>{m.name}</div>
-                          <div className="text-xs opacity-30">{m.weight}g · {m.sensor} · {m.connectivity}</div>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-xs font-bold" style={{ color: BRAND_COLORS[m.brand] || "#fff" }}>${m.price}</div>
-                          <div className="text-xs opacity-25">{m.proUsage}% pro</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {globalSearchResults.players.length > 0 && (
-                  <div className="px-2 pt-3 pb-1">
-                    <div className="px-3 pb-2 text-xs font-bold uppercase tracking-widest" style={{ color: "#00b4ff80" }}>
-                      <span className="inline-flex mr-1.5 align-middle">{I.user(12)}</span>Players
-                    </div>
-                    {globalSearchResults.players.map((p, i) => (
-                      <div key={`${p.name}-${p.game}-${i}`} className="flex items-center gap-3 px-3 py-2.5 rounded-xl cursor-pointer transition-all"
-                        style={{ background: searchPreview?.type === "player" && searchPreview?.data?.name === p.name && searchPreview?.data?.game === p.game ? "#ffffff10" : "transparent" }}
-                        onMouseEnter={e => { e.currentTarget.style.background = "#ffffff08"; setSearchPreview({ type: "player", data: p }); }}
-                        onMouseLeave={e => { if (!(searchPreview?.type === "player" && searchPreview?.data?.name === p.name)) e.currentTarget.style.background = "transparent"; }}
-                        onClick={() => { if (p.hasProfile) { setSelectedPlayer(p); } setActiveTab("players"); setGlobalSearchOpen(false); setGlobalSearch(""); setSearchPreview(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-                        <div className="w-8 h-8 rounded-lg flex items-center justify-center text-lg" style={{ background: "#00b4ff10" }}>
-                          {p.country}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="text-sm font-bold truncate" style={{ color: "#00b4ff" }}>{p.name}</div>
-                          <div className="text-xs opacity-30">{p.team} · {p.role || p.game}</div>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-xs font-bold opacity-50">{p.game}</div>
-                          <div className="text-xs opacity-25">{p.mouse}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {globalSearchResults.brands.length > 0 && (
-                  <div className="px-2 pt-3 pb-1">
-                    <div className="px-3 pb-2 text-xs font-bold uppercase tracking-widest" style={{ color: "#f59e0b80" }}>Brands</div>
-                    <div className="flex flex-wrap gap-2 px-3 pb-2">
-                      {globalSearchResults.brands.map(b => (
-                        <button key={b} className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all"
-                          style={{ background: `${BRAND_COLORS[b] || "#888"}12`, border: `1px solid ${BRAND_COLORS[b] || "#888"}25`, color: BRAND_COLORS[b] || "#fff" }}
-                          onClick={() => { setActiveTab("brands"); setGlobalSearchOpen(false); setGlobalSearch(""); setSearchPreview(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-                          <span className="w-2 h-2 rounded-full" style={{ background: BRAND_COLORS[b] || "#888" }} />
-                          {b}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {globalSearchResults.games.length > 0 && (
-                  <div className="px-2 pt-3 pb-3">
-                    <div className="px-3 pb-2 text-xs font-bold uppercase tracking-widest" style={{ color: "#ff465580" }}>Games</div>
-                    <div className="flex flex-wrap gap-2 px-3">
-                      {globalSearchResults.games.map(g => {
-                        const gameColors = { "Counter-Strike 2": "#ff8c00", Valorant: "#ff4655", "League of Legends": "#c89b3c", "Dota 2": "#e74c3c", Fortnite: "#4c7bd9", "Call of Duty": "#5cb85c", "Overwatch 2": "#f99e1a", "Apex Legends": "#dc2626", "R6 Siege": "#4a86c8", "Rocket League": "#1a9fff", "Marvel Rivals": "#ed1d24", PUBG: "#f2a900", Deadlock: "#8b5cf6" };
-                        const gc = gameColors[g] || "#888";
-                        return (
-                          <button key={g} className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all"
-                            style={{ background: `${gc}12`, border: `1px solid ${gc}25`, color: gc }}
-                            onClick={() => { setActiveTab("games"); setGlobalSearchOpen(false); setGlobalSearch(""); setSearchPreview(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-                            {g}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Right: Preview Panel */}
-            {searchPreview && (
-              <div className="hidden sm:block rounded-2xl overflow-hidden" style={{ width: 340, flexShrink: 0, background: "#111", border: "1px solid #ffffff15", boxShadow: "0 25px 80px rgba(0,0,0,0.6)", minHeight: 200 }}>
-                {searchPreview.type === "mouse" && (() => {
-                  const m = searchPreview.data;
-                  const bc = BRAND_COLORS[m.brand] || "#888";
-                  const desc = MOUSE_DESCRIPTIONS[m.name];
-                  return (
-                    <div className="p-5">
-                      {/* Header */}
-                      <div className="flex items-start gap-3 mb-4">
-                        {MOUSE_IMAGE_URLS[m.name] ? (
-                          <img src={MOUSE_IMAGE_URLS[m.name]} alt={m.name} className="w-14 h-14 object-contain" style={{ filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.5))" }} />
-                        ) : (
-                          <div className="w-14 h-14 rounded-xl flex items-center justify-center" style={{ background: `${bc}15` }}>{I.mouse(28)}</div>
-                        )}
-                        <div className="flex-1 min-w-0">
-                          <div className="text-sm font-black truncate" style={{ color: bc }}>{m.name}</div>
-                          <div className="text-xs opacity-40">{m.brand} · {m.shape} · {m.connectivity}</div>
-                        </div>
-                      </div>
-                      {/* Quick Stats */}
-                      <div className="grid grid-cols-3 gap-2 mb-4">
-                        {[
-                          { label: "Weight", val: `${m.weight}g` },
-                          { label: "Sensor", val: m.sensor },
-                          { label: "Price", val: `$${m.price}` },
-                          { label: "DPI", val: m.dpi.toLocaleString() },
-                          { label: "Poll Rate", val: m.pollingRate >= 1000 ? `${m.pollingRate/1000}KHz` : `${m.pollingRate}Hz` },
-                          { label: "Pro Usage", val: `${m.proUsage}%` },
-                        ].map((s, i) => (
-                          <div key={i} className="rounded-lg p-2 text-center" style={{ background: "#ffffff04" }}>
-                            <div className="text-xs opacity-25">{s.label}</div>
-                            <div className="text-xs font-bold" style={{ color: bc }}>{s.val}</div>
-                          </div>
-                        ))}
-                      </div>
-                      {/* Rating Bar */}
-                      <div className="mb-3">
-                        <div className="flex justify-between text-xs mb-1">
-                          <span className="opacity-30">Rating</span>
-                          <span className="font-bold" style={{ color: bc }}>{m.rating}/10</span>
-                        </div>
-                        <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
-                          <div className="h-full rounded-full" style={{ width: `${m.rating * 10}%`, background: `linear-gradient(to right, ${bc}80, ${bc})` }} />
-                        </div>
-                      </div>
-                      {/* Description excerpt */}
-                      {desc && (
-                        <div className="text-xs opacity-30 leading-relaxed mt-3" style={{ display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
-                          {desc.text}
-                        </div>
-                      )}
-                      <div className="mt-4 text-xs font-bold opacity-40" style={{ color: bc }}>Click to view full profile →</div>
-                    </div>
-                  );
-                })()}
-
-                {searchPreview.type === "player" && (() => {
-                  const p = searchPreview.data;
-                  const gameColors = { "Counter-Strike 2": "#ff8c00", CS2: "#ff8c00", Valorant: "#ff4655", "League of Legends": "#c89b3c", LoL: "#c89b3c", "Dota 2": "#e74c3c", Fortnite: "#4c7bd9", "Call of Duty": "#5cb85c", "Overwatch 2": "#f99e1a", "Apex Legends": "#dc2626", "R6 Siege": "#4a86c8", "Rocket League": "#1a9fff", "Marvel Rivals": "#ed1d24", PUBG: "#f2a900", Deadlock: "#8b5cf6" };
-                  const gc = gameColors[p.game] || "#888";
-                  const playerMouse = mice.find(m => m.name === p.mouse);
-                  const mc = playerMouse ? BRAND_COLORS[playerMouse.brand] : "#888";
-                  return (
-                    <div className="p-5">
-                      {/* Header */}
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="text-3xl">{p.country}</div>
-                        <div>
-                          <div className="text-sm font-black" style={{ color: gc }}>{p.name}</div>
-                          <div className="text-xs opacity-40">{p.fullName || p.team}</div>
-                        </div>
-                      </div>
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-1.5 mb-4">
-                        <span className="px-2 py-0.5 rounded-md text-xs font-bold" style={{ background: `${gc}15`, color: gc }}>{p.game}</span>
-                        <span className="px-2 py-0.5 rounded-md text-xs font-bold" style={{ background: "#ffffff08", color: "#fff" }}>{p.team}</span>
-                        {p.role && <span className="px-2 py-0.5 rounded-md text-xs font-bold" style={{ background: "#ffffff08", color: "#ffffff80" }}>{p.role}</span>}
-                      </div>
-                      {/* Settings */}
-                      <div className="grid grid-cols-3 gap-2 mb-4">
-                        <div className="rounded-lg p-2 text-center" style={{ background: `${gc}08` }}>
-                          <div className="text-xs opacity-25">DPI</div>
-                          <div className="text-xs font-bold" style={{ color: gc }}>{p.dpi}</div>
-                        </div>
-                        <div className="rounded-lg p-2 text-center" style={{ background: `${gc}08` }}>
-                          <div className="text-xs opacity-25">Sens</div>
-                          <div className="text-xs font-bold" style={{ color: gc }}>{p.sens ?? "—"}</div>
-                        </div>
-                        <div className="rounded-lg p-2 text-center" style={{ background: `${gc}08` }}>
-                          <div className="text-xs opacity-25">eDPI</div>
-                          <div className="text-xs font-bold" style={{ color: gc }}>{p.edpi ?? "—"}</div>
-                        </div>
-                      </div>
-                      {/* Mouse */}
-                      <div className="rounded-xl p-3 flex items-center gap-3" style={{ background: `${mc}08`, border: `1px solid ${mc}15` }}>
-                        {MOUSE_IMAGE_URLS[p.mouse] ? (
-                          <img src={MOUSE_IMAGE_URLS[p.mouse]} alt={p.mouse} className="w-10 h-10 object-contain" style={{ filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.4))" }} />
-                        ) : (
-                          <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: `${mc}15` }}>{I.mouse(20)}</div>
-                        )}
-                        <div>
-                          <div className="text-xs font-bold" style={{ color: mc }}>{p.mouse}</div>
-                          <div className="text-xs opacity-25">{playerMouse ? `${playerMouse.weight}g · ${playerMouse.sensor}` : ""}</div>
-                        </div>
-                      </div>
-                      {/* Bio excerpt */}
-                      {p.bio && (
-                        <div className="text-xs opacity-30 leading-relaxed mt-3" style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
-                          {p.bio}
-                        </div>
-                      )}
-                      <div className="mt-4 text-xs font-bold opacity-40" style={{ color: gc }}>{p.hasProfile ? "Click to view full profile →" : "Click to see player list →"}</div>
-                    </div>
-                  );
-                })()}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
 
       {/* ─── CONTENT ─── */}
       <main className="max-w-7xl mx-auto px-3 sm:px-6 pb-20">
@@ -3863,7 +3555,7 @@ export default function EsportsMice() {
                       <div className={imgUrl ? "hidden" : "flex"} style={{ width: 180, height: 160, alignItems: "center", justifyContent: "center", background: `${brandCol}10`, borderRadius: 16 }}>
                         <span className="inline-block">{icon(selectedMouse.image, 80)}</span>
                       </div>
-                      <div className="text-xl font-black mt-2 text-center" style={{ color: brandCol }}>{selectedMouse.name}</div>
+                      <div className="text-xl font-black mt-2 text-center cursor-pointer hover:underline" style={{ color: brandCol }} onClick={() => setActiveTab("mouseDetail")}>{selectedMouse.name}</div>
                       <div className="text-xs opacity-40 text-center">{selectedMouse.brand} · {selectedMouse.shape} · {selectedMouse.connectivity}</div>
                     </div>
 
@@ -4112,7 +3804,7 @@ export default function EsportsMice() {
                                 {competitors.map(c => {
                                   const cc = BRAND_COLORS[c.brand] || "#888";
                                   return (
-                                    <button key={c.id} onClick={() => setSelectedMouse(c)}
+                                    <button key={c.id} onClick={() => { setSelectedMouse(c); setActiveTab("mouseDetail"); }}
                                       className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs transition-all hover:scale-105"
                                       style={{ background: `${cc}08`, border: `1px solid ${cc}15` }}>
                                       {MOUSE_IMAGE_URLS[c.name] ? <img src={MOUSE_IMAGE_URLS[c.name]} alt="" className="h-6 object-contain" /> : <span>{c.image}</span>}
@@ -4138,6 +3830,332 @@ export default function EsportsMice() {
 
           </div>
         )}
+
+        {/* ── MOUSE DETAIL PAGE ── */}
+        {activeTab === "mouseDetail" && selectedMouse && (() => {
+          const brandCol = BRAND_COLORS[selectedMouse.brand];
+          const imgUrl = MOUSE_IMAGE_URLS[selectedMouse.name];
+          return (
+          <div>
+            <button onClick={() => window.history.back()}
+              className="mt-8 mb-4 flex items-center gap-2 text-sm opacity-40 hover:opacity-80 transition-all">
+              ← Back
+            </button>
+
+            {/* Hero Section */}
+            <div className="rounded-2xl p-6 sm:p-8 mb-6" style={{ background: "#0a0a0a", border: `1px solid ${brandCol}15` }}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Left: Mouse image */}
+                <div className="flex flex-col items-center justify-center rounded-xl p-6" style={{ background: `${brandCol}06`, border: `1px solid ${brandCol}12` }}>
+                  {imgUrl ? (
+                    <img src={imgUrl} alt={selectedMouse.name} className="w-full max-h-48 sm:max-h-64 object-contain object-center mb-4 rounded-lg" style={{ filter: "drop-shadow(0 12px 32px rgba(0,0,0,0.6))" }}
+                      onError={e => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} />
+                  ) : null}
+                  <div className={imgUrl ? "hidden" : "flex"} style={{ width: 200, height: 180, alignItems: "center", justifyContent: "center", background: `${brandCol}10`, borderRadius: 16 }}>
+                    <span className="inline-block">{icon(selectedMouse.image, 100)}</span>
+                  </div>
+                  <div className="text-2xl font-black mt-3 text-center" style={{ color: brandCol }}>{selectedMouse.name}</div>
+                  <div className="text-sm opacity-40 text-center mt-1">{selectedMouse.brand} · {selectedMouse.shape} · {selectedMouse.connectivity}</div>
+                </div>
+
+                {/* Center: Radar chart + specs */}
+                <div className="flex flex-col items-center justify-center md:col-span-2 lg:col-span-1">
+                  <ResponsiveContainer width="100%" height={220}>
+                    <RadarChart data={radarData}>
+                      <PolarGrid stroke="#ffffff10" />
+                      <PolarAngleAxis dataKey="stat" tick={{ fill: "#ffffff50", fontSize: 10 }} />
+                      <PolarRadiusAxis tick={false} axisLine={false} domain={[0, 100]} />
+                      <Radar name={selectedMouse.name} dataKey="value" stroke={brandCol} fill={brandCol} fillOpacity={0.2} strokeWidth={2.5} dot={{ r: 3, fill: brandCol, strokeWidth: 0 }} />
+                    </RadarChart>
+                  </ResponsiveContainer>
+                  <div className="grid grid-cols-4 gap-2 w-full mt-2">
+                    <StatBox label="Weight" value={selectedMouse.weight} unit="g" color={brandCol} />
+                    <StatBox label="DPI" value={selectedMouse.dpi >= 1000 ? `${(selectedMouse.dpi / 1000).toFixed(0)}K` : selectedMouse.dpi} color={brandCol} />
+                    <StatBox label="Poll Rate" value={selectedMouse.pollingRate >= 1000 ? `${selectedMouse.pollingRate / 1000}K` : selectedMouse.pollingRate} unit="Hz" color={brandCol} />
+                    <StatBox label="Price" value={`$${selectedMouse.price}`} color={brandCol} />
+                  </div>
+                  <a href={amazonLink(selectedMouse.name)} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 w-full px-5 py-3 rounded-xl text-sm font-black transition-all mt-3"
+                    style={{ background: brandCol, color: "#000" }}>
+                    {I.cart(16)} Buy on Amazon
+                  </a>
+                </div>
+
+                {/* Right: Pro users */}
+                <div>
+                  <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Notable Pro Users</div>
+                  {usedByPros.length > 0 ? (
+                    <div className="space-y-2">
+                      {usedByPros.slice(0, 5).map((p, i) => {
+                        const gameColors = { CS2: "#ff8c00", Valorant: "#ff4655", "League of Legends": "#c89b3c", LoL: "#c89b3c", Fortnite: "#4c7bd9", "Dota 2": "#e74c3c", "R6 Siege": "#4a86c8", "Call of Duty": "#5cb85c" };
+                        const gc = gameColors[p.game] || "#888";
+                        return (
+                          <button key={i} onClick={() => { const pp = proPlayers.find(pp => pp.name === p.name); if (pp) { window.history.pushState({}, "", "#players"); setSelectedPlayer(pp); setActiveTab("players"); } else { setActiveTab("players"); } }}
+                            className="w-full flex items-center gap-3 p-2.5 rounded-xl cursor-pointer transition-all hover:scale-[1.02] text-left"
+                            style={{ background: `${gc}08`, border: `1px solid ${gc}15` }}>
+                            <div className="w-10 h-10 rounded-lg flex items-center justify-center text-lg flex-shrink-0" style={{ background: `${gc}15` }}>
+                              {p.country}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="text-sm font-black">{p.name}</div>
+                              <div className="text-xs opacity-40">{p.team} · <span style={{ color: gc }}>{p.game}</span> · {p.role}</div>
+                            </div>
+                            <div className="text-right flex-shrink-0">
+                              <div className="text-xs font-bold">{p.dpi} DPI</div>
+                              <div className="text-xs opacity-30">{p.edpi ? `${p.edpi} eDPI` : ""}</div>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="text-xs opacity-20 py-8 text-center">No tracked pros currently using this mouse</div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* ── Mouse Description ── */}
+            {MOUSE_DESCRIPTIONS[selectedMouse.name] && (() => {
+              const desc = MOUSE_DESCRIPTIONS[selectedMouse.name];
+              const parts = [];
+              if (desc.highlights && desc.highlights.length > 0) {
+                const sorted = [...desc.highlights]
+                  .map(h => ({ h, idx: desc.text.indexOf(h) }))
+                  .filter(x => x.idx !== -1)
+                  .sort((a, b) => a.idx - b.idx);
+                let cursor = 0;
+                sorted.forEach(({ h, idx }) => {
+                  if (idx > cursor) parts.push({ text: desc.text.slice(cursor, idx), highlight: false });
+                  parts.push({ text: h, highlight: true });
+                  cursor = idx + h.length;
+                });
+                if (cursor < desc.text.length) parts.push({ text: desc.text.slice(cursor), highlight: false });
+              } else {
+                parts.push({ text: desc.text, highlight: false });
+              }
+              return (
+                <div className="rounded-2xl p-6 mb-6" style={{ background: `${brandCol}05`, border: `1px solid ${brandCol}10` }}>
+                  <div className="text-xs uppercase tracking-widest opacity-30 mb-3">About this mouse</div>
+                  <p className="text-sm leading-relaxed opacity-60">
+                    {parts.map((p, i) => p.highlight ? (
+                      <span key={i} className="font-bold opacity-100" style={{ color: brandCol }}>{p.text}</span>
+                    ) : (
+                      <span key={i}>{p.text}</span>
+                    ))}
+                  </p>
+                </div>
+              );
+            })()}
+
+            {/* ── Full Spec Table ── */}
+            <div className="rounded-2xl p-6 mb-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+              <div className="text-xs uppercase tracking-widest opacity-30 mb-4">Full Specifications</div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                {[
+                  { label: "Brand", value: selectedMouse.brand },
+                  { label: "Shape", value: selectedMouse.shape },
+                  { label: "Connectivity", value: selectedMouse.connectivity },
+                  { label: "Weight", value: `${selectedMouse.weight}g` },
+                  { label: "Sensor", value: selectedMouse.sensor },
+                  { label: "Max DPI", value: selectedMouse.dpi.toLocaleString() },
+                  { label: "Polling Rate", value: `${selectedMouse.pollingRate >= 1000 ? `${selectedMouse.pollingRate / 1000}K` : selectedMouse.pollingRate}Hz` },
+                  { label: "Price", value: `$${selectedMouse.price}` },
+                  { label: "Pro Usage", value: `${selectedMouse.proUsage}%` },
+                  { label: "Rating", value: `${selectedMouse.rating}/10` },
+                ].map((spec, idx) => (
+                  <div key={idx} className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
+                    <div className="text-xs opacity-30 mb-1">{spec.label}</div>
+                    <div className="text-sm font-bold" style={{ color: brandCol }}>{spec.value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Deep Dive Stats Panel ── */}
+            {(() => {
+              const mousePlayers = allPlayers.filter(p => p.mouse && (p.mouse === selectedMouse.name || p.mouse.includes(selectedMouse.name.split(" ").slice(-2).join(" "))));
+              const totalTracked = allPlayers.length;
+              const marketShare = totalTracked > 0 ? ((mousePlayers.length / totalTracked) * 100).toFixed(1) : 0;
+              const gameDistro = {};
+              mousePlayers.forEach(p => { gameDistro[p.game] = (gameDistro[p.game] || 0) + 1; });
+              const topGames = Object.entries(gameDistro).sort((a, b) => b[1] - a[1]);
+              const gcols = { CS2: "#ff8c00", Valorant: "#ff4655", LoL: "#c89b3c", Fortnite: "#4c7bd9", "Overwatch 2": "#f99e1a", Apex: "#dc2626", "Dota 2": "#e74c3c", "R6 Siege": "#4a86c8", "Rocket League": "#1a9fff", "Call of Duty": "#5cb85c", "Marvel Rivals": "#ed1d24", PUBG: "#f2a900", Deadlock: "#8b5cf6" };
+              const dpiCounts = {};
+              mousePlayers.forEach(p => { if (p.dpi) dpiCounts[p.dpi] = (dpiCounts[p.dpi] || 0) + 1; });
+              const topDpi = Object.entries(dpiCounts).sort((a, b) => b[1] - a[1]);
+              const edpis = mousePlayers.filter(p => p.edpi && p.edpi > 0).map(p => p.edpi);
+              const avgEdpi = edpis.length > 0 ? Math.round(edpis.reduce((a, b) => a + b, 0) / edpis.length) : null;
+              const minEdpi = edpis.length > 0 ? Math.min(...edpis) : null;
+              const maxEdpi = edpis.length > 0 ? Math.max(...edpis) : null;
+              const countryCounts = {};
+              mousePlayers.forEach(p => { if (p.country) countryCounts[p.country] = (countryCounts[p.country] || 0) + 1; });
+              const topCountries = Object.entries(countryCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+              const teamCounts = {};
+              mousePlayers.forEach(p => { if (p.team && p.team !== "Content" && p.team !== "Inactive") teamCounts[p.team] = (teamCounts[p.team] || 0) + 1; });
+              const topTeams = Object.entries(teamCounts).sort((a, b) => b[1] - a[1]).slice(0, 3);
+              const allMouseCounts = {};
+              allPlayers.forEach(p => { if (p.mouse) allMouseCounts[p.mouse] = (allMouseCounts[p.mouse] || 0) + 1; });
+              const ranked = Object.entries(allMouseCounts).sort((a, b) => b[1] - a[1]);
+              const rank = ranked.findIndex(([name]) => name === selectedMouse.name || name.includes(selectedMouse.name.split(" ").slice(-2).join(" "))) + 1;
+              const competitors = mice.filter(m => m.id !== selectedMouse.id && m.shape === selectedMouse.shape && m.connectivity === selectedMouse.connectivity)
+                .sort((a, b) => b.proUsage - a.proUsage).slice(0, 4);
+
+              if (mousePlayers.length === 0) return <div className="rounded-2xl p-6 text-center text-xs opacity-20 mb-6" style={{ background: "#ffffff04" }}>No tracked players found for this mouse in our database</div>;
+
+              return (
+                <div className="rounded-2xl overflow-hidden mb-6" style={{ border: `1px solid ${brandCol}12` }}>
+                  <div className="px-5 py-4 flex items-center gap-2" style={{ background: `${brandCol}08`, borderBottom: `1px solid ${brandCol}10` }}>
+                    <span>{I.chart(16)}</span>
+                    <span className="text-xs font-black uppercase tracking-widest" style={{ color: brandCol }}>Deep Dive</span>
+                    <span className="text-xs opacity-30">·</span>
+                    <span className="text-xs opacity-40">{selectedMouse.name} across {totalTracked.toLocaleString()} tracked pros</span>
+                  </div>
+
+                  <div className="p-5" style={{ background: "#0a0a0a" }}>
+                    <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mb-5">
+                      {[
+                        { label: "Pro Users", value: mousePlayers.length, icon: "user" },
+                        { label: "Market Share", value: `${marketShare}%`, icon: "trending" },
+                        { label: "Popularity Rank", value: rank > 0 ? `#${rank}` : " - ", icon: "trophy" },
+                        { label: "Avg eDPI", value: avgEdpi || " - ", icon: "crosshair" },
+                        { label: "Games Present", value: topGames.length, icon: "gamepad" },
+                      ].map((stat, idx) => (
+                        <div key={idx} className="rounded-lg p-3 text-center" style={{ background: "#ffffff05" }}>
+                          <div className="mb-0.5 flex items-center justify-center">{icon(stat.icon, 22)}</div>
+                          <div className="text-lg font-black" style={{ color: brandCol }}>{stat.value}</div>
+                          <div style={{ fontSize: 10 }} className="opacity-30">{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                      <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
+                        <div className="text-xs opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.gamepad(12)}</span>Game Breakdown</div>
+                        <div className="space-y-2">
+                          {topGames.slice(0, 5).map(([game, count]) => (
+                            <div key={game}>
+                              <div className="flex justify-between text-xs mb-0.5">
+                                <span className="font-bold" style={{ color: gcols[game] || "#888" }}>{game}</span>
+                                <span className="opacity-50">{count} players · {((count / mousePlayers.length) * 100).toFixed(0)}%</span>
+                              </div>
+                              <div className="h-2 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
+                                <div className="h-full rounded-full transition-all" style={{ width: `${(count / topGames[0][1]) * 100}%`, background: gcols[game] || "#888", opacity: 0.7 }} />
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
+                        <div className="text-xs opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.gear(12)}</span>Settings Profile</div>
+                        <div className="text-xs opacity-30 mb-1.5">Most Common DPI</div>
+                        <div className="space-y-1.5 mb-3">
+                          {topDpi.slice(0, 3).map(([dpi, count]) => (
+                            <div key={dpi} className="flex items-center gap-2">
+                              <span className="text-xs font-black w-12" style={{ color: brandCol }}>{dpi}</span>
+                              <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
+                                <div className="h-full rounded-full" style={{ width: `${(count / topDpi[0][1]) * 100}%`, background: brandCol, opacity: 0.6 }} />
+                              </div>
+                              <span className="text-xs opacity-40 w-14 text-right">{((count / mousePlayers.length) * 100).toFixed(0)}%</span>
+                            </div>
+                          ))}
+                        </div>
+                        {avgEdpi && (
+                          <div>
+                            <div className="text-xs opacity-30 mb-1.5">eDPI Range</div>
+                            <div className="flex items-center gap-1 text-xs">
+                              <span className="opacity-50">{minEdpi}</span>
+                              <div className="flex-1 h-2 rounded-full relative overflow-hidden" style={{ background: "#ffffff08" }}>
+                                <div className="absolute h-full rounded-full" style={{ left: `${Math.max(0, ((avgEdpi - minEdpi) / (maxEdpi - minEdpi || 1)) * 100 - 5)}%`, width: "10%", background: brandCol, opacity: 0.8 }} />
+                              </div>
+                              <span className="opacity-50">{maxEdpi}</span>
+                            </div>
+                            <div className="text-center text-xs mt-1"><span className="font-black" style={{ color: brandCol }}>{avgEdpi}</span> <span className="opacity-30">avg</span></div>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
+                        <div className="text-xs opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.globe(12)}</span>Demographics</div>
+                        <div className="text-xs opacity-30 mb-1.5">Top Regions</div>
+                        <div className="flex flex-wrap gap-1.5 mb-3">
+                          {topCountries.map(([flag, count]) => (
+                            <span key={flag} className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs" style={{ background: `${brandCol}10` }}>
+                              <span>{flag}</span>
+                              <span className="font-bold" style={{ color: brandCol }}>{count}</span>
+                            </span>
+                          ))}
+                        </div>
+                        {topTeams.length > 0 && (
+                          <div>
+                            <div className="text-xs opacity-30 mb-1.5">Top Teams Using This Mouse</div>
+                            <div className="space-y-1.5">
+                              {topTeams.map(([team, count]) => (
+                                <div key={team} className="flex justify-between items-center text-xs">
+                                  <span className="opacity-60 truncate">{team}</span>
+                                  <span className="font-black px-2 py-0.5 rounded" style={{ color: brandCol, background: `${brandCol}10` }}>{count}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Similar Mice */}
+                    {competitors.length > 0 && (
+                      <div className="mt-4 rounded-lg p-3" style={{ background: "#ffffff04" }}>
+                        <div className="text-xs opacity-30 mb-2 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.refresh(12)}</span>Similar Mice ({selectedMouse.shape} · {selectedMouse.connectivity})</div>
+                        <div className="flex flex-wrap gap-2">
+                          {competitors.map(c => {
+                            const cc = BRAND_COLORS[c.brand] || "#888";
+                            return (
+                              <button key={c.id} onClick={() => { setSelectedMouse(c); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                                className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs transition-all hover:scale-105"
+                                style={{ background: `${cc}08`, border: `1px solid ${cc}15` }}>
+                                {MOUSE_IMAGE_URLS[c.name] ? <img src={MOUSE_IMAGE_URLS[c.name]} alt="" className="h-6 object-contain" /> : <span>{c.image}</span>}
+                                <div>
+                                  <div className="font-bold" style={{ color: cc }}>{c.name.replace(c.brand + " ", "")}</div>
+                                  <div className="opacity-40">{c.weight}g · {c.sensor} · {"$"}{c.price}</div>
+                                </div>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })()}
+
+            {/* ── All Pro Players Using This Mouse ── */}
+            {usedByPros.length > 5 && (
+              <div className="rounded-2xl p-6 mb-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                <div className="text-xs uppercase tracking-widest opacity-30 mb-4">All Pro Players Using {selectedMouse.name}</div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+                  {usedByPros.slice(5).map((p, i) => {
+                    const gameColors = { CS2: "#ff8c00", Valorant: "#ff4655", "League of Legends": "#c89b3c", LoL: "#c89b3c", Fortnite: "#4c7bd9", "Dota 2": "#e74c3c", "R6 Siege": "#4a86c8", "Call of Duty": "#5cb85c" };
+                    const gc = gameColors[p.game] || "#888";
+                    return (
+                      <button key={i} onClick={() => { const pp = proPlayers.find(pp => pp.name === p.name); if (pp) { setSelectedPlayer(pp); setActiveTab("players"); } }}
+                        className="flex items-center gap-2 p-2 rounded-lg text-left text-xs transition-all hover:scale-[1.01]"
+                        style={{ background: `${gc}06`, border: `1px solid ${gc}10` }}>
+                        <span>{p.country}</span>
+                        <span className="font-bold">{p.name}</span>
+                        <span className="opacity-30">·</span>
+                        <span style={{ color: gc }}>{p.game}</span>
+                        <span className="opacity-30 ml-auto">{p.dpi} DPI</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+          );
+        })()}
 
         {/* ── GAMES TAB ── */}
         {activeTab === "games" && (
@@ -4403,7 +4421,7 @@ export default function EsportsMice() {
                   }).map((m, i) => {
                     const col = BRAND_COLORS[m.brand] || "#888";
                     return (
-                      <tr key={m.id} className="cursor-pointer transition-all" onClick={() => { setSelectedMouse(m); setActiveTab("overview"); }}
+                      <tr key={m.id} className="cursor-pointer transition-all" onClick={() => { setSelectedMouse(m); setActiveTab("mouseDetail"); }}
                         style={{ borderBottom: "1px solid #ffffff05", background: i % 2 === 0 ? "#050505" : "#080808" }}
                         onMouseEnter={e => e.currentTarget.style.background = `${col}08`}
                         onMouseLeave={e => e.currentTarget.style.background = i % 2 === 0 ? "#050505" : "#080808"}>
@@ -4445,9 +4463,9 @@ export default function EsportsMice() {
                 {allBrands.map(b => <option key={b} value={b}>{b}</option>)}
               </select>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 justify-items-center sm:justify-items-stretch">
               {sortedMice.map(m => (
-                <MouseCard key={m.id} mouse={m} onClick={(mouse) => { setSelectedMouse(mouse); setActiveTab("overview"); }} isSelected={selectedMouse?.id === m.id} />
+                <MouseCard key={m.id} mouse={m} onClick={(mouse) => { setSelectedMouse(mouse); setActiveTab("mouseDetail"); }} isSelected={selectedMouse?.id === m.id} />
               ))}
             </div>
           </div>
@@ -5529,7 +5547,7 @@ export default function EsportsMice() {
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {s.mice.sort((a, b) => b.proUsage - a.proUsage).map((m, mi) => (
-                      <button key={mi} onClick={() => { setSelectedMouse(m); setActiveTab("overview"); }}
+                      <button key={mi} onClick={() => { setSelectedMouse(m); setActiveTab("mouseDetail"); }}
                         className="px-3 py-1.5 rounded-lg text-xs font-bold cursor-pointer transition-all hover:scale-105"
                         style={{ background: `${BRAND_COLORS[m.brand]}12`, border: `1px solid ${BRAND_COLORS[m.brand]}20`, color: BRAND_COLORS[m.brand] }}>
                         {MOUSE_IMAGE_URLS[m.name] ? <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="inline h-4 mr-1 object-contain" /> : m.image} {m.name} <span className="opacity-40">({m.proUsage}%)</span>
@@ -5708,7 +5726,7 @@ export default function EsportsMice() {
                       <div className="text-xs uppercase tracking-widest opacity-20 mb-2">Mice with {s1.sensor}</div>
                       <div className="flex flex-wrap gap-1.5">
                         {s1.mice.sort((a, b) => b.proUsage - a.proUsage).map((m, mi) => (
-                          <button key={mi} onClick={() => { setSelectedMouse(m); setActiveTab("overview"); }}
+                          <button key={mi} onClick={() => { setSelectedMouse(m); setActiveTab("mouseDetail"); }}
                             className="px-2 py-1 rounded text-xs font-bold cursor-pointer transition-all hover:scale-105"
                             style={{ background: `${c1}12`, color: c1 }}>{MOUSE_IMAGE_URLS[m.name] ? <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="inline h-4 mr-1 object-contain" /> : m.image} {m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |WLMouse |Zowie )/, "")}</button>
                         ))}
@@ -5718,7 +5736,7 @@ export default function EsportsMice() {
                       <div className="text-xs uppercase tracking-widest opacity-20 mb-2">Mice with {s2.sensor}</div>
                       <div className="flex flex-wrap gap-1.5">
                         {s2.mice.sort((a, b) => b.proUsage - a.proUsage).map((m, mi) => (
-                          <button key={mi} onClick={() => { setSelectedMouse(m); setActiveTab("overview"); }}
+                          <button key={mi} onClick={() => { setSelectedMouse(m); setActiveTab("mouseDetail"); }}
                             className="px-2 py-1 rounded text-xs font-bold cursor-pointer transition-all hover:scale-105"
                             style={{ background: `${c2}12`, color: c2 }}>{MOUSE_IMAGE_URLS[m.name] ? <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="inline h-4 mr-1 object-contain" /> : m.image} {m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |WLMouse |Zowie )/, "")}</button>
                         ))}
@@ -5859,18 +5877,6 @@ export default function EsportsMice() {
                 </div>
               </div>
             )})()}
-          </div>
-        )}
-
-        {/* ── LAB ── */}
-        {activeTab === "lab" && (
-          <div>
-            <SectionTitle color="#f97316" sub="Interactive calculators, quizzes, and tools for finding your perfect setup">The Lab</SectionTitle>
-            <div className="rounded-2xl p-8 sm:p-12 text-center" style={{ background: "#0a0a0a", border: "1px solid #f9731620" }}>
-              <div className="text-4xl mb-4">🧪</div>
-              <div className="text-lg font-black mb-2" style={{ fontFamily: "Orbitron", color: "#f97316" }}>Coming Soon</div>
-              <div className="text-xs opacity-30 max-w-md mx-auto leading-relaxed">Tools are being built from scratch. Check back as we add sensitivity converters, mouse finders, grip analyzers, and more.</div>
-            </div>
           </div>
         )}
 
