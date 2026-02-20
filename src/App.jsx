@@ -3056,20 +3056,20 @@ const GlowText = ({ children, color = "#00ff6a", size = "text-5xl", className = 
 );
 
 const StatBox = ({ label, value, unit = "", color = "#00ff6a" }) => (
-  <div className="flex flex-col items-center p-4 rounded-xl" style={{ background: `${color}08`, border: `1px solid ${color}20` }}>
-    <div className="text-3xl font-black" style={{ color }}>{value}<span className="text-lg opacity-70">{unit}</span></div>
+  <div className="flex flex-col items-center justify-center text-center p-2 sm:p-4 rounded-xl" style={{ background: `${color}08`, border: `1px solid ${color}20` }}>
+    <div className="text-xl sm:text-3xl font-black" style={{ color }}>{value}<span className="text-sm sm:text-lg opacity-70">{unit}</span></div>
     <div className="text-xs uppercase tracking-widest mt-1 opacity-50">{label}</div>
   </div>
 );
 
 const SectionTitle = ({ children, sub, color = "#00ff6a" }) => (
-  <div className="mb-8 mt-16">
-    <div className="flex items-center gap-3 mb-2">
+  <div className="mb-4 sm:mb-8 mt-8 sm:mt-16">
+    <div className="flex items-center gap-2 sm:gap-3 mb-2">
       <div className="h-px flex-1" style={{ background: `linear-gradient(to right, ${color}, transparent)` }} />
-      <h2 className="text-3xl font-black uppercase tracking-wide" style={{ color }}>{children}</h2>
+      <h2 className="text-lg sm:text-2xl lg:text-3xl font-black uppercase tracking-wide text-center" style={{ color }}>{children}</h2>
       <div className="h-px flex-1" style={{ background: `linear-gradient(to left, ${color}, transparent)` }} />
     </div>
-    {sub && <p className="text-center text-sm opacity-40 tracking-wide">{sub}</p>}
+    {sub && <p className="text-center text-xs sm:text-sm opacity-40 tracking-wide px-2">{sub}</p>}
   </div>
 );
 
@@ -3078,7 +3078,7 @@ const MouseCard = ({ mouse, onClick, isSelected }) => {
   return (
     <div
       onClick={() => onClick(mouse)}
-      className="relative cursor-pointer rounded-2xl p-5 transition-all duration-300 group"
+      className="relative cursor-pointer rounded-2xl p-3 sm:p-5 transition-all duration-300 group"
       style={{
         background: isSelected ? `${brandCol}15` : `linear-gradient(135deg, #0d0d0d, #1a1a1a)`,
         border: isSelected ? `2px solid ${brandCol}` : `1px solid #ffffff10`,
@@ -3095,7 +3095,7 @@ const MouseCard = ({ mouse, onClick, isSelected }) => {
             alt={mouse.name} className="max-h-16 object-contain" style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.5))" }}
             onError={e => { e.target.style.display = "none"; e.target.nextElementSibling.style.display = "block"; }} />
         ) : null}
-        <span style={{ display: MOUSE_IMAGE_URLS[mouse.name] ? "none" : "block", fontSize: "2.5rem" }}>{mouse.image}</span>
+        <span style={{ display: MOUSE_IMAGE_URLS[mouse.name] ? "none" : "flex" }}>{icon(mouse.image, 40)}</span>
       </div>
       <div className="text-base font-bold mb-0.5" style={{ color: brandCol }}>{mouse.name}</div>
       <div className="text-xs opacity-40 mb-3">{mouse.brand}</div>
@@ -3164,6 +3164,7 @@ export default function EsportsMice() {
   const [sensorGameFilter, setSensorGameFilter] = useState("All");
   const [compareSensor1, setCompareSensor1] = useState(null);
   const [compareSensor2, setCompareSensor2] = useState(null);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => { setTimeout(() => setHeroAnim(true), 100); }, []);
   useEffect(() => {
@@ -3269,22 +3270,34 @@ export default function EsportsMice() {
   return (
     <div className="min-h-screen text-white" style={{ background: "#050505", fontFamily: "'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" }}>
       <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+      <style>{`
+        @media (max-width: 640px) {
+          table { font-size: 11px !important; }
+          table th, table td { padding: 6px 8px !important; white-space: nowrap; }
+          .recharts-wrapper { font-size: 10px; }
+          .recharts-polar-angle-axis-tick text { font-size: 9px !important; }
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-thumb { background: #ffffff15; border-radius: 3px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+      `}</style>
 
       {/* ─── HERO ─── */}
-      <header className="relative overflow-hidden" style={{ minHeight: 420 }}>
+      <header className="relative overflow-hidden" style={{ minHeight: "auto" }}>
         <div className="absolute inset-0" style={{
           background: "radial-gradient(ellipse 80% 50% at 50% 0%, #00ff6a08 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 20% 100%, #00b4ff06 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 80% 80%, #ff3c3c04 0%, transparent 70%)"
         }} />
         <div className="absolute inset-0" style={{
           backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 49px, #ffffff03 50px), repeating-linear-gradient(90deg, transparent, transparent 49px, #ffffff03 50px)`,
         }} />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-10 pb-8">
-          <div className="flex items-center justify-between mb-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-10 pb-6 sm:pb-8">
+          <div className="flex items-center justify-between mb-4 sm:mb-8">
             <div className="flex items-center gap-2">
-              <span className="inline-block">{I.mouse(40)}</span>
-              <span style={{ fontFamily: "Orbitron", fontSize: 14, letterSpacing: 6, color: "#00ff6a" }}>ESPORTSMICE<span style={{ fontSize: 10, letterSpacing: 1, opacity: 0.35, color: "#fff", position: "relative", top: 2 }}>.com</span></span>
+              <span className="inline-block">{I.mouse(32)}</span>
+              <span style={{ fontFamily: "Orbitron", fontSize: 12, letterSpacing: 4, color: "#00ff6a" }}>ESPORTSMICE<span style={{ fontSize: 9, letterSpacing: 1, opacity: 0.35, color: "#fff", position: "relative", top: 2 }}>.com</span></span>
             </div>
-            <div className="flex gap-4 text-xs opacity-40">
+            <div className="hidden sm:flex gap-4 text-xs opacity-40">
               <span>{allPlayers.length}+ Pros Tracked</span>
               <span>·</span>
               <span>{new Set(mice.map(m => m.brand)).size}+ Mouse Brands</span>
@@ -3294,22 +3307,22 @@ export default function EsportsMice() {
           </div>
 
           <div className="text-center" style={{ transition: "all 1s ease", opacity: heroAnim ? 1 : 0, transform: heroAnim ? "translateY(0)" : "translateY(30px)" }}>
-            <div className="mb-4">
+            <div className="mb-3 sm:mb-4">
               <span className="text-xs uppercase tracking-widest opacity-30">The Definitive Guide to</span>
             </div>
-            <h1 style={{ fontFamily: "Orbitron", fontSize: 56, fontWeight: 900, lineHeight: 1.1, letterSpacing: -1 }}>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl" style={{ fontFamily: "Orbitron", fontWeight: 900, lineHeight: 1.1, letterSpacing: -1 }}>
               <span style={{ color: "#fff" }}>PRO </span>
               <span style={{ color: "#00ff6a", textShadow: "0 0 40px #00ff6a30" }}>ESPORTS</span>
               <br />
               <span style={{ color: "#fff" }}>GAMING </span>
               <span style={{ color: "#00b4ff", textShadow: "0 0 40px #00b4ff30" }}>MICE</span>
             </h1>
-            <p className="mt-4 max-w-2xl mx-auto text-sm opacity-40 leading-relaxed">
+            <p className="mt-3 sm:mt-4 max-w-2xl mx-auto text-xs sm:text-sm opacity-40 leading-relaxed px-2">
               Comprehensive data on every mouse used by professional players across CS2, Valorant, League of Legends, Dota 2, Fortnite, Call of Duty, Overwatch 2, Apex Legends, Rainbow Six Siege, and Rocket League. Rankings, specs, comparisons, and settings  -  all in one place.
             </p>
           </div>
 
-          <div className="flex justify-center gap-6 mt-8">
+          <div className="grid grid-cols-2 sm:flex sm:justify-center gap-4 sm:gap-6 mt-6 sm:mt-8 justify-items-center">
             {[
               { val: `${allPlayers.length}`, label: "Pro Players" },
               { val: `${mice.length}`, label: "Mouse Models" },
@@ -3317,7 +3330,7 @@ export default function EsportsMice() {
               { val: `${Math.max(...mice.map(m => m.proUsage))}%`, label: "Top Mouse Share" },
             ].map((s, i) => (
               <div key={i} className="text-center" style={{ transition: `all 0.8s ease ${i * 0.15}s`, opacity: heroAnim ? 1 : 0 }}>
-                <div className="text-2xl font-black" style={{ fontFamily: "Orbitron", color: i % 2 === 0 ? "#00ff6a" : "#00b4ff" }}>{s.val}</div>
+                <div className="text-lg sm:text-2xl font-black" style={{ fontFamily: "Orbitron", color: i % 2 === 0 ? "#00ff6a" : "#00b4ff" }}>{s.val}</div>
                 <div className="text-xs opacity-30 mt-1">{s.label}</div>
               </div>
             ))}
@@ -3327,37 +3340,78 @@ export default function EsportsMice() {
 
       {/* ─── NAV TABS ─── */}
       <nav className="sticky top-0 z-50 border-b" style={{ background: "#050505ee", borderColor: "#ffffff0a", backdropFilter: "blur(20px)" }}>
-        <div className="max-w-7xl mx-auto px-6 flex gap-1 overflow-x-auto py-2">
-          {tabs.map(t => {
-            const isActive = activeTab === t.id;
-            const Icon = t.icon;
-            return (
-            <button key={t.id} onClick={() => { setActiveTab(t.id); if (t.id === "players") setSelectedPlayer(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-              className="px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all duration-200"
-              style={{
-                background: isActive ? `${t.color}15` : "transparent",
-                border: isActive ? `1px solid ${t.color}30` : "1px solid transparent",
-                boxShadow: isActive ? `0 0 12px ${t.color}15` : "none",
-              }}>
-              <span className="flex items-center gap-1.5">
-                <Icon size={14} strokeWidth={2.5} style={{ color: t.color }} />
-                <span style={{ color: isActive ? t.color : "#ffffff50" }}>{t.label}</span>
-              </span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2">
+          {/* Desktop: scrollable tabs */}
+          <div className="hidden md:flex gap-1 overflow-x-auto">
+            {tabs.map(t => {
+              const isActive = activeTab === t.id;
+              const Icon = t.icon;
+              return (
+              <button key={t.id} onClick={() => { setActiveTab(t.id); if (t.id === "players") setSelectedPlayer(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                className="px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all duration-200"
+                style={{
+                  background: isActive ? `${t.color}15` : "transparent",
+                  border: isActive ? `1px solid ${t.color}30` : "1px solid transparent",
+                  boxShadow: isActive ? `0 0 12px ${t.color}15` : "none",
+                }}>
+                <span className="flex items-center gap-1.5">
+                  <Icon size={14} strokeWidth={2.5} style={{ color: t.color }} />
+                  <span style={{ color: isActive ? t.color : "#ffffff50" }}>{t.label}</span>
+                </span>
+              </button>
+              );
+            })}
+          </div>
+          {/* Mobile: hamburger + current tab */}
+          <div className="flex md:hidden items-center justify-between">
+            <div className="flex items-center gap-2">
+              {(() => { const t = tabs.find(t => t.id === activeTab); const Icon = t.icon; return (
+                <span className="flex items-center gap-1.5 text-xs font-bold">
+                  <Icon size={14} strokeWidth={2.5} style={{ color: t.color }} />
+                  <span style={{ color: t.color }}>{t.label}</span>
+                </span>
+              ); })()}
+            </div>
+            <button onClick={() => setMobileMenu(!mobileMenu)} className="p-2 rounded-lg" style={{ background: "#ffffff08" }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff80" strokeWidth="2" strokeLinecap="round">
+                {mobileMenu ? <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></> : <><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></>}
+              </svg>
             </button>
-            );
-          })}
+          </div>
+          {/* Mobile dropdown */}
+          {mobileMenu && (
+            <div className="md:hidden grid grid-cols-3 gap-1.5 mt-2 pb-1">
+              {tabs.map(t => {
+                const isActive = activeTab === t.id;
+                const Icon = t.icon;
+                return (
+                  <button key={t.id} onClick={() => { setActiveTab(t.id); setMobileMenu(false); if (t.id === "players") setSelectedPlayer(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                    className="px-2 py-2.5 rounded-lg text-xs font-bold transition-all"
+                    style={{
+                      background: isActive ? `${t.color}15` : "#ffffff05",
+                      border: isActive ? `1px solid ${t.color}30` : "1px solid transparent",
+                    }}>
+                    <span className="flex flex-col items-center gap-1">
+                      <Icon size={16} strokeWidth={2.5} style={{ color: isActive ? t.color : "#ffffff30" }} />
+                      <span style={{ color: isActive ? t.color : "#ffffff40", fontSize: 10 }}>{t.label}</span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
       </nav>
 
       {/* ─── CONTENT ─── */}
-      <main className="max-w-7xl mx-auto px-6 pb-20">
+      <main className="max-w-7xl mx-auto px-3 sm:px-6 pb-20">
 
         {/* ── OVERVIEW TAB ── */}
         {activeTab === "overview" && (
           <div>
             <SectionTitle color="#00ff6a" sub={`Based on data from ${allPlayers.length} professional esports players across ${new Set(allPlayers.map(p=>p.game)).size} major titles`}>Mouse Usage by Professional Players</SectionTitle>
-            <div className="rounded-2xl p-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
-              <ResponsiveContainer width="100%" height={360}>
+            <div className="rounded-2xl p-2 sm:p-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+              <ResponsiveContainer width="100%" height={280}>
                 <BarChart data={proUsageChart} margin={{ top: 10, right: 30, left: 0, bottom: 60 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#ffffff08" />
                   <XAxis dataKey="name" tick={{ fill: "#ffffff40", fontSize: 10 }} angle={-35} textAnchor="end" interval={0} />
@@ -3382,7 +3436,7 @@ export default function EsportsMice() {
               const lightest = [...mice].sort((a,b) => a.weight - b.weight)[0];
               const avgDpi = Math.round(allPlayers.reduce((a,p) => a + p.dpi, 0) / allPlayers.length);
               return (
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 my-6">
+              <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-3 my-4 sm:my-6 text-center">
                 {[
                   { label: "Most Used Mouse", value: topMouseEntry[0].replace(/(Logitech |Razer )/, ""), sub: `${Math.round(topMouseEntry[1]/allPlayers.length*100)}% of pros`, color: "#00ff6a", icon: "crown" },
                   { label: "Avg Pro eDPI", value: avgEdpi, sub: allEdpis.length + " players tracked", color: "#ff4655", icon: "crosshair" },
@@ -3390,9 +3444,9 @@ export default function EsportsMice() {
                   { label: "Lightest Mouse", value: `${lightest.weight}g`, sub: lightest.name.replace(/(WLMouse |Finalmouse )/, ""), color: "#f472b6", icon: "wind" },
                   { label: "Avg Pro DPI", value: avgDpi, sub: "across all games", color: "#d4af37", icon: "gear" },
                 ].map((card, i) => (
-                  <div key={i} className="rounded-xl p-4 text-center transition-all hover:scale-[1.02]" style={{ background: `${card.color}06`, border: `1px solid ${card.color}12` }}>
+                  <div key={i} className="rounded-xl p-2 sm:p-4 text-center transition-all hover:scale-[1.02]" style={{ background: `${card.color}06`, border: `1px solid ${card.color}12` }}>
                     <div className="mb-1 flex items-center justify-center">{icon(card.icon, 22)}</div>
-                    <div className="text-lg font-black" style={{ color: card.color }}>{card.value}</div>
+                    <div className="text-sm sm:text-lg font-black leading-tight" style={{ color: card.color }}>{card.value}</div>
                     <div className="text-xs opacity-50 mt-0.5">{card.label}</div>
                     <div style={{ fontSize: 9 }} className="opacity-25 mt-1">{card.sub}</div>
                   </div>
@@ -3402,9 +3456,9 @@ export default function EsportsMice() {
             })()}
 
             <SectionTitle color="#d4af37" sub="Select any mouse to see detailed performance radar and specs">Featured Mouse Spotlight</SectionTitle>
-              <div className="rounded-2xl p-5 mb-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+              <div className="rounded-2xl p-3 sm:p-5 mb-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
                 {/* Brand filter + mouse selector */}
-                <div className="flex flex-wrap gap-1.5 mb-3">
+                <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-3">
                   {["All", ...new Set(mice.map(m => m.brand))].map(b => (
                     <button key={b} onClick={() => setFilterBrand(b)}
                       className="px-2.5 py-1 rounded-full text-xs font-bold transition-all"
@@ -3418,7 +3472,7 @@ export default function EsportsMice() {
                     </button>
                   ))}
                 </div>
-                <div className="flex flex-wrap gap-1.5 mb-4">
+                <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-4 max-h-32 sm:max-h-none overflow-y-auto">
                   {[...mice].filter(m => m.proUsage >= 1).sort((a, b) => b.proUsage - a.proUsage).filter(m => filterBrand === "All" || m.brand === filterBrand).map(m => (
                     <button key={m.id} onClick={() => setSelectedMouse(m)}
                       className="px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap hover:scale-[1.03]"
@@ -3437,11 +3491,11 @@ export default function EsportsMice() {
                   const imgUrl = MOUSE_IMAGE_URLS[selectedMouse.name];
                   return (
                   <>
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                     {/* Left: Mouse image */}
                     <div className="flex flex-col items-center justify-center rounded-xl p-4" style={{ background: `${brandCol}06`, border: `1px solid ${brandCol}12` }}>
                       {imgUrl ? (
-                        <img src={imgUrl} alt={selectedMouse.name} className="max-h-48 object-contain mb-3 rounded-lg" style={{ filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.5))" }}
+                        <img src={imgUrl} alt={selectedMouse.name} className="max-h-32 sm:max-h-48 object-contain mb-3 rounded-lg" style={{ filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.5))" }}
                           onError={e => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} />
                       ) : null}
                       <div className={imgUrl ? "hidden" : "flex"} style={{ width: 180, height: 160, alignItems: "center", justifyContent: "center", background: `${brandCol}10`, borderRadius: 16 }}>
@@ -3452,16 +3506,16 @@ export default function EsportsMice() {
                     </div>
 
                     {/* Center: Radar chart */}
-                    <div className="flex flex-col items-center justify-center">
-                      <ResponsiveContainer width="100%" height={240}>
+                    <div className="flex flex-col items-center justify-center md:col-span-2 lg:col-span-1">
+                      <ResponsiveContainer width="100%" height={200}>
                         <RadarChart data={radarData}>
                           <PolarGrid stroke="#ffffff10" />
-                          <PolarAngleAxis dataKey="stat" tick={{ fill: "#ffffff50", fontSize: 11 }} />
+                          <PolarAngleAxis dataKey="stat" tick={{ fill: "#ffffff50", fontSize: 10 }} />
                           <PolarRadiusAxis tick={false} axisLine={false} domain={[0, 100]} />
-                          <Radar name={selectedMouse.name} dataKey="value" stroke={brandCol} fill={brandCol} fillOpacity={0.2} strokeWidth={2.5} dot={{ r: 4, fill: brandCol, strokeWidth: 0 }} />
+                          <Radar name={selectedMouse.name} dataKey="value" stroke={brandCol} fill={brandCol} fillOpacity={0.2} strokeWidth={2.5} dot={{ r: 3, fill: brandCol, strokeWidth: 0 }} />
                         </RadarChart>
                       </ResponsiveContainer>
-                      <div className="grid grid-cols-4 gap-2 w-full mt-2">
+                      <div className="grid grid-cols-4 gap-1.5 sm:gap-2 w-full mt-2">
                         <StatBox label="Weight" value={selectedMouse.weight} unit="g" color={brandCol} />
                         <StatBox label="DPI" value={selectedMouse.dpi >= 1000 ? `${(selectedMouse.dpi / 1000).toFixed(0)}K` : selectedMouse.dpi} color={brandCol} />
                         <StatBox label="Poll Rate" value={selectedMouse.pollingRate >= 1000 ? `${selectedMouse.pollingRate / 1000}K` : selectedMouse.pollingRate} unit="Hz" color={brandCol} />
@@ -3594,7 +3648,7 @@ export default function EsportsMice() {
 
                         <div className="p-4" style={{ background: "#0a0a0a" }}>
                           {/* Key metrics row */}
-                          <div className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-4">
+                          <div className="grid grid-cols-3 sm:grid-cols-5 gap-1.5 sm:gap-2 mb-4">
                             {[
                               { label: "Pro Users", value: mousePlayers.length, icon: "user" },
                               { label: "Market Share", value: `${marketShare}%`, icon: "trending" },
@@ -3602,16 +3656,16 @@ export default function EsportsMice() {
                               { label: "Avg eDPI", value: avgEdpi || " - ", icon: "crosshair" },
                               { label: "Games Present", value: topGames.length, icon: "gamepad" },
                             ].map((stat, idx) => (
-                              <div key={idx} className="rounded-lg p-3 text-center" style={{ background: "#ffffff05" }}>
+                              <div key={idx} className="rounded-lg p-2 sm:p-3 text-center" style={{ background: "#ffffff05" }}>
                                 <div className="mb-0.5 flex items-center justify-center">{icon(stat.icon, 22)}</div>
-                                <div className="text-lg font-black" style={{ color: brandCol }}>{stat.value}</div>
+                                <div className="text-sm sm:text-lg font-black" style={{ color: brandCol }}>{stat.value}</div>
                                 <div style={{ fontSize: 10 }} className="opacity-30">{stat.label}</div>
                               </div>
                             ))}
                           </div>
 
                           {/* 3-column detail grid */}
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
                             {/* Game Popularity */}
                             <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
                               <div className="text-xs opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.gamepad(12)}</span>Game Breakdown</div>
@@ -3736,7 +3790,7 @@ export default function EsportsMice() {
                   <div key={i} className="rounded-2xl p-6" style={{ background: `${col}06`, border: `1px solid ${col}12` }}>
                     {/* Header */}
                     <div className="flex items-center gap-3 mb-5">
-                      {GAME_IMAGE_URLS[g.game] ? <img src={GAME_IMAGE_URLS[g.game]} alt={g.game} className="h-8 w-8 object-contain" /> : <span className="inline-block">{icon(g.icon, 32)}</span>}
+                      {GAME_IMAGE_URLS[g.game] ? <img src={GAME_IMAGE_URLS[g.game]} alt={g.game} className="h-8 w-8 object-contain" /> : <span className="inline-flex justify-center">{icon(g.icon, 32)}</span>}
                       <div className="flex-1">
                         <div className="text-xl font-black" style={{ color: col }}>{g.game}</div>
                         <div className="text-xs opacity-30">{g.players} pros tracked</div>
@@ -3750,7 +3804,7 @@ export default function EsportsMice() {
                         ))}
                       </div>
                     </div>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5">
                       {/* Left: Top 5 mice with bars */}
                       <div>
                         <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Top 5 Mice</div>
@@ -3830,10 +3884,10 @@ export default function EsportsMice() {
                     const symPct = Math.round((gp.players.filter(p => { const m = mice.find(mm => mm.name === p.mouse); return m?.shape === "Symmetrical"; }).length / gp.players.length) * 100);
                     return (
                       <div key={gi} className="rounded-2xl p-6 transition-all" style={{ background: `${gp.color}06`, border: `1px solid ${gp.color}15` }}>
-                        <div className="flex flex-col lg:flex-row gap-6">
+                        <div className="flex flex-col lg:flex-row gap-3 sm:gap-6">
                           <div className="lg:w-56 flex-shrink-0">
                             <div className="flex items-center gap-3 mb-2">
-                              {GAME_IMAGE_URLS[gp.game] ? <img src={GAME_IMAGE_URLS[gp.game]} alt={gp.game} className="h-8 w-8 object-contain" /> : <span className="inline-block">{icon(gp.icon, 32)}</span>}
+                              {GAME_IMAGE_URLS[gp.game] ? <img src={GAME_IMAGE_URLS[gp.game]} alt={gp.game} className="h-8 w-8 object-contain" /> : <span className="inline-flex justify-center">{icon(gp.icon, 32)}</span>}
                               <div>
                                 <div className="text-xl font-black" style={{ color: gp.color }}>{gp.game}</div>
                                 <div className="text-xs opacity-30">{gp.players.length} pros sampled</div>
@@ -4029,7 +4083,7 @@ export default function EsportsMice() {
                 {allBrands.map(b => <option key={b} value={b}>{b}</option>)}
               </select>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 justify-items-center sm:justify-items-stretch">
               {sortedMice.map(m => (
                 <MouseCard key={m.id} mouse={m} onClick={(mouse) => { setSelectedMouse(mouse); setActiveTab("overview"); }} isSelected={selectedMouse?.id === m.id} />
               ))}
@@ -4050,15 +4104,15 @@ export default function EsportsMice() {
                 ← Back to all players
               </button>
               {/* Header */}
-              <div className="rounded-2xl p-8 mb-6" style={{ background: `linear-gradient(135deg, ${gc}10, #0a0a0a)`, border: `1px solid ${gc}25` }}>
-                <div className="flex flex-col md:flex-row gap-6 items-start">
-                  <div className="text-6xl">{p.country}</div>
-                  <div className="flex-1">
+              <div className="rounded-2xl p-4 sm:p-8 mb-4 sm:mb-6" style={{ background: `linear-gradient(135deg, ${gc}10, #0a0a0a)`, border: `1px solid ${gc}25` }}>
+                <div className="flex flex-col gap-3 sm:gap-6 items-start">
+                  <div className="text-4xl sm:text-6xl">{p.country}</div>
+                  <div className="flex-1 w-full">
                     <div className="text-xs uppercase tracking-widest opacity-30 mb-1">{p.role} · {p.team}</div>
-                    <h2 className="text-4xl font-black mb-1" style={{ fontFamily: "Orbitron", color: gc }}>{p.name}</h2>
-                    <div className="text-sm opacity-50 mb-3">{p.fullName} · Age {p.age}</div>
-                    <p className="text-sm opacity-50 leading-relaxed max-w-2xl">{p.bio}</p>
-                    <div className="flex gap-3 mt-4">
+                    <h2 className="text-2xl sm:text-4xl font-black mb-1" style={{ fontFamily: "Orbitron", color: gc }}>{p.name}</h2>
+                    <div className="text-xs sm:text-sm opacity-50 mb-2 sm:mb-3">{p.fullName} · Age {p.age}</div>
+                    <p className="text-xs sm:text-sm opacity-50 leading-relaxed max-w-2xl">{p.bio}</p>
+                    <div className="flex flex-wrap gap-2 sm:gap-3 mt-3 sm:mt-4">
                       <span className="px-3 py-1 rounded-lg text-xs font-bold" style={{ background: `${gc}20`, color: gc }}>{p.game}</span>
                       <span className="px-3 py-1 rounded-lg text-xs font-bold" style={{ background: "#ffffff08", color: "#fff" }}>{p.team}</span>
                       <span className="px-3 py-1 rounded-lg text-xs font-bold" style={{ background: "#ffffff08", color: "#fff" }}>{p.role}</span>
@@ -4073,8 +4127,7 @@ export default function EsportsMice() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* Achievements */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 <div className="rounded-2xl p-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
                   <div className="text-xs uppercase tracking-widest opacity-30 mb-4"><span className="inline-flex mr-1.5 align-middle">{I.trophy(14)}</span>Top Achievements</div>
                   <div className="space-y-2">
@@ -4307,7 +4360,7 @@ export default function EsportsMice() {
                 return (
                   <div className="rounded-2xl p-5 md:col-span-2" style={{ background: "#0a0a0a", border: "1px solid #ffffff15" }}>
                     <div className="flex items-center justify-between mb-1">
-                      <div className="text-lg font-black" style={{ color: "#f472b6" }}><span className="inline-flex mr-1.5 align-middle">{I.globe(20)}</span>All Games  -  Overall eDPI Distribution</div>
+                      <div className="text-base sm:text-lg font-black text-center sm:text-left" style={{ color: "#f472b6" }}><span className="inline-flex mr-1.5 align-middle">{I.globe(20)}</span>All Games  -  Overall eDPI Distribution</div>
                       <div className="px-2.5 py-1 rounded text-xs font-bold" style={{ background: "#f472b615", color: "#f472b6" }}>n = {total}</div>
                     </div>
                     <div className="flex gap-5 mb-3 text-xs opacity-40">
@@ -4367,7 +4420,7 @@ export default function EsportsMice() {
                   return (
                     <div key={game} className="rounded-2xl p-5" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
                       <div className="flex items-center justify-between mb-1">
-                        <div className="text-lg font-black" style={{ color: gc }}>{game}</div>
+                        <div className="text-base sm:text-lg font-black text-center sm:text-left" style={{ color: gc }}>{game}</div>
                         <div className="px-2 py-0.5 rounded text-xs font-bold" style={{ background: `${gc}15`, color: gc }}>n = {total}</div>
                       </div>
                       <div className="flex gap-4 mb-3 text-xs opacity-40">
@@ -4445,7 +4498,7 @@ export default function EsportsMice() {
                 return (
                   <div key={i} className="rounded-2xl p-6 transition-all" style={{ background: `${col}06`, border: `1px solid ${col}12` }}>
                     <div className="flex items-center gap-4 mb-4">
-                      {BRAND_IMAGE_URLS[brand.name] ? <img src={BRAND_IMAGE_URLS[brand.name]} alt={brand.name} className="h-10 w-10 object-contain" /> : <span className="inline-block">{icon(brand.icon, 40)}</span>}
+                      {BRAND_IMAGE_URLS[brand.name] ? <img src={BRAND_IMAGE_URLS[brand.name]} alt={brand.name} className="h-10 w-10 object-contain" /> : <span className="inline-flex justify-center">{icon(brand.icon, 40)}</span>}
                       <div className="flex-1">
                         <div className="text-2xl font-black" style={{ color: col }}>{brand.name}</div>
                         <div className="text-xs opacity-30">{totalUsage}% total pro usage · {brandMice.length} model{brandMice.length !== 1 ? "s" : ""} in database</div>
@@ -4583,7 +4636,7 @@ export default function EsportsMice() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mt-6 sm:mt-8">
               <div className="rounded-2xl p-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
                 <div className="text-sm font-bold mb-4 opacity-60">Wireless vs Wired Adoption in Pro Esports (%)</div>
                 <ResponsiveContainer width="100%" height={280}>
@@ -4626,7 +4679,7 @@ export default function EsportsMice() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+            <div className="grid grid-cols-2 gap-2 mt-4 sm:mt-8 text-center">
               {[
                 (() => {
                   const lightest = [...mice].sort((a, b) => a.weight - b.weight)[0];
@@ -4682,6 +4735,7 @@ export default function EsportsMice() {
                 });
                 const headers = ["Brand", "Models", "Pro Share", "Avg Weight", "Avg Price", "Max Poll", "Avg Rating"];
                 return (
+                  <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
                       <tr style={{ background: "#0a0a0a" }}>
@@ -4704,13 +4758,14 @@ export default function EsportsMice() {
                       ))}
                     </tbody>
                   </table>
+                  </div>
                 );
               })()}
             </div>
 
             {/* ── Technology Adoption ── */}
             <SectionTitle color="#8b5cf6" sub="How quickly pros adopt new peripheral technology">Technology Adoption Snapshot</SectionTitle>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
               <div className="rounded-2xl p-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
                 <div className="text-sm font-bold mb-4 opacity-60">Polling Rate Tiers (Mice in DB)</div>
                 {(() => {
@@ -4904,7 +4959,7 @@ export default function EsportsMice() {
               <div className="flex items-center gap-4 mb-4">
                 <img src="/images/mice/focus-pro-35k.png" alt="Focus Pro 35K" className="h-12 object-contain" style={{ filter: "drop-shadow(0 4px 12px rgba(16,185,129,0.3))" }} />
                 <div>
-                  <div className="text-xs uppercase tracking-widest opacity-30">Most Popular Sensor in Esports</div>
+                  <div className="text-xs uppercase tracking-widest opacity-30 text-center sm:text-left">Most Popular Sensor in Esports</div>
                   <div className="text-2xl font-black" style={{ color: "#10b981" }}>{topSensor?.sensor}</div>
                   <div className="text-xs opacity-40">{topSensor?.totalUsage}% combined pro usage · Found in {topSensor?.mouseCount} mouse model{topSensor?.mouseCount !== 1 ? "s" : ""} · Used by {topSensor?.brandList}</div>
                 </div>
@@ -4912,14 +4967,14 @@ export default function EsportsMice() {
             </div>
 
             {/* Sensor overview cards */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6">
               {sensorProfiles.sort((a, b) => b.totalUsage - a.totalUsage).slice(0, 4).map((s, i) => {
                 const colors = ["#10b981", "#00b4ff", "#f59e0b", "#ef4444"];
                 return (
                   <div key={i} className="rounded-xl p-4" style={{ background: `${colors[i]}08`, border: `1px solid ${colors[i]}12` }}>
-                    <div className="text-xs opacity-30 mb-1">#{i + 1} Most Used</div>
-                    <div className="text-sm font-black mb-1" style={{ color: colors[i] }}>{s.sensor}</div>
-                    <div className="text-2xl font-black">{s.totalUsage}%</div>
+                    <div className="text-xs opacity-30 mb-1 text-center">#{i + 1} Most Used</div>
+                    <div className="text-sm font-black mb-1 text-center" style={{ color: colors[i] }}>{s.sensor}</div>
+                    <div className="text-xl sm:text-2xl font-black text-center">{s.totalUsage}%</div>
                     <div className="text-xs opacity-40 mt-1">{s.mouseCount} mice use this sensor:</div>
                     <div className="text-xs opacity-50 mt-0.5 leading-relaxed">{s.mice.map(m => m.name.replace(m.brand + " ", "")).join(", ")}</div>
                     <div className="text-xs font-bold mt-1.5" style={{ color: colors[i] }}>{s.playerCount} pro players</div>
@@ -4927,6 +4982,141 @@ export default function EsportsMice() {
                 );
               })}
             </div>
+
+            {/* ── Sensor Popularity Stats (from actual player data) ── */}
+            {(() => {
+              // Count sensor usage across ALL tracked players (not just mouse DB proUsage)
+              const sensorCounts = {};
+              let totalMatched = 0;
+              allPlayers.forEach(p => {
+                if (!p.mouse) return;
+                const m = mice.find(mm => {
+                  const mn = mm.name.toLowerCase();
+                  const pm = p.mouse.toLowerCase();
+                  return pm === mn || pm.includes(mn) || mn.includes(pm);
+                });
+                if (m) {
+                  sensorCounts[m.sensor] = (sensorCounts[m.sensor] || 0) + 1;
+                  totalMatched++;
+                }
+              });
+              const sortedSensorStats = Object.entries(sensorCounts).sort((a, b) => b[1] - a[1]);
+              const top10 = sortedSensorStats.slice(0, 10);
+              const maxCount = top10[0]?.[1] || 1;
+
+              // Sensor by game breakdown for top 5 sensors
+              const topSensorNames = top10.slice(0, 5).map(s => s[0]);
+              const sensorGameBreakdown = {};
+              topSensorNames.forEach(sn => { sensorGameBreakdown[sn] = {}; });
+              allPlayers.forEach(p => {
+                if (!p.mouse) return;
+                const m = mice.find(mm => {
+                  const mn = mm.name.toLowerCase();
+                  const pm = p.mouse.toLowerCase();
+                  return pm === mn || pm.includes(mn) || mn.includes(pm);
+                });
+                if (m && topSensorNames.includes(m.sensor)) {
+                  sensorGameBreakdown[m.sensor][p.game] = (sensorGameBreakdown[m.sensor][p.game] || 0) + 1;
+                }
+              });
+
+              // Unique stats
+              const uniqueSensors = Object.keys(sensorCounts).length;
+              const topSensorPct = totalMatched > 0 ? Math.round(top10[0][1] / totalMatched * 100) : 0;
+              const top3Pct = totalMatched > 0 ? Math.round(top10.slice(0, 3).reduce((a, s) => a + s[1], 0) / totalMatched * 100) : 0;
+
+              const barColors = ["#10b981", "#00b4ff", "#f59e0b", "#ef4444", "#a78bfa", "#f472b6", "#06b6d4", "#84cc16", "#d4af37", "#8b5cf6"];
+              const gameBarColors = { CS2: "#ff8c00", Valorant: "#ff4655", LoL: "#c89b3c", Fortnite: "#4c7bd9", "Dota 2": "#e74c3c", "R6 Siege": "#4a86c8", Apex: "#dc2626", PUBG: "#f2a900", "Overwatch 2": "#f99e1a", "Call of Duty": "#5cb85c", "Marvel Rivals": "#ed1d24", Deadlock: "#8b5cf6" };
+
+              return (
+                <div className="rounded-2xl p-5 mb-6" style={{ background: "#ffffff03", border: "1px solid #ffffff08" }}>
+                  <div className="text-xs uppercase tracking-widest opacity-30 mb-4 font-bold text-center sm:text-left">Sensor Popularity Across {totalMatched.toLocaleString()} Matched Pro Players</div>
+
+                  {/* Summary stat pills */}
+                  <div className="flex flex-wrap gap-2 mb-5 justify-center sm:justify-start">
+                    <div className="rounded-lg px-3 py-2" style={{ background: "#10b98110" }}>
+                      <span className="text-xs opacity-40">Top sensor: </span>
+                      <span className="text-xs font-black" style={{ color: "#10b981" }}>{top10[0]?.[0]} ({topSensorPct}%)</span>
+                    </div>
+                    <div className="rounded-lg px-3 py-2" style={{ background: "#00b4ff10" }}>
+                      <span className="text-xs opacity-40">Top 3 concentration: </span>
+                      <span className="text-xs font-black" style={{ color: "#00b4ff" }}>{top3Pct}%</span>
+                    </div>
+                    <div className="rounded-lg px-3 py-2" style={{ background: "#f59e0b10" }}>
+                      <span className="text-xs opacity-40">Unique sensors tracked: </span>
+                      <span className="text-xs font-black" style={{ color: "#f59e0b" }}>{uniqueSensors}</span>
+                    </div>
+                    <div className="rounded-lg px-3 py-2" style={{ background: "#a78bfa10" }}>
+                      <span className="text-xs opacity-40">Players on proprietary sensors: </span>
+                      <span className="text-xs font-black" style={{ color: "#a78bfa" }}>{sensorCounts["Custom"] || sensorCounts["Custom Sony"] || 0}</span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5">
+                    {/* Left: Bar chart */}
+                    <div>
+                      <div className="text-xs opacity-30 mb-3 font-bold uppercase tracking-wider">Top 10 Sensors by Player Count</div>
+                      <div className="space-y-2">
+                        {top10.map(([sensor, count], i) => {
+                          const pct = Math.round(count / totalMatched * 100);
+                          const barW = Math.max(count / maxCount * 100, 4);
+                          return (
+                            <div key={sensor} className="flex items-center gap-2">
+                              <div className="text-xs font-bold w-20 sm:w-32 truncate" style={{ color: barColors[i] }}>{sensor}</div>
+                              <div className="flex-1 h-6 rounded-md overflow-hidden" style={{ background: "#ffffff06" }}>
+                                <div className="h-full rounded-md flex items-center px-2 transition-all" style={{ width: `${barW}%`, background: `${barColors[i]}25`, borderRight: `2px solid ${barColors[i]}` }}>
+                                  <span className="text-xs font-black" style={{ color: barColors[i] }}>{count}</span>
+                                </div>
+                              </div>
+                              <div className="text-xs opacity-30 w-10 text-right">{pct}%</div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Right: Game breakdown for top 5 sensors */}
+                    <div>
+                      <div className="text-xs opacity-30 mb-3 font-bold uppercase tracking-wider">Top 5 Sensors — Game Distribution</div>
+                      <div className="space-y-3">
+                        {topSensorNames.map((sn, si) => {
+                          const games = Object.entries(sensorGameBreakdown[sn]).sort((a, b) => b[1] - a[1]);
+                          const total = games.reduce((a, g) => a + g[1], 0);
+                          return (
+                            <div key={sn}>
+                              <div className="flex items-center gap-2 mb-1">
+                                <span className="text-xs font-black" style={{ color: barColors[si] }}>{sn}</span>
+                                <span className="text-xs opacity-20">({total} players)</span>
+                              </div>
+                              {/* Stacked bar */}
+                              <div className="flex h-5 rounded-md overflow-hidden" style={{ background: "#ffffff06" }}>
+                                {games.map(([game, cnt]) => {
+                                  const w = Math.max(cnt / total * 100, 2);
+                                  return (
+                                    <div key={game} className="h-full flex items-center justify-center relative group" style={{ width: `${w}%`, background: `${gameBarColors[game] || "#666"}40` }}
+                                      title={`${game}: ${cnt} players (${Math.round(cnt/total*100)}%)`}>
+                                      {w > 8 && <span style={{ fontSize: 9 }} className="font-bold opacity-70">{game}</span>}
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                              {/* Legend */}
+                              <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1">
+                                {games.slice(0, 5).map(([game, cnt]) => (
+                                  <span key={game} style={{ fontSize: 9 }} className="opacity-40">
+                                    <span style={{ color: gameBarColors[game] || "#666" }}>●</span> {game} {Math.round(cnt/total*100)}%
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
 
             {/* Sensor table */}
             <div className="text-xs uppercase tracking-widest opacity-30 mb-3 mt-8">All Sensors  -  Click Headers to Sort</div>
@@ -5112,7 +5302,7 @@ export default function EsportsMice() {
                 <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid #ffffff08" }}>
                   <div className="grid grid-cols-3" style={{ background: "#0a0a0a" }}>
                     <div className="p-4 text-center">
-                      <div className="text-lg font-black" style={{ color: c1 }}>{s1.sensor}</div>
+                      <div className="text-base sm:text-lg font-black text-center sm:text-left" style={{ color: c1 }}>{s1.sensor}</div>
                       <div className="text-xs opacity-30">{s1.brandList}</div>
                       <div className="text-2xl font-black mt-1" style={{ color: s1Wins > s2Wins ? c1 : "#ffffff20" }}>{s1Wins}</div>
                       <div className="text-xs opacity-20">wins</div>
@@ -5121,7 +5311,7 @@ export default function EsportsMice() {
                       <div className="text-xl font-black opacity-20">VS</div>
                     </div>
                     <div className="p-4 text-center">
-                      <div className="text-lg font-black" style={{ color: c2 }}>{s2.sensor}</div>
+                      <div className="text-base sm:text-lg font-black text-center sm:text-left" style={{ color: c2 }}>{s2.sensor}</div>
                       <div className="text-xs opacity-30">{s2.brandList}</div>
                       <div className="text-2xl font-black mt-1" style={{ color: s2Wins > s1Wins ? c2 : "#ffffff20" }}>{s2Wins}</div>
                       <div className="text-xs opacity-20">wins</div>
@@ -5177,7 +5367,7 @@ export default function EsportsMice() {
               );
             })() : (
               <div className="rounded-2xl p-8 text-center" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
-                <div className="text-3xl mb-2 opacity-20"><span className="inline-flex gap-2">{I.lab(28)}{I.bolt(28)}{I.lab(28)}</span></div>
+                <div className="text-2xl sm:text-3xl mb-2 opacity-20 text-center"><span className="inline-flex gap-2">{I.lab(28)}{I.bolt(28)}{I.lab(28)}</span></div>
                 <div className="text-sm opacity-30">Select two sensors above to compare them head-to-head</div>
               </div>
             )}
@@ -5246,7 +5436,7 @@ export default function EsportsMice() {
                 {/* Verdict banner */}
                 <div className="rounded-xl p-4 mb-6 text-center" style={{ background: `${verdictColor}08`, border: `1px solid ${verdictColor}20` }}>
                   <div className="text-xs uppercase tracking-widest opacity-40 mb-1">Spec Comparison Verdict</div>
-                  <div className="text-lg font-black" style={{ color: verdictColor }}>
+                  <div className="text-base sm:text-lg font-black text-center sm:text-left" style={{ color: verdictColor }}>
                     {verdictName ? `${verdictName} wins ${Math.max(wins0, wins1)}-${Math.min(wins0, wins1)}` : `Tied ${wins0}-${wins1}`}
                   </div>
                   <div className="flex justify-center gap-4 mt-2">
