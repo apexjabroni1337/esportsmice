@@ -4,6 +4,10 @@ import { Home, Mouse, Trophy, Cpu, Users, Gamepad2, Building2, TrendingUp, GitCo
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
+// Amazon Affiliate Helper — change tag here to update all links sitewide
+const AMAZON_TAG = "esportsmice-20";
+const amazonLink = (searchTerm) => `https://www.amazon.com/s?k=${encodeURIComponent(searchTerm)}&tag=${AMAZON_TAG}`;
+
 const BRAND_COLORS = {
   Razer: "#00ff6a",
   Logitech: "#00b4ff",
@@ -3335,7 +3339,8 @@ export default function EsportsMice() {
         </div>
       </nav>
 
-      {/* ─── HERO ─── */}
+      {/* ─── HERO (overview only) ─── */}
+      {activeTab === "overview" && (
       <header className="relative overflow-hidden" style={{ minHeight: "auto" }}>
         <div className="absolute inset-0" style={{
           background: "radial-gradient(ellipse 80% 50% at 50% 0%, #00ff6a08 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 20% 100%, #00b4ff06 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 80% 80%, #ff3c3c04 0%, transparent 70%)"
@@ -3389,6 +3394,7 @@ export default function EsportsMice() {
           </div>
         </div>
       </header>
+      )}
 
       {/* ─── NAV TABS ─── */}
       <nav className="hidden md:block sticky top-0 z-50 border-b" style={{ background: "#050505ee", borderColor: "#ffffff0a", backdropFilter: "blur(20px)" }}>
@@ -3569,7 +3575,7 @@ export default function EsportsMice() {
                         <StatBox label="Poll Rate" value={selectedMouse.pollingRate >= 1000 ? `${selectedMouse.pollingRate / 1000}K` : selectedMouse.pollingRate} unit="Hz" color={brandCol} />
                         <StatBox label="Price" value={`$${selectedMouse.price}`} color={brandCol} />
                       </div>
-                      <a href={`https://amazon.com/s?k=${encodeURIComponent(selectedMouse.name)}`} target="_blank" rel="noopener noreferrer"
+                      <a href={amazonLink(selectedMouse.name)} target="_blank" rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-2 w-full px-5 py-2.5 rounded-xl text-sm font-black transition-all mt-2"
                         style={{ background: brandCol, color: "#000" }}>
                         {I.cart(16)} Buy on Amazon
@@ -4220,7 +4226,7 @@ export default function EsportsMice() {
                         </div>
                       </div>
                     )}
-                    <a href={`https://amazon.com/s?k=${encodeURIComponent(p.mouse)}`} target="_blank" rel="noopener noreferrer"
+                    <a href={amazonLink(p.mouse)} target="_blank" rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-black transition-all"
                       style={{ background: brandCol, color: "#000" }}>
                       {I.cart(16)} Buy {p.mouse.split(" ").slice(-3).join(" ")} on Amazon
@@ -5536,7 +5542,7 @@ export default function EsportsMice() {
 
                 <div className="grid grid-cols-2 gap-4 mt-6">
                   {compareList.map((m, idx) => (
-                    <a key={idx} href={`https://amazon.com/s?k=${encodeURIComponent(m.name)}`} target="_blank" rel="noopener noreferrer"
+                    <a key={idx} href={amazonLink(m.name)} target="_blank" rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-black transition-all text-center"
                       style={{ background: BRAND_COLORS[m.brand], color: "#000" }}>
                       {I.cart(16)} Buy {m.name.split(" ").slice(-2).join(" ")}  -  {"$"}{m.price}
