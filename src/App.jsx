@@ -6030,10 +6030,22 @@ export default function EsportsMice() {
             <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6">
               {sensorProfiles.sort((a, b) => b.totalUsage - a.totalUsage).slice(0, 4).map((s, i) => {
                 const colors = ["#10b981", "#00b4ff", "#f59e0b", "#ef4444"];
+                const sensorImageMap = {
+                  "PAW3395": "/images/sensors/paw3395.png",
+                  "PAW3950": "/images/sensors/paw3950.png",
+                  "PAW3370": "/images/sensors/paw3370.png",
+                  "Focus Pro 35K": "/images/sensors/focus-pro-35k.png",
+                  "HERO 2": "/images/sensors/hero-2.png",
+                  "PAW3399": "/images/sensors/paw3399.png",
+                  "OWL Eye": "/images/sensors/owl-eye.png",
+                  "HERO 25K": "/images/sensors/hero-25k.png",
+                };
+                const sensorImg = sensorImageMap[s.sensor];
                 return (
                   <div key={i} className="rounded-xl p-4" style={{ background: `${colors[i]}08`, border: `1px solid ${colors[i]}12` }}>
                     <div className="text-xs opacity-30 mb-1 text-center">#{i + 1} Most Used</div>
-                    <div className="text-sm font-black mb-1 text-center" style={{ color: colors[i] }}>{s.sensor}</div>
+                    <div className="text-sm font-black mb-2 text-center" style={{ color: colors[i] }}>{s.sensor}</div>
+                    {sensorImg && <div className="flex justify-center mb-2"><img src={sensorImg} alt={s.sensor} className="h-16 sm:h-20 object-contain" style={{ filter: `drop-shadow(0 4px 12px ${colors[i]}30)` }} /></div>}
                     <div className="text-xl sm:text-2xl font-black text-center">{s.totalUsage}%</div>
                     <div className="text-xs opacity-40 mt-1">{s.mouseCount} mice use this sensor:</div>
                     <div className="text-xs opacity-50 mt-0.5 leading-relaxed">{s.mice.map(m => m.name.replace(m.brand + " ", "")).join(", ")}</div>
