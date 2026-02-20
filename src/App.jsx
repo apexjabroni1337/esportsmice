@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, LineChart, Line, CartesianGrid, Legend, AreaChart, Area } from "recharts";
-import { Home, Mouse, Trophy, Cpu, Users, Gamepad2, Building2, TrendingUp, GitCompare } from "lucide-react";
+import { Home, Mouse, Trophy, Cpu, Users, Gamepad2, Building2, TrendingUp, GitCompare, Search, X, FlaskConical } from "lucide-react";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -325,7 +325,7 @@ const GAME_DESCRIPTIONS = {
 
 // ═══════════ CUSTOM SVG ICONS ═══════════
 const I = {
-  mouse: (s=20) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="7" stroke="url(#mg1)" strokeWidth="2"/><line x1="12" y1="2" x2="12" y2="10" stroke="url(#mg1)" strokeWidth="2"/><line x1="5" y1="10" x2="19" y2="10" stroke="url(#mg1)" strokeWidth="1.5" opacity=".4"/><defs><linearGradient id="mg1" x1="5" y1="2" x2="19" y2="22"><stop stopColor="#00e5ff"/><stop offset="1" stopColor="#7c3aed"/></linearGradient></defs></svg>,
+  mouse: (s=20) => <svg width={s} height={s} viewBox="0 0 200 200" fill="none"><defs><linearGradient id="emLg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#00ff6a"/><stop offset="100%" stopColor="#00b4ff"/></linearGradient><linearGradient id="emLgF" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#00ff6a" stopOpacity="0.15"/><stop offset="100%" stopColor="#00b4ff" stopOpacity="0.08"/></linearGradient></defs><path d="M100 18C65 18 38 50 38 88L38 138C38 168 65 182 100 182C135 182 162 168 162 138L162 88C162 50 135 18 100 18Z" fill="url(#emLgF)" stroke="url(#emLg)" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round"/><line x1="100" y1="20" x2="100" y2="92" stroke="url(#emLg)" strokeWidth="4" strokeLinecap="round" opacity="0.6"/><path d="M100 20C82 20 62 32 52 52L52 84C52 88 56 92 62 92L100 92" fill="none" stroke="url(#emLg)" strokeWidth="2.5" opacity="0.25"/><path d="M100 20C118 20 138 32 148 52L148 84C148 88 144 92 138 92L100 92" fill="none" stroke="url(#emLg)" strokeWidth="2.5" opacity="0.25"/><rect x="93" y="58" width="14" height="26" rx="7" ry="7" fill="none" stroke="url(#emLg)" strokeWidth="5"/><line x1="97" y1="65" x2="103" y2="65" stroke="url(#emLg)" strokeWidth="3" strokeLinecap="round" opacity="0.7"/><line x1="97" y1="71" x2="103" y2="71" stroke="url(#emLg)" strokeWidth="3" strokeLinecap="round" opacity="0.7"/><line x1="97" y1="77" x2="103" y2="77" stroke="url(#emLg)" strokeWidth="3" strokeLinecap="round" opacity="0.5"/><ellipse cx="100" cy="118" rx="8" ry="4" fill="none" stroke="url(#emLg)" strokeWidth="3" opacity="0.3"/><rect x="34" y="72" width="8" height="14" rx="4" fill="none" stroke="url(#emLg)" strokeWidth="3" opacity="0.4"/><rect x="34" y="90" width="8" height="14" rx="4" fill="none" stroke="url(#emLg)" strokeWidth="3" opacity="0.3"/></svg>,
   trophy: (s=20) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none"><path d="M8 21h8M12 17v4M17 4V2H7v2" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"/><path d="M7 4h10v4a5 5 0 01-10 0V4z" fill="url(#tg1)"/><path d="M17 5h2a2 2 0 012 2v1a3 3 0 01-3 3h-1M7 5H5a2 2 0 00-2 2v1a3 3 0 003 3h1" stroke="#f59e0b" strokeWidth="1.5"/><defs><linearGradient id="tg1" x1="7" y1="4" x2="17" y2="12"><stop stopColor="#fcd34d"/><stop offset="1" stopColor="#f59e0b"/></linearGradient></defs></svg>,
   bolt: (s=20) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none"><path d="M13 2L4.5 13.5H12L11 22L19.5 10.5H12L13 2z" fill="url(#bg1)" stroke="#facc15" strokeWidth="1" strokeLinejoin="round"/><defs><linearGradient id="bg1" x1="4" y1="2" x2="20" y2="22"><stop stopColor="#fde68a"/><stop offset=".5" stopColor="#fbbf24"/><stop offset="1" stopColor="#f97316"/></linearGradient></defs></svg>,
   crosshair: (s=20) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="url(#cg1)" strokeWidth="2"/><circle cx="12" cy="12" r="3" fill="url(#cg1)" opacity=".6"/><line x1="12" y1="2" x2="12" y2="6" stroke="#ef4444" strokeWidth="2" strokeLinecap="round"/><line x1="12" y1="18" x2="12" y2="22" stroke="#ef4444" strokeWidth="2" strokeLinecap="round"/><line x1="2" y1="12" x2="6" y2="12" stroke="#ef4444" strokeWidth="2" strokeLinecap="round"/><line x1="18" y1="12" x2="22" y2="12" stroke="#ef4444" strokeWidth="2" strokeLinecap="round"/><defs><linearGradient id="cg1" x1="4" y1="4" x2="20" y2="20"><stop stopColor="#f87171"/><stop offset="1" stopColor="#dc2626"/></linearGradient></defs></svg>,
@@ -333,7 +333,7 @@ const I = {
   star: (s=20) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none"><path d="M12 2l2.9 6.26L22 9.27l-5 5.14L18.18 22 12 18.27 5.82 22 7 14.41 2 9.27l7.1-1.01L12 2z" fill="url(#sg1)" stroke="#f59e0b" strokeWidth=".5"/><defs><linearGradient id="sg1" x1="2" y1="2" x2="22" y2="22"><stop stopColor="#fde68a"/><stop offset=".5" stopColor="#fbbf24"/><stop offset="1" stopColor="#d97706"/></linearGradient></defs></svg>,
   cart: (s=20) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none"><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" stroke="url(#ctg1)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><circle cx="9" cy="21" r="1.5" fill="#34d399"/><circle cx="20" cy="21" r="1.5" fill="#34d399"/><defs><linearGradient id="ctg1" x1="1" y1="1" x2="23" y2="21"><stop stopColor="#34d399"/><stop offset="1" stopColor="#06b6d4"/></linearGradient></defs></svg>,
   crown: (s=20) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none"><path d="M2 8l4 12h12l4-12-5 4-5-8-5 8-5-4z" fill="url(#crg1)" stroke="#fbbf24" strokeWidth="1"/><circle cx="12" cy="4" r="1.5" fill="#fbbf24"/><circle cx="2" cy="8" r="1.5" fill="#f59e0b"/><circle cx="22" cy="8" r="1.5" fill="#f59e0b"/><defs><linearGradient id="crg1" x1="2" y1="4" x2="22" y2="20"><stop stopColor="#fde68a"/><stop offset="1" stopColor="#f59e0b"/></linearGradient></defs></svg>,
-  gamepad: (s=20) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none"><path d="M6 9h4M8 7v4" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round"/><circle cx="15" cy="9" r="1.2" fill="#f472b6"/><circle cx="18" cy="9" r="1.2" fill="#34d399"/><path d="M2 13a4 4 0 014-4h12a4 4 0 014 4v0a7 7 0 01-7 7h-6a7 7 0 01-7-7v0z" stroke="url(#gpg1)" strokeWidth="2"/><defs><linearGradient id="gpg1" x1="2" y1="9" x2="22" y2="20"><stop stopColor="#a78bfa"/><stop offset=".5" stopColor="#f472b6"/><stop offset="1" stopColor="#34d399"/></linearGradient></defs></svg>,
+  gamepad: (s=20) => { const id = "gpg" + Math.random().toString(36).slice(2,6); return <svg width={s} height={s} viewBox="0 0 24 24" fill="none"><path d="M6 9h4M8 7v4" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round"/><circle cx="15" cy="9" r="1.2" fill="#f472b6"/><circle cx="18" cy="9" r="1.2" fill="#34d399"/><path d="M2 13a4 4 0 014-4h12a4 4 0 014 4v0a7 7 0 01-7 7h-6a7 7 0 01-7-7v0z" stroke={`url(#${id})`} strokeWidth="2"/><defs><linearGradient id={id} x1="2" y1="9" x2="22" y2="20"><stop stopColor="#a78bfa"/><stop offset=".5" stopColor="#f472b6"/><stop offset="1" stopColor="#34d399"/></linearGradient></defs></svg>; },
   trending: (s=20) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none"><polyline points="23,6 13.5,15.5 8.5,10.5 1,18" stroke="url(#trg1)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><polyline points="17,6 23,6 23,12" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><defs><linearGradient id="trg1" x1="1" y1="18" x2="23" y2="6"><stop stopColor="#06b6d4"/><stop offset="1" stopColor="#10b981"/></linearGradient></defs></svg>,
   signal: (s=20) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none"><path d="M5 12.55a11 11 0 0114.08 0" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round"/><path d="M1.42 9a16 16 0 0121.16 0" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round"/><path d="M8.53 16.11a6 6 0 016.95 0" stroke="#22d3ee" strokeWidth="2" strokeLinecap="round"/><circle cx="12" cy="20" r="1.5" fill="#06b6d4"/></svg>,
   gear: (s=20) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="url(#geg1)" strokeWidth="2"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="url(#geg1)" strokeWidth="2" strokeLinecap="round"/><defs><linearGradient id="geg1" x1="1" y1="1" x2="23" y2="23"><stop stopColor="#f472b6"/><stop offset="1" stopColor="#a78bfa"/></linearGradient></defs></svg>,
@@ -3082,40 +3082,39 @@ const MouseCard = ({ mouse, onClick, isSelected }) => {
   return (
     <div
       onClick={() => onClick(mouse)}
-      className="relative cursor-pointer rounded-2xl p-3 sm:p-5 transition-all duration-300 group flex flex-col"
+      className="relative cursor-pointer rounded-xl p-3 transition-all duration-300 group flex flex-col w-full"
       style={{
         background: isSelected ? `${brandCol}15` : `linear-gradient(135deg, #0d0d0d, #1a1a1a)`,
         border: isSelected ? `2px solid ${brandCol}` : `1px solid #ffffff10`,
         transform: isSelected ? "scale(1.02)" : "scale(1)",
         boxShadow: isSelected ? `0 0 40px ${brandCol}20` : "none",
-        minHeight: 240,
       }}
     >
-      <div className="absolute top-3 right-3 text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: `${brandCol}20`, color: brandCol }}>
+      <div className="absolute top-2 right-2 text-xs font-bold px-1.5 py-0.5 rounded-full" style={{ background: `${brandCol}20`, color: brandCol, fontSize: 10 }}>
         #{mice.indexOf(mouse) + 1}
       </div>
-      <div className="mb-3 h-16 flex items-center justify-center">
+      <div className="mb-2 h-14 flex items-center justify-center">
         {MOUSE_IMAGE_URLS[mouse.name] ? (
           <img src={MOUSE_IMAGE_URLS[mouse.name]}
             alt={mouse.name} className="w-full h-full object-contain object-center" style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.5))" }}
             onError={e => { e.target.style.display = "none"; e.target.nextElementSibling.style.display = "flex"; }} />
         ) : null}
-        <span style={{ display: MOUSE_IMAGE_URLS[mouse.name] ? "none" : "flex" }}>{icon(mouse.image, 40)}</span>
+        <span style={{ display: MOUSE_IMAGE_URLS[mouse.name] ? "none" : "flex" }}>{icon(mouse.image, 32)}</span>
       </div>
-      <div className="h-10 sm:h-12 mb-0.5 overflow-hidden">
-        <div className="text-sm sm:text-base font-bold leading-tight" style={{ color: brandCol, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{mouse.name}</div>
+      <div className="mb-0.5 overflow-hidden">
+        <div className="text-xs sm:text-sm font-bold leading-tight" style={{ color: brandCol, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{mouse.name}</div>
       </div>
-      <div className="text-xs opacity-40 mb-3">{mouse.brand}</div>
-      <div className="grid grid-cols-2 gap-2 text-xs mt-auto">
+      <div className="text-xs opacity-40 mb-2" style={{ fontSize: 10 }}>{mouse.brand}</div>
+      <div className="grid grid-cols-2 gap-1.5 text-xs mt-auto" style={{ fontSize: 10 }}>
         <div className="flex justify-between"><span className="opacity-40">Weight</span><span className="font-bold">{mouse.weight}g</span></div>
         <div className="flex justify-between"><span className="opacity-40">Poll</span><span className="font-bold">{mouse.pollingRate >= 1000 ? `${mouse.pollingRate / 1000}K` : mouse.pollingRate}Hz</span></div>
         <div className="flex justify-between"><span className="opacity-40">Price</span><span className="font-bold">{"$"}{mouse.price}</span></div>
         <div className="flex justify-between"><span className="opacity-40">Pro %</span><span className="font-bold" style={{ color: brandCol }}>{mouse.proUsage}%</span></div>
       </div>
-      <div className="mt-3 h-1.5 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
+      <div className="mt-2 h-1 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
         <div className="h-full rounded-full transition-all duration-700" style={{ width: `${mouse.rating * 10}%`, background: `linear-gradient(to right, ${brandCol}80, ${brandCol})` }} />
       </div>
-      <div className="text-right text-xs mt-1 opacity-40">{mouse.rating}/10</div>
+      <div className="text-right mt-0.5 opacity-40" style={{ fontSize: 9 }}>{mouse.rating}/10</div>
     </div>
   );
 };
@@ -3142,16 +3141,23 @@ export default function EsportsMice() {
   const [selectedMouse, setSelectedMouse] = useState(mice[0]);
   const [activeTab, setActiveTab] = useState(() => {
     const hash = window.location.hash.replace('#', '');
-    return ['overview','mice','rankings','sensors','players','games','brands','trends','compare','mouseDetail'].includes(hash) ? hash : 'overview';
+    return ['overview','mice','rankings','sensors','players','games','brands','trends','compare','lab','mouseDetail'].includes(hash) ? hash : 'overview';
   });
   useEffect(() => { window.location.hash = activeTab; }, [activeTab]);
+  const skipScrollOnTabChange = useRef(false);
+  useEffect(() => {
+    if (skipScrollOnTabChange.current) { skipScrollOnTabChange.current = false; return; }
+    window.scrollTo({ top: 0 });
+  }, [activeTab]);
   useEffect(() => {
     const handlePopState = () => {
       const hash = window.location.hash.replace('#', '');
-      if (['overview','mice','rankings','sensors','players','games','brands','trends','compare','mouseDetail'].includes(hash)) {
+      if (['overview','mice','rankings','sensors','players','games','brands','trends','compare','lab','mouseDetail'].includes(hash)) {
         setActiveTab(hash);
+        if (hash !== 'players' && hash !== 'mouseDetail') {
+          setSelectedPlayer(null);
+        }
       }
-      setSelectedPlayer(null);
     };
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
@@ -3172,6 +3178,16 @@ export default function EsportsMice() {
   const [compareSensor1, setCompareSensor1] = useState(null);
   const [compareSensor2, setCompareSensor2] = useState(null);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [globalSearch, setGlobalSearch] = useState("");
+  const [globalSearchOpen, setGlobalSearchOpen] = useState(false);
+  const globalSearchRef = useRef(null);
+  const globalSearchInputRef = useRef(null);
+  const [quizStep, setQuizStep] = useState(0);
+  const [quizAnswers, setQuizAnswers] = useState({
+    handLength: "", handWidth: "", grip: "", games: [], priorities: [],
+    weightPref: "", connectivity: "", budget: "", shape: "",
+  });
+  const [quizDone, setQuizDone] = useState(false);
 
   useEffect(() => { setTimeout(() => setHeroAnim(true), 100); }, []);
   useEffect(() => {
@@ -3179,6 +3195,115 @@ export default function EsportsMice() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // ─── GLOBAL SEARCH: Cmd/Ctrl+K shortcut ───
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setGlobalSearchOpen(true);
+        setTimeout(() => globalSearchInputRef.current?.focus(), 50);
+      }
+      if (e.key === "Escape") {
+        setGlobalSearchOpen(false);
+        setGlobalSearch("");
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // ─── GLOBAL SEARCH: Click backdrop to close ───
+  const handleSearchBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setGlobalSearchOpen(false);
+      setGlobalSearch("");
+    }
+  };
+
+  // ─── GLOBAL SEARCH: Compute results ───
+  const globalSearchResults = (() => {
+    const q = globalSearch.toLowerCase().trim();
+    if (!q || q.length < 2) return { mice: [], players: [], teams: [], games: [], brands: [] };
+
+    const matchedMice = mice.filter(m =>
+      m.name.toLowerCase().includes(q) || m.brand.toLowerCase().includes(q) || m.sensor.toLowerCase().includes(q)
+    ).slice(0, 5);
+
+    const matchedPlayers = allPlayers.filter(p =>
+      p.name.toLowerCase().includes(q) || (p.team && p.team.toLowerCase().includes(q)) || (p.fullName && p.fullName.toLowerCase().includes(q))
+    ).sort((a, b) => (b.hasProfile ? 1 : 0) - (a.hasProfile ? 1 : 0)).slice(0, 8);
+
+    const teamSet = new Set();
+    allPlayers.forEach(p => { if (p.team && p.team.toLowerCase().includes(q) && p.team !== "Content" && p.team !== "Free Agent" && p.team !== "Retired") teamSet.add(p.team); });
+    const matchedTeams = [...teamSet].slice(0, 5).map(t => {
+      const players = allPlayers.filter(p => p.team === t);
+      const games = [...new Set(players.map(p => p.game))];
+      return { name: t, playerCount: players.length, games };
+    });
+
+    const gameColors = { CS2: "#ff8c00", Valorant: "#ff4655", LoL: "#c89b3c", Fortnite: "#4c7bd9", "Overwatch 2": "#f99e1a", Apex: "#dc2626", "Dota 2": "#e74c3c", "R6 Siege": "#4a86c8", "Rocket League": "#1a9fff", "Call of Duty": "#5cb85c", "Marvel Rivals": "#ed1d24", PUBG: "#f2a900", Deadlock: "#8b5cf6" };
+    const gameNames = { CS2: "Counter-Strike 2", Valorant: "Valorant", LoL: "League of Legends", Fortnite: "Fortnite", "Overwatch 2": "Overwatch 2", Apex: "Apex Legends", "Dota 2": "Dota 2", "R6 Siege": "Rainbow Six Siege", "Rocket League": "Rocket League", "Call of Duty": "Call of Duty", "Marvel Rivals": "Marvel Rivals", PUBG: "PUBG", Deadlock: "Deadlock" };
+    const matchedGames = Object.keys(gameColors).filter(g => {
+      const gLower = g.toLowerCase();
+      const fullName = (gameNames[g] || g).toLowerCase();
+      return gLower.includes(q) || fullName.includes(q);
+    }).slice(0, 4).map(g => ({ id: g, name: gameNames[g] || g, color: gameColors[g], playerCount: allPlayers.filter(p => p.game === g).length }));
+
+    const matchedBrands = Object.keys(BRAND_COLORS).filter(b =>
+      b.toLowerCase().includes(q)
+    ).slice(0, 4).map(b => ({ name: b, color: BRAND_COLORS[b], mouseCount: mice.filter(m => m.brand === b).length }));
+
+    return { mice: matchedMice, players: matchedPlayers, teams: matchedTeams, games: matchedGames, brands: matchedBrands };
+  })();
+
+  const globalSearchHasResults = globalSearch.length >= 2 && (globalSearchResults.mice.length + globalSearchResults.players.length + globalSearchResults.teams.length + globalSearchResults.games.length + globalSearchResults.brands.length) > 0;
+  const globalSearchNoResults = globalSearch.length >= 2 && !globalSearchHasResults;
+
+  const handleSearchResultClick = (type, item) => {
+    // Navigate first
+    if (type === "mouse") {
+      setSelectedMouse(item);
+      setActiveTab("mouseDetail");
+    } else if (type === "player") {
+      const pp = proPlayers.find(pp => pp.name === item.name && pp.game === item.game);
+      if (pp) {
+        setSelectedPlayer(pp);
+      } else {
+        setSelectedPlayer(null);
+        setGameFilter(item.game || "All");
+      }
+      setActiveTab("players");
+    } else if (type === "team") {
+      setSelectedPlayer(null);
+      setGameFilter("All");
+      setSearchQuery(item.name);
+      setActiveTab("players");
+    } else if (type === "game") {
+      skipScrollOnTabChange.current = true;
+      setActiveTab("games");
+      setTimeout(() => {
+        const el = document.getElementById(`game-${item.id.replace(/\s+/g, '-').toLowerCase()}`);
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 60;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      }, 100);
+    } else if (type === "brand") {
+      skipScrollOnTabChange.current = true;
+      setActiveTab("brands");
+      setTimeout(() => {
+        const el = document.getElementById(`brand-${item.name.replace(/\s+/g, '-').toLowerCase()}`);
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 60;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      }, 100);
+    }
+    // Close overlay after navigation state is set
+    setGlobalSearch("");
+    setGlobalSearchOpen(false);
+  };
 
   const sortedMice = [...mice]
     .filter(m => filterBrand === "All" || m.brand === filterBrand)
@@ -3270,6 +3395,7 @@ export default function EsportsMice() {
     { id: "brands", label: "Brands", icon: Building2, color: "#f59e0b" },
     { id: "trends", label: "Trends", icon: TrendingUp, color: "#f472b6" },
     { id: "compare", label: "Compare", icon: GitCompare, color: "#8b5cf6" },
+    { id: "lab", label: "Lab", icon: FlaskConical, color: "#e879f9" },
   ];
 
   const allBrands = ["All", ...new Set(mice.map(m => m.brand))];
@@ -3278,6 +3404,7 @@ export default function EsportsMice() {
     <div className="min-h-screen text-white" style={{ background: "#050505", fontFamily: "'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" }}>
       <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
       <style>{`
+        * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
         @media (max-width: 640px) {
           table { font-size: 11px !important; }
           table th, table td { padding: 6px 8px !important; white-space: nowrap; }
@@ -3294,6 +3421,203 @@ export default function EsportsMice() {
         ::-webkit-scrollbar-track { background: transparent; }
       `}</style>
 
+      {/* ─── GLOBAL SEARCH OVERLAY ─── */}
+      {globalSearchOpen && (
+        <div onClick={handleSearchBackdropClick} className="fixed inset-0 z-[100] flex items-start justify-center pt-[10vh] sm:pt-[15vh] px-4" style={{ background: "rgba(0,0,0,0.75)", backdropFilter: "blur(8px)" }}>
+          <div ref={globalSearchRef} className="w-full max-w-2xl rounded-2xl overflow-hidden" style={{ background: "#0d0d0d", border: "1px solid #ffffff12", boxShadow: "0 25px 80px rgba(0,0,0,0.8), 0 0 40px rgba(0,255,106,0.05)" }}>
+            {/* Search Input */}
+            <div className="flex items-center gap-3 px-5 py-4 border-b" style={{ borderColor: "#ffffff0a" }}>
+              <Search size={18} style={{ color: "#00ff6a", flexShrink: 0 }} />
+              <input
+                ref={globalSearchInputRef}
+                type="text"
+                value={globalSearch}
+                onChange={e => setGlobalSearch(e.target.value)}
+                placeholder="Search mice, players, teams, games, brands..."
+                autoFocus
+                className="flex-1 bg-transparent outline-none text-white text-sm placeholder-white/20"
+                style={{ fontFamily: "'JetBrains Mono', monospace" }}
+              />
+              {globalSearch && (
+                <button onClick={() => setGlobalSearch("")} className="p-1 rounded hover:bg-white/5 transition-all">
+                  <X size={14} style={{ color: "#ffffff40" }} />
+                </button>
+              )}
+              <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 rounded text-xs" style={{ background: "#ffffff08", color: "#ffffff30", border: "1px solid #ffffff0a", fontSize: 10 }}>ESC</kbd>
+            </div>
+
+            {/* Results */}
+            <div className="max-h-[60vh] overflow-y-auto" style={{ scrollbarWidth: "thin" }}>
+              {globalSearch.length < 2 && (
+                <div className="px-5 py-8 text-center">
+                  <div className="text-xs opacity-20 mb-3">Quick Search</div>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {["Razer Viper V3 Pro", "s1mple", "Valorant", "Logitech", "Zowie"].map(sug => (
+                      <button key={sug} onClick={() => setGlobalSearch(sug)}
+                        className="px-3 py-1.5 rounded-lg text-xs transition-all hover:bg-white/10"
+                        style={{ background: "#ffffff06", color: "#ffffff50", border: "1px solid #ffffff08" }}>
+                        {sug}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="mt-4 text-xs opacity-15">
+                    <span className="hidden sm:inline">Press <kbd className="px-1.5 py-0.5 rounded mx-1" style={{ background: "#ffffff08", border: "1px solid #ffffff0a" }}>⌘K</kbd> anytime to search</span>
+                  </div>
+                </div>
+              )}
+
+              {globalSearchNoResults && (
+                <div className="px-5 py-10 text-center">
+                  <div className="text-sm opacity-30 mb-1">No results found</div>
+                  <div className="text-xs opacity-15">Try a different search term</div>
+                </div>
+              )}
+
+              {globalSearchHasResults && (
+                <div className="py-2">
+                  {/* Mice Results */}
+                  {globalSearchResults.mice.length > 0 && (
+                    <div className="mb-1">
+                      <div className="px-5 py-2 text-xs uppercase tracking-widest flex items-center gap-2" style={{ color: "#c084fc", opacity: 0.5, fontSize: 10 }}>
+                        <Mouse size={11} /> Mice
+                      </div>
+                      {globalSearchResults.mice.map(m => {
+                        const brandCol = BRAND_COLORS[m.brand] || "#888";
+                        return (
+                          <button key={m.id} onClick={() => handleSearchResultClick("mouse", m)}
+                            className="w-full flex items-center gap-3 px-5 py-2.5 text-left hover:bg-white/5 transition-all group">
+                            <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${brandCol}15`, border: `1px solid ${brandCol}20` }}>
+                              <Mouse size={14} style={{ color: brandCol }} />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="text-sm font-bold truncate" style={{ color: brandCol }}>{m.name}</div>
+                              <div className="text-xs opacity-30 truncate">{m.brand} · {m.weight}g · {m.sensor} · ${m.price}</div>
+                            </div>
+                            {m.proUsage > 0 && (
+                              <div className="flex-shrink-0 px-2 py-0.5 rounded text-xs font-bold" style={{ background: "#00ff6a15", color: "#00ff6a", fontSize: 10 }}>
+                                {m.proUsage}% pro
+                              </div>
+                            )}
+                            <span className="text-xs opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {/* Players Results */}
+                  {globalSearchResults.players.length > 0 && (
+                    <div className="mb-1">
+                      <div className="px-5 py-2 text-xs uppercase tracking-widest flex items-center gap-2" style={{ color: "#00b4ff", opacity: 0.5, fontSize: 10 }}>
+                        <Users size={11} /> Players
+                      </div>
+                      {globalSearchResults.players.map((p, i) => {
+                        const gameColors = { CS2: "#ff8c00", Valorant: "#ff4655", LoL: "#c89b3c", Fortnite: "#4c7bd9", "Overwatch 2": "#f99e1a", Apex: "#dc2626", "Dota 2": "#e74c3c", "R6 Siege": "#4a86c8", "Rocket League": "#1a9fff", "Call of Duty": "#5cb85c", "Marvel Rivals": "#ed1d24", PUBG: "#f2a900", Deadlock: "#8b5cf6" };
+                        const gCol = gameColors[p.game] || "#888";
+                        return (
+                          <button key={`${p.name}-${p.game}-${i}`} onClick={() => handleSearchResultClick("player", p)}
+                            className="w-full flex items-center gap-3 px-5 py-2.5 text-left hover:bg-white/5 transition-all group">
+                            <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-sm" style={{ background: `${gCol}15`, border: `1px solid ${gCol}20` }}>
+                              {p.country || <Gamepad2 size={14} style={{ color: "#ffffff40" }} />}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="text-sm font-bold truncate">{p.name} {p.fullName ? <span className="font-normal opacity-30 text-xs">({p.fullName})</span> : null}</div>
+                              <div className="text-xs opacity-30 truncate">{p.team} · <span style={{ color: gCol }}>{p.game}</span> · {p.mouse}</div>
+                            </div>
+                            {p.hasProfile && (
+                              <div className="flex-shrink-0 px-2 py-0.5 rounded text-xs font-bold" style={{ background: "#00b4ff15", color: "#00b4ff", fontSize: 10 }}>
+                                Profile
+                              </div>
+                            )}
+                            <span className="text-xs opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {/* Teams Results */}
+                  {globalSearchResults.teams.length > 0 && (
+                    <div className="mb-1">
+                      <div className="px-5 py-2 text-xs uppercase tracking-widest flex items-center gap-2" style={{ color: "#f59e0b", opacity: 0.5, fontSize: 10 }}>
+                        <Building2 size={11} /> Teams
+                      </div>
+                      {globalSearchResults.teams.map((t, i) => (
+                        <button key={`${t.name}-${i}`} onClick={() => handleSearchResultClick("team", t)}
+                          className="w-full flex items-center gap-3 px-5 py-2.5 text-left hover:bg-white/5 transition-all group">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "#f59e0b15", border: "1px solid #f59e0b20" }}>
+                            <Building2 size={14} style={{ color: "#f59e0b" }} />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-sm font-bold truncate">{t.name}</div>
+                            <div className="text-xs opacity-30 truncate">{t.playerCount} players · {t.games.join(", ")}</div>
+                          </div>
+                          <span className="text-xs opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Games Results */}
+                  {globalSearchResults.games.length > 0 && (
+                    <div className="mb-1">
+                      <div className="px-5 py-2 text-xs uppercase tracking-widest flex items-center gap-2" style={{ color: "#ff4655", opacity: 0.5, fontSize: 10 }}>
+                        <Gamepad2 size={11} /> Games
+                      </div>
+                      {globalSearchResults.games.map((g, i) => (
+                        <button key={`${g.id}-${i}`} onClick={() => handleSearchResultClick("game", g)}
+                          className="w-full flex items-center gap-3 px-5 py-2.5 text-left hover:bg-white/5 transition-all group">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${g.color}15`, border: `1px solid ${g.color}20` }}>
+                            <Gamepad2 size={14} style={{ color: g.color }} />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-sm font-bold truncate" style={{ color: g.color }}>{g.name}</div>
+                            <div className="text-xs opacity-30 truncate">{g.playerCount} pros tracked</div>
+                          </div>
+                          <span className="text-xs opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Brands Results */}
+                  {globalSearchResults.brands.length > 0 && (
+                    <div className="mb-1">
+                      <div className="px-5 py-2 text-xs uppercase tracking-widest flex items-center gap-2" style={{ color: "#f59e0b", opacity: 0.5, fontSize: 10 }}>
+                        <Building2 size={11} /> Brands
+                      </div>
+                      {globalSearchResults.brands.map((b, i) => (
+                        <button key={`${b.name}-${i}`} onClick={() => handleSearchResultClick("brand", b)}
+                          className="w-full flex items-center gap-3 px-5 py-2.5 text-left hover:bg-white/5 transition-all group">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${b.color}15`, border: `1px solid ${b.color}20` }}>
+                            <span className="text-xs font-black" style={{ color: b.color }}>{b.name[0]}</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-sm font-bold truncate" style={{ color: b.color }}>{b.name}</div>
+                            <div className="text-xs opacity-30 truncate">{b.mouseCount} mice in database</div>
+                          </div>
+                          <span className="text-xs opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Footer */}
+            {globalSearchHasResults && (
+              <div className="px-5 py-2.5 border-t flex items-center justify-between text-xs" style={{ borderColor: "#ffffff08", color: "#ffffff20" }}>
+                <span>
+                  {globalSearchResults.mice.length + globalSearchResults.players.length + globalSearchResults.teams.length + globalSearchResults.games.length + globalSearchResults.brands.length} results
+                </span>
+                <span className="hidden sm:inline">↑↓ navigate · ↵ select · esc close</span>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* ─── MOBILE NAV (above hero, only on mobile) ─── */}
       <nav className="md:hidden sticky top-0 z-50 border-b" style={{ background: "#050505ee", borderColor: "#ffffff0a", backdropFilter: "blur(20px)" }}>
         <div className="px-4 py-2">
@@ -3302,18 +3626,24 @@ export default function EsportsMice() {
               <span className="inline-flex">{I.mouse(20)}</span>
               <span style={{ fontFamily: "Orbitron", fontSize: 10, letterSpacing: 3, color: "#00ff6a" }}>ESPORTSMICE</span>
               <span className="mx-2 opacity-20">|</span>
-              {(() => { const t = tabs.find(t => t.id === activeTab); const Icon = t.icon; return (
+              {(() => { const t = tabs.find(t => t.id === activeTab) || tabs[0]; const Icon = t.icon; return (
                 <span className="flex items-center gap-1.5 text-xs font-bold">
                   <Icon size={14} strokeWidth={2.5} style={{ color: t.color }} />
                   <span style={{ color: t.color }}>{t.label}</span>
                 </span>
               ); })()}
             </div>
-            <button onClick={() => setMobileMenu(!mobileMenu)} className="p-2 rounded-lg" style={{ background: "#ffffff08" }}>
+            <div className="flex items-center gap-2">
+              <button onClick={() => { setGlobalSearchOpen(true); setTimeout(() => globalSearchInputRef.current?.focus(), 50); }}
+                className="p-2 rounded-lg transition-all hover:bg-white/10" style={{ background: "#ffffff08" }}>
+                <Search size={16} style={{ color: "#00ff6a" }} />
+              </button>
+              <button onClick={() => setMobileMenu(!mobileMenu)} className="p-2 rounded-lg" style={{ background: "#ffffff08" }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff80" strokeWidth="2" strokeLinecap="round">
                 {mobileMenu ? <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></> : <><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></>}
               </svg>
             </button>
+            </div>
           </div>
           {mobileMenu && (
             <div className="grid grid-cols-3 gap-1.5 mt-2 pb-1">
@@ -3321,7 +3651,7 @@ export default function EsportsMice() {
                 const isActive = activeTab === t.id;
                 const Icon = t.icon;
                 return (
-                  <button key={t.id} onClick={() => { setActiveTab(t.id); setMobileMenu(false); if (t.id === "players") setSelectedPlayer(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                  <button key={t.id} onClick={() => { setActiveTab(t.id); setMobileMenu(false); if (t.id === "players") setSelectedPlayer(null); }}
                     className="px-2 py-2.5 rounded-lg text-xs font-bold transition-all"
                     style={{
                       background: isActive ? `${t.color}15` : "#ffffff05",
@@ -3399,12 +3729,13 @@ export default function EsportsMice() {
       {/* ─── NAV TABS ─── */}
       <nav className="hidden md:block sticky top-0 z-50 border-b" style={{ background: "#050505ee", borderColor: "#ffffff0a", backdropFilter: "blur(20px)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2">
-          <div className="flex gap-1 overflow-x-auto">
+          <div className="flex gap-1 items-center">
+            <div className="flex gap-1 overflow-x-auto flex-1">
             {tabs.map(t => {
               const isActive = activeTab === t.id;
               const Icon = t.icon;
               return (
-              <button key={t.id} onClick={() => { setActiveTab(t.id); if (t.id === "players") setSelectedPlayer(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+              <button key={t.id} onClick={() => { setActiveTab(t.id); if (t.id === "players") setSelectedPlayer(null); }}
                 className="px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all duration-200"
                 style={{
                   background: isActive ? `${t.color}15` : "transparent",
@@ -3418,6 +3749,14 @@ export default function EsportsMice() {
               </button>
               );
             })}
+            </div>
+            <button onClick={() => { setGlobalSearchOpen(true); setTimeout(() => globalSearchInputRef.current?.focus(), 50); }}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs transition-all duration-200 hover:bg-white/5 flex-shrink-0 ml-2"
+              style={{ background: "#ffffff06", border: "1px solid #ffffff0a" }}>
+              <Search size={13} style={{ color: "#00ff6a" }} />
+              <span style={{ color: "#ffffff30" }}>Search</span>
+              <kbd className="flex items-center gap-0.5 px-1.5 py-0.5 rounded text-xs ml-1" style={{ background: "#ffffff08", color: "#ffffff25", border: "1px solid #ffffff08", fontSize: 9 }}>⌘K</kbd>
+            </button>
           </div>
         </div>
       </nav>
@@ -4167,7 +4506,7 @@ export default function EsportsMice() {
                 const col = gameColors[g.game] || "#888";
                 const medals = [I.medal("#fbbf24", 18), I.medal("#94a3b8", 18), I.medal("#cd7f32", 18), "4.", "5."];
                 return (
-                  <div key={i} className="rounded-2xl p-6" style={{ background: `${col}06`, border: `1px solid ${col}12` }}>
+                  <div key={i} id={`game-${g.game.replace(/\s+/g, '-').toLowerCase()}`} className="rounded-2xl p-6" style={{ background: `${col}06`, border: `1px solid ${col}12` }}>
                     {/* Header */}
                     <div className="flex items-center gap-3 mb-5">
                       {GAME_IMAGE_URLS[g.game] ? <img src={GAME_IMAGE_URLS[g.game]} alt={g.game} className="h-8 w-8 object-contain" /> : <span className="inline-flex justify-center">{icon(g.icon, 32)}</span>}
@@ -4463,7 +4802,7 @@ export default function EsportsMice() {
                 {allBrands.map(b => <option key={b} value={b}>{b}</option>)}
               </select>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 justify-items-center sm:justify-items-stretch">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
               {sortedMice.map(m => (
                 <MouseCard key={m.id} mouse={m} onClick={(mouse) => { setSelectedMouse(mouse); setActiveTab("mouseDetail"); }} isSelected={selectedMouse?.id === m.id} />
               ))}
@@ -4800,7 +5139,10 @@ export default function EsportsMice() {
                   return (
                     <div key={game} className="rounded-2xl p-5" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
                       <div className="flex items-center justify-between mb-1">
-                        <div className="text-base sm:text-lg font-black text-center sm:text-left" style={{ color: gc }}>{game}</div>
+                        <div className="text-base sm:text-lg font-black text-center sm:text-left flex items-center gap-2" style={{ color: gc }}>
+                          {GAME_IMAGE_URLS[game] && <img src={GAME_IMAGE_URLS[game]} alt={game} className="w-5 h-5 object-contain inline-block" />}
+                          {game}
+                        </div>
                         <div className="px-2 py-0.5 rounded text-xs font-bold" style={{ background: `${gc}15`, color: gc }}>n = {total}</div>
                       </div>
                       <div className="flex gap-4 mb-3 text-xs opacity-40">
@@ -4876,7 +5218,7 @@ export default function EsportsMice() {
                 const brandMice = mice.filter(m => m.brand === brand.name);
                 const totalUsage = brandMice.reduce((acc, m) => acc + m.proUsage, 0);
                 return (
-                  <div key={i} className="rounded-2xl p-6 transition-all" style={{ background: `${col}06`, border: `1px solid ${col}12` }}>
+                  <div key={i} id={`brand-${brand.name.replace(/\s+/g, '-').toLowerCase()}`} className="rounded-2xl p-6 transition-all" style={{ background: `${col}06`, border: `1px solid ${col}12` }}>
                     <div className="flex items-center gap-4 mb-4">
                       {BRAND_IMAGE_URLS[brand.name] ? <img src={BRAND_IMAGE_URLS[brand.name]} alt={brand.name} className="h-10 w-10 object-contain" /> : <span className="inline-flex justify-center">{icon(brand.icon, 40)}</span>}
                       <div className="flex-1">
@@ -5879,6 +6221,576 @@ export default function EsportsMice() {
             )})()}
           </div>
         )}
+
+        {/* ── LAB TAB ── */}
+        {activeTab === "lab" && (() => {
+
+          const setAnswer = (key, val) => setQuizAnswers(prev => ({ ...prev, [key]: val }));
+          const toggleArrayAnswer = (key, val) => setQuizAnswers(prev => {
+            const arr = prev[key] || [];
+            return { ...prev, [key]: arr.includes(val) ? arr.filter(v => v !== val) : [...arr, val] };
+          });
+
+          const canProceed = () => {
+            if (quizStep === 0) return true;
+            if (quizStep === 1) return String(quizAnswers.handLength).length > 0 && String(quizAnswers.handWidth).length > 0;
+            if (quizStep === 2) return !!quizAnswers.grip;
+            if (quizStep === 3) return quizAnswers.games.length > 0;
+            if (quizStep === 4) return quizAnswers.priorities.length > 0;
+            if (quizStep === 5) return !!quizAnswers.weightPref;
+            if (quizStep === 6) return !!quizAnswers.shape;
+            if (quizStep === 7) return !!quizAnswers.connectivity;
+            if (quizStep === 8) return !!quizAnswers.budget;
+            return true;
+          };
+
+          const nextStep = () => {
+            if (quizStep === 8) { setQuizDone(true); return; }
+            setQuizStep(prev => prev + 1);
+          };
+
+          // Scoring algorithm
+          const getResults = () => {
+            const a = quizAnswers;
+            const hl = parseFloat(a.handLength) || 18;
+            const hw = parseFloat(a.handWidth) || 9;
+
+            return mice.map(m => {
+              let score = 0;
+              let reasons = [];
+
+              // Hand size → weight mapping (smaller hands = lighter mice)
+              const handArea = hl * hw;
+              if (a.grip === "fingertip") {
+                if (m.weight <= 50) { score += 15; reasons.push("Ultra-light for fingertip control"); }
+                else if (m.weight <= 60) { score += 10; }
+                else if (m.weight > 75) { score -= 10; }
+              } else if (a.grip === "claw") {
+                if (m.weight <= 55) { score += 12; reasons.push("Light enough for claw agility"); }
+                else if (m.weight <= 65) { score += 8; }
+                else if (m.weight > 80) { score -= 8; }
+              } else if (a.grip === "palm") {
+                if (m.weight >= 55 && m.weight <= 80) { score += 10; reasons.push("Comfortable weight for palm grip"); }
+                else if (m.weight < 45) { score -= 5; }
+              }
+
+              // Hand size → shape recommendations
+              if (handArea < 150) { // small hands
+                if (m.weight <= 55) { score += 5; reasons.push("Sized well for smaller hands"); }
+                if (m.name.toLowerCase().includes("mini")) { score += 8; reasons.push("Mini form factor fits smaller hands"); }
+              } else if (handArea > 190) { // large hands
+                if (m.shape === "Ergonomic") { score += 5; reasons.push("Ergonomic shape suits larger hands"); }
+                if (m.name.toLowerCase().includes("mini")) { score -= 8; }
+              }
+
+              // Grip → shape
+              if (a.grip === "palm" && m.shape === "Ergonomic") { score += 12; reasons.push("Ergonomic shape ideal for palm grip"); }
+              if (a.grip === "palm" && m.shape === "Symmetrical") { score += 4; }
+              if (a.grip === "claw" && m.shape === "Symmetrical") { score += 10; reasons.push("Symmetrical shape great for claw grip"); }
+              if (a.grip === "claw" && m.shape === "Ergonomic") { score += 5; }
+              if (a.grip === "fingertip" && m.shape === "Symmetrical") { score += 12; reasons.push("Symmetrical + light = fingertip heaven"); }
+              if (a.grip === "fingertip" && m.shape === "Ergonomic") { score -= 2; }
+
+              // Shape preference
+              if (a.shape === "symmetrical" && m.shape === "Symmetrical") score += 10;
+              if (a.shape === "ergonomic" && m.shape === "Ergonomic") score += 10;
+              if (a.shape === "either") score += 5;
+
+              // Game-specific preferences
+              const fpsGames = ["CS2", "Valorant", "Apex", "R6 Siege", "Call of Duty", "Overwatch 2", "Fortnite"];
+              const mobaGames = ["LoL", "Dota 2"];
+              const userPlaysFPS = a.games.some(g => fpsGames.includes(g));
+              const userPlaysMOBA = a.games.some(g => mobaGames.includes(g));
+
+              if (userPlaysFPS) {
+                if (m.pollingRate >= 4000) { score += 8; reasons.push(`${m.pollingRate >= 8000 ? "8K" : "4K"}Hz polling for competitive FPS`); }
+                if (m.weight <= 60) score += 5;
+                // Check what pros actually use in those games
+                const proCount = allPlayers.filter(p => a.games.includes(p.game) && (p.mouse === m.name || p.mouse.includes(m.name) || m.name.includes(p.mouse))).length;
+                if (proCount >= 10) { score += 15; reasons.push(`Used by ${proCount}+ pros in your game(s)`); }
+                else if (proCount >= 5) { score += 10; reasons.push(`Used by ${proCount} pros in your game(s)`); }
+                else if (proCount >= 2) { score += 5; }
+              }
+              if (userPlaysMOBA) {
+                if (m.shape === "Ergonomic") { score += 5; reasons.push("Ergonomic comfort for long MOBA sessions"); }
+                if (m.weight >= 55 && m.weight <= 80) score += 3;
+              }
+
+              // Priorities
+              if (a.priorities.includes("weight")) {
+                if (m.weight <= 45) { score += 12; reasons.push(`Featherweight at ${m.weight}g`); }
+                else if (m.weight <= 55) score += 8;
+                else if (m.weight <= 65) score += 4;
+                else score -= 4;
+              }
+              if (a.priorities.includes("sensor")) {
+                if (m.pollingRate >= 8000) { score += 10; reasons.push("Top-tier 8KHz sensor"); }
+                else if (m.pollingRate >= 4000) score += 6;
+                else score -= 2;
+              }
+              if (a.priorities.includes("pro")) {
+                score += Math.min(15, m.proUsage * 2);
+                if (m.proUsage >= 5) reasons.push(`${m.proUsage}% pro adoption rate`);
+              }
+              if (a.priorities.includes("price")) {
+                if (m.price <= 80) { score += 10; reasons.push(`Great value at $${m.price}`); }
+                else if (m.price <= 100) score += 6;
+                else if (m.price <= 130) score += 2;
+                else score -= 3;
+              }
+              if (a.priorities.includes("build")) {
+                score += Math.round(m.rating * 1.5);
+                if (m.rating >= 9.3) reasons.push(`Exceptional ${m.rating}/10 build quality`);
+              }
+
+              // Weight preference
+              if (a.weightPref === "ultralight" && m.weight <= 45) score += 10;
+              else if (a.weightPref === "ultralight" && m.weight > 65) score -= 10;
+              if (a.weightPref === "light" && m.weight > 45 && m.weight <= 60) score += 8;
+              if (a.weightPref === "medium" && m.weight > 60 && m.weight <= 80) score += 8;
+              if (a.weightPref === "heavy" && m.weight > 80) score += 8;
+
+              // Connectivity
+              if (a.connectivity === "wireless" && m.connectivity === "Wireless") score += 10;
+              if (a.connectivity === "wireless" && m.connectivity === "Wired") score -= 15;
+              if (a.connectivity === "wired" && m.connectivity === "Wired") score += 5;
+              if (a.connectivity === "either") score += 3;
+
+              // Budget
+              if (a.budget === "under80" && m.price <= 80) score += 10;
+              else if (a.budget === "under80" && m.price > 120) score -= 15;
+              if (a.budget === "80to120" && m.price >= 80 && m.price <= 120) score += 10;
+              else if (a.budget === "80to120" && m.price > 160) score -= 10;
+              if (a.budget === "120to160" && m.price >= 100 && m.price <= 160) score += 8;
+              if (a.budget === "over160") score += 3; // no limit
+              if (a.budget === "nolimit") score += 5;
+
+              // Baseline from rating
+              score += Math.round(m.rating * 2);
+
+              // Deduplicate reasons
+              reasons = [...new Set(reasons)].slice(0, 4);
+
+              return { mouse: m, score, reasons };
+            })
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 8);
+          };
+
+          const maxScore = quizDone ? Math.max(...getResults().map(r => r.score)) : 0;
+
+          const accent = "#e879f9";
+          const stepLabels = ["Welcome", "Hand Size", "Grip Style", "Games", "Priorities", "Weight", "Shape", "Connection", "Budget"];
+          const totalSteps = 9;
+
+          const OptionButton = ({ selected, onClick, children, color, large }) => (
+            <button onClick={onClick}
+              className={`rounded-xl text-left transition-all duration-200 ${large ? "p-4 sm:p-5" : "p-3 sm:p-4"}`}
+              style={{
+                background: selected ? `${color || accent}15` : "#0a0a0a",
+                border: selected ? `2px solid ${color || accent}` : "1px solid #ffffff10",
+                boxShadow: selected ? `0 0 20px ${color || accent}15` : "none",
+              }}>
+              {children}
+            </button>
+          );
+
+          return (
+          <div>
+            <SectionTitle color={accent} sub="Answer a few questions and we'll find your perfect mouse">Mouse Finder Quiz</SectionTitle>
+
+            {!quizDone ? (
+              <div className="max-w-2xl mx-auto">
+                {/* Progress bar */}
+                {quizStep > 0 && (
+                  <div className="mb-6">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs opacity-30">Step {quizStep} of {totalSteps - 1}</span>
+                      <span className="text-xs opacity-30">{stepLabels[quizStep]}</span>
+                    </div>
+                    <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
+                      <div className="h-full rounded-full transition-all duration-500" style={{ width: `${(quizStep / (totalSteps - 1)) * 100}%`, background: `linear-gradient(to right, ${accent}, #a855f7)` }} />
+                    </div>
+                  </div>
+                )}
+
+                {/* Step 0: Intro */}
+                {quizStep === 0 && (
+                  <div className="rounded-2xl p-8 sm:p-10 text-center" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                    <FlaskConical size={48} style={{ color: accent, margin: "0 auto 20px" }} />
+                    <div className="text-2xl sm:text-3xl font-black mb-4" style={{ fontFamily: "Orbitron", color: accent }}>Find Your Perfect Mouse</div>
+                    <p className="text-sm opacity-40 max-w-lg mx-auto leading-relaxed mb-2">
+                      This quiz analyzes your hand measurements, grip style, gaming preferences, and priorities to recommend mice from our database of {mice.length} models — cross-referenced with data from {allPlayers.length}+ pro players.
+                    </p>
+                    <p className="text-xs opacity-25 mb-8">Takes about 2 minutes. Your answers aren't stored anywhere.</p>
+                    <button onClick={nextStep}
+                      className="px-8 py-3 rounded-xl font-black text-sm transition-all hover:scale-105"
+                      style={{ background: accent, color: "#000" }}>
+                      Start Quiz →
+                    </button>
+                  </div>
+                )}
+
+                {/* Step 1: Hand Size */}
+                {quizStep === 1 && (
+                  <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                    <div className="text-xl font-black mb-1" style={{ color: accent }}>What's your hand size?</div>
+                    <p className="text-xs opacity-30 mb-6">Measure from the base of your palm to the tip of your middle finger (length), and across your knuckles (width).</p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                      {/* Visual guide */}
+                      <div className="rounded-xl p-5 flex flex-col items-center" style={{ background: "#ffffff04", border: "1px solid #ffffff08" }}>
+                        <svg width="140" height="200" viewBox="0 0 140 200" fill="none">
+                          <path d="M70 10 C55 10, 30 20, 25 50 L20 90 C18 100, 25 105, 32 100 L35 80 M70 10 C60 10, 45 15, 40 35 L38 70 M70 10 C65 10, 55 12, 50 30 L48 75 M70 10 C75 10, 85 12, 90 30 L92 75 M70 10 C85 10, 105 20, 108 45 L108 65 C108 72, 104 73, 102 68 L100 55 M25 95 C22 110, 25 140, 35 160 L40 175 C50 190, 90 190, 100 175 L105 160 C115 140, 118 110, 108 80" stroke={accent} strokeWidth="2" strokeLinecap="round" opacity="0.6" />
+                          {/* Length arrow */}
+                          <line x1="130" y1="15" x2="130" y2="185" stroke="#ffffff40" strokeWidth="1" strokeDasharray="3 3" />
+                          <polygon points="130,15 127,22 133,22" fill="#ffffff40" />
+                          <polygon points="130,185 127,178 133,178" fill="#ffffff40" />
+                          <text x="125" y="100" fill="#ffffff60" fontSize="8" textAnchor="end" transform="rotate(-90, 125, 100)">LENGTH</text>
+                          {/* Width arrow */}
+                          <line x1="20" y1="195" x2="115" y2="195" stroke="#ffffff40" strokeWidth="1" strokeDasharray="3 3" />
+                          <polygon points="20,195 27,192 27,198" fill="#ffffff40" />
+                          <polygon points="115,195 108,192 108,198" fill="#ffffff40" />
+                          <text x="67" y="192" fill="#ffffff60" fontSize="8" textAnchor="middle">WIDTH</text>
+                        </svg>
+                      </div>
+
+                      {/* Inputs */}
+                      <div className="flex flex-col gap-4 justify-center">
+                        <div>
+                          <label className="text-xs opacity-40 mb-1.5 block">Hand Length (cm)</label>
+                          <input type="text" inputMode="decimal" placeholder="e.g. 18.5"
+                            value={quizAnswers.handLength} onChange={e => setAnswer("handLength", e.target.value.replace(/[^0-9.]/g, ""))}
+                            className="w-full px-4 py-3 rounded-xl text-sm bg-transparent outline-none"
+                            style={{ border: `1px solid ${quizAnswers.handLength ? accent + "60" : "#ffffff15"}`, color: "#fff" }} />
+                          <div className="text-xs opacity-20 mt-1">Average male: 18-20cm · Average female: 16-18cm</div>
+                        </div>
+                        <div>
+                          <label className="text-xs opacity-40 mb-1.5 block">Hand Width (cm)</label>
+                          <input type="text" inputMode="decimal" placeholder="e.g. 9.5"
+                            value={quizAnswers.handWidth} onChange={e => setAnswer("handWidth", e.target.value.replace(/[^0-9.]/g, ""))}
+                            className="w-full px-4 py-3 rounded-xl text-sm bg-transparent outline-none"
+                            style={{ border: `1px solid ${quizAnswers.handWidth ? accent + "60" : "#ffffff15"}`, color: "#fff" }} />
+                          <div className="text-xs opacity-20 mt-1">Average male: 9-10cm · Average female: 7.5-9cm</div>
+                        </div>
+                        {quizAnswers.handLength && quizAnswers.handWidth && (
+                          <div className="rounded-lg px-3 py-2 text-xs" style={{ background: `${accent}10`, border: `1px solid ${accent}20` }}>
+                            <span style={{ color: accent }}>
+                              {parseFloat(quizAnswers.handLength) * parseFloat(quizAnswers.handWidth) < 150 ? "Small" :
+                               parseFloat(quizAnswers.handLength) * parseFloat(quizAnswers.handWidth) < 175 ? "Medium" :
+                               parseFloat(quizAnswers.handLength) * parseFloat(quizAnswers.handWidth) < 200 ? "Large" : "Extra Large"} hands
+                            </span>
+                            <span className="opacity-40"> · {quizAnswers.handLength} × {quizAnswers.handWidth} cm</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Step 2: Grip Style */}
+                {quizStep === 2 && (
+                  <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                    <div className="text-xl font-black mb-1" style={{ color: accent }}>How do you grip your mouse?</div>
+                    <p className="text-xs opacity-30 mb-6">Pick the style that best describes how you naturally hold your mouse.</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      {[
+                        { id: "palm", label: "Palm Grip", desc: "Entire hand rests flat on the mouse. Maximum contact area and comfort. Best for long sessions and arm aiming.", icon: "🖐️", tips: "Full hand contact · Relaxed · Arm aimer" },
+                        { id: "claw", label: "Claw Grip", desc: "Palm touches rear of mouse, fingers arched at 90°. Great balance of speed and control for rapid clicking.", icon: "🤏", tips: "Arched fingers · Fast clicks · Hybrid aim" },
+                        { id: "fingertip", label: "Fingertip Grip", desc: "Only fingertips touch the mouse. Maximum agility and micro-adjustments. Requires lighter mice.", icon: "☝️", tips: "Fingertips only · Most agile · Wrist aimer" },
+                      ].map(g => (
+                        <OptionButton key={g.id} selected={quizAnswers.grip === g.id} onClick={() => setAnswer("grip", g.id)} large>
+                          <div className="text-center">
+                            <div className="text-3xl mb-3">{g.icon}</div>
+                            <div className="text-sm font-black mb-2" style={{ color: quizAnswers.grip === g.id ? accent : "#fff" }}>{g.label}</div>
+                            <div className="text-xs opacity-40 leading-relaxed mb-3">{g.desc}</div>
+                            <div className="text-xs px-2 py-1 rounded-lg inline-block" style={{ background: "#ffffff06", color: "#ffffff40", fontSize: 10 }}>{g.tips}</div>
+                          </div>
+                        </OptionButton>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Step 3: Games */}
+                {quizStep === 3 && (
+                  <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                    <div className="text-xl font-black mb-1" style={{ color: accent }}>What games do you play?</div>
+                    <p className="text-xs opacity-30 mb-6">Select all that apply. This helps us match mice that pros use in your games.</p>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                      {[
+                        { id: "CS2", label: "Counter-Strike 2", color: "#ff8c00" },
+                        { id: "Valorant", label: "Valorant", color: "#ff4655" },
+                        { id: "Apex", label: "Apex Legends", color: "#dc2626" },
+                        { id: "Fortnite", label: "Fortnite", color: "#4c7bd9" },
+                        { id: "Overwatch 2", label: "Overwatch 2", color: "#f99e1a" },
+                        { id: "Call of Duty", label: "Call of Duty", color: "#5cb85c" },
+                        { id: "R6 Siege", label: "Rainbow Six Siege", color: "#4a86c8" },
+                        { id: "LoL", label: "League of Legends", color: "#c89b3c" },
+                        { id: "Dota 2", label: "Dota 2", color: "#e74c3c" },
+                        { id: "Marvel Rivals", label: "Marvel Rivals", color: "#ed1d24" },
+                        { id: "Deadlock", label: "Deadlock", color: "#8b5cf6" },
+                        { id: "PUBG", label: "PUBG", color: "#f2a900" },
+                      ].map(g => (
+                        <OptionButton key={g.id} selected={quizAnswers.games.includes(g.id)} onClick={() => toggleArrayAnswer("games", g.id)} color={g.color}>
+                          <div className="flex items-center gap-2">
+                            {GAME_IMAGE_URLS[g.id] && <img src={GAME_IMAGE_URLS[g.id]} alt={g.label} className="w-5 h-5 object-contain" />}
+                            <div>
+                              <div className="text-xs font-bold" style={{ color: quizAnswers.games.includes(g.id) ? g.color : "#ffffff80" }}>{g.label}</div>
+                            </div>
+                          </div>
+                        </OptionButton>
+                      ))}
+                    </div>
+                    {quizAnswers.games.length > 0 && (
+                      <div className="mt-4 text-xs opacity-30">{quizAnswers.games.length} game{quizAnswers.games.length !== 1 ? "s" : ""} selected</div>
+                    )}
+                  </div>
+                )}
+
+                {/* Step 4: Priorities */}
+                {quizStep === 4 && (
+                  <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                    <div className="text-xl font-black mb-1" style={{ color: accent }}>What matters most to you?</div>
+                    <p className="text-xs opacity-30 mb-6">Select up to 3 priorities. This shapes how we rank your recommendations.</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {[
+                        { id: "weight", label: "Lightweight", desc: "Lighter = faster flicks and less fatigue", icon: "⚡" },
+                        { id: "sensor", label: "Best Sensor & Polling", desc: "Cutting-edge tracking and 4K/8K polling", icon: "🎯" },
+                        { id: "pro", label: "Pro Validated", desc: "Used and trusted by professional players", icon: "🏆" },
+                        { id: "price", label: "Value for Money", desc: "Best performance per dollar spent", icon: "💰" },
+                        { id: "build", label: "Build Quality", desc: "Premium materials, clicks, and feel", icon: "✨" },
+                      ].map(p => (
+                        <OptionButton key={p.id}
+                          selected={quizAnswers.priorities.includes(p.id)}
+                          onClick={() => { if (quizAnswers.priorities.includes(p.id) || quizAnswers.priorities.length < 3) toggleArrayAnswer("priorities", p.id); }}>
+                          <div className="flex items-center gap-3">
+                            <span className="text-xl">{p.icon}</span>
+                            <div>
+                              <div className="text-sm font-bold" style={{ color: quizAnswers.priorities.includes(p.id) ? accent : "#fff" }}>{p.label}</div>
+                              <div className="text-xs opacity-40">{p.desc}</div>
+                            </div>
+                          </div>
+                        </OptionButton>
+                      ))}
+                    </div>
+                    <div className="mt-3 text-xs opacity-25">{quizAnswers.priorities.length}/3 selected</div>
+                  </div>
+                )}
+
+                {/* Step 5: Weight */}
+                {quizStep === 5 && (
+                  <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                    <div className="text-xl font-black mb-1" style={{ color: accent }}>Weight preference?</div>
+                    <p className="text-xs opacity-30 mb-6">How heavy do you like your mouse to feel?</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {[
+                        { id: "ultralight", label: "Ultralight", range: "Under 50g", desc: "Like holding almost nothing. Maximum flick speed.", example: "Beast X, UltralightX, Pulsar X2F" },
+                        { id: "light", label: "Light", range: "50-65g", desc: "The competitive sweet spot. Fast but controlled.", example: "Viper V3 Pro, Superlight 2, Maya X" },
+                        { id: "medium", label: "Medium", range: "65-85g", desc: "Stable and comfortable. Some prefer the control.", example: "Zowie EC2, SteelSeries Aerox 5" },
+                        { id: "heavy", label: "Heavy / Don't Care", range: "85g+", desc: "Maximum stability, or weight just isn't a factor.", example: "G502 X Plus, Basilisk V3 Pro" },
+                      ].map(w => (
+                        <OptionButton key={w.id} selected={quizAnswers.weightPref === w.id} onClick={() => setAnswer("weightPref", w.id)} large>
+                          <div className="text-sm font-black mb-1" style={{ color: quizAnswers.weightPref === w.id ? accent : "#fff" }}>{w.label}</div>
+                          <div className="text-xs font-bold mb-1" style={{ color: accent, opacity: 0.6 }}>{w.range}</div>
+                          <div className="text-xs opacity-40 mb-2">{w.desc}</div>
+                          <div className="text-xs opacity-20" style={{ fontSize: 10 }}>e.g. {w.example}</div>
+                        </OptionButton>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Step 6: Shape */}
+                {quizStep === 6 && (
+                  <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                    <div className="text-xl font-black mb-1" style={{ color: accent }}>Shape preference?</div>
+                    <p className="text-xs opacity-30 mb-6">Ergonomic mice are contoured for your right hand. Symmetrical mice work for any hand.</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      {[
+                        { id: "ergonomic", label: "Ergonomic", desc: "Right-hand contoured. Natural resting position. Great for palm grip and long sessions.", icon: "🤚" },
+                        { id: "symmetrical", label: "Symmetrical", desc: "Ambidextrous shape. Preferred by most FPS pros. Works with all grip styles.", icon: "🔲" },
+                        { id: "either", label: "No Preference", desc: "I'm open to both. Recommend whatever scores highest for me.", icon: "🤷" },
+                      ].map(s => (
+                        <OptionButton key={s.id} selected={quizAnswers.shape === s.id} onClick={() => setAnswer("shape", s.id)} large>
+                          <div className="text-center">
+                            <div className="text-2xl mb-2">{s.icon}</div>
+                            <div className="text-sm font-black mb-2" style={{ color: quizAnswers.shape === s.id ? accent : "#fff" }}>{s.label}</div>
+                            <div className="text-xs opacity-40 leading-relaxed">{s.desc}</div>
+                          </div>
+                        </OptionButton>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Step 7: Connectivity */}
+                {quizStep === 7 && (
+                  <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                    <div className="text-xl font-black mb-1" style={{ color: accent }}>Wired or wireless?</div>
+                    <p className="text-xs opacity-30 mb-6">Modern wireless mice have zero perceptible latency difference vs wired. 98% of pros use wireless.</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      {[
+                        { id: "wireless", label: "Wireless Only", desc: "No cable drag. Freedom of movement. The pro standard.", icon: "📡" },
+                        { id: "wired", label: "Wired OK", desc: "Don't mind a cable. Sometimes lighter and cheaper.", icon: "🔌" },
+                        { id: "either", label: "No Preference", desc: "Either works. Just give me the best mouse.", icon: "🤷" },
+                      ].map(c => (
+                        <OptionButton key={c.id} selected={quizAnswers.connectivity === c.id} onClick={() => setAnswer("connectivity", c.id)} large>
+                          <div className="text-center">
+                            <div className="text-2xl mb-2">{c.icon}</div>
+                            <div className="text-sm font-black mb-2" style={{ color: quizAnswers.connectivity === c.id ? accent : "#fff" }}>{c.label}</div>
+                            <div className="text-xs opacity-40 leading-relaxed">{c.desc}</div>
+                          </div>
+                        </OptionButton>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Step 8: Budget */}
+                {quizStep === 8 && (
+                  <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                    <div className="text-xl font-black mb-1" style={{ color: accent }}>What's your budget?</div>
+                    <p className="text-xs opacity-30 mb-6">There are excellent mice at every price point.</p>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                      {[
+                        { id: "under80", label: "Under $80", desc: "Budget-friendly", color: "#10b981" },
+                        { id: "80to120", label: "$80 – $120", desc: "Mid-range", color: "#00b4ff" },
+                        { id: "120to160", label: "$120 – $160", desc: "Premium", color: "#a855f7" },
+                        { id: "nolimit", label: "No Limit", desc: "Best regardless", color: "#f59e0b" },
+                      ].map(b => (
+                        <OptionButton key={b.id} selected={quizAnswers.budget === b.id} onClick={() => setAnswer("budget", b.id)} color={b.color} large>
+                          <div className="text-center">
+                            <div className="text-sm font-black mb-1" style={{ color: quizAnswers.budget === b.id ? b.color : "#fff" }}>{b.label}</div>
+                            <div className="text-xs opacity-40">{b.desc}</div>
+                          </div>
+                        </OptionButton>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Navigation */}
+                {quizStep > 0 && (
+                  <div className="flex justify-between mt-6">
+                    <button onClick={() => setQuizStep(prev => prev - 1)}
+                      className="px-5 py-2.5 rounded-xl text-xs font-bold transition-all hover:bg-white/5"
+                      style={{ background: "#ffffff08", border: "1px solid #ffffff10" }}>
+                      ← Back
+                    </button>
+                    <button onClick={nextStep} disabled={!canProceed()}
+                      className="px-6 py-2.5 rounded-xl text-xs font-black transition-all hover:scale-105 disabled:opacity-20 disabled:hover:scale-100"
+                      style={{ background: canProceed() ? accent : "#ffffff10", color: canProceed() ? "#000" : "#fff" }}>
+                      {quizStep === 8 ? "See My Results →" : "Next →"}
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              /* ─── RESULTS ─── */
+              <div>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
+                  <div>
+                    <div className="text-xl font-black" style={{ color: accent }}>Your Top Mice</div>
+                    <div className="text-xs opacity-30 mt-1">
+                      Based on {quizAnswers.grip} grip · {quizAnswers.handLength}×{quizAnswers.handWidth}cm hands · {quizAnswers.games.join(", ")} · {quizAnswers.weightPref} weight · {quizAnswers.budget === "nolimit" ? "no budget limit" : quizAnswers.budget}
+                    </div>
+                  </div>
+                  <button onClick={() => { setQuizDone(false); setQuizStep(0); setQuizAnswers({ handLength: "", handWidth: "", grip: "", games: [], priorities: [], weightPref: "", connectivity: "", budget: "", shape: "" }); }}
+                    className="px-4 py-2 rounded-lg text-xs font-bold transition-all hover:bg-white/5 flex-shrink-0"
+                    style={{ background: "#ffffff08", border: "1px solid #ffffff10" }}>
+                    ↺ Retake Quiz
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  {getResults().map((r, i) => {
+                    const m = r.mouse;
+                    const brandCol = BRAND_COLORS[m.brand] || "#888";
+                    const matchPct = Math.min(99, Math.max(40, Math.round((r.score / maxScore) * 98)));
+                    const isTop = i === 0;
+                    return (
+                      <div key={m.id}
+                        className="rounded-2xl p-4 sm:p-6 cursor-pointer transition-all hover:scale-[1.01]"
+                        onClick={() => { setSelectedMouse(m); setActiveTab("mouseDetail"); }}
+                        style={{
+                          background: isTop ? `${brandCol}10` : "#0a0a0a",
+                          border: isTop ? `2px solid ${brandCol}40` : "1px solid #ffffff08",
+                          boxShadow: isTop ? `0 0 30px ${brandCol}10` : "none",
+                        }}>
+                        <div className="flex items-start gap-4">
+                          {/* Rank badge */}
+                          <div className="flex flex-col items-center flex-shrink-0 pt-1">
+                            <div className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-black"
+                              style={{
+                                background: i === 0 ? "#fbbf2420" : i === 1 ? "#94a3b820" : i === 2 ? "#cd7f3220" : "#ffffff08",
+                                color: i === 0 ? "#fbbf24" : i === 1 ? "#94a3b8" : i === 2 ? "#cd7f32" : "#ffffff40",
+                                border: i < 3 ? `1px solid ${i === 0 ? "#fbbf24" : i === 1 ? "#94a3b8" : "#cd7f32"}30` : "1px solid #ffffff08",
+                              }}>
+                              #{i + 1}
+                            </div>
+                          </div>
+
+                          {/* Mouse image */}
+                          <div className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex items-center justify-center" style={{ background: `${brandCol}08`, border: `1px solid ${brandCol}12` }}>
+                            {MOUSE_IMAGE_URLS[m.name] ? (
+                              <img src={MOUSE_IMAGE_URLS[m.name]} alt={m.name} className="w-full h-full object-contain p-1.5"
+                                style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.4))" }}
+                                onError={e => { e.target.style.display = "none"; e.target.nextElementSibling && (e.target.nextElementSibling.style.display = "flex"); }} />
+                            ) : null}
+                            <span style={{ display: MOUSE_IMAGE_URLS[m.name] ? "none" : "flex" }}>{icon(m.image, 32)}</span>
+                          </div>
+
+                          {/* Mouse info */}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-start justify-between gap-3 mb-2">
+                              <div>
+                                <div className="text-base sm:text-lg font-black" style={{ color: brandCol }}>{m.name}</div>
+                                <div className="text-xs opacity-40">{m.brand} · {m.weight}g · {m.shape} · {m.connectivity} · ${m.price}</div>
+                              </div>
+                              <div className="flex-shrink-0 text-right">
+                                <div className="text-lg font-black" style={{ color: matchPct >= 90 ? "#00ff6a" : matchPct >= 75 ? "#f59e0b" : "#ffffff60" }}>{matchPct}%</div>
+                                <div className="text-xs opacity-25">match</div>
+                              </div>
+                            </div>
+
+                            {/* Match bar */}
+                            <div className="h-2 rounded-full overflow-hidden mb-3" style={{ background: "#ffffff08" }}>
+                              <div className="h-full rounded-full transition-all duration-1000"
+                                style={{ width: `${matchPct}%`, background: `linear-gradient(to right, ${brandCol}80, ${brandCol})` }} />
+                            </div>
+
+                            {/* Reasons */}
+                            {r.reasons.length > 0 && (
+                              <div className="flex flex-wrap gap-1.5">
+                                {r.reasons.map((reason, ri) => (
+                                  <span key={ri} className="px-2 py-1 rounded-lg text-xs" style={{ background: `${brandCol}10`, color: brandCol, fontSize: 10 }}>
+                                    {reason}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Buy button */}
+                        {isTop && (
+                          <a href={amazonLink(m.name)} target="_blank" rel="noopener noreferrer"
+                            onClick={e => e.stopPropagation()}
+                            className="mt-4 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-black transition-all hover:scale-[1.02]"
+                            style={{ background: brandCol, color: "#000" }}>
+                            {I.cart(16)} Buy {m.name.split(" ").slice(-2).join(" ")} — ${m.price}
+                          </a>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+          );
+        })()}
 
       </main>
 
