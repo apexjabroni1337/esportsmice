@@ -308,55 +308,71 @@ const GAME_IMAGE_URLS = {
   "Rocket League": "/images/games/rocket-league.png",
 };
 
+const GAME_DESCRIPTIONS = {
+  "CS2": "The Logitech G Pro X Superlight 2 reigns supreme in Counter-Strike 2 at 23%, a title where precision and consistency are valued above all else. CS2 pros tend to be more conservative with gear changes, and the Superlight 2's proven shape and flawless HERO 2 sensor make it the safest choice at the highest level. The Razer Viper V3 Pro is gaining ground fast at 15%, driven by its lighter 54g weight and 8KHz polling that appeals to a new generation of fraggers. The original Superlight still commands a loyal 10% following, proving that many pros simply refuse to abandon a shape that carried them through years of tournament play. Razer's DeathAdder V4 Pro at 9% shows that ergonomic mice still have a strong home in CS2, particularly among AWPers and support players who value comfort in marathon sessions.",
+  "Valorant": "The Razer Viper V3 Pro dominates Valorant at a commanding 30% usage rate, more than triple its nearest competitor. Valorant's emphasis on ultra-precise crosshair placement and flick-heavy duels rewards the Viper V3 Pro's 54g weight and zero-debounce optical switches. The original Logitech G Pro X Superlight holds second at 10%, a testament to its enduring popularity among players who entered competitive Valorant during its early days. The Superlight 2 follows closely at 9%, gradually replacing its predecessor as pros upgrade their setups. Razer's overall brand dominance at 51% in Valorant is remarkable and largely unmatched in any other major esports title, reflecting how effectively the Viper V3 Pro has captured the tactical FPS audience.",
+  "Fortnite": "The Razer Viper V3 Pro leads Fortnite at 33%, where the game's unique combination of building mechanics and aim duels demands both speed and precision. Fortnite pros need mice that can handle rapid 180-degree flicks during build fights and then immediately transition to precision aiming for shotgun duels. The original Logitech G Pro X Superlight remains hugely popular at 16%, as many Fortnite pros have been using it since the game's competitive peak and see no reason to switch. The Superlight 2 follows at 11% as the natural upgrade path for loyal Logitech users. Finalmouse maintains an 8% brand share here, reflecting the brand's deep roots in the Fortnite community through players like TenZ and Bugha who popularized ultralight mice in the battle royale scene.",
+  "LoL": "Logitech absolutely dominates League of Legends with 63% total brand share, the highest single-brand concentration in any major esports title we track. The G Pro X Superlight 2 leads at 20%, followed by the original Superlight at 14% and the G Pro Wireless at 8% — three Logitech mice taking the top three spots. League pros prioritize comfort and reliability over raw weight since the game demands constant clicking over long sessions rather than explosive flick aiming. The Razer Viper V3 Pro appears at just 6%, reflecting that Valorant and CS2's ultralight meta hasn't fully crossed over into MOBA territory. Higher DPI settings are common here too, with an average of 1,443 DPI compared to CS2's 656, since League requires fast cursor movement across large screen areas.",
+  "R6 Siege": "Rainbow Six Siege shows one of the most evenly split mouse markets in esports, with the Razer Viper V3 Pro leading at just 15% followed closely by the Superlight 2 at 12% and original Superlight at 11%. This three-way race reflects Siege's unique gameplay that blends precise angle-holding with fast entry fragging, meaning no single mouse style dominates. The DeathAdder V4 Pro and Superlight 2 Dex both sit at 6%, showing that ergonomic shapes have a strong following among Siege pros who spend a lot of time holding tight pixel angles. Logitech edges out Razer in overall brand share at 37% to 33%, with Zowie maintaining a respectable 10% driven by EC2 loyalists from the game's earlier competitive era.",
+  "PUBG": "PUBG's mouse landscape tells a story of a game whose pro scene crystallized during the Logitech Superlight era. The original G Pro X Superlight commands a massive 36% share — the highest single-mouse dominance in any game we track — reflecting how many PUBG pros locked in their setups years ago and haven't switched. Logitech holds 54% total brand share, with the G Pro Wireless adding another 7% from players still using the 2018 classic. Zowie maintains 18% brand share, the second-highest Zowie presence in any title, driven by FK2 and EC2 loyalists from PUBG's golden competitive era. The Razer Viper V3 Pro has only penetrated 5% of the market, suggesting PUBG pros are among the most resistant to switching gear in all of esports.",
+  "Apex": "Apex Legends shows a remarkably balanced mouse market with Logitech and Razer tied at 29% brand share each, reflecting the game's diverse mechanical demands. The Viper V3 Pro leads individual models at 16%, but the Superlight and Superlight 2 combine for 22%, showing the Logitech ecosystem's combined strength. Finalmouse holds a notable 13% brand share — one of their strongest showings in any title — driven by the movement-heavy, flick-intensive playstyle that Apex rewards. Lamzu appears at 7%, higher than most titles, suggesting Apex pros are more willing to experiment with newer boutique brands. The average eDPI of 1,274 is significantly higher than tactical shooters, reflecting Apex's need for fast 360-degree tracking during movement-heavy gunfights.",
+  "Dota 2": "Dota 2's mouse preferences diverge significantly from the FPS-dominated landscape, with Razer leading at 44% brand share primarily through the DeathAdder line rather than the Viper. The DeathAdder V3 Pro and V2 variants combine for a significant presence, as Dota pros favor the ergonomic comfort of the DeathAdder for games that can last over an hour. Unlike FPS titles, the top mouse in Dota 2 only commands 9%, showing extreme fragmentation with no single model dominating. HyperX holds 14% share — their strongest presence in any title — reflecting the brand's long-standing relationships with Dota teams in CIS and Asian regions. With only 28% wireless adoption, Dota 2 has the lowest wireless rate of any game we track, suggesting pros here are the least concerned about cutting-edge peripheral technology.",
+  "Marvel Rivals": "Marvel Rivals shows a mouse distribution similar to Overwatch 2, which makes sense given the shared hero-shooter DNA between the two games. The Superlight 2 and Viper V3 Pro are neck and neck at 19% and 10% respectively, with the DeathAdder V3 Pro and original Superlight also tied at 10%. Logitech leads brand share at 38% with Razer close behind at 33%, and Pulsar has carved out a 10% niche — one of their strongest showings in any competitive title. The average eDPI of 1,767 is among the highest across FPS titles, reflecting the fast-paced, ability-heavy gameplay where tracking multiple airborne heroes requires quick cursor movement. As a newer esports scene, Marvel Rivals players appear more willing to experiment with diverse mouse brands compared to the more entrenched CS2 or Valorant communities.",
+  "Overwatch 2": "Overwatch 2's professional scene is split almost perfectly between two mice: the Razer Viper V3 Pro and Logitech G Pro X Superlight 2, each commanding 44% of the market. This near-perfect duopoly is unique across esports and reflects the OWL legacy where Razer and Logitech were the dominant sponsors throughout the league's history. The DeathAdder V3 Pro picks up the remaining 13%, showing that some tank and support players still prefer ergonomic comfort for extended matches. Every single tracked Overwatch 2 pro uses a wireless mouse — the only title with 100% wireless adoption — highlighting how the game's fast movement and frequent 180-degree flicks make cable drag unacceptable. The average 4,000Hz poll rate is also the highest of any game, showing OW2 pros are early adopters of cutting-edge wireless technology.",
+  "Deadlock": "Valve's Deadlock shows the Logitech G Pro X Superlight 2 leading at 47%, closely followed by the Razer Viper V3 Pro at 40%, creating another near-duopoly similar to Overwatch 2. As a new title, Deadlock's early adopter pro scene is naturally populated by players migrating from other competitive games, bringing their established mouse preferences with them. The 100% wireless adoption and average 3,800Hz polling rate show that Deadlock pros are using cutting-edge setups, suggesting the early competitive community skews toward experienced FPS veterans rather than newcomers. The market is split cleanly between Logitech at 53% and Razer at 47%, with no other brand represented — a level of brand concentration unique among all titles we track.",
+  "Call of Duty": "The Razer Viper V3 Pro commands a dominant 50% share in Call of Duty, with the Superlight 2 and DeathAdder V3 Pro splitting the remainder at 25% each. CoD's fast time-to-kill and emphasis on snappy target acquisition rewards the Viper V3 Pro's ultralight weight and low latency optical switches. Razer holds 75% total brand share — the highest single-brand dominance in any FPS title — largely because the CDL's partnership ecosystem has historically favored Razer-sponsored players. The average eDPI of 4,430 is the highest of any FPS game by a wide margin, reflecting Call of Duty's tradition of much higher sensitivity play compared to tactical shooters. Every tracked CoD pro uses wireless at 4,000Hz polling, showing the competitive scene has fully embraced high-refresh wireless technology.",
+  "Rocket League": "Rocket League's mouse data is limited in our database as the game is predominantly played with controllers at the professional level. The Logitech G Pro X Superlight 2 appears as the only tracked mouse, representing the rare keyboard-and-mouse Rocket League player. Most competitive Rocket League is played with PlayStation or Xbox controllers, making mouse choice largely irrelevant for the majority of the pro scene. For the small community of KBM Rocket League players, lightweight wireless mice are preferred for the fast aerial adjustments the game demands. Rocket League remains an outlier in esports — one of the very few major competitive titles where peripheral choice centers on controller selection rather than mouse specifications.",
+};
+
 const mice = [
-  { id: 1, name: "Razer Viper V3 Pro", brand: "Razer", weight: 54, sensor: "Focus Pro 35K", dpi: 35000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 159, switches: "Gen-3 Optical", proUsage: 21, rating: 9.6, image: "🐍", color: "#00ff6a", batteryLife: 95, clicks: "100M", cable: "USB-C", releaseYear: 2024 },
-  { id: 2, name: "Logitech G Pro X Superlight 2", brand: "Logitech", weight: 60, sensor: "HERO 2", dpi: 44000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 159, switches: "Lightforce Hybrid", proUsage: 17, rating: 9.5, image: "🎯", color: "#00b4ff", batteryLife: 95, clicks: "100M", cable: "USB-C", releaseYear: 2023 },
-  { id: 21, name: "Logitech G Pro X2 Superstrike", brand: "Logitech", weight: 61, sensor: "HERO 2", dpi: 44000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 180, switches: "HITS Haptic Inductive", proUsage: 1, rating: 9.7, image: "⚡", color: "#00b4ff", batteryLife: 90, clicks: "Unlimited", cable: "USB-C", releaseYear: 2025 },
-  { id: 3, name: "Logitech G Pro X Superlight", brand: "Logitech", weight: 63, sensor: "HERO 25K", dpi: 25600, pollingRate: 1000, shape: "Symmetrical", connectivity: "Wireless", price: 129, switches: "Omron", proUsage: 11, rating: 9.0, image: "⚡", color: "#0088cc", batteryLife: 70, clicks: "20M", cable: "Micro-USB", releaseYear: 2020 },
-  { id: 4, name: "Zowie EC2-CW", brand: "Zowie", weight: 77, sensor: "PAW3370", dpi: 3200, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wireless", price: 99, switches: "Huano", proUsage: 2, rating: 8.7, image: "🏆", color: "#ff3c3c", batteryLife: 70, clicks: "20M", cable: "USB-C", releaseYear: 2023 },
-  { id: 5, name: "Razer DeathAdder V3 Pro", brand: "Razer", weight: 63, sensor: "Focus Pro 30K", dpi: 30000, pollingRate: 4000, shape: "Ergonomic", connectivity: "Wireless", price: 149, switches: "Gen-3 Optical", proUsage: 5, rating: 9.3, image: "☠️", color: "#00ff6a", batteryLife: 90, clicks: "90M", cable: "USB-C", releaseYear: 2022 },
-  { id: 6, name: "Finalmouse UltralightX", brand: "Finalmouse", weight: 36, sensor: "Custom", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 189, switches: "Custom Mechanical", proUsage: 1, rating: 9.1, image: "🦁", color: "#d4af37", batteryLife: 80, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
-  { id: 7, name: "Finalmouse Starlight-12", brand: "Finalmouse", weight: 42, sensor: "Custom", dpi: 20000, pollingRate: 1000, shape: "Symmetrical", connectivity: "Wireless", price: 189, switches: "Custom Mechanical", proUsage: 1, rating: 8.8, image: "⭐", color: "#c8a02a", batteryLife: 60, clicks: "60M", cable: "USB-C", releaseYear: 2022 },
-  { id: 8, name: "Lamzu Maya X", brand: "Lamzu", weight: 52, sensor: "PAW3950", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 119, switches: "Optical", proUsage: 1, rating: 9.4, image: "🌙", color: "#c084fc", batteryLife: 80, clicks: "100M", cable: "USB-C", releaseYear: 2025 },
-  { id: 9, name: "Lamzu Atlantis Mini", brand: "Lamzu", weight: 51, sensor: "PAW3950", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 99, switches: "Optical", proUsage: 1, rating: 9.2, image: "🐬", color: "#a855f7", batteryLife: 75, clicks: "100M", cable: "USB-C", releaseYear: 2024 },
-  { id: 10, name: "Pulsar X2F", brand: "Pulsar", weight: 38, sensor: "XS-1", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 109, switches: "Huano Blue Pink Dot", proUsage: 0, rating: 9.0, image: "💫", color: "#f472b6", batteryLife: 65, clicks: "80M", cable: "USB-C", releaseYear: 2025 },
-  { id: 11, name: "Vaxee Outset AX", brand: "Vaxee", weight: 67, sensor: "PAW3395", dpi: 26000, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wired", price: 79, switches: "Huano", proUsage: 1, rating: 8.9, image: "🎮", color: "#06b6d4", batteryLife: null, clicks: "20M", cable: "Paracord", releaseYear: 2023 },
+  { id: 1, name: "Razer Viper V3 Pro", brand: "Razer", weight: 54, sensor: "Focus Pro 35K", dpi: 35000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 159, switches: "Gen-3 Optical", proUsage: 21, rating: 9.8, image: "🐍", color: "#00ff6a", batteryLife: 95, clicks: "100M", cable: "USB-C", releaseYear: 2024 },
+  { id: 2, name: "Logitech G Pro X Superlight 2", brand: "Logitech", weight: 60, sensor: "HERO 2", dpi: 44000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 159, switches: "Lightforce Hybrid", proUsage: 17, rating: 9.6, image: "🎯", color: "#00b4ff", batteryLife: 95, clicks: "100M", cable: "USB-C", releaseYear: 2023 },
+  { id: 21, name: "Logitech G Pro X2 Superstrike", brand: "Logitech", weight: 61, sensor: "HERO 2", dpi: 44000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 180, switches: "HITS Haptic Inductive", proUsage: 1, rating: 9.5, image: "⚡", color: "#00b4ff", batteryLife: 90, clicks: "Unlimited", cable: "USB-C", releaseYear: 2025 },
+  { id: 3, name: "Logitech G Pro X Superlight", brand: "Logitech", weight: 63, sensor: "HERO 25K", dpi: 25600, pollingRate: 1000, shape: "Symmetrical", connectivity: "Wireless", price: 129, switches: "Omron", proUsage: 11, rating: 9.2, image: "⚡", color: "#0088cc", batteryLife: 70, clicks: "20M", cable: "Micro-USB", releaseYear: 2020 },
+  { id: 4, name: "Zowie EC2-CW", brand: "Zowie", weight: 77, sensor: "PAW3370", dpi: 3200, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wireless", price: 99, switches: "Huano", proUsage: 2, rating: 9.1, image: "🏆", color: "#ff3c3c", batteryLife: 70, clicks: "20M", cable: "USB-C", releaseYear: 2023 },
+  { id: 5, name: "Razer DeathAdder V3 Pro", brand: "Razer", weight: 63, sensor: "Focus Pro 30K", dpi: 30000, pollingRate: 4000, shape: "Ergonomic", connectivity: "Wireless", price: 149, switches: "Gen-3 Optical", proUsage: 5, rating: 9.5, image: "☠️", color: "#00ff6a", batteryLife: 90, clicks: "90M", cable: "USB-C", releaseYear: 2022 },
+  { id: 6, name: "Finalmouse UltralightX", brand: "Finalmouse", weight: 36, sensor: "Custom", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 189, switches: "Custom Mechanical", proUsage: 1, rating: 9.0, image: "🦁", color: "#d4af37", batteryLife: 80, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
+  { id: 7, name: "Finalmouse Starlight-12", brand: "Finalmouse", weight: 42, sensor: "Custom", dpi: 20000, pollingRate: 1000, shape: "Symmetrical", connectivity: "Wireless", price: 189, switches: "Custom Mechanical", proUsage: 1, rating: 8.6, image: "⭐", color: "#c8a02a", batteryLife: 60, clicks: "60M", cable: "USB-C", releaseYear: 2022 },
+  { id: 8, name: "Lamzu Maya X", brand: "Lamzu", weight: 52, sensor: "PAW3950", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 119, switches: "Optical", proUsage: 1, rating: 8.6, image: "🌙", color: "#c084fc", batteryLife: 80, clicks: "100M", cable: "USB-C", releaseYear: 2025 },
+  { id: 9, name: "Lamzu Atlantis Mini", brand: "Lamzu", weight: 51, sensor: "PAW3950", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 99, switches: "Optical", proUsage: 1, rating: 8.5, image: "🐬", color: "#a855f7", batteryLife: 75, clicks: "100M", cable: "USB-C", releaseYear: 2024 },
+  { id: 10, name: "Pulsar X2F", brand: "Pulsar", weight: 38, sensor: "XS-1", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 109, switches: "Huano Blue Pink Dot", proUsage: 0, rating: 8.8, image: "💫", color: "#f472b6", batteryLife: 65, clicks: "80M", cable: "USB-C", releaseYear: 2025 },
+  { id: 11, name: "Vaxee Outset AX", brand: "Vaxee", weight: 67, sensor: "PAW3395", dpi: 26000, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wired", price: 79, switches: "Huano", proUsage: 1, rating: 8.5, image: "🎮", color: "#06b6d4", batteryLife: null, clicks: "20M", cable: "Paracord", releaseYear: 2023 },
   { id: 12, name: "SteelSeries Aerox 5 Wireless", brand: "SteelSeries", weight: 74, sensor: "TrueMove Air", dpi: 18000, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wireless", price: 139, switches: "Golden Micro IP54", proUsage: 1, rating: 8.5, image: "🦅", color: "#ff8c00", batteryLife: 180, clicks: "80M", cable: "USB-C", releaseYear: 2022 },
-  { id: 13, name: "Zowie EC2-DW", brand: "Zowie", weight: 75, sensor: "PAW3395", dpi: 3200, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wireless", price: 109, switches: "Huano", proUsage: 1, rating: 8.9, image: "🔴", color: "#ff5555", batteryLife: 70, clicks: "20M", cable: "USB-C", releaseYear: 2024 },
+  { id: 13, name: "Zowie EC2-DW", brand: "Zowie", weight: 75, sensor: "PAW3395", dpi: 3200, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wireless", price: 109, switches: "Huano", proUsage: 1, rating: 9.3, image: "🔴", color: "#ff5555", batteryLife: 70, clicks: "20M", cable: "USB-C", releaseYear: 2024 },
   { id: 14, name: "Endgame Gear OP1 8K", brand: "Endgame", weight: 56, sensor: "PAW3950", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 119, switches: "Kailh GM 8.0", proUsage: 1, rating: 9.0, image: "🎯", color: "#8b5cf6", batteryLife: 70, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
   { id: 15, name: "ASUS ROG Harpe Ace Extreme", brand: "ASUS", weight: 47, sensor: "AimPoint Pro", dpi: 42000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 179, switches: "ROG Optical Micro", proUsage: 0, rating: 9.3, image: "🦅", color: "#e11d48", batteryLife: 90, clicks: "100M", cable: "USB-C", releaseYear: 2025 },
   { id: 16, name: "Corsair M75 Air", brand: "Corsair", weight: 60, sensor: "Marksman S 33K", dpi: 33000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 99, switches: "Omron", proUsage: 1, rating: 8.8, image: "💨", color: "#ffd700", batteryLife: 100, clicks: "60M", cable: "USB-C", releaseYear: 2024 },
   { id: 17, name: "Ninjutso Sora V2", brand: "Ninjutso", weight: 42, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 89, switches: "Kailh GM 8.0", proUsage: 1, rating: 9.0, image: "🥷", color: "#10b981", batteryLife: 55, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
   { id: 18, name: "WLMouse Beast X", brand: "WLMouse", weight: 30, sensor: "PAW3950", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 199, switches: "Optical", proUsage: 1, rating: 9.2, image: "🐉", color: "#f59e0b", batteryLife: 70, clicks: "100M", cable: "USB-C", releaseYear: 2025 },
   { id: 19, name: "Sony INZONE M10", brand: "Sony", weight: 48, sensor: "Custom Sony", dpi: 30000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 149, switches: "Optical", proUsage: 0, rating: 9.1, image: "🎮", color: "#3b82f6", batteryLife: 90, clicks: "100M", cable: "USB-C", releaseYear: 2025 },
-  { id: 20, name: "Razer Viper V3 HyperSpeed", brand: "Razer", weight: 82, sensor: "Focus Pro 35K", dpi: 35000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 99, switches: "Gen-3 Optical", proUsage: 1, rating: 8.6, image: "🐍", color: "#00dd55", batteryLife: 280, clicks: "90M", cable: "USB-C", releaseYear: 2024 },
-  { id: 21, name: "Razer DeathAdder V3", brand: "Razer", weight: 59, sensor: "Focus Pro 35K", dpi: 35000, pollingRate: 8000, shape: "Ergonomic", connectivity: "Wired", price: 90, switches: "Gen-3 Optical", proUsage: 1, rating: 8.8, image: "🐍", color: "#00ff6a", batteryLife: null, clicks: "90M", cable: "Speedflex", releaseYear: 2023 },
-  { id: 22, name: "Logitech G502 X Plus", brand: "Logitech", weight: 106, sensor: "HERO 25K", dpi: 25600, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wireless", price: 160, switches: "Lightforce Hybrid", proUsage: 1, rating: 8.4, image: "🎯", color: "#00b4ff", batteryLife: 130, clicks: "Hybrid", cable: "USB-C", releaseYear: 2022 },
-  { id: 23, name: "Pulsar X2H", brand: "Pulsar", weight: 53, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Ergonomic", connectivity: "Wireless", price: 99, switches: "Kailh GM 8.0", proUsage: 1, rating: 9.1, image: "💫", color: "#f472b6", batteryLife: 75, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
-  { id: 24, name: "Pulsar X2 Mini", brand: "Pulsar", weight: 46, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 95, switches: "Kailh GM 8.0", proUsage: 1, rating: 9.2, image: "💫", color: "#f472b6", batteryLife: 70, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
-  { id: 25, name: "Zowie FK2-CW", brand: "Zowie", weight: 69, sensor: "PAW3370", dpi: 3200, pollingRate: 1000, shape: "Symmetrical", connectivity: "Wireless", price: 99, switches: "Huano", proUsage: 0, rating: 8.5, image: "🔴", color: "#ff3c3c", batteryLife: 70, clicks: "Mechanical", cable: "USB-C", releaseYear: 2023 },
-  { id: 26, name: "Zowie ZA13-C", brand: "Zowie", weight: 66, sensor: "PAW3370", dpi: 3200, pollingRate: 1000, shape: "Symmetrical", connectivity: "Wired", price: 69, switches: "Huano", proUsage: 0, rating: 8.2, image: "🔴", color: "#ff3c3c", batteryLife: null, clicks: "Mechanical", cable: "Paracord", releaseYear: 2022 },
-  { id: 27, name: "Lamzu Inca", brand: "Lamzu", weight: 48, sensor: "PAW3950", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 110, switches: "Huano Transparent", proUsage: 1, rating: 9.3, image: "🌙", color: "#c084fc", batteryLife: 80, clicks: "80M", cable: "USB-C", releaseYear: 2025 },
-  { id: 28, name: "Vaxee XE Wireless", brand: "Vaxee", weight: 66, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 99, switches: "Huano", proUsage: 1, rating: 8.9, image: "🎮", color: "#06b6d4", batteryLife: 80, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
-  { id: 29, name: "Vaxee NP-01S Wireless", brand: "Vaxee", weight: 68, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Ergonomic", connectivity: "Wireless", price: 99, switches: "Huano", proUsage: 0, rating: 8.8, image: "🎮", color: "#06b6d4", batteryLife: 80, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
-  { id: 30, name: "Finalmouse ULX Prophecy", brand: "Finalmouse", weight: 40, sensor: "Custom", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 189, switches: "Optical", proUsage: 0, rating: 9.4, image: "⭐", color: "#d4af37", batteryLife: 100, clicks: "100M", cable: "USB-C", releaseYear: 2025 },
+  { id: 20, name: "Razer Viper V3 HyperSpeed", brand: "Razer", weight: 82, sensor: "Focus Pro 35K", dpi: 35000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 99, switches: "Gen-3 Optical", proUsage: 1, rating: 9.3, image: "🐍", color: "#00dd55", batteryLife: 280, clicks: "90M", cable: "USB-C", releaseYear: 2024 },
+  { id: 21, name: "Razer DeathAdder V3", brand: "Razer", weight: 59, sensor: "Focus Pro 35K", dpi: 35000, pollingRate: 8000, shape: "Ergonomic", connectivity: "Wired", price: 90, switches: "Gen-3 Optical", proUsage: 1, rating: 9.4, image: "🐍", color: "#00ff6a", batteryLife: null, clicks: "90M", cable: "Speedflex", releaseYear: 2023 },
+  { id: 22, name: "Logitech G502 X Plus", brand: "Logitech", weight: 106, sensor: "HERO 25K", dpi: 25600, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wireless", price: 160, switches: "Lightforce Hybrid", proUsage: 1, rating: 9.0, image: "🎯", color: "#00b4ff", batteryLife: 130, clicks: "Hybrid", cable: "USB-C", releaseYear: 2022 },
+  { id: 23, name: "Pulsar X2H", brand: "Pulsar", weight: 53, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Ergonomic", connectivity: "Wireless", price: 99, switches: "Kailh GM 8.0", proUsage: 1, rating: 8.8, image: "💫", color: "#f472b6", batteryLife: 75, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
+  { id: 24, name: "Pulsar X2 Mini", brand: "Pulsar", weight: 46, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 95, switches: "Kailh GM 8.0", proUsage: 1, rating: 8.7, image: "💫", color: "#f472b6", batteryLife: 70, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
+  { id: 25, name: "Zowie FK2-CW", brand: "Zowie", weight: 69, sensor: "PAW3370", dpi: 3200, pollingRate: 1000, shape: "Symmetrical", connectivity: "Wireless", price: 99, switches: "Huano", proUsage: 0, rating: 9.0, image: "🔴", color: "#ff3c3c", batteryLife: 70, clicks: "Mechanical", cable: "USB-C", releaseYear: 2023 },
+  { id: 26, name: "Zowie ZA13-C", brand: "Zowie", weight: 66, sensor: "PAW3370", dpi: 3200, pollingRate: 1000, shape: "Symmetrical", connectivity: "Wired", price: 69, switches: "Huano", proUsage: 0, rating: 9.0, image: "🔴", color: "#ff3c3c", batteryLife: null, clicks: "Mechanical", cable: "Paracord", releaseYear: 2022 },
+  { id: 27, name: "Lamzu Inca", brand: "Lamzu", weight: 48, sensor: "PAW3950", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 110, switches: "Huano Transparent", proUsage: 1, rating: 8.4, image: "🌙", color: "#c084fc", batteryLife: 80, clicks: "80M", cable: "USB-C", releaseYear: 2025 },
+  { id: 28, name: "Vaxee XE Wireless", brand: "Vaxee", weight: 66, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 99, switches: "Huano", proUsage: 1, rating: 8.5, image: "🎮", color: "#06b6d4", batteryLife: 80, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
+  { id: 29, name: "Vaxee NP-01S Wireless", brand: "Vaxee", weight: 68, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Ergonomic", connectivity: "Wireless", price: 99, switches: "Huano", proUsage: 0, rating: 8.4, image: "🎮", color: "#06b6d4", batteryLife: 80, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
+  { id: 30, name: "Finalmouse ULX Prophecy", brand: "Finalmouse", weight: 40, sensor: "Custom", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 189, switches: "Optical", proUsage: 0, rating: 9.1, image: "⭐", color: "#d4af37", batteryLife: 100, clicks: "100M", cable: "USB-C", releaseYear: 2025 },
   { id: 31, name: "SteelSeries Prime Wireless", brand: "SteelSeries", weight: 80, sensor: "TrueMove Air", dpi: 18000, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wireless", price: 110, switches: "Prestige OM", proUsage: 1, rating: 8.3, image: "🦅", color: "#ff8c00", batteryLife: 100, clicks: "100M", cable: "USB-C", releaseYear: 2021 },
   { id: 32, name: "Corsair M75 Wireless", brand: "Corsair", weight: 89, sensor: "Marksman S 33K", dpi: 33000, pollingRate: 2000, shape: "Ergonomic", connectivity: "Wireless", price: 99, switches: "Omron", proUsage: 1, rating: 8.4, image: "⚓", color: "#ffd700", batteryLife: 110, clicks: "60M", cable: "USB-C", releaseYear: 2024 },
-  { id: 33, name: "Razer Basilisk V3 Pro", brand: "Razer", weight: 112, sensor: "Focus Pro 35K", dpi: 35000, pollingRate: 4000, shape: "Ergonomic", connectivity: "Wireless", price: 160, switches: "Gen-3 Optical", proUsage: 1, rating: 8.5, image: "🐍", color: "#00ff6a", batteryLife: 90, clicks: "90M", cable: "USB-C", releaseYear: 2022 },
+  { id: 33, name: "Razer Basilisk V3 Pro", brand: "Razer", weight: 112, sensor: "Focus Pro 35K", dpi: 35000, pollingRate: 4000, shape: "Ergonomic", connectivity: "Wireless", price: 160, switches: "Gen-3 Optical", proUsage: 1, rating: 9.2, image: "🐍", color: "#00ff6a", batteryLife: 90, clicks: "90M", cable: "USB-C", releaseYear: 2022 },
   { id: 34, name: "Endgame Gear XM2w", brand: "Endgame", weight: 63, sensor: "PAW3370", dpi: 19000, pollingRate: 1000, shape: "Symmetrical", connectivity: "Wireless", price: 99, switches: "Kailh GM 8.0", proUsage: 1, rating: 8.7, image: "🎯", color: "#8b5cf6", batteryLife: 75, clicks: "80M", cable: "USB-C", releaseYear: 2023 },
   { id: 35, name: "WLMouse Beast X Mini", brand: "WLMouse", weight: 28, sensor: "PAW3950", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 189, switches: "Optical", proUsage: 1, rating: 9.0, image: "🐉", color: "#f59e0b", batteryLife: 50, clicks: "100M", cable: "USB-C", releaseYear: 2025 },
   { id: 36, name: "G-Wolves HTS Plus 4K", brand: "G-Wolves", weight: 44, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 79, switches: "Kailh GM 8.0", proUsage: 0, rating: 8.8, image: "🐺", color: "#a78bfa", batteryLife: 60, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
   { id: 37, name: "Lethal Gaming Gear LA-2", brand: "LGG", weight: 52, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 89, switches: "Huano Transparent", proUsage: 0, rating: 8.9, image: "💀", color: "#ef4444", batteryLife: 70, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
   { id: 38, name: "ASUS ROG Gladius III", brand: "ASUS", weight: 79, sensor: "PAW3395", dpi: 26000, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wireless", price: 119, switches: "ROG Micro", proUsage: 0, rating: 8.4, image: "🦁", color: "#e11d48", batteryLife: 90, clicks: "70M", cable: "USB-C", releaseYear: 2023 },
   { id: 39, name: "HyperX Pulsefire Haste 2", brand: "HyperX", weight: 53, sensor: "PAW3395", dpi: 26000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 90, switches: "Optical", proUsage: 1, rating: 8.7, image: "⚡", color: "#ff4500", batteryLife: 100, clicks: "100M", cable: "USB-C", releaseYear: 2024 },
-  { id: 40, name: "Razer DeathAdder V4 Pro", brand: "Razer", weight: 55, sensor: "Focus Pro 36K Gen-2", dpi: 36000, pollingRate: 8000, shape: "Ergonomic", connectivity: "Wireless", price: 159, switches: "Optical Gen-3", proUsage: 6, rating: 9.3, image: "🐍", color: "#00ff44", batteryLife: 100, clicks: "100M", cable: "USB-C", releaseYear: 2025 },
-  { id: 41, name: "Vaxee E1 Wireless", brand: "Vaxee", weight: 64, sensor: "PAW3395", dpi: 26000, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wireless", price: 99, switches: "Huano", proUsage: 1, rating: 8.6, image: "🎯", color: "#22d3ee", batteryLife: 80, clicks: "60M", cable: "USB-C", releaseYear: 2024 },
-  { id: 42, name: "Zowie FK2-DW", brand: "Zowie", weight: 60, sensor: "PAW3395", dpi: 26000, pollingRate: 1000, shape: "Symmetrical", connectivity: "Wireless", price: 99, switches: "Zowie Custom", proUsage: 1, rating: 8.5, image: "🏆", color: "#ef4444", batteryLife: 70, clicks: "N/A", cable: "USB-C", releaseYear: 2024 },
-  { id: 43, name: "Zowie U2-DW", brand: "Zowie", weight: 58, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 109, switches: "Zowie Custom", proUsage: 1, rating: 8.7, image: "🏆", color: "#ef4444", batteryLife: 70, clicks: "N/A", cable: "USB-C", releaseYear: 2025 },
-  { id: 44, name: "Zowie EC1-CW", brand: "Zowie", weight: 77, sensor: "PAW3370", dpi: 26000, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wireless", price: 99, switches: "Zowie Custom", proUsage: 1, rating: 8.4, image: "🏆", color: "#ef4444", batteryLife: 70, clicks: "N/A", cable: "USB-C", releaseYear: 2023 },
-  { id: 45, name: "Pulsar Xlite V3 Es", brand: "Pulsar", weight: 46, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Ergonomic", connectivity: "Wireless", price: 109, switches: "Kailh GM 8.0", proUsage: 1, rating: 8.9, image: "💫", color: "#f59e0b", batteryLife: 70, clicks: "80M", cable: "USB-C", releaseYear: 2025 },
-  { id: 46, name: "Logitech G Pro X Superlight 2 Dex", brand: "Logitech", weight: 60, sensor: "HERO 2", dpi: 44000, pollingRate: 8000, shape: "Ergonomic", connectivity: "Wireless", price: 169, switches: "Lightforce", proUsage: 2, rating: 9.0, image: "🖱️", color: "#3b82f6", batteryLife: 95, clicks: "N/A", cable: "USB-C", releaseYear: 2025 },
-  { id: 47, name: "Pulsar ZywOo Chosen Mouse", brand: "Pulsar", weight: 49, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 119, switches: "Kailh GM 8.0", proUsage: 0, rating: 8.8, image: "💫", color: "#f59e0b", batteryLife: 70, clicks: "80M", cable: "USB-C", releaseYear: 2025 },
+  { id: 40, name: "Razer DeathAdder V4 Pro", brand: "Razer", weight: 55, sensor: "Focus Pro 36K Gen-2", dpi: 36000, pollingRate: 8000, shape: "Ergonomic", connectivity: "Wireless", price: 159, switches: "Optical Gen-3", proUsage: 6, rating: 9.7, image: "🐍", color: "#00ff44", batteryLife: 100, clicks: "100M", cable: "USB-C", releaseYear: 2025 },
+  { id: 41, name: "Vaxee E1 Wireless", brand: "Vaxee", weight: 64, sensor: "PAW3395", dpi: 26000, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wireless", price: 99, switches: "Huano", proUsage: 1, rating: 8.4, image: "🎯", color: "#22d3ee", batteryLife: 80, clicks: "60M", cable: "USB-C", releaseYear: 2024 },
+  { id: 42, name: "Zowie FK2-DW", brand: "Zowie", weight: 60, sensor: "PAW3395", dpi: 26000, pollingRate: 1000, shape: "Symmetrical", connectivity: "Wireless", price: 99, switches: "Zowie Custom", proUsage: 1, rating: 9.1, image: "🏆", color: "#ef4444", batteryLife: 70, clicks: "N/A", cable: "USB-C", releaseYear: 2024 },
+  { id: 43, name: "Zowie U2-DW", brand: "Zowie", weight: 58, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 109, switches: "Zowie Custom", proUsage: 1, rating: 9.3, image: "🏆", color: "#ef4444", batteryLife: 70, clicks: "N/A", cable: "USB-C", releaseYear: 2025 },
+  { id: 44, name: "Zowie EC1-CW", brand: "Zowie", weight: 77, sensor: "PAW3370", dpi: 26000, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wireless", price: 99, switches: "Zowie Custom", proUsage: 1, rating: 9.0, image: "🏆", color: "#ef4444", batteryLife: 70, clicks: "N/A", cable: "USB-C", releaseYear: 2023 },
+  { id: 45, name: "Pulsar Xlite V3 Es", brand: "Pulsar", weight: 46, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Ergonomic", connectivity: "Wireless", price: 109, switches: "Kailh GM 8.0", proUsage: 1, rating: 8.6, image: "💫", color: "#f59e0b", batteryLife: 70, clicks: "80M", cable: "USB-C", releaseYear: 2025 },
+  { id: 46, name: "Logitech G Pro X Superlight 2 Dex", brand: "Logitech", weight: 60, sensor: "HERO 2", dpi: 44000, pollingRate: 8000, shape: "Ergonomic", connectivity: "Wireless", price: 169, switches: "Lightforce", proUsage: 2, rating: 9.2, image: "🖱️", color: "#3b82f6", batteryLife: 95, clicks: "N/A", cable: "USB-C", releaseYear: 2025 },
+  { id: 47, name: "Pulsar ZywOo Chosen Mouse", brand: "Pulsar", weight: 49, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 119, switches: "Kailh GM 8.0", proUsage: 0, rating: 8.6, image: "💫", color: "#f59e0b", batteryLife: 70, clicks: "80M", cable: "USB-C", releaseYear: 2025 },
 ];
 
 const proPlayers = [
@@ -3056,7 +3072,7 @@ export default function EsportsMice() {
                   ))}
                 </div>
                 <div className="flex flex-wrap gap-1.5 mb-4">
-                  {mice.filter(m => filterBrand === "All" || m.brand === filterBrand).map(m => (
+                  {[...mice].filter(m => m.proUsage >= 1).sort((a, b) => b.proUsage - a.proUsage).filter(m => filterBrand === "All" || m.brand === filterBrand).map(m => (
                     <button key={m.id} onClick={() => setSelectedMouse(m)}
                       className="px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap hover:scale-[1.03]"
                       style={{
@@ -3364,7 +3380,7 @@ export default function EsportsMice() {
         {activeTab === "games" && (
           <div>
             <SectionTitle color="#ff3c3c" sub="Complete mouse, brand, and settings breakdown for every major esports title">Game Profiles</SectionTitle>
-            <div className="space-y-4">
+            <div className="space-y-8">
               {gameBreakdown.map((g, i) => {
                 const gameColors = { CS2: "#ff8c00", Valorant: "#ff4655", LoL: "#c89b3c", Fortnite: "#4c7bd9", "Overwatch 2": "#f99e1a", Apex: "#dc2626", "Dota 2": "#e74c3c", "R6 Siege": "#4a86c8", "Rocket League": "#1a9fff", "Call of Duty": "#5cb85c", "Marvel Rivals": "#ed1d24", PUBG: "#f2a900", Deadlock: "#8b5cf6" };
                 const col = gameColors[g.game] || "#888";
@@ -3408,6 +3424,12 @@ export default function EsportsMice() {
                           ))}
                         </div>
                       </div>
+                      {/* Game analysis */}
+                      {GAME_DESCRIPTIONS[g.game] && (
+                        <div className="lg:col-span-2">
+                          <p className="text-sm leading-relaxed opacity-45 px-1">{GAME_DESCRIPTIONS[g.game]}</p>
+                        </div>
+                      )}
                       {/* Right: Brand split with bars */}
                       <div>
                         <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Brand Split</div>
@@ -4152,27 +4174,66 @@ export default function EsportsMice() {
               </div>
             </div>
 
-            <SectionTitle color="#06b6d4" sub="Key metrics compared across the database">Weight vs. Price Analysis</SectionTitle>
-            <div className="rounded-2xl p-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
-              <ResponsiveContainer width="100%" height={350}>
-                <BarChart data={mice.sort((a, b) => a.weight - b.weight).map(m => ({
-                  name: m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |Ninjutso |WLMouse |Sony |Zowie )/, ""),
-                  weight: m.weight,
-                  price: m.price,
-                  fill: BRAND_COLORS[m.brand] || "#888"
-                }))} margin={{ top: 10, right: 30, left: 0, bottom: 80 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#ffffff08" />
-                  <XAxis dataKey="name" tick={{ fill: "#ffffff30", fontSize: 9 }} angle={-45} textAnchor="end" interval={0} />
-                  <YAxis yAxisId="left" tick={{ fill: "#f472b6", fontSize: 10 }} unit="g" orientation="left" />
-                  <YAxis yAxisId="right" tick={{ fill: "#00ff6a", fontSize: 10 }} unit="$" orientation="right" />
-                  <Tooltip content={<CustomTooltip />} />
-                  <Legend wrapperStyle={{ fontSize: 10, opacity: 0.5 }} />
-                  <Bar yAxisId="left" dataKey="weight" fill="#f472b680" radius={[4, 4, 0, 0]} name="Weight (g)">
-                    {mice.sort((a, b) => a.weight - b.weight).map((m, i) => <Cell key={i} fill={`${BRAND_COLORS[m.brand]}60`} />)}
-                  </Bar>
-                  <Bar yAxisId="right" dataKey="price" fill="#00ff6a60" radius={[4, 4, 0, 0]} name="Price ($)" />
-                </BarChart>
-              </ResponsiveContainer>
+            <SectionTitle color="#06b6d4" sub="Which grip styles dominate the professional scene">Pro Mouse Shape Breakdown</SectionTitle>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="rounded-2xl p-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                <div className="text-sm font-bold mb-4 opacity-60">Shape Distribution Among Pros</div>
+                {(() => {
+                  const shapeCounts = {};
+                  allPlayers.forEach(p => {
+                    const m = mice.find(mm => mm.name === p.mouse || p.mouse.includes(mm.name));
+                    if (m) shapeCounts[m.shape] = (shapeCounts[m.shape] || 0) + 1;
+                  });
+                  const total = Object.values(shapeCounts).reduce((a, b) => a + b, 0);
+                  const shapeData = Object.entries(shapeCounts).sort((a, b) => b[1] - a[1]).map(([name, count]) => ({
+                    name, value: parseFloat((count / total * 100).toFixed(1)),
+                    fill: name === "Symmetrical" ? "#06b6d4" : name === "Ergonomic" ? "#f472b6" : "#d4af37"
+                  }));
+                  return (
+                    <ResponsiveContainer width="100%" height={280}>
+                      <PieChart>
+                        <Pie data={shapeData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} innerRadius={50} strokeWidth={0}
+                          label={({ name, value }) => `${name}: ${value}%`}>
+                          {shapeData.map((s, i) => <Cell key={i} fill={s.fill} fillOpacity={0.7} />)}
+                        </Pie>
+                        <Tooltip content={<CustomTooltip />} />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  );
+                })()}
+              </div>
+              <div className="rounded-2xl p-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                <div className="text-sm font-bold mb-4 opacity-60">DPI Distribution Across All Pros</div>
+                {(() => {
+                  const dpiRanges = [
+                    { range: "< 400", min: 0, max: 400, color: "#ff4444" },
+                    { range: "400-600", min: 400, max: 600, color: "#ff8c00" },
+                    { range: "600-800", min: 600, max: 800, color: "#d4af37" },
+                    { range: "800-1000", min: 800, max: 1000, color: "#00ff6a" },
+                    { range: "1000-1600", min: 1000, max: 1600, color: "#00b4ff" },
+                    { range: "1600+", min: 1600, max: 999999, color: "#8b5cf6" },
+                  ];
+                  const data = dpiRanges.map(r => ({
+                    range: r.range,
+                    players: allPlayers.filter(p => p.dpi >= r.min && p.dpi < r.max).length,
+                    fill: r.color,
+                    pct: parseFloat((allPlayers.filter(p => p.dpi >= r.min && p.dpi < r.max).length / allPlayers.length * 100).toFixed(1))
+                  }));
+                  return (
+                    <ResponsiveContainer width="100%" height={280}>
+                      <BarChart data={data}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#ffffff08" />
+                        <XAxis dataKey="range" tick={{ fill: "#ffffff40", fontSize: 10 }} />
+                        <YAxis tick={{ fill: "#ffffff40", fontSize: 10 }} />
+                        <Tooltip content={<CustomTooltip />} />
+                        <Bar dataKey="players" radius={[6, 6, 0, 0]} name="Players">
+                          {data.map((d, i) => <Cell key={i} fill={d.fill} fillOpacity={0.7} />)}
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  );
+                })()}
+              </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
@@ -4239,6 +4300,179 @@ export default function EsportsMice() {
                   <div className="text-xs opacity-40 mt-1">{s.sub}</div>
                 </div>
               ))}
+            </div>
+
+            {/* ── Brand Dominance Race ── */}
+            <SectionTitle color="#d4af37" sub="How the top brands stack up across every major metric">Brand Performance Scorecard</SectionTitle>
+            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid #ffffff08" }}>
+              {(() => {
+                const topBrandNames = ["Razer", "Logitech", "Zowie", "Vaxee", "Finalmouse", "Pulsar", "Lamzu"];
+                const brandStats = topBrandNames.map(brand => {
+                  const brandMice = mice.filter(m => m.brand === brand);
+                  const guessBrand = (mouse) => {
+                    const n = mouse.toLowerCase();
+                    if (n.includes("razer") || n.includes("viper") || n.includes("deathadder") || n.includes("basilisk")) return "Razer";
+                    if (n.includes("logitech") || n.includes("g pro") || n.includes("g502") || n.includes("g303") || n.includes("g203") || n.includes("gpro") || n.includes("g703")) return "Logitech";
+                    if (n.includes("zowie") || n.startsWith("ec") || n.startsWith("fk") || n.startsWith("za") || n.startsWith("s2") || n.startsWith("u2")) return "Zowie";
+                    if (n.includes("vaxee") || n.includes("zygen") || n.includes("np-01") || n.includes("outset")) return "Vaxee";
+                    if (n.includes("finalmouse") || n.includes("ultralight") || n.includes("starlight")) return "Finalmouse";
+                    if (n.includes("pulsar") || n.includes("xlite") || n.includes("x2")) return "Pulsar";
+                    if (n.includes("lamzu") || n.includes("atlantis") || n.includes("maya")) return "Lamzu";
+                    return null;
+                  };
+                  const brandPlayers = allPlayers.filter(p => {
+                    const m = mice.find(mm => mm.name === p.mouse || p.mouse.includes(mm.name));
+                    const detected = m ? m.brand : guessBrand(p.mouse);
+                    return detected === brand;
+                  });
+                  const avgWeight = brandMice.length ? Math.round(brandMice.reduce((a, m) => a + m.weight, 0) / brandMice.length) : 0;
+                  const avgPrice = brandMice.length ? Math.round(brandMice.reduce((a, m) => a + m.price, 0) / brandMice.length) : 0;
+                  const maxPoll = brandMice.length ? Math.max(...brandMice.map(m => m.pollingRate)) : 0;
+                  const proShare = Math.round(brandPlayers.length / allPlayers.length * 100);
+                  const avgRating = brandMice.length ? (brandMice.reduce((a, m) => a + m.rating, 0) / brandMice.length).toFixed(1) : 0;
+                  const mouseCount = brandMice.length;
+                  return { brand, avgWeight, avgPrice, maxPoll, proShare, avgRating, mouseCount };
+                });
+                const headers = ["Brand", "Models", "Pro Share", "Avg Weight", "Avg Price", "Max Poll", "Avg Rating"];
+                return (
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr style={{ background: "#0a0a0a" }}>
+                        {headers.map(h => (
+                          <th key={h} className="px-4 py-3 text-xs uppercase tracking-widest font-bold text-left" style={{ color: "#ffffff30" }}>{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {brandStats.map((b, i) => (
+                        <tr key={b.brand} style={{ background: i % 2 === 0 ? "#050505" : "#080808", borderBottom: "1px solid #ffffff05" }}>
+                          <td className="px-4 py-3 font-black" style={{ color: BRAND_COLORS[b.brand] }}>{b.brand}</td>
+                          <td className="px-4 py-3 opacity-60">{b.mouseCount}</td>
+                          <td className="px-4 py-3 font-bold" style={{ color: b.proShare >= 30 ? "#00ff6a" : b.proShare >= 10 ? "#d4af37" : "#ffffff60" }}>{b.proShare}%</td>
+                          <td className="px-4 py-3 opacity-60">{b.avgWeight}g</td>
+                          <td className="px-4 py-3 opacity-60">${b.avgPrice}</td>
+                          <td className="px-4 py-3 opacity-60">{b.maxPoll >= 1000 ? `${b.maxPoll/1000}K` : b.maxPoll}Hz</td>
+                          <td className="px-4 py-3 font-bold" style={{ color: b.avgRating >= 9 ? "#00ff6a" : b.avgRating >= 8.5 ? "#d4af37" : "#ffffff60" }}>{b.avgRating}/10</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                );
+              })()}
+            </div>
+
+            {/* ── Technology Adoption ── */}
+            <SectionTitle color="#8b5cf6" sub="How quickly pros adopt new peripheral technology">Technology Adoption Snapshot</SectionTitle>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="rounded-2xl p-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                <div className="text-sm font-bold mb-4 opacity-60">Polling Rate Tiers (Mice in DB)</div>
+                {(() => {
+                  const tiers = [
+                    { label: "1KHz (Standard)", min: 0, max: 1500, color: "#ff4444" },
+                    { label: "4KHz (High)", min: 1500, max: 5000, color: "#d4af37" },
+                    { label: "8KHz (Ultra)", min: 5000, max: 99999, color: "#00ff6a" },
+                  ];
+                  return (
+                    <div className="space-y-3">
+                      {tiers.map((t, i) => {
+                        const count = mice.filter(m => m.pollingRate >= t.min && m.pollingRate < t.max).length;
+                        const pct = Math.round(count / mice.length * 100);
+                        return (
+                          <div key={i}>
+                            <div className="flex justify-between text-xs mb-1">
+                              <span className="font-bold" style={{ color: t.color }}>{t.label}</span>
+                              <span className="opacity-50">{count} mice ({pct}%)</span>
+                            </div>
+                            <div className="h-3 rounded-full overflow-hidden" style={{ background: "#ffffff06" }}>
+                              <div className="h-full rounded-full transition-all" style={{ width: `${pct}%`, background: `${t.color}60` }} />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
+              </div>
+
+              <div className="rounded-2xl p-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                <div className="text-sm font-bold mb-4 opacity-60">Top Sensors by Mouse Count</div>
+                {(() => {
+                  const sensorCounts = {};
+                  mice.forEach(m => { sensorCounts[m.sensor] = (sensorCounts[m.sensor] || 0) + 1; });
+                  const top5 = Object.entries(sensorCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+                  const colors = ["#00ff6a", "#00b4ff", "#f472b6", "#d4af37", "#8b5cf6"];
+                  return (
+                    <div className="space-y-3">
+                      {top5.map(([sensor, count], i) => (
+                        <div key={sensor}>
+                          <div className="flex justify-between text-xs mb-1">
+                            <span className="font-bold" style={{ color: colors[i] }}>{sensor}</span>
+                            <span className="opacity-50">{count} mice</span>
+                          </div>
+                          <div className="h-3 rounded-full overflow-hidden" style={{ background: "#ffffff06" }}>
+                            <div className="h-full rounded-full" style={{ width: `${(count / top5[0][1]) * 100}%`, background: `${colors[i]}60` }} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  );
+                })()}
+              </div>
+
+              <div className="rounded-2xl p-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                <div className="text-sm font-bold mb-4 opacity-60">Weight Class Distribution</div>
+                {(() => {
+                  const classes = [
+                    { label: "Ultralight (< 45g)", min: 0, max: 45, color: "#00ff6a" },
+                    { label: "Featherweight (45-55g)", min: 45, max: 55, color: "#06b6d4" },
+                    { label: "Lightweight (55-65g)", min: 55, max: 65, color: "#00b4ff" },
+                    { label: "Midweight (65-80g)", min: 65, max: 80, color: "#d4af37" },
+                    { label: "Standard (80g+)", min: 80, max: 999, color: "#f472b6" },
+                  ];
+                  return (
+                    <div className="space-y-3">
+                      {classes.map((c, i) => {
+                        const count = mice.filter(m => m.weight >= c.min && m.weight < c.max).length;
+                        const pct = Math.round(count / mice.length * 100);
+                        return (
+                          <div key={i}>
+                            <div className="flex justify-between text-xs mb-1">
+                              <span className="font-bold" style={{ color: c.color }}>{c.label}</span>
+                              <span className="opacity-50">{count} ({pct}%)</span>
+                            </div>
+                            <div className="h-3 rounded-full overflow-hidden" style={{ background: "#ffffff06" }}>
+                              <div className="h-full rounded-full" style={{ width: `${pct}%`, background: `${c.color}60` }} />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
+              </div>
+            </div>
+
+            {/* ── eDPI by Game ── */}
+            <SectionTitle color="#ff3c3c" sub="How sensitivity preferences vary across competitive titles">Average eDPI by Game</SectionTitle>
+            <div className="rounded-2xl p-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+              <ResponsiveContainer width="100%" height={320}>
+                <BarChart data={gameBreakdown.filter(g => g.avgEdpi && g.players >= 10).map(g => ({
+                  game: g.game,
+                  avgEdpi: g.avgEdpi,
+                  fill: { CS2: "#ff8c00", Valorant: "#ff4655", Apex: "#dc2626", "R6 Siege": "#4a86c8", "Overwatch 2": "#f99e1a", "Marvel Rivals": "#ed1d24", Deadlock: "#8b5cf6", "Call of Duty": "#5cb85c" }[g.game] || "#888"
+                }))} margin={{ top: 10, right: 30, left: 0, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#ffffff08" />
+                  <XAxis dataKey="game" tick={{ fill: "#ffffff40", fontSize: 10 }} />
+                  <YAxis tick={{ fill: "#ffffff40", fontSize: 10 }} />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Bar dataKey="avgEdpi" name="Avg eDPI" radius={[6, 6, 0, 0]}>
+                    {gameBreakdown.filter(g => g.avgEdpi && g.players >= 10).map((g, i) => (
+                      <Cell key={i} fill={{ CS2: "#ff8c00", Valorant: "#ff4655", Apex: "#dc2626", "R6 Siege": "#4a86c8", "Overwatch 2": "#f99e1a", "Marvel Rivals": "#ed1d24", Deadlock: "#8b5cf6", "Call of Duty": "#5cb85c" }[g.game] || "#888"} fillOpacity={0.6} />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+              <div className="text-xs text-center opacity-25 mt-2">Games with fewer than 10 tracked players or no eDPI data excluded</div>
             </div>
           </div>
         )}
