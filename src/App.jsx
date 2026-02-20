@@ -2889,15 +2889,15 @@ export default function EsportsMice() {
   pieData.push({ name: "Other", value: (brandMarketShare.find(b => b.name === "Other") || { share: 3 }).share, fill: "#333" });
 
   const tabs = [
-    { id: "overview", label: "Overview", icon: Home },
-    { id: "mice", label: "All Mice", icon: Mouse },
-    { id: "rankings", label: "Rankings", icon: Trophy },
-    { id: "sensors", label: "Sensors", icon: Cpu },
-    { id: "players", label: "Pro Players", icon: Users },
-    { id: "games", label: "Games", icon: Gamepad2 },
-    { id: "brands", label: "Brands", icon: Building2 },
-    { id: "trends", label: "Trends", icon: TrendingUp },
-    { id: "compare", label: "Compare", icon: GitCompare },
+    { id: "overview", label: "Overview", icon: Home, color: "#00ff6a" },
+    { id: "mice", label: "All Mice", icon: Mouse, color: "#c084fc" },
+    { id: "rankings", label: "Rankings", icon: Trophy, color: "#d4af37" },
+    { id: "sensors", label: "Sensors", icon: Cpu, color: "#10b981" },
+    { id: "players", label: "Pro Players", icon: Users, color: "#00b4ff" },
+    { id: "games", label: "Games", icon: Gamepad2, color: "#ff4655" },
+    { id: "brands", label: "Brands", icon: Building2, color: "#f59e0b" },
+    { id: "trends", label: "Trends", icon: TrendingUp, color: "#f472b6" },
+    { id: "compare", label: "Compare", icon: GitCompare, color: "#8b5cf6" },
   ];
 
   const allBrands = ["All", ...new Set(mice.map(m => m.brand))];
@@ -2965,16 +2965,24 @@ export default function EsportsMice() {
       {/* ─── NAV TABS ─── */}
       <nav className="sticky top-0 z-50 border-b" style={{ background: "#050505ee", borderColor: "#ffffff0a", backdropFilter: "blur(20px)" }}>
         <div className="max-w-7xl mx-auto px-6 flex gap-1 overflow-x-auto py-2">
-          {tabs.map(t => (
+          {tabs.map(t => {
+            const isActive = activeTab === t.id;
+            const Icon = t.icon;
+            return (
             <button key={t.id} onClick={() => { setActiveTab(t.id); if (t.id === "players") setSelectedPlayer(null); window.scrollTo({ top: 0, behavior: "smooth" }); }}
               className="px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all duration-200"
               style={{
-                background: activeTab === t.id ? "#00ff6a15" : "transparent",
-                color: activeTab === t.id ? "#00ff6a" : "#ffffff50",
-                border: activeTab === t.id ? "1px solid #00ff6a30" : "1px solid transparent",
-              }}
-            >{(() => { const Icon = t.icon; return <span className="flex items-center gap-1.5"><Icon size={14} strokeWidth={2.5} />{t.label}</span>; })()}</button>
-          ))}
+                background: isActive ? `${t.color}15` : "transparent",
+                border: isActive ? `1px solid ${t.color}30` : "1px solid transparent",
+                boxShadow: isActive ? `0 0 12px ${t.color}15` : "none",
+              }}>
+              <span className="flex items-center gap-1.5">
+                <Icon size={14} strokeWidth={2.5} style={{ color: t.color }} />
+                <span style={{ color: isActive ? t.color : "#ffffff50" }}>{t.label}</span>
+              </span>
+            </button>
+            );
+          })}
         </div>
       </nav>
 
