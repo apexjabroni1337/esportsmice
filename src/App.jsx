@@ -562,133 +562,6 @@ const proPlayers = [
     achievements: ["CDL 2021 Champion (Atlanta FaZe)", "CWL Championship 2019 Champion (eUnited)", "CDL Major Champion (multiple)", "CDL All-Star (multiple years)", "Half of 'Tiny Terrors' duo with Simp", "Atlanta FaZe franchise SMG", "CWL Rookie of the Year candidate", "Multiple Champs Sunday appearances", "Consistently top 5 K/D in CDL", "Known for fastest entry kill timing in CDL"],
     mouseHistory: [{ mouse: "Razer Viper V3 Pro", period: "2024-Present" }, { mouse: "Razer Viper V2 Pro", period: "2023-2024" }, { mouse: "Logitech G Pro X Superlight", period: "2022-2023" }],
   },
-  // ═══════ CS2 ADDITIONS ═══════
-  { name: "sh1ro", game: "CS2", team: "Team Spirit", mouse: "ZOWIE U3-DW", hz: 2000, dpi: 800, sens: 1.04, edpi: 832, role: "AWPer", country: "🇷🇺", age: 24, fullName: "Dmitry Sokolov",
-    bio: "Dmitry 'sh1ro' Sokolov is one of the most precise AWPers in Counter-Strike history, known for a passive, calculated style that produces remarkably consistent statistics tournament after tournament. His time on Cloud9 saw him reach the HLTV top 5 player ranking, with his 2021 season being one of the most statistically dominant AWP performances ever recorded. Sh1ro's crosshair placement and timing are considered among the best in the game — he rarely misses first shots and his opening kill percentage ranks consistently at the top of professional play. His move to Team Spirit alongside donk created one of the most individually talented rosters in CS2 history, combining sh1ro's methodical AWPing with donk's explosive rifling. Unlike flashy AWPers who rely on aggressive peeks, sh1ro wins rounds through perfect positioning and patience, making him incredibly difficult to counter-stratify against. His ability to maintain elite-level statistics across multiple rosters and meta shifts demonstrates a fundamental understanding of AWP play that transcends any single system.",
-    achievements: ["HLTV #3 Player 2021", "HLTV Top 10 Player (multiple years)", "IEM Katowice 2024 Champion", "PGL Major Copenhagen 2024 Finalist", "ESL Pro League Champion", "Cloud9 franchise AWPer", "Highest AWP first-kill percentage 2021", "Multiple HLTV MVP awards", "Team Spirit star AWPer", "Consistently top-rated AWPer worldwide"],
-    mouseHistory: [{ mouse: "ZOWIE U3-DW", period: "2025-Present" }, { mouse: "Zowie EC2-CW", period: "2023-2025" }, { mouse: "Zowie EC2-B", period: "2020-2023" }],
-  },
-  { name: "b1t", game: "CS2", team: "Natus Vincere", mouse: "Logitech G Pro X Superlight 2", hz: 2000, dpi: 400, sens: 1.65, edpi: 660, role: "Rifler", country: "🇺🇦", age: 22, fullName: "Valeriy Vakhovskiy",
-    bio: "Valeriy 'b1t' Vakhovskiy was the youngest member of Natus Vincere's legendary 2021-2022 roster that dominated Counter-Strike alongside s1mple, electronic, and Perfecto. His role as the team's entry fragger required him to consistently take dangerous positions and win opening duels, a task he performed with remarkable composure for a player so young. B1t's Major championship at PGL Antwerp 2022 came at just 19 years old, making him one of the youngest Major champions in CS history. His mechanical skill is elite — his spray control and pistol accuracy are among the best in the game, and his ability to win eco rounds almost single-handedly has produced numerous highlight-reel moments. Since the roster changes at NaVi, b1t has taken on a larger star role, showing that his talent extends beyond being a supporting piece in a s1mple-led system. His continued development as a complete player positions him as one of the most important young talents in CS2's competitive landscape.",
-    achievements: ["PGL Major Antwerp 2022 Champion", "Intel Grand Slam Season 4", "IEM Cologne 2021 Champion", "BLAST Premier World Final 2021 Champion", "ESL One Cologne 2022 Champion", "HLTV Top 20 Player (multiple years)", "Youngest NaVi roster member during era", "IEM Katowice 2022 Champion", "NaVi franchise rifler", "Multiple BLAST Premier titles"],
-    mouseHistory: [{ mouse: "Logitech G Pro X Superlight 2", period: "2024-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2021-2024" }, { mouse: "Logitech G Pro Wireless", period: "2020-2021" }],
-  },
-  { name: "huNter", game: "CS2", team: "G2 Esports", mouse: "ZOWIE EC2-DW Glossy", hz: 4000, dpi: 800, sens: 1.25, edpi: 1000, role: "Rifler", country: "🇧🇦", age: 29, fullName: "Nemanja Kovač",
-    bio: "Nemanja 'huNter' Kovač is NiKo's cousin and the other half of the most talented family duo in Counter-Strike history, providing G2 Esports with a secondary star rifler whose raw aim rivals anyone in the world. His aggressive entry-fragging style perfectly complements NiKo's more calculated approach, and the chemistry between the two Kovač cousins has been a cornerstone of G2's identity for years. HuNter burst onto the international scene with Valiance and won the HLTV award for biggest rating increase in 2019 before joining G2, where he immediately proved he belonged at the highest level. His pistol rounds are legendary — huNter's Desert Eagle and USP accuracy rates are among the highest ever recorded in professional CS, regularly producing multi-kill pistol rounds that swing games. Despite often being overshadowed by NiKo's individual brilliance, huNter's consistency and reliability make him one of the most valuable support stars in the game. His loyalty to G2 Esports through multiple roster iterations reflects his commitment to competing alongside his cousin at the highest level.",
-    achievements: ["BLAST Premier Spring 2022 Champion", "IEM Cologne 2022 Champion", "ESL Pro League S14 Champion", "HLTV Top 20 Player 2021", "BLAST Premier World Final 2022 Champion", "IEM Katowice 2022 MVP candidate", "G2 Esports franchise rifler", "Highest pistol round rating in 2021", "HLTV Biggest Rating Increase 2019", "Multiple ESL Pro League deep runs"],
-    mouseHistory: [{ mouse: "ZOWIE EC2-DW Glossy", period: "2024-Present" }, { mouse: "Zowie EC2-CW", period: "2022-2024" }, { mouse: "Zowie EC2-B", period: "2019-2022" }],
-  },
-  { name: "Twistzz", game: "CS2", team: "FaZe Clan", mouse: "Endgame Gear XM2w 4k v2", hz: 4000, dpi: 400, sens: 2.3, edpi: 920, role: "Rifler", country: "🇨🇦", age: 25, fullName: "Russel Van Dulken",
-    bio: "Russel 'Twistzz' Van Dulken is one of the most mechanically talented riflers in CS history, known for his buttery-smooth aim and the ability to win seemingly impossible spray duels at any range. He was a key member of FaZe Clan's legendary 2022 roster that won the PGL Major Antwerp, IEM Katowice, IEM Cologne, and the Intel Grand Slam — one of the most dominant runs in Counter-Strike history. Before FaZe, Twistzz was the star player of Team Liquid's 2019 era alongside EliGE, where the Canadian rifler posted some of the highest individual ratings in NA CS history. His transition from NA to an international roster proved seamless, and his partnership with NiKo, rain, and broky produced a roster that could win any tournament on any given day. Twistzz's aim style is visually distinctive — he has an extraordinarily smooth crosshair movement that makes his kills look effortless, earning him a reputation as one of the most aesthetically pleasing players to watch. His continued presence on FaZe Clan's roster makes him one of the longest-tenured members of the organization's CS division.",
-    achievements: ["PGL Major Antwerp 2022 Champion", "IEM Katowice 2022 Champion", "IEM Cologne 2022 Champion", "Intel Grand Slam Season 4", "BLAST Premier World Final 2022 Champion", "HLTV #10 Player 2022", "ESL One Cologne 2019 Champion (Liquid)", "IEM Chicago 2019 Champion", "IEM Sydney 2019 Champion", "Multiple HLTV Top 20 appearances"],
-    mouseHistory: [{ mouse: "Endgame Gear XM2w 4k v2", period: "2025-Present" }, { mouse: "Razer Viper V3 Pro", period: "2024-2025" }, { mouse: "Logitech G Pro X Superlight", period: "2021-2024" }],
-  },
-  { name: "rain", game: "CS2", team: "100 Thieves", mouse: "Razer Viper V3 Pro", hz: 1000, dpi: 800, sens: 0.95, edpi: 760, role: "Rifler", country: "🇳🇴", age: 30, fullName: "Håvard Nygaard",
-    bio: "Håvard 'rain' Nygaard is one of the longest-tenured and most respected veterans in Counter-Strike history, a Norwegian rifler whose career spans over a decade of top-level competition. His PGL Major Antwerp 2022 victory with FaZe Clan was one of the most emotionally resonant moments in CS history — rain had been competing at the top level for nearly eight years without a Major title, and his MVP performance in the Grand Finals showed that patience and perseverance could still be rewarded. Rain's mechanical skill has remained remarkably consistent throughout his career, with an ability to clutch rounds and produce multi-kill sequences that has made him FaZe's most reliable player across multiple roster iterations. His versatility is a key asset — rain can entry frag, hold anchor positions, lurk, or clutch with equal effectiveness, making him the ultimate utility player. The Major championship, combined with the Intel Grand Slam, IEM Katowice, and IEM Cologne victories in 2022, gave rain one of the most complete trophy hauls in a single calendar year. His move to 100 Thieves represents a new chapter for a player who has earned universal respect across the Counter-Strike community.",
-    achievements: ["PGL Major Antwerp 2022 Champion", "PGL Major Antwerp 2022 Grand Finals MVP", "IEM Katowice 2022 Champion", "IEM Cologne 2022 Champion", "Intel Grand Slam Season 4", "BLAST Premier World Final 2022 Champion", "HLTV Top 20 Player (multiple years)", "ESL One New York 2017 Champion", "ECS Season 1 Champion", "Longest-tenured FaZe CS player"],
-    mouseHistory: [{ mouse: "Razer Viper V3 Pro", period: "2024-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2022-2024" }, { mouse: "Zowie EC2-A", period: "2015-2022" }],
-  },
-  { name: "broky", game: "CS2", team: "FaZe Clan", mouse: "WLMouse Beast X Max", hz: 8000, dpi: 400, sens: 2.57, edpi: 1028, role: "AWPer", country: "🇱🇻", age: 22, fullName: "Helvijs Saukants",
-    bio: "Helvijs 'broky' Saukants emerged from Latvia as one of the most natural AWPing talents in Counter-Strike, joining FaZe Clan at a young age and growing into the team's primary sniper during their historic 2022 championship run. His AWPing style combines the precision of a passive player with occasional aggressive peeks that catch opponents off guard, making him unpredictable and dangerous from any position on the map. Broky's Major championship at PGL Antwerp 2022 came when he was barely twenty years old, and his consistent performances throughout that era proved he could handle the pressure of the biggest stages. His transition to the WLMouse Beast X Max at 8KHz polling makes him one of the most technically cutting-edge players in professional CS2, always willing to adopt new technology if it offers a competitive edge. Broky's ability to hold passive angles while also hitting aggressive flick shots gives FaZe Clan a versatility in their AWP play that few other teams can match. As one of the core members of FaZe's post-2022 roster, broky continues to be one of the most reliable AWPers in the world.",
-    achievements: ["PGL Major Antwerp 2022 Champion", "IEM Katowice 2022 Champion", "IEM Cologne 2022 Champion", "Intel Grand Slam Season 4", "BLAST Premier World Final 2022 Champion", "FaZe Clan franchise AWPer", "HLTV Top 20 Player 2022", "ESL Pro League appearances (multiple)", "Youngest player on 2022 FaZe roster", "IEM Katowice 2023 Finalist"],
-    mouseHistory: [{ mouse: "WLMouse Beast X Max", period: "2025-Present" }, { mouse: "Razer Viper V3 Pro", period: "2024-2025" }, { mouse: "Zowie EC2-CW", period: "2022-2024" }],
-  },
-  { name: "electronic", game: "CS2", team: "BC.Game", mouse: "Pulsar Xlite V4 Es", hz: 1000, dpi: 400, sens: 2.2, edpi: 880, role: "Rifler", country: "🇷🇺", age: 27, fullName: "Denis Sharipov",
-    bio: "Denis 'electronic' Sharipov was s1mple's right-hand man during Natus Vincere's dominant era, forming the most lethal star duo in Counter-Strike history alongside the Ukrainian AWPer. His rifling during NaVi's 2021-2022 peak was devastating — electronic regularly posted ratings that would have made him the undisputed best player on any other team, but s1mple's otherworldly performances meant electronic was perpetually second in the spotlight. The PGL Major Antwerp 2022 championship was electronic's crowning achievement, where his consistent fragging provided the stability NaVi needed to close out the tournament. His versatility allows him to play virtually any role — entry, anchor, lurk, or support — at an elite level, making him one of the most complete riflers in CS history. Electronic's spray transfers and multi-kill potential are among the highest in professional play, with an ability to punish poor positioning that makes him terrifying to play against in retake situations. His career stats place him among the most consistently high-performing players across all eras of Counter-Strike.",
-    achievements: ["PGL Major Antwerp 2022 Champion", "IEM Cologne 2021 Champion", "BLAST Premier World Final 2021 Champion", "Intel Grand Slam Season 4", "HLTV #7 Player 2018", "HLTV Top 20 Player (multiple years)", "IEM Katowice 2022 Champion", "ESL One Cologne 2022 Champion", "NaVi franchise rifler for 5+ years", "Multiple BLAST Premier titles"],
-    mouseHistory: [{ mouse: "Pulsar Xlite V4 Es", period: "2025-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2021-2025" }, { mouse: "Zowie EC2-B", period: "2018-2021" }],
-  },
-  { name: "device", game: "CS2", team: "100 Thieves", mouse: "ZOWIE EC2-DW Glossy", hz: 1000, dpi: 800, sens: 1, edpi: 800, role: "AWPer", country: "🇩🇰", age: 29, fullName: "Nicolai Reedtz",
-    bio: "Nicolai 'device' Reedtz is the most decorated AWPer in Counter-Strike history and the cornerstone of the Astralis dynasty that won four Major championships between 2018 and 2019. His AWPing style is the textbook definition of consistency — device rarely makes mistakes, rarely overpeeks, and rarely loses duels he should win, making him the most fundamentally sound sniper the game has ever produced. The four Major titles with Astralis (FACEIT Major, IEM Katowice 2019, StarLadder Berlin, PGL Stockholm proxy) represent a level of sustained championship excellence that may never be equaled. Device's approach to the game is almost scientific — his positioning, utility usage, and timing are all meticulously refined to minimize risk while maximizing impact. His move to NIP and subsequent return to competitive play with 100 Thieves alongside rain showed his desire to compete at the highest level remains undiminished. Device's influence on how the AWP position is played at the professional level cannot be overstated — he proved that consistency and intelligence could be more valuable than raw mechanical flashiness.",
-    achievements: ["4× Major Champion (FACEIT 2018, Katowice 2019, Berlin 2019, Stockholm 2021)", "HLTV #1 Player 2018", "HLTV Top 5 Player (5 consecutive years)", "Intel Grand Slam Season 1 & 2", "Most Major playoff kills in CS history", "HLTV MVP awards (10+)", "ESL Pro League Champion (multiple)", "BLAST Premier Champion (multiple)", "Most decorated AWPer in CS history", "Astralis franchise player for era-defining dynasty"],
-    mouseHistory: [{ mouse: "ZOWIE EC2-DW Glossy", period: "2024-Present" }, { mouse: "Zowie EC2-CW", period: "2022-2024" }, { mouse: "Zowie EC2-B", period: "2018-2022" }, { mouse: "Zowie EC2-A", period: "2015-2018" }],
-  },
-  { name: "Alfajer", game: "Valorant", team: "Fnatic", mouse: "Razer DeathAdder V4 Pro", hz: 1000, dpi: 400, sens: 0.45, edpi: 180, role: "Duelist", country: "🇹🇷", age: 19, fullName: "Emir Ali Beder",
-    bio: "Emir Ali 'Alfajer' Beder is the latest Turkish prodigy to take the Valorant world by storm, joining Fnatic as a teenager and immediately establishing himself as one of the most mechanically gifted players in the game. His incredibly low eDPI of 180 requires enormous mousepad real estate and arm movement, yet Alfajer produces flick shots and tracking accuracy that defy the physical limitations of his setup. His Masters championship with Fnatic showcased a player whose ceiling appears limitless — Alfajer was regularly the highest-rated player in the server against the best competition in the world. Following in cNed's footsteps as a Turkish Valorant star, Alfajer has arguably already surpassed his predecessor in terms of raw mechanical talent and international success. His aggressive duelist play on agents like Jett and Raze combines explosive movement with pinpoint accuracy, creating an entry style that opposing teams have struggled to contain. At just 19, Alfajer is already one of the faces of competitive Valorant, and his development trajectory suggests he could become the game's greatest individual player.",
-    achievements: ["VCT Masters champion with Fnatic", "VCT EMEA League Champion", "Tournament MVP (multiple)", "Youngest Fnatic Valorant roster member", "Turkey's rising Valorant superstar", "Highest first-kill percentage in VCT EMEA", "VCT Champions competitor", "Fnatic franchise duelist", "Lowest eDPI among elite duelists", "Multiple VCT EMEA playoffs appearances"],
-    mouseHistory: [{ mouse: "Razer DeathAdder V4 Pro", period: "2025-Present" }, { mouse: "Razer Viper V3 Pro", period: "2024-2025" }, { mouse: "Logitech G Pro X Superlight", period: "2023-2024" }],
-  },
-  { name: "Derke", game: "Valorant", team: "Team Vitality", mouse: "Logitech G Pro X Superlight 2", hz: 2000, dpi: 400, sens: 0.74, edpi: 296, role: "Duelist", country: "🇫🇮", age: 22, fullName: "Nikita Sirmitev",
-    bio: "Nikita 'Derke' Sirmitev was the original star duelist of Fnatic's Valorant roster and one of the most mechanically talented players in EMEA history. His Jett and Raze play during Fnatic's early championship runs set the standard for European duelist play, with a combination of movement, aim, and aggression that made him nearly impossible to stop when on form. Derke's Masters Tokyo performance was one of the most dominant individual showings in Valorant history, carrying Fnatic through multiple elimination matches with statistics that looked almost unrealistic. His Finnish stoicism under pressure is legendary — Derke rarely shows emotion mid-match, maintaining the same deadly precision whether it's a group stage match or a Grand Finals overtime. The move to Team Vitality represented a new chapter in his career, pairing him with Chronicle to form one of the most individually talented duos in EMEA Valorant. Derke's influence on how European teams approach the duelist role has been transformative, proving that EMEA could produce aim stars to rival the best from Korea and the Americas.",
-    achievements: ["VCT Masters Tokyo 2023 Champion", "VCT Masters champion (multiple)", "VCT EMEA League Champion (multiple)", "Fnatic franchise duelist for 3+ years", "VCT Champions competitor (multiple)", "Tournament MVP awards (multiple)", "Highest ACS in VCT EMEA history", "Finland's most accomplished Valorant player", "VCT LOCK//IN finalist", "Multiple VCT international tournament wins"],
-    mouseHistory: [{ mouse: "Logitech G Pro X Superlight 2", period: "2024-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2022-2024" }, { mouse: "Logitech G Pro Wireless", period: "2021-2022" }],
-  },
-  { name: "Boaster", game: "Valorant", team: "Fnatic", mouse: "ATK Blazing Sky F1", hz: 1000, dpi: 800, sens: 0.24, edpi: 192, role: "IGL", country: "🇬🇧", age: 27, fullName: "Jake Howlett",
-    bio: "Jake 'Boaster' Howlett is the heart, soul, and strategic brain of Fnatic's Valorant roster, an in-game leader whose infectious energy and innovative calling have made Fnatic the most entertaining and tactically creative team in the game. His leadership style combines deep strategic preparation with an ability to make mid-round adjustments that catch opponents completely off guard, producing some of the most creative executes in professional Valorant. Boaster is unique among top-tier IGLs in that he maintains a genuinely positive attitude visible to fans through his animated reactions, celebrations, and post-match interviews that have made him one of the most beloved figures in the Valorant community. His Masters championships with Fnatic validated his approach — proving that energy, creativity, and team chemistry can compete with pure firepower. While not known as a mechanical star, Boaster's impact rounds and clutch plays in critical moments have won Fnatic countless maps they had no business winning. His content creation and community engagement have made him arguably the most recognizable face of EMEA Valorant.",
-    achievements: ["VCT Masters Tokyo 2023 Champion", "VCT Masters champion (multiple)", "VCT EMEA League Champion (multiple)", "Fnatic franchise IGL and captain", "VCT Champions competitor (multiple)", "Most beloved IGL in Valorant", "VCT LOCK//IN finalist", "Face of EMEA Valorant", "Known for innovative tactical approach", "Multiple VCT international deep runs"],
-    mouseHistory: [{ mouse: "ATK Blazing Sky F1", period: "2025-Present" }, { mouse: "Razer Viper V3 Pro", period: "2024-2025" }, { mouse: "Logitech G Pro X Superlight", period: "2021-2024" }],
-  },
-  { name: "f0rsakeN", game: "Valorant", team: "Paper Rex", mouse: "Pulsar Susanto-X", hz: 4000, dpi: 800, sens: 0.65, edpi: 516, role: "Duelist", country: "🇮🇩", age: 21, fullName: "Jason Susanto",
-    bio: "Jason 'f0rsakeN' Susanto is the mechanical backbone of Paper Rex and one of the most exciting duelists in all of Valorant, known for a high-sensitivity, run-and-gun playstyle that embodies Paper Rex's philosophy of controlled chaos. His aim is among the fastest in professional Valorant — f0rsakeN's reaction time and flick speed allow him to win duels that most players would consider impossible, regularly producing multi-kill entries that open up rounds before opponents can react. Paper Rex's unique aggressive playstyle has made them the most entertaining team in the Pacific region, and f0rsakeN is the tip of that spear, taking fights at a pace that forces opponents into uncomfortable reactive positions. His Indonesian heritage has made him a hero in Southeast Asian esports, inspiring a wave of talented players from the region who see f0rsakeN as proof that Pacific players can compete with the best in the world. The combination of f0rsakeN and something as Paper Rex's duelist duo has produced some of the most explosive gameplay in Valorant history. His partnership with Pulsar to develop a signature mouse reflects his status as one of the most marketable players in the Pacific region.",
-    achievements: ["VCT Masters champion", "VCT Pacific League Champion (multiple)", "Paper Rex franchise duelist", "VCT Champions competitor (multiple)", "Indonesia's most accomplished Valorant player", "VCT LOCK//IN competitor", "Multiple Pacific MVP awards", "Highest entry success rate in Pacific", "Known for W-key aggressive playstyle", "Southeast Asian esports icon"],
-    mouseHistory: [{ mouse: "Pulsar Susanto-X", period: "2025-Present" }, { mouse: "Razer Viper V3 Pro", period: "2024-2025" }, { mouse: "Logitech G Pro X Superlight", period: "2022-2024" }],
-  },
-  { name: "MaKo", game: "Valorant", team: "DRX", mouse: "Razer Viper V3 Pro", hz: 1000, dpi: 400, sens: 0.48, edpi: 192, role: "Controller", country: "🇰🇷", age: 24, fullName: "Kim Myeong-gwan",
-    bio: "Kim 'MaKo' Myeong-gwan was a crucial member of DRX's legendary VCT Champions 2022 championship roster, the Korean underdog team that captured the hearts of fans worldwide with their improbable run to the title. His controller play was instrumental in DRX's tactical approach — MaKo's smoke timings, mollies, and utility usage created the framework within which DRX's fraggers could operate at their peak. The Champions 2022 victory was one of the greatest Cinderella stories in esports history, with DRX entering the tournament as underdogs and defeating OpTic Gaming in a thrilling Grand Finals. MaKo's ability to find impact kills despite playing a utility-heavy role set him apart from other controller players, regularly posting fragging numbers that rivaled dedicated duelists. His versatility across agents like Omen, Astra, and Harbor gave DRX unmatched flexibility in their compositions. MaKo represents the Korean approach to Valorant — disciplined, team-oriented, and willing to sacrifice personal glory for collective success.",
-    achievements: ["VCT Champions 2022 Champion", "VCT Champions 2022 Grand Finals competitor", "DRX franchise controller player", "VCT Korea/Pacific League Champion", "VCT Champions 2023 competitor", "Multiple VCT international appearances", "Korea's most accomplished controller", "Known for impactful utility usage", "VCT Masters competitor", "DRX dynasty core member"],
-    mouseHistory: [{ mouse: "Razer Viper V3 Pro", period: "2024-Present" }, { mouse: "Razer Viper V2 Pro", period: "2023-2024" }, { mouse: "Logitech G Pro X Superlight", period: "2022-2023" }],
-  },
-  { name: "stax", game: "Valorant", team: "T1", mouse: "Razer Viper V3 Pro", hz: 1000, dpi: 800, sens: 0.21, edpi: 172, role: "IGL", country: "🇰🇷", age: 25, fullName: "Kim Gu-taek",
-    bio: "Kim 'stax' Gu-taek was the in-game leader and emotional heart of DRX's VCT Champions 2022 championship roster, calling the strategies that guided the Korean underdogs to the most improbable title run in Valorant history. His leadership during the Champions Grand Finals against OpTic Gaming — particularly the comeback from a deficit that seemed insurmountable — showcased a captain who could rally his team when it mattered most. Stax's IGL style emphasizes adaptability and team cohesion over rigid structure, allowing DRX's talented individuals to express themselves within a flexible tactical framework. His own fragging ability is underrated — stax regularly contributes meaningful kill numbers despite the cognitive burden of calling strategies in real-time. The move to T1 represents a new challenge for the veteran IGL, who brings championship experience and proven leadership to one of Korea's most prestigious organizations. Stax's influence on Korean Valorant extends beyond tactics — he is widely credited with establishing the team culture and mentality that made DRX's Champions run possible.",
-    achievements: ["VCT Champions 2022 Champion", "DRX franchise IGL and captain", "VCT Korea/Pacific League Champion", "VCT Champions 2023 competitor", "Led DRX to multiple international events", "Korean Valorant IGL pioneer", "VCT Masters competitor", "T1 Valorant IGL", "Known for adaptive calling style", "Korea's most successful Valorant captain"],
-    mouseHistory: [{ mouse: "Razer Viper V3 Pro", period: "2024-Present" }, { mouse: "Razer Viper V2 Pro", period: "2023-2024" }, { mouse: "Logitech G Pro X Superlight", period: "2022-2023" }],
-  },
-  { name: "crashies", game: "Valorant", team: "Fnatic", mouse: "Fnatic x Lamzu Maya X 8K", hz: 8000, dpi: 1600, sens: 0.1, edpi: 160, role: "Initiator", country: "🇺🇸", age: 24, fullName: "Austin Roberts",
-    bio: "Austin 'crashies' Roberts is one of the most consistent and versatile support players in Valorant history, known for his selfless playstyle and ability to enable star teammates across multiple championship-winning rosters. His VCT Champions 2022 victory with OpTic Gaming saw crashies perform at an elite level in the support role, providing the information gathering and utility usage that allowed yay and the rest of OpTic to play at their peaks. Crashies' Sova play during the agent's meta peak was considered the best in North America, with lineups and drone usage that became the standard for how the agent should be played professionally. His partnership with yay at OpTic and later teams has been one of the most effective duelist-support duos in the game, with crashies seemingly always in the right position to trade or flash for his star player. The move to Fnatic brought crashies to one of the most successful organizations in Valorant, and his championship experience adds a veteran presence to every roster he joins. His incredibly low eDPI of 160 and adoption of 8KHz polling show a player who is constantly optimizing his setup for maximum performance.",
-    achievements: ["VCT Champions 2022 Champion (OpTic)", "VCT Masters Reykjavik 2022 Champion", "VCT Masters Copenhagen 2022 Finalist", "Multiple VCT NA titles", "OpTic Gaming franchise support player", "Best Sova player in NA history", "VCT Americas League competitor", "Fnatic roster member", "Known for selfless enabling playstyle", "Multiple VCT international deep runs"],
-    mouseHistory: [{ mouse: "Fnatic x Lamzu Maya X 8K", period: "2025-Present" }, { mouse: "Razer Viper V3 Pro", period: "2024-2025" }, { mouse: "Logitech G Pro X Superlight", period: "2022-2024" }],
-  },
-  { name: "Less", game: "Valorant", team: "KRÜ Esports", mouse: "Logitech G Pro 2 LIGHTSPEED", hz: 4000, dpi: 800, sens: 0.32, edpi: 256, role: "Duelist", country: "🇧🇷", age: 20, fullName: "Felipe de Loyola",
-    bio: "Felipe 'Less' de Loyola was a breakout star of LOUD's dominant Brazilian Valorant roster, a young duelist whose mechanical talent and fearless aggression helped Brazil establish itself as one of the premier regions in competitive Valorant. His performances alongside aspas formed one of the most lethal fragging duos in the game, with Less providing the secondary firepower that made LOUD's attack-heavy playstyle nearly impossible to stop. The VCT Champions 2022 and LOCK//IN 2023 victories cemented Less as one of the most accomplished young players in Valorant history, winning multiple international titles before his twentieth birthday. His Jett and Raze play combines explosive movement with deadly accuracy, creating entry sequences that overwhelm even the most prepared defensive setups. Less's ability to perform on the biggest stages without showing any signs of nerves suggests a competitor whose temperament matches his mechanical gifts. His career trajectory positions him as one of the future faces of Brazilian esports.",
-    achievements: ["VCT Champions 2022 Champion", "VCT Masters Copenhagen 2022 Champion", "VCT LOCK//IN São Paulo 2023 Champion", "LOUD franchise duelist", "VCT Americas League Champion", "VCT Champions 2023 Finalist", "Brazil's rising Valorant star", "Multiple VCT international titles", "Youngest LOUD roster member during dynasty", "Known for explosive Jett play"],
-    mouseHistory: [{ mouse: "Logitech G Pro 2 LIGHTSPEED", period: "2025-Present" }, { mouse: "Razer Viper V3 Pro", period: "2024-2025" }, { mouse: "Logitech G Pro X Superlight", period: "2022-2024" }],
-  },
-  { name: "Showmaker", game: "LoL", team: "Dplus KIA", mouse: "Logitech G Pro X Superlight 2c", hz: 1000, dpi: 2500, sens: null, edpi: null, role: "Mid", country: "🇰🇷", age: 24, fullName: "Heo Su",
-    bio: "Heo 'ShowMaker' Su is one of the greatest mid laners in League of Legends history and the architect of DAMWON/Dplus KIA's Worlds 2020 championship, where his dominant performances across the entire tournament established him as the best player in the world. His champion pool is legendarily deep — ShowMaker can play assassins, control mages, and even unorthodox picks at an equally devastating level, making him impossible to ban out in best-of-five series. The rivalry between ShowMaker and Faker has produced some of the most memorable mid lane matchups in LCK history, with both players pushing each other to greater heights through years of competition. ShowMaker's mechanical precision on champions like Syndra, Zoe, and Akali has produced some of the most spectacular individual plays in Worlds history, regularly making the impossible look routine. His tenure as the face of DAMWON/Dplus KIA mirrors Faker's relationship with T1 — a generational talent who defines an organization through sheer individual brilliance. At 24, ShowMaker remains one of the most dangerous mid laners in the world and continues to push the boundaries of what's possible in the role.",
-    achievements: ["Worlds 2020 Champion", "Worlds 2020 Finals MVP", "Worlds 2021 Finalist", "LCK Champion (multiple)", "LCK MVP (multiple)", "DAMWON/DK franchise mid laner", "Worlds 2023 competitor", "HLTV/Esports Awards nominations", "One of highest peak ratings in Worlds history", "Faker's primary rival for best mid laner"],
-    mouseHistory: [{ mouse: "Logitech G Pro X Superlight 2c", period: "2024-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2022-2024" }, { mouse: "Logitech G Pro Wireless", period: "2020-2022" }],
-  },
-  { name: "Dendi", game: "Dota 2", team: "B8 Esports", mouse: "HyperX Pulsefire Dart", hz: 1000, dpi: 800, sens: null, edpi: null, role: "Mid", country: "🇺🇦", age: 35, fullName: "Danil Ishutin",
-    bio: "Danil 'Dendi' Ishutin is the most iconic figure in Dota 2 history and arguably the player most responsible for bringing competitive Dota to mainstream attention. His victory at The International 2011 with Natus Vincere — the first-ever million-dollar esports tournament — established him as the face of competitive gaming during a pivotal era when esports was fighting for mainstream legitimacy. Dendi's Pudge, Shadow Fiend, and Templar Assassin play in the early TI era produced some of the most replayed and celebrated moments in Dota history, including the legendary Pudge-Chen fountain hook at TI3 that remains the most iconic individual play in the game. His charismatic personality, genuine smile, and willingness to engage with fans made him the first true esports celebrity, appearing in the documentary 'Free to Play' that introduced millions of viewers to competitive gaming. Dendi's TI1, TI2 (runner-up), and TI3 (runner-up) runs represent the most successful three-year stretch in early Dota 2 history, a period when Natus Vincere was the undisputed face of the game. While his competitive career has moved beyond tier-1, Dendi's legacy as the player who made Dota 2 esports a global phenomenon is forever secure.",
-    achievements: ["The International 2011 Champion", "The International 2012 Runner-up", "The International 2013 Runner-up", "Star of 'Free to Play' documentary", "Most iconic Dota 2 player of all time", "NaVi franchise mid laner for 8+ years", "Legendary Pudge-Chen fountain hook at TI3", "First true esports celebrity in Dota", "Multiple Dota 2 Major appearances", "Founded B8 Esports"],
-    mouseHistory: [{ mouse: "HyperX Pulsefire Dart", period: "2020-Present" }, { mouse: "SteelSeries Rival 600", period: "2018-2020" }, { mouse: "SteelSeries Sensei", period: "2011-2018" }],
-  },
-  { name: "KuroKy", game: "Dota 2", team: "Nigma Galaxy", mouse: "ZOWIE EC2", hz: 1000, dpi: 800, sens: null, edpi: null, role: "Support", country: "🇩🇪", age: 32, fullName: "Kuro Salehi Takhasomi",
-    bio: "Kuro 'KuroKy' Salehi Takhasomi is one of the most accomplished captains in Dota 2 history, leading Team Liquid to a dominant victory at The International 2017 in one of the most complete tournament performances ever seen. His drafting and strategic mind have been feared by opponents for over a decade — KuroKy's ability to read the meta, identify power picks, and prepare specific strategies for each opponent has made every team he leads a tactical threat. The TI7 Grand Finals saw KuroKy's Team Liquid come from the lower bracket to sweep Newbee 3-0, a dominant performance that validated years of strategic refinement and team building. His career spans the entire history of competitive Dota — from DotA Allstars through every era of Dota 2, making him one of the longest-active players in the game alongside Puppey. KuroKy's versatility as a player is remarkable — he has played carry, mid, and support at professional level, bringing a unique understanding of every role to his captaincy. His founding of Nigma Galaxy (formerly Team Liquid/5Jungz) created an organization built around his vision of how Dota should be played.",
-    achievements: ["The International 2017 Champion", "The International 2013 Runner-up (NaVi)", "Multiple Dota 2 Major Champion", "Founded Nigma Galaxy", "TI7 Grand Finals 3-0 sweep", "10+ TI appearances", "One of longest-active Dota 2 players", "Legendary drafter and strategist", "ESL One Frankfurt Champion", "Dota 2 Hall of Fame caliber career"],
-    mouseHistory: [{ mouse: "ZOWIE EC2", period: "2019-Present" }, { mouse: "Zowie EC2-A", period: "2015-2019" }, { mouse: "Razer DeathAdder", period: "2011-2015" }],
-  },
-  { name: "ImperialHal", game: "Apex", team: "Falcons Esports", mouse: "FinalMouse Starlight Pro", hz: 1000, dpi: 800, sens: 1.1, edpi: 880, role: "IGL", country: "🇺🇸", age: 25, fullName: "Phillip Dosen",
-    bio: "Phillip 'ImperialHal' Dosen is the undisputed greatest Apex Legends player of all time and the most dominant in-game leader the battle royale genre has ever produced. His leadership of TSM during their record-breaking championship runs established the strategic framework that every competitive Apex team now tries to replicate. ImperialHal's calling style is uniquely intense — his in-game comms are legendarily precise and demanding, creating a level of team coordination that elevates every player around him. He has won virtually every major Apex tournament, including ALGS Championships, and his consistency across every meta shift the game has undergone demonstrates an understanding of battle royale strategy that transcends any single meta. ImperialHal's move to Falcons Esports marked the highest-profile team transfer in Apex history, reflecting his status as the game's most valuable player. Beyond competition, his streaming presence has made him the face of competitive Apex Legends, with a community that follows his every match and ranks him as the definitive GOAT of the game.",
-    achievements: ["Multiple ALGS Championship winner", "Most decorated Apex player of all time", "TSM franchise IGL for 4+ years", "ALGS Split victories (numerous)", "X Games gold medalist (Apex)", "Highest earnings in Apex Legends history", "Falcons Esports star signing", "Face of competitive Apex Legends", "Dominant across every Apex meta", "Known for intense, precise IGL comms"],
-    mouseHistory: [{ mouse: "FinalMouse Starlight Pro", period: "2023-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2021-2023" }, { mouse: "Logitech G Pro Wireless", period: "2019-2021" }],
-  },
-  { name: "MrSavage", game: "Fortnite", team: "XSET", mouse: "Logitech G Pro X Superlight 2", hz: 1000, dpi: 800, sens: 9.1, edpi: null, role: "Solo", country: "🇳🇴", age: 20, fullName: "Martin Andersen",
-    bio: "Martin 'MrSavage' Andersen is the most accomplished European Fortnite player and one of the most consistently dominant competitors in the game's history. His mechanical skill is extraordinary — MrSavage's building speed, editing accuracy, and aim combine to create a playstyle that overwhelms opponents through sheer speed of execution. He has won multiple FNCS championships and has been a fixture in the top earnings leaderboards since he burst onto the competitive scene as a teenager. MrSavage's Norwegian heritage has made him a hero in Scandinavian esports, proving that European players can compete at the very highest level against the traditionally dominant NA Fortnite scene. His content creation following rivals TenZ in the Valorant space — MrSavage is one of the most-watched competitive Fortnite players on Twitch and YouTube. His longevity at the top of competitive Fortnite, surviving numerous meta shifts and building mechanic changes, demonstrates an adaptability that sets him apart from players who peaked in a single era.",
-    achievements: ["Multiple FNCS Champion", "Fortnite World Cup 2019 competitor", "Highest earnings among EU Fortnite players", "XSET franchise player", "DreamHack Champion (multiple)", "Consistent top 10 in major Fortnite events", "Norway's most accomplished esports player", "Major content creator and streamer", "Known for fastest editing speed in pro play", "Dominant across multiple Fortnite eras"],
-    mouseHistory: [{ mouse: "Logitech G Pro X Superlight 2", period: "2024-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2022-2024" }, { mouse: "Finalmouse Air58", period: "2019-2022" }],
-  },
-  { name: "Clix", game: "Fortnite", team: "XSET", mouse: "Finalmouse Ultralight X", hz: 1000, dpi: 800, sens: 8.7, edpi: null, role: "Solo", country: "🇺🇸", age: 20, fullName: "Cody Conrod",
-    bio: "Cody 'Clix' Conrod is the most popular competitive Fortnite player in the world and one of the most influential content creators in gaming, with a streaming presence that has made him a household name among younger gaming audiences. His mechanical skill in Fortnite is phenomenal — Clix's building, editing, and box-fighting abilities are among the fastest and most precise in the competitive scene, regularly producing clip-worthy moments that go viral across social media. He rose to fame through his aggressive, entertaining playstyle and his rivalry with other top players that created compelling storylines for the Fortnite competitive community. Clix's impact on the Fortnite ecosystem extends beyond competition — his streams regularly attract tens of thousands of concurrent viewers, and his opinions on meta, peripherals, and gameplay significantly influence the broader Fortnite community. His FNCS victories and consistent high placements in major tournaments prove that his popularity is backed by genuine competitive excellence. Clix represents the new generation of esports professionals where competitive success and content creation are equally important pillars of a player's career.",
-    achievements: ["FNCS Champion (multiple)", "Fortnite World Cup 2019 qualifier", "Most popular competitive Fortnite streamer", "XSET franchise player", "DreamHack victories", "Highest concurrent viewership among FN pros", "Multiple Cash Cup victories", "Known for box-fighting dominance", "Top 10 Fortnite earnings all-time", "Cultural icon of competitive Fortnite"],
-    mouseHistory: [{ mouse: "Finalmouse Ultralight X", period: "2024-Present" }, { mouse: "Finalmouse Starlight-12", period: "2022-2024" }, { mouse: "Finalmouse Air58", period: "2019-2022" }],
-  },
-  { name: "Proper", game: "Overwatch 2", team: "SF Shock", mouse: "Razer Viper V3 Pro", hz: 4000, dpi: 800, sens: 3.5, edpi: 2800, role: "DPS", country: "🇰🇷", age: 20, fullName: "Kim Dong-hyeon",
-    bio: "Kim 'Proper' Dong-hyeon is the most mechanically gifted DPS player in Overwatch League history, winning the OWL MVP award in his rookie season with a level of individual dominance that drew comparisons to the greatest players the league has ever seen. His Tracer and Sojourn play during the 2022 OWL season produced statistics that seemed impossible — Proper's damage output, elimination rate, and final blow percentage were all significantly higher than any other DPS player in the league. The San Francisco Shock built their roster around Proper's abilities, and his carry performances in crucial matches demonstrated a player capable of elevating his play to even higher levels when the stakes were greatest. His Korean mechanical foundation combined with the Shock's tactical system created a synergy that made Proper nearly unstoppable during his peak. At just 20, Proper has already established himself as one of the definitive talents in Overwatch history, with a trophy case and individual accolade list that rivals players who competed for much longer. His impact on how the DPS role is played in modern Overwatch — emphasizing mechanical ceiling and carry potential — has influenced team-building strategies across the competitive scene.",
-    achievements: ["OWL 2022 MVP", "OWL Rookie of the Year 2022", "San Francisco Shock franchise DPS", "Highest damage per 10 in OWL history", "Multiple OWL stage victories", "OWL All-Star (multiple)", "Korea's most dominant OWL rookie", "Known for best Tracer in OWL history", "Multiple Player of the Match awards", "Redefined DPS carry potential in OWL"],
-    mouseHistory: [{ mouse: "Razer Viper V3 Pro", period: "2024-Present" }, { mouse: "Razer Viper V2 Pro", period: "2023-2024" }, { mouse: "Logitech G Pro X Superlight", period: "2022-2023" }],
-  },
-  { name: "Profit", game: "Overwatch 2", team: "Seoul Dynasty", mouse: "Logitech G Pro X Superlight 2", hz: 4000, dpi: 800, sens: 5.0, edpi: 4000, role: "DPS", country: "🇰🇷", age: 24, fullName: "Park Joon-yeong",
-    bio: "Park 'Profit' Joon-yeong is the most decorated DPS player in Overwatch League history, with an OWL Grand Finals MVP award and a level of clutch performance in championship moments that has earned him the title of the greatest big-game player the league has ever produced. His hero pool is the deepest of any OWL DPS — Profit can play hitscan, projectile, and flex heroes at an equally devastating level, making him impossible to game-plan against in a best-of-series format. The London Spitfire's OWL Season 1 championship was built on Profit's transcendent Grand Finals performance, where he played multiple heroes across maps and dominated on every single one. His tenure with Seoul Dynasty continued his legacy of championship-level performances, with Profit consistently being the player opponents feared most in elimination scenarios. The combination of mechanical skill, game sense, hero flexibility, and clutch factor makes Profit the most complete DPS player in Overwatch history. His longevity at the top across multiple OWL seasons and meta shifts proves that his success isn't tied to any single hero or composition but to a fundamental understanding of how to win at the highest level.",
-    achievements: ["OWL Season 1 Champion (London Spitfire)", "OWL Grand Finals MVP Season 1", "Seoul Dynasty franchise DPS", "OWL All-Star (multiple years)", "Deepest hero pool in OWL history", "Multiple OWL stage victories", "OWL Grand Finals appearances (multiple)", "Korea's most versatile OWL DPS", "Known for clutch Grand Finals performances", "Most decorated DPS player in OWL"],
-    mouseHistory: [{ mouse: "Logitech G Pro X Superlight 2", period: "2024-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2022-2024" }, { mouse: "Logitech G Pro Wireless", period: "2019-2022" }],
-  },
-  { name: "aBeZy", game: "Call of Duty", team: "Atlanta FaZe", mouse: "Razer Viper V3 Pro", hz: 4000, dpi: 800, sens: 6.0, edpi: 4800, role: "SMG", country: "🇺🇸", age: 23, fullName: "Tyler Pharris",
-    bio: "Tyler 'aBeZy' Pharris is one half of the most feared SMG duo in Call of Duty history, forming the legendary 'Tiny Terrors' partnership with Simp that has terrorized the CDL since Atlanta FaZe's inception. His playstyle is defined by pure aggression — aBeZy is the entry player who creates space for his team by winning gunfights that no other player would dare take, pushing into positions with a speed and confidence that forces opponents into reactive play. The CDL 2021 championship with Atlanta FaZe was the signature moment of his career, where the Tiny Terrors duo operated at a level of synchronized aggression that no opposing roster could contain across the entire tournament weekend. Before the CDL era, aBeZy was already making waves in the CWL, winning the CWL Championship 2019 with eUnited in a dominant performance that announced him as a generational talent. His movement mechanics rival even Shotzzy's, combining slide-cancels, bunny hops, and directional changes at speeds that make him almost impossible to pre-aim, and his hip-fire accuracy in close-range engagements is widely considered the best in the league. At 23, aBeZy has been competing at the absolute peak of Call of Duty for over five years, and his continued dominance alongside Simp ensures that Atlanta FaZe remains the team every CDL roster builds their strategies around defeating.",
-    achievements: ["CDL 2021 Champion (Atlanta FaZe)", "CWL Championship 2019 Champion (eUnited)", "CDL Major Champion (multiple)", "CDL All-Star (multiple years)", "Half of 'Tiny Terrors' duo with Simp", "Atlanta FaZe franchise SMG", "CWL Rookie of the Year candidate", "Multiple Champs Sunday appearances", "Consistently top 5 K/D in CDL", "Known for fastest entry kill timing in CDL"],
-    mouseHistory: [{ mouse: "Razer Viper V3 Pro", period: "2024-Present" }, { mouse: "Razer Viper V2 Pro", period: "2023-2024" }, { mouse: "Logitech G Pro X Superlight", period: "2022-2023" }],
-  },
-  // ═══════ CS2 ADDITIONS ═══════
   { name: "sh1ro", game: "CS2", team: "Team Spirit", mouse: "ZOWIE U3-DW", hz: 2000, dpi: 800, sens: 1.04, edpi: 832, role: "AWPer", country: "🇷🇺", age: 24, fullName: "Dmitry Sokolov",
     bio: "Dmitry 'sh1ro' Sokolov is one of the most precise AWPers in Counter-Strike history, known for a passive, calculated style that produces remarkably consistent statistics tournament after tournament. His time on Cloud9 saw him reach the HLTV top 5 player ranking, with his 2021 season being one of the most statistically dominant AWP performances ever recorded. Sh1ro's crosshair placement and timing are considered among the best in the game — he rarely misses first shots and his opening kill percentage ranks consistently at the top of professional play. His move to Team Spirit alongside donk created one of the most individually talented rosters in CS2 history, combining sh1ro's methodical AWPing with donk's explosive rifling. Unlike flashy AWPers who rely on aggressive peeks, sh1ro wins rounds through perfect positioning and patience, making him incredibly difficult to counter-stratify against. His ability to maintain elite-level statistics across multiple rosters and meta shifts demonstrates a fundamental understanding of AWP play that transcends any single system.",
     achievements: ["HLTV #3 Player 2021", "HLTV Top 10 Player (multiple years)", "IEM Katowice 2024 Champion", "PGL Major Copenhagen 2024 Finalist", "ESL Pro League Champion", "Cloud9 franchise AWPer", "Highest AWP first-kill percentage 2021", "Multiple HLTV MVP awards", "Team Spirit star AWPer", "Consistently top-rated AWPer worldwide"],
@@ -2254,7 +2127,7 @@ const proPlayers = [
     achievements: ["Thai PUBG competitor", "Finalmouse Starlight-12 user", "Known for extreme high sensitivity", "Thai PUBG scene", "Free agent talent", "Ultralight mouse adopter", "Aggressive Thai meta", "Southeast Asian competitor", "Boutique mouse in PUBG", "Thai PUBG community"],
     mouseHistory: [{ mouse: "FinalMouse Starlight-12", period: "2022-Present" }],
   },
-{ name: "Ninja", game: "Fortnite", team: "Content Creator", mouse: "Finalmouse Ultralight X Prophecy Clix Small", hz: 1000, dpi: 800, sens: 5.5, edpi: null, role: "Solo", country: "🇺🇸", age: 33, fullName: "Tyler Blevins",
+  { name: "Ninja", game: "Fortnite", team: "Content Creator", mouse: "Finalmouse Ultralight X Prophecy Clix Small", hz: 1000, dpi: 800, sens: 5.5, edpi: null, role: "Solo", country: "🇺🇸", age: 33, fullName: "Tyler Blevins",
     bio: "Tyler 'Ninja' Blevins is the most famous Fortnite player of all time and one of the most recognizable gamers on the planet. His New Year's Eve 2018 stream with Drake shattered Twitch records and catapulted Fortnite into mainstream pop culture consciousness, creating a cultural moment that transcended gaming entirely. Ninja's peak — over 250,000 concurrent subscribers on Twitch — remains one of the highest marks in streaming history. His mechanical skill during Fortnite's golden era was genuinely elite, but it was his charismatic personality, infectious energy, and ability to connect with audiences of all ages that made him the face of the battle royale revolution. He appeared on mainstream TV, in a Super Bowl ad, and Time Magazine's 100 Most Influential People list. His partnership with Finalmouse — including the legendary Air58 collaboration — made the Finalmouse brand synonymous with Fortnite.",
     achievements: ["Most famous Fortnite player in history", "Broke Twitch concurrent viewership records", "Drake stream New Year's 2018", "Time 100 Most Influential People", "250K+ Twitch subscribers peak", "Finalmouse Air58 Ninja collaboration", "Over $17M in streaming revenue", "Mainstream TV and Super Bowl appearances", "Cultural icon of battle royale era", "Most recognized gamer in the world"],
     mouseHistory: [{ mouse: "Finalmouse Ultralight X Prophecy Clix Small", period: "2024-Present" }, { mouse: "Finalmouse Air58 Ninja CBR", period: "2019-2024" }],
@@ -2539,6 +2412,191 @@ const proPlayers = [
     achievements: ["Brazilian FN content creator", "Portuguese-language FN content", "Brazil's FN community", "Known for Brazilian FN audience", "South American FN creator", "Brazilian gaming personality", "LATAM FN content", "Brazilian esports figure", "FN YouTube success in Portuguese", "Brazilian FN community leader"],
     mouseHistory: [{ mouse: "Logitech G Pro X Superlight", period: "2021-Present" }],
   },
+  { name: "aceu", game: "Apex", team: "Content Creator", mouse: "Finalmouse Starlight Pro TenZ", hz: 1000, dpi: 1600, sens: 1.05, edpi: 1680, role: "Fragger", country: "🇺🇸", age: 26, fullName: "Brandon Winn",
+    bio: "Brandon 'aceu' Winn is widely regarded as the most mechanically gifted Apex Legends player of all time — a movement god whose wallbounce-strafe combinations, tap-strafes, and superglides redefined what was possible in the game's movement system. His transition from competitive Apex on NRG to full-time content creation on Sentinels was driven by his realization that he could reach more people as a streamer than as a tournament player. Aceu's 1600 DPI with 1.05 sensitivity creates a higher eDPI than most Apex pros, enabling the lightning-fast flicks and 180-degree turns that define his aggressive push-everything playstyle.",
+    achievements: ["Greatest Apex movement player ever", "NRG competitive era", "Sentinels content creator", "Redefined Apex movement meta", "Wallbounce/tap-strafe pioneer", "Millions of followers", "1600 DPI high-eDPI approach", "Most viral Apex clips ever", "Movement god title", "American Apex legend"],
+    mouseHistory: [{ mouse: "Finalmouse Starlight Pro TenZ", period: "2023-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2021-2023" }],
+  },
+  { name: "Genburten", game: "Apex", team: "100 Thieves", mouse: "Razer Viper Ultimate", hz: 1000, dpi: 800, sens: 1.5, edpi: 1200, role: "Fragger", country: "🇦🇺", age: 23, fullName: "Genburten",
+    bio: "Genburten is an Australian Apex Legends player on 100 Thieves who is considered the best controller player in the history of the game and possibly the greatest controller FPS player ever. His beam-tracking ability at long range with controller aim assist is so consistent that many keyboard-and-mouse players genuinely believe he's cheating — but he's simply that good. His transition from the OCE region to competing on NA servers with ImperialHal showcased his ability to dominate against the best in the world regardless of input method.",
+    achievements: ["Greatest controller Apex player ever", "100 Thieves star", "Australian Apex legend", "Beam tracking god", "Cross-input dominance", "ALGS competitor", "OCE to NA transition", "Controller aim icon", "Duo with ImperialHal", "100T franchise player"],
+    mouseHistory: [{ mouse: "Razer Viper Ultimate", period: "2021-Present" }],
+  },
+  { name: "Ras", game: "Apex", team: "Crazy Raccoon", mouse: "Razer DeathAdder V3 Pro", hz: 1000, dpi: 1200, sens: 1.0, edpi: 1200, role: "Fragger", country: "🇰🇷", age: 24, fullName: "Ras",
+    bio: "Ras is a South Korean Apex Legends player on Crazy Raccoon who is the face of Apex in Japan and one of the most popular Apex players in Asia. His mechanical skill is considered on par with the absolute best in the world, and his streams regularly draw tens of thousands of Japanese viewers. His unusual 1200 DPI reflects the Korean esports tradition of precise sensor tuning, and his DeathAdder V3 Pro preference connects him to the ergonomic mouse tradition popular among Korean players.",
+    achievements: ["Face of Apex in Japan/Asia", "Crazy Raccoon franchise star", "Korean mechanical prodigy", "Tens of thousands of concurrent viewers", "ALGS APAC competitor", "One of best aimers in Apex", "Asian Apex icon", "1200 DPI unusual setup", "Cross-cultural esports figure", "Japanese streaming star"],
+    mouseHistory: [{ mouse: "Razer DeathAdder V3 Pro", period: "2023-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2021-2023" }],
+  },
+  { name: "Hardecki", game: "Apex", team: "Supernova", mouse: "Logitech G Pro X Superlight 2", hz: 4000, dpi: 800, sens: 1.2, edpi: 960, role: "Fragger", country: "🇷🇺", age: 22, fullName: "Konstantin Kozlov",
+    bio: "Konstantin 'Hardecki' Kozlov is a Russian Apex Legends player on Supernova who is considered the best player in EMEA and one of the top three aimers in the world. His aggressive, fearless playstyle — pushing fights that other players would avoid — has produced some of the most legendary clips in Apex history. His 4000 Hz polling rate on the Superlight 2 makes him one of the highest-polling-rate players in competitive Apex, reflecting his pursuit of the smoothest possible input.",
+    achievements: ["Best Apex player in EMEA", "Supernova franchise star", "Top 3 aimer in world", "Russian Apex prodigy", "4000 Hz polling rate pioneer", "Most aggressive pro playstyle", "Legendary Apex clips", "ALGS EMEA dominant", "Fearless push style", "Russian esports icon"],
+    mouseHistory: [{ mouse: "Logitech G Pro X Superlight 2", period: "2024-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2021-2024" }],
+  },
+  { name: "Albralelie", game: "Apex", team: "Hotdog Mafia", mouse: "Finalmouse Hyperlight", hz: 8000, dpi: 800, sens: 1.4, edpi: 1120, role: "Fragger", country: "🇺🇸", age: 23, fullName: "Mac Beckwith",
+    bio: "Mac 'Albralelie' Beckwith is an American Apex Legends player whose mechanical talent was so obvious from Apex's launch that he was considered the best player in the world during the game's first year. His time on TSM alongside ImperialHal produced the most dominant Apex roster ever assembled. His Finalmouse Hyperlight at 8000 Hz polling rate represents the bleeding edge of competitive mouse technology, and his willingness to adopt ultra-high polling rates reflects his pursuit of every possible competitive advantage.",
+    achievements: ["Best Apex player in year one", "TSM dominant era alongside ImperialHal", "8000 Hz polling rate adopter", "American Apex mechanical star", "Finalmouse Hyperlight pioneer", "ALGS champion era", "One of fastest aimers ever", "TSM legacy player", "Competitive Apex pioneer", "Movement and aim hybrid"],
+    mouseHistory: [{ mouse: "Finalmouse Hyperlight", period: "2025-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2021-2025" }],
+  },
+  { name: "Dropped", game: "Apex", team: "Grow Gaming", mouse: "Ninjutso Sora V2", hz: 1000, dpi: 400, sens: 2.2, edpi: 880, role: "IGL", country: "🇺🇸", age: 25, fullName: "Mark Thees",
+    bio: "Mark 'Dropped' Thees is an American Apex Legends player and IGL who has been one of the most consistent competitors in ALGS history. His Ninjutso Sora V2 is one of the most unusual mouse choices in professional Apex — Ninjutso is a boutique Japanese brand rarely seen at the highest competitive level, making Dropped one of its most prominent ambassadors.",
+    achievements: ["Consistent ALGS competitor", "Ninjutso Sora V2 — rare boutique mouse", "American Apex IGL", "400 DPI precision approach", "ALGS veteran", "Grow Gaming player", "Boutique mouse ambassador", "NA Apex stalwart", "IGL leadership", "Competitive Apex longevity"],
+    mouseHistory: [{ mouse: "Ninjutso Sora V2", period: "2024-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2021-2024" }],
+  },
+  { name: "HisWattson", game: "Apex", team: "Content Creator", mouse: "Razer Viper V3 Pro", hz: 1000, dpi: 800, sens: 1.3, edpi: 1040, role: "Fragger", country: "🇺🇸", age: 23, fullName: "HisWattson",
+    bio: "HisWattson is an American Apex Legends competitor and content creator known for his mastery of Wattson — one of the least-picked legends in competitive play — and his viral moments in ALGS tournaments. His ability to make a defensive legend look aggressive has made him a fan favorite.",
+    achievements: ["Wattson specialist at pro level", "American Apex competitor/creator", "ALGS viral moments", "Fan favorite personality", "Defensive legend played aggressively", "Content creation success", "ALGS competitor", "NA Apex star", "Unique legend choice", "Community favorite"],
+    mouseHistory: [{ mouse: "Razer Viper V3 Pro", period: "2024-Present" }],
+  },
+  { name: "Mande", game: "Apex", team: "Content Creator", mouse: "Logitech G Pro X Superlight 2", hz: 1000, dpi: 1600, sens: 0.6, edpi: 960, role: "Fragger", country: "🇩🇰", age: 28, fullName: "Mande",
+    bio: "Mande is a Danish Apex Legends content creator and former pro whose entertaining streams and insane mechanical skill have built one of the largest Apex audiences in Europe. His 1600 DPI with 0.6 sensitivity creates the same eDPI as someone on 800/1.2, but the higher DPI provides smoother pixel-level tracking — a setup choice that shows his technical understanding of mouse sensors.",
+    achievements: ["Danish Apex content star", "Former EU competitive player", "1600 DPI sensor optimization", "European Apex audience leader", "Entertaining stream personality", "Technical mouse setup", "EU Apex community figure", "Danish esports icon", "Mechanical skill showcase", "Apex content creation success"],
+    mouseHistory: [{ mouse: "Logitech G Pro X Superlight 2", period: "2024-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2021-2024" }],
+  },
+  { name: "Reps", game: "Apex", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 1.3, edpi: 1040, role: "Support", country: "🇺🇸", age: 25, fullName: "Jordan Wolfe",
+    bio: "Jordan 'Reps' Wolfe is an American Apex Legends player who was the third member of the legendary TSM trio alongside ImperialHal and Albralelie. As the support player, Reps was the glue that held together the most dominant Apex roster ever assembled. His quiet consistency and team-first mentality made TSM's aggression possible.",
+    achievements: ["TSM legendary trio member", "Support player for greatest Apex team", "ALGS champion", "American Apex veteran", "Team-first mentality", "TSM era consistency", "NA Apex stalwart", "Support role excellence", "ALGS veteran", "TSM franchise player"],
+    mouseHistory: [{ mouse: "Logitech G Pro X Superlight", period: "2021-Present" }],
+  },
+  { name: "lyr1c", game: "Apex", team: "XSET", mouse: "Lamzu Maya X", hz: 1000, dpi: 1600, sens: 0.6, edpi: 960, role: "Fragger", country: "🇺🇸", age: 26, fullName: "Lyric Quinonez",
+    bio: "Lyric 'lyr1c' Quinonez is an American Apex Legends player on XSET whose Lamzu Maya X makes him one of the few prominent Apex pros using a Lamzu mouse. His 1600 DPI / 0.6 sens setup mirrors Mande's approach of using high DPI with low in-game sensitivity for smoother tracking.",
+    achievements: ["XSET Apex player", "Lamzu Maya X user", "1600 DPI smooth tracking", "American Apex competitor", "ALGS performer", "XSET core roster", "Boutique mouse in Apex", "NA tournament regular", "Competitive Apex career", "High-DPI low-sens approach"],
+    mouseHistory: [{ mouse: "Lamzu Maya X", period: "2024-Present" }, { mouse: "Logitech G Pro X Superlight", period: "2021-2024" }],
+  },
+  { name: "Lou", game: "Apex", team: "Virtus.pro", mouse: "FinalMouse Starlight-12", hz: 1000, dpi: 400, sens: 2.5, edpi: 1000, role: "Fragger", country: "🇺🇸", age: 24, fullName: "Lou",
+    bio: "Lou is an American Apex Legends player on Virtus.pro who has been one of NA's most aggressive fraggers across multiple organizations. His 400 DPI is unusually low for Apex — most pros use 800 — requiring massive arm movements for the fast-paced tracking that Apex demands.",
+    achievements: ["Virtus.pro Apex player", "NA aggressive fragger", "400 DPI — lowest in Apex scene", "Multiple org career", "ALGS competitor", "Known for aggressive play", "VP franchise player", "Low-sens Apex approach", "NA tournament regular", "American Apex talent"],
+    mouseHistory: [{ mouse: "FinalMouse Starlight-12", period: "2022-Present" }],
+  },
+  { name: "Selly", game: "Apex", team: "Crazy Raccoon", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 1.3, edpi: 1040, role: "Fragger", country: "🇰🇷", age: 24, fullName: "Selly",
+    bio: "Selly is a South Korean Apex Legends player on Crazy Raccoon alongside Ras, forming one of the most mechanically talented duos in Asian Apex. The Korean-Japanese Crazy Raccoon roster has been a dominant force in APAC competition, and Selly's precise tracking complements Ras's aggressive pushes perfectly.",
+    achievements: ["Crazy Raccoon alongside Ras", "Korean Apex mechanical talent", "APAC dominant duo", "ALGS APAC competitor", "Korean precision aimer", "CR franchise player", "Asian Apex star", "Mechanical duo with Ras", "Korean esports in Apex", "APAC tournament regular"],
+    mouseHistory: [{ mouse: "Logitech G Pro X Superlight", period: "2021-Present" }],
+  },
+  { name: "Crylix", game: "Apex", team: "TSM", mouse: "FinalMouse Starlight-12", hz: 1000, dpi: 800, sens: 1.1, edpi: 880, role: "Fragger", country: "🇯🇵", age: 20, fullName: "Crylix",
+    bio: "Crylix is a Japanese Apex Legends player on TSM who burst onto the scene as a teenage mechanical prodigy from Japan. His raw aim talent was so impressive that TSM — historically an NA-focused organization — recruited him to fill the fragging role left by Albralelie, making him one of the few Japanese players on a top NA org.",
+    achievements: ["TSM Apex player", "Japanese mechanical prodigy", "One of few JP players on NA org", "Teenage sensation", "ALGS competitor", "TSM franchise player", "Japanese Apex talent", "Raw aim prodigy", "Cross-regional career", "Finalmouse Starlight user"],
+    mouseHistory: [{ mouse: "FinalMouse Starlight-12", period: "2022-Present" }],
+  },
+  { name: "9impulse", game: "Apex", team: "Supernova", mouse: "ZOWIE FK2-DW", hz: 1000, dpi: 800, sens: 1.2, edpi: 960, role: "Fragger", country: "🇧🇾", age: 23, fullName: "9impulse",
+    bio: "9impulse is a Belarusian Apex Legends player on Supernova alongside Hardecki, forming one of EMEA's most feared competitive duos. His ZOWIE FK2-DW is one of the few Zowie wireless mice in competitive Apex, connecting him to the FK shape tradition that has been popular since CS:GO.",
+    achievements: ["Supernova alongside Hardecki", "Belarusian Apex player", "EMEA feared duo", "ZOWIE FK2-DW user", "ALGS EMEA competitor", "Zowie wireless in Apex", "Eastern European talent", "Supernova core roster", "FK shape tradition", "EMEA tournament regular"],
+    mouseHistory: [{ mouse: "ZOWIE FK2-DW", period: "2023-Present" }],
+  },
+  { name: "YukaF", game: "Apex", team: "Fnatic", mouse: "Endgame Gear OP1w 4K", hz: 1000, dpi: 1600, sens: 0.54, edpi: 864, role: "IGL", country: "🇯🇵", age: 24, fullName: "YukaF",
+    bio: "YukaF is a Japanese Apex Legends player and IGL on Fnatic whose Endgame Gear OP1w 4K makes him one of the only prominent Apex pros using Endgame Gear hardware. Japan's Apex scene is arguably the second-largest in the world after NA, and YukaF's position on Fnatic gives him visibility across both Asian and Western audiences.",
+    achievements: ["Fnatic Apex IGL", "Endgame Gear OP1w user — rare in Apex", "Japanese Apex star", "ALGS APAC competitor", "Fnatic franchise player", "Japan's Apex scene depth", "Boutique mouse at pro level", "1600 DPI optimization", "Japanese IGL talent", "Cross-regional visibility"],
+    mouseHistory: [{ mouse: "Endgame Gear OP1w 4K", period: "2024-Present" }],
+  },
+  { name: "SP9RK1E", game: "Overwatch 2", team: "Falcons Esports", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 6.75, edpi: 5400, role: "DPS", country: "🇰🇷", age: 22, fullName: "Kim Yeong-han",
+    bio: "Kim 'SP9RK1E' Yeong-han is a South Korean Overwatch 2 DPS player on Falcons Esports who is considered one of the most mechanically flexible DPS players in OW2 history. His hero pool spans virtually every DPS character, and his ability to perform on both hitscan and projectile heroes at the highest level makes him invaluable. His eDPI of 5400 sits in the sweet spot for OW2 DPS players who need both tracking precision and the ability to quickly turn during dive engagements.",
+    achievements: ["Falcons Esports OW2 star", "Most flexible DPS hero pool", "Korean OW2 mechanical talent", "Hitscan and projectile mastery", "OWCS competitor", "Among best DPS players ever", "Falcons franchise player", "Korean esports prodigy", "DPS flexibility icon", "OW2 star player"],
+    mouseHistory: [{ mouse: "Razer Viper V2 Pro", period: "2023-Present" }],
+  },
+  { name: "Fleta", game: "Overwatch 2", team: "Free Agent", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 5.5, edpi: 4400, role: "DPS", country: "🇰🇷", age: 26, fullName: "Kim Byung-sun",
+    bio: "Kim 'Fleta' Byung-sun is a South Korean Overwatch player who was a cornerstone of the Shanghai Dragons' incredible redemption arc — from the worst team in OWL Season 1 (0-40) to dominant champions. His Echo play during the 2020 Grand Finals was so transcendent that the 'Fleta deadlift' became an OW community meme for a player single-handedly carrying their team.",
+    achievements: ["Shanghai Dragons champion", "Part of 0-40 to champion arc", "Fleta deadlift meme origin", "Korean DPS legend", "Echo mastery iconic", "OWL Grand Finals MVP performance", "Shanghai franchise star", "One of greatest DPS ever", "OW1/OW2 era player", "Korean OW legacy"],
+    mouseHistory: [{ mouse: "Logitech G Pro X Superlight", period: "2021-Present" }, { mouse: "Logitech G Pro Wireless", period: "2019-2021" }],
+  },
+  { name: "Leave", game: "Overwatch 2", team: "Free Agent", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 6.0, edpi: 4800, role: "DPS", country: "🇨🇳", age: 23, fullName: "Huang Xin",
+    bio: "Huang 'Leave' Xin is a Chinese Overwatch player who won the 2021 OWL Grand Finals MVP as the star DPS for the Chengdu Hunters. His flexibility to play virtually any hero at a world-class level made him one of the most complete players in OW history. His Chinese nationality makes him one of the few non-Korean players to win OWL MVP.",
+    achievements: ["2021 OWL Grand Finals MVP", "Chengdu Hunters star", "Chinese OW legend", "Non-Korean OWL MVP — rare achievement", "Ultimate hero flexibility", "One of most complete OW players", "Chinese esports icon", "OWCS era player", "World-class on any hero", "Chinese OW legacy"],
+    mouseHistory: [{ mouse: "Razer Viper V2 Pro", period: "2023-Present" }],
+  },
+  { name: "Jjonak", game: "Overwatch 2", team: "Free Agent", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 7.0, edpi: 5600, role: "Support", country: "🇰🇷", age: 26, fullName: "Bang Sung-hyeon",
+    bio: "Bang 'Jjonak' Sung-hyeon is a South Korean Overwatch player who revolutionized the support role by playing Zenyatta as an offensive weapon rather than a passive healer. His Season 1 OWL MVP award on the New York Excelsior was historic — the first-ever OWL MVP — and his aggressive Zenyatta play inspired an entire generation of support players to prioritize damage output alongside healing.",
+    achievements: ["First-ever OWL MVP (Season 1)", "Revolutionized support role", "NYXL Season 1 star", "Aggressive Zenyatta pioneer", "Korean support legend", "Changed how support is played", "OWL MVP inaugural winner", "Inspired generation of support players", "New York Excelsior icon", "Korean OW legacy"],
+    mouseHistory: [{ mouse: "Razer Viper V2 Pro", period: "2023-Present" }, { mouse: "Razer Viper Ultimate", period: "2020-2023" }],
+  },
+  { name: "Super", game: "Overwatch 2", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 5.0, edpi: 4000, role: "Tank", country: "🇺🇸", age: 25, fullName: "Matthew DeLisi",
+    bio: "Matthew 'Super' DeLisi is an American Overwatch player turned content creator who was one of the most charismatic personalities in OWL history. As the main tank for the San Francisco Shock during their back-to-back championships (2019-2020), he was the emotional heart of the most dominant team in OW history. His retirement from competitive play and transition to streaming made him one of the most popular OW content creators.",
+    achievements: ["Back-to-back OWL champion (2019-2020)", "San Francisco Shock tank", "Most charismatic OWL personality", "American OW legend", "Content creator transition", "SF Shock dynasty era", "Tank role excellence", "OWL emotional leader", "Popular OW streamer", "American esports icon"],
+    mouseHistory: [{ mouse: "Logitech G Pro X Superlight", period: "2021-Present" }],
+  },
+  { name: "xQc", game: "Overwatch 2", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 5.0, edpi: 4000, role: "Tank", country: "🇨🇦", age: 29, fullName: "Félix Lengyel",
+    bio: "Félix 'xQc' Lengyel is a Canadian former OWL player turned the most-watched streamer on Twitch. His brief but explosive OWL career on the Dallas Fuel — marked by suspensions, controversies, and genuinely elite Reinhardt/Winston play — launched him into streaming superstardom. xQc's OW origins are fundamental to understanding modern Twitch culture.",
+    achievements: ["Most-watched Twitch streamer", "Dallas Fuel OWL player", "Canadian streaming superstar", "OWL to Twitch pipeline pioneer", "Elite Reinhardt/Winston play", "Most controversial OWL player", "Launched streaming career from OW", "Twitch culture icon", "Canadian esports to content", "OW competitive origins"],
+    mouseHistory: [{ mouse: "Logitech G Pro X Superlight", period: "2021-Present" }, { mouse: "Logitech G Pro Wireless", period: "2018-2021" }],
+  },
+  { name: "Carpe", game: "Overwatch 2", team: "Free Agent", mouse: "Razer Viper V3 Pro", hz: 1000, dpi: 800, sens: 6.5, edpi: 5200, role: "DPS", country: "🇰🇷", age: 25, fullName: "Lee Jae-hyeok",
+    bio: "Lee 'Carpe' Jae-hyeok is a South Korean Overwatch DPS player who was the franchise star of the Philadelphia Fusion throughout the OWL era. His Widowmaker was considered the best in the world for multiple seasons, and his ability to take over matches single-handedly earned him the nickname 'Carpe Diem' — seize the day.",
+    achievements: ["Philadelphia Fusion franchise star", "Best Widowmaker in OWL for seasons", "Korean DPS legend", "Carpe Diem nickname", "Match-winning carry performances", "OWL all-star", "Fusion franchise player", "Widowmaker specialist", "Korean OW legacy", "OWL era DPS icon"],
+    mouseHistory: [{ mouse: "Razer Viper V3 Pro", period: "2025-Present" }, { mouse: "Razer Viper V2 Pro", period: "2023-2025" }],
+  },
+  { name: "Viol2t", game: "Overwatch 2", team: "Free Agent", mouse: "Razer Viper V3 Pro", hz: 1000, dpi: 800, sens: 5.0, edpi: 4000, role: "Support", country: "🇰🇷", age: 26, fullName: "Park Min-ki",
+    bio: "Park 'Viol2t' Min-ki is a South Korean Overwatch support player who was a key member of the San Francisco Shock dynasty, winning back-to-back OWL championships. His Ana play was considered the best in the world during the Shock's dominant era.",
+    achievements: ["SF Shock back-to-back champion", "Best Ana player in Shock era", "Korean support excellence", "SF Shock dynasty member", "OWL champion", "Support role mastery", "Korean OW legacy", "Shock franchise player", "OWL all-star", "Support role icon"],
+    mouseHistory: [{ mouse: "Razer Viper V3 Pro", period: "2025-Present" }, { mouse: "Razer Viper V2 Pro", period: "2023-2025" }],
+  },
+  { name: "Kevster", game: "Overwatch 2", team: "Free Agent", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 5.5, edpi: 4400, role: "DPS", country: "🇸🇪", age: 24, fullName: "Kevin Persson",
+    bio: "Kevin 'Kevster' Persson is a Swedish Overwatch DPS player who was the franchise star of the LA Gladiators and one of the few Western players consistently ranked among the best DPS in the world. Sweden's esports tradition extends from CS to OW through players like Kevster.",
+    achievements: ["LA Gladiators franchise star", "Best Western DPS player", "Swedish OW legend", "Consistent world-class DPS", "OWL all-star", "Gladiators franchise player", "Swedish esports tradition", "Western DPS icon", "OWL era star", "European OW talent"],
+    mouseHistory: [{ mouse: "Razer Viper V2 Pro", period: "2023-Present" }],
+  },
+  { name: "Sinatraa", game: "Overwatch 2", team: "Free Agent", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 5.5, edpi: 4400, role: "DPS", country: "🇺🇸", age: 24, fullName: "Jay Won",
+    bio: "Jay 'Sinatraa' Won is an American esports player who won the 2019 OWL MVP on the San Francisco Shock before transitioning to Valorant with Sentinels. His Zarya play during the Shock's championship run was considered revolutionary, and his OW career established the mechanical foundation that made him elite in Valorant.",
+    achievements: ["2019 OWL MVP", "SF Shock champion", "Transitioned OW to Valorant", "Revolutionary Zarya player", "American OW legend", "Sentinels Valorant era", "Cross-game mechanical talent", "Shock dynasty member", "OWL MVP winner", "American esports prodigy"],
+    mouseHistory: [{ mouse: "Logitech G Pro X Superlight", period: "2021-Present" }],
+  },
+  { name: "mL7", game: "Overwatch 2", team: "Content Creator", mouse: "Razer DeathAdder V3 Pro", hz: 1000, dpi: 800, sens: 6.9, edpi: 5520, role: "Support", country: "🇪🇸", age: 30, fullName: "mL7",
+    bio: "mL7 is a Spanish Overwatch 2 content creator who is the most popular OW2 educational streamer, known for his Ana gameplay that is considered the gold standard for support players trying to improve. His DeathAdder V3 Pro preference makes him one of the few prominent OW2 streamers on an ergonomic mouse.",
+    achievements: ["Most popular OW2 educational streamer", "Ana gameplay gold standard", "Spanish OW2 creator", "DeathAdder ergonomic user", "Support education pioneer", "Community educator", "Spanish esports personality", "OW2 content creation star", "Ana specialist", "European OW2 icon"],
+    mouseHistory: [{ mouse: "Razer DeathAdder V3 Pro", period: "2023-Present" }],
+  },
+  { name: "Scump", game: "Call of Duty", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 6, edpi: 4800, role: "SMG", country: "🇺🇸", age: 29, fullName: "Seth Abner",
+    bio: "Seth 'Scump' Abner is the most popular Call of Duty player of all time and one of the greatest competitive CoD players in history. Known as the 'King of CoD,' his career spans over a decade of dominance across multiple CoD titles. His 2017 CoD World Championship with OpTic Gaming remains one of the most celebrated moments in CoD esports history. While CoD is primarily played on controller at the competitive level, Scump's mouse settings for Warzone content creation make him relevant to the PC peripheral space.",
+    achievements: ["King of CoD — most popular CoD player ever", "CoD World Champion 2017 with OpTic", "Decade-long competitive career", "OpTic Gaming legend", "Multiple CoD championship rings", "Most followed CoD personality", "American CoD icon", "CoD esports face", "Warzone content creator", "CoD hall of fame"],
+    mouseHistory: [{ mouse: "Logitech G Pro X Superlight", period: "2021-Present" }],
+  },
+  { name: "Crimsix", game: "Call of Duty", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 5, edpi: 4000, role: "AR", country: "🇺🇸", age: 31, fullName: "Ian Porter",
+    bio: "Ian 'Crimsix' Porter is the winningest Call of Duty player in history with more tournament championships than any other player. His career spans from the very beginning of professional CoD through every major era, and his strategic mind and consistency have made him the GOAT of competitive CoD by the numbers.",
+    achievements: ["Most tournament wins in CoD history", "CoD GOAT by numbers", "Multiple world championships", "Longest competitive CoD career", "Strategic mind legend", "OpTic/Empire/NYSL eras", "American CoD legend", "CoD esports pioneer", "Hall of fame career", "Winningest player ever"],
+    mouseHistory: [{ mouse: "Logitech G Pro X Superlight", period: "2021-Present" }],
+  },
+  { name: "Formal", game: "Call of Duty", team: "Content Creator", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 5, edpi: 4000, role: "AR", country: "🇺🇸", age: 29, fullName: "Matthew Piper",
+    bio: "Matthew 'Formal' Piper is an American Call of Duty player who was the AR slayer on the legendary OpTic dynasty roster alongside Scump, Crimsix, and Karma — widely considered the greatest CoD roster ever assembled. Before CoD, Formal was a professional Halo player, making him one of the most successful cross-game console competitors in esports history.",
+    achievements: ["OpTic dynasty member", "Greatest CoD roster ever", "Former Halo pro", "Cross-game console legend", "CoD World Champion", "AR slayer role", "OpTic alongside Scump/Crimsix/Karma", "American CoD star", "Halo-to-CoD transition", "Console esports icon"],
+    mouseHistory: [{ mouse: "Razer Viper V2 Pro", period: "2023-Present" }],
+  },
+  { name: "Karma", game: "Call of Duty", team: "Retired", mouse: "Logitech G Pro Wireless", hz: 1000, dpi: 800, sens: 6, edpi: 4800, role: "Flex", country: "🇨🇦", age: 30, fullName: "Damon Barlow",
+    bio: "Damon 'Karma' Barlow is a Canadian Call of Duty player who is the only three-time CoD World Champion in history. His versatility and ability to do whatever his team needed — whether slaying, objective play, or support — made him the ultimate team player. As a member of the OpTic dynasty, Karma completed the quartet that dominated CoD for years.",
+    achievements: ["Only 3x CoD World Champion", "OpTic dynasty member", "Canadian CoD legend", "Ultimate team player", "Versatility across all CoD roles", "Three championship rings", "CoD GOAT argument", "OpTic quartet member", "Canadian esports icon", "CoD hall of fame"],
+    mouseHistory: [{ mouse: "Logitech G Pro Wireless", period: "2019-Present" }],
+  },
+  { name: "HusKerrs", game: "Call of Duty", team: "Luminosity", mouse: "Corsair SABRE RGB Pro", hz: 1000, dpi: 800, sens: 3.6, edpi: 2880, role: "Fragger", country: "🇺🇸", age: 28, fullName: "Jordan Thomas",
+    bio: "Jordan 'HusKerrs' Thomas is an American Warzone player on Luminosity who is considered the greatest Warzone player in history. His kill records, tournament wins, and consistent dominance across every Warzone era have made him the undisputed king of the battle royale mode that brought millions of new players to Call of Duty.",
+    achievements: ["Greatest Warzone player ever", "Luminosity Warzone star", "Multiple Warzone kill records", "Warzone tournament dominance", "American BR king", "Corsair SABRE user", "Warzone era defining player", "BR-specific GOAT", "Consistent across all WZ eras", "CoD Warzone face"],
+    mouseHistory: [{ mouse: "Corsair SABRE RGB Pro", period: "2022-Present" }],
+  },
+  { name: "TimTheTatman", game: "Call of Duty", team: "Content Creator", mouse: "Razer Viper V3 Pro", hz: 1000, dpi: 800, sens: 6, edpi: 4800, role: "Content", country: "🇺🇸", age: 35, fullName: "Timothy Betar",
+    bio: "Timothy 'TimTheTatman' Betar is one of the biggest gaming content creators in the world whose Warzone streams alongside Nickmercs and DrDisrespect defined the game's cultural peak. His everyman personality and genuine reactions have built one of the most loyal audiences in gaming.",
+    achievements: ["One of biggest gaming creators", "Warzone streaming icon", "Everyman gaming personality", "Millions of followers", "Warzone cultural peak definer", "American gaming icon", "Content creation longevity", "Loyal audience builder", "Warzone squad streams", "Gaming entertainment star"],
+    mouseHistory: [{ mouse: "Razer Viper V3 Pro", period: "2024-Present" }, { mouse: "Razer DeathAdder V3 Pro", period: "2022-2024" }],
+  },
+  { name: "jstn", game: "Rocket League", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇺🇸", age: 22, fullName: "Justin Morales",
+    bio: "Justin 'jstn' Morales is an American Rocket League player who scored perhaps the most famous goal in esports history — the zero-second equalizer at the Season 5 RLCS World Championship that sent the grand finals to overtime. That single moment, where NRG was about to lose and jstn pulled off an impossible aerial redirect, is widely considered the greatest clutch play in Rocket League history and one of the top moments in all of esports.",
+    achievements: ["Most famous RL goal ever scored", "RLCS Season 5 zero-second equalizer", "NRG franchise star", "Greatest clutch in RL history", "American RL legend", "RLCS champion", "One of top esports moments ever", "NRG era defining player", "American RL icon", "Mechanical prodigy"],
+    mouseHistory: [{ mouse: "Logitech G Pro X Superlight", period: "2021-Present" }],
+  },
+  { name: "Squishy", game: "Rocket League", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇨🇦", age: 24, fullName: "Mariano Arruda",
+    bio: "Mariano 'Squishy' Arruda is a Canadian Rocket League player who is the most popular RL content creator of all time. His ceiling shot double touch — uploaded to Reddit in 2016 — was the viral moment that showed the world what Rocket League mechanical skill could look like at its peak. His Cloud9 and NRG competitive career produced multiple championship-level results alongside his massive YouTube following.",
+    achievements: ["Most popular RL content creator", "Ceiling shot double touch viral pioneer", "Cloud9/NRG competitive career", "Canadian RL legend", "Millions of YouTube subscribers", "RL mechanical innovation", "Defined RL highlight culture", "RLCS champion", "Canadian esports icon", "RL content creation GOAT"],
+    mouseHistory: [{ mouse: "Logitech G Pro X Superlight", period: "2021-Present" }],
+  },
+  { name: "Kaydop", game: "Rocket League", team: "Free Agent", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇫🇷", age: 26, fullName: "Alexandre Courant",
+    bio: "Alexandre 'Kaydop' Courant is a French Rocket League player who was the first player to win three RLCS World Championships, establishing himself as the greatest RL player of the pre-mechanical era. His game sense, positioning, and consistency across multiple championship rosters (Gale Force, Dignitas, Vitality) made him the definition of a winner.",
+    achievements: ["First 3x RLCS World Champion", "Greatest RL player of early era", "French RL legend", "Gale Force/Dignitas/Vitality champion", "Positioning and game sense GOAT", "Most RLCS titles at his peak", "French esports icon", "RL dynasty player", "Winner mentality personified", "European RL legend"],
+    mouseHistory: [{ mouse: "Logitech G Pro X Superlight", period: "2021-Present" }],
+  },
+  { name: "GarrettG", game: "Rocket League", team: "Content Creator", mouse: "Logitech G Pro Wireless", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇺🇸", age: 24, fullName: "Garrett Gordon",
+    bio: "Garrett 'GarrettG' Gordon is an American Rocket League player who has been on NRG Esports since the very beginning of organized RL competition, making him one of the longest-tenured players with a single organization in all of esports. His consistency across every era of competitive RL — from Season 1 through the modern era — is unmatched.",
+    achievements: ["NRG Esports since RL beginning", "Longest-tenured RL player at one org", "RLCS champion", "American RL legend", "Consistency across every RL era", "NRG franchise player", "RL competitive longevity", "American esports icon", "Steady excellence personified", "NRG RL history"],
+    mouseHistory: [{ mouse: "Logitech G Pro Wireless", period: "2019-Present" }],
+  },
+  { name: "Fairy Peak", game: "Rocket League", team: "Free Agent", mouse: "Logitech G Pro Wireless", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇫🇷", age: 27, fullName: "Victor Locquet",
+    bio: "Victor 'Fairy Peak' Locquet is a French Rocket League player who alongside Kaydop formed the French RL duo that dominated European competition for years on Team Vitality. His 1v1 skills were considered the best in the world during his peak, winning multiple Mannfield Night 1v1 tournaments.",
+    achievements: ["Vitality French duo with Kaydop", "Best 1v1 player at his peak", "French RL legend", "European RL dominant", "Mannfield Night 1v1 champion", "Vitality franchise player", "French esports tradition", "1v1 specialist", "European RL icon", "French RL legacy"],
+    mouseHistory: [{ mouse: "Logitech G Pro Wireless", period: "2019-Present" }],
+  },
 ];
 const extendedPlayers = [
   // R6 Siege (from prosettings.net CSV import)
@@ -2685,10 +2743,8 @@ const extendedPlayers = [
 
 
   // ─── OVERWATCH 2 BATCH ───
-  { name: "Proper", game: "Overwatch 2", team: "SF Shock", mouse: "Razer Viper V3 Pro", hz: 4000, dpi: 800, sens: 3.5, edpi: 2800, role: "DPS", country: "🇰🇷" },
   { name: "Kilo", game: "Overwatch 2", team: "Seoul Dynasty", mouse: "Logitech G Pro X Superlight 2", hz: 4000, dpi: 800, sens: 4.0, edpi: 3200, role: "DPS", country: "🇰🇷" },
   { name: "MN3", game: "Overwatch 2", team: "Philly Fusion", mouse: "Razer Viper V3 Pro", hz: 4000, dpi: 800, sens: 3.0, edpi: 2400, role: "DPS", country: "🇰🇷" },
-  { name: "Profit", game: "Overwatch 2", team: "Seoul Dynasty", mouse: "Logitech G Pro X Superlight 2", hz: 4000, dpi: 800, sens: 5.0, edpi: 4000, role: "DPS", country: "🇰🇷" },
   { name: "LiP2", game: "Overwatch 2", team: "Shanghai Dragons", mouse: "Razer DeathAdder V3 Pro", hz: 4000, dpi: 800, sens: 3.8, edpi: 3040, role: "DPS", country: "🇰🇷" },
   { name: "Hanbin", game: "Overwatch 2", team: "Dallas Fuel", mouse: "Logitech G Pro X Superlight 2", hz: 4000, dpi: 800, sens: 5.5, edpi: 4400, role: "Tank", country: "🇰🇷" },
   { name: "smurf", game: "Overwatch 2", team: "Atlanta Reign", mouse: "Razer Viper V3 Pro", hz: 4000, dpi: 800, sens: 4.2, edpi: 3360, role: "Tank", country: "🇰🇷" },
@@ -4383,19 +4439,6 @@ const extendedPlayers = [
   { name: "pancada", game: "Valorant", team: "Free Agent", mouse: "Razer Viper V3 Pro", hz: 1000, dpi: 800, sens: 0.28, edpi: 224, role: "Controller", country: "🇧🇷" },
   { name: "Oner", game: "LoL", team: "T1", mouse: "Logitech G Pro X Superlight 2", hz: 1000, dpi: 800, sens: null, edpi: null, role: "Jungle", country: "🇰🇷" },
   { name: "Deft", game: "LoL", team: "Free Agent", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 1600, sens: null, edpi: null, role: "ADC", country: "🇰🇷" },
-  { name: "dupreeh", game: "CS2", team: "Free Agent", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 400, sens: 1.8, edpi: 720, role: "Rifler", country: "🇩🇰" },
-  { name: "gla1ve", game: "CS2", team: "Free Agent", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 400, sens: 1.8, edpi: 720, role: "Rifler", country: "🇩🇰" },
-  { name: "Xyp9x", game: "CS2", team: "Free Agent", mouse: "Logitech G Pro Wireless", hz: 1000, dpi: 400, sens: 2.5, edpi: 1000, role: "Rifler", country: "🇩🇰" },
-  { name: "Stewie2K", game: "CS2", team: "Free Agent", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 400, sens: 1.75, edpi: 700, role: "Rifler", country: "🇺🇸" },
-  { name: "frozen", game: "CS2", team: "MOUZ", mouse: "Razer Viper V3 Pro", hz: 4000, dpi: 800, sens: 1.0, edpi: 800, role: "Rifler", country: "🇸🇰" },
-  { name: "ax1Le", game: "CS2", team: "Natus Vincere", mouse: "Logitech G Pro X Superlight 2", hz: 1000, dpi: 400, sens: 1.4, edpi: 560, role: "Rifler", country: "🇷🇺" },
-  { name: "hobbit", game: "CS2", team: "Free Agent", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 400, sens: 2.35, edpi: 940, role: "Rifler", country: "🇰🇿" },
-  { name: "saadhak", game: "Valorant", team: "LOUD", mouse: "Razer Viper V3 Pro", hz: 1000, dpi: 800, sens: 0.3, edpi: 240, role: "Initiator", country: "🇦🇷" },
-  { name: "FNS", game: "Valorant", team: "Free Agent", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 400, sens: 0.53, edpi: 212, role: "IGL", country: "🇨🇦" },
-  { name: "Leo", game: "Valorant", team: "Free Agent", mouse: "Razer Viper V3 Pro", hz: 1000, dpi: 800, sens: 0.28, edpi: 224, role: "Initiator", country: "🇸🇪" },
-  { name: "pancada", game: "Valorant", team: "Free Agent", mouse: "Razer Viper V3 Pro", hz: 1000, dpi: 800, sens: 0.28, edpi: 224, role: "Controller", country: "🇧🇷" },
-  { name: "Oner", game: "LoL", team: "T1", mouse: "Logitech G Pro X Superlight 2", hz: 1000, dpi: 800, sens: null, edpi: null, role: "Jungle", country: "🇰🇷" },
-  { name: "Deft", game: "LoL", team: "Free Agent", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 1600, sens: null, edpi: null, role: "ADC", country: "🇰🇷" },
   // Fortnite (from prosettings.net CSV import - 264 players)
   { name: "Bucke", game: "Fortnite", team: "Dignitas", mouse: "Logitech G Pro X Superlight 2", hz: 1000, dpi: 400, sens: 12, edpi: null, role: "Solo/Duo", country: "🇺🇸" },
   { name: "OliverOG", game: "Fortnite", team: "Dignitas", mouse: "Razer Viper V3 Pro", hz: 1000, dpi: 800, sens: 6.6, edpi: null, role: "Solo/Duo", country: "🇺🇸" },
@@ -4661,6 +4704,59 @@ const extendedPlayers = [
   { name: "Riversan", game: "Fortnite", team: "Retired", mouse: "Logitech G Pro Wireless", hz: 1000, dpi: 800, sens: 6.5, edpi: null, role: "Solo/Duo", country: "🇺🇸" },
   { name: "Dubs", game: "Fortnite", team: "Retired", mouse: "FinalMouse Air58 Ninja CBB", hz: 1000, dpi: 800, sens: 6, edpi: null, role: "Solo/Duo", country: "🇺🇸" },
   { name: "nyhrox", game: "Fortnite", team: "Retired", mouse: "Razer Viper V3 Pro", hz: 1000, dpi: 800, sens: 6, edpi: null, role: "Solo/Duo", country: "🇳🇴" },
+  // ─── Multi-game additions (Apex, OW2, CoD, Rocket League)
+  { name: "NiceWigg", game: "Apex", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 1.3, edpi: 1040, role: "Content", country: "🇺🇸" },
+  { name: "faide", game: "Apex", team: "Content Creator", mouse: "Finalmouse Ultralight X", hz: 1000, dpi: 1600, sens: 0.7, edpi: 1120, role: "Content", country: "🇺🇸" },
+  { name: "Sweet", game: "Apex", team: "Luminosity", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 1.4, edpi: 1120, role: "IGL", country: "🇺🇸" },
+  { name: "Snip3down", game: "Apex", team: "Free Agent", mouse: "Razer DeathAdder V3 Pro", hz: 1000, dpi: 800, sens: 1.6, edpi: 1280, role: "Fragger", country: "🇺🇸" },
+  { name: "SHIV", game: "Apex", team: "Content Creator", mouse: "Logitech G Pro X Superlight 2", hz: 1000, dpi: 800, sens: 1.6, edpi: 1280, role: "Content", country: "🇮🇳" },
+  { name: "Taxi2g", game: "Apex", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 2.0, edpi: 1600, role: "Content", country: "🇺🇸" },
+  { name: "iitztimmy", game: "Apex", team: "Content Creator", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 1.4, edpi: 1120, role: "Content", country: "🇺🇸" },
+  { name: "Nokokopuffs", game: "Apex", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 1.3, edpi: 1040, role: "Content", country: "🇺🇸" },
+  { name: "SP9RK1E", game: "Overwatch 2", team: "Falcons Esports", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 6.75, edpi: 5400, role: "DPS", country: "🇰🇷" },
+  { name: "ChiYo", game: "Overwatch 2", team: "Falcons Esports", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 6.5, edpi: 5200, role: "Support", country: "🇰🇷" },
+  { name: "HanBin", game: "Overwatch 2", team: "Falcons Esports", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 5, edpi: 4000, role: "Tank", country: "🇰🇷" },
+  { name: "Fielder", game: "Overwatch 2", team: "Falcons Esports", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 4.2, edpi: 3360, role: "Support", country: "🇰🇷" },
+  { name: "Stalk3r", game: "Overwatch 2", team: "Falcons Esports", mouse: "Logitech G Pro X Superlight 2 Dex", hz: 1000, dpi: 1600, sens: 3.58, edpi: 5728, role: "DPS", country: "🇰🇷" },
+  { name: "LIP", game: "Overwatch 2", team: "Crazy Raccoon", mouse: "Logitech G Pro X Superlight 2", hz: 1000, dpi: 800, sens: 5.4, edpi: 4320, role: "DPS", country: "🇰🇷" },
+  { name: "ta1yo", game: "Overwatch 2", team: "ZETA DIVISION", mouse: "ZOWIE EC1-CW", hz: 1000, dpi: 1600, sens: 1.83, edpi: 2928, role: "DPS", country: "🇯🇵" },
+  { name: "Fleta", game: "Overwatch 2", team: "Free Agent", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 5.5, edpi: 4400, role: "DPS", country: "🇰🇷" },
+  { name: "Leave", game: "Overwatch 2", team: "Free Agent", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 6.0, edpi: 4800, role: "DPS", country: "🇨🇳" },
+  { name: "Jjonak", game: "Overwatch 2", team: "Free Agent", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 7.0, edpi: 5600, role: "Support", country: "🇰🇷" },
+  { name: "Super", game: "Overwatch 2", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 5.0, edpi: 4000, role: "Tank", country: "🇺🇸" },
+  { name: "xQc", game: "Overwatch 2", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 5.0, edpi: 4000, role: "Tank", country: "🇨🇦" },
+  { name: "mL7", game: "Overwatch 2", team: "Content Creator", mouse: "Razer DeathAdder V3 Pro", hz: 1000, dpi: 800, sens: 6.9, edpi: 5520, role: "Support", country: "🇪🇸" },
+  { name: "Pine", game: "Overwatch 2", team: "Retired", mouse: "Logitech G Pro Wireless", hz: 1000, dpi: 800, sens: 8.0, edpi: 6400, role: "DPS", country: "🇰🇷" },
+  { name: "Harbleu", game: "Overwatch 2", team: "Luminosity", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 1600, sens: 2.75, edpi: 4400, role: "Tank", country: "🇺🇸" },
+  { name: "WhoRU", game: "Overwatch 2", team: "Free Agent", mouse: "FinalMouse Air58 Ninja CBR", hz: 1000, dpi: 800, sens: 7.9, edpi: 6320, role: "DPS", country: "🇰🇷" },
+  { name: "Marve1", game: "Overwatch 2", team: "Free Agent", mouse: "Roccat Kone Pro Air", hz: 1000, dpi: 1000, sens: 6, edpi: 6000, role: "Tank", country: "🇰🇷" },
+  { name: "XepheR", game: "Overwatch 2", team: "Free Agent", mouse: "Logitech G900", hz: 1000, dpi: 900, sens: 5, edpi: 4500, role: "Tank", country: "🇰🇷" },
+  { name: "Scump", game: "Call of Duty", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 6, edpi: 4800, role: "SMG", country: "🇺🇸" },
+  { name: "Crimsix", game: "Call of Duty", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 5, edpi: 4000, role: "AR", country: "🇺🇸" },
+  { name: "Formal", game: "Call of Duty", team: "Content Creator", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 5, edpi: 4000, role: "AR", country: "🇺🇸" },
+  { name: "Karma", game: "Call of Duty", team: "Retired", mouse: "Logitech G Pro Wireless", hz: 1000, dpi: 800, sens: 6, edpi: 4800, role: "Flex", country: "🇨🇦" },
+  { name: "Clayster", game: "Call of Duty", team: "Retired", mouse: "Logitech G Pro Wireless", hz: 1000, dpi: 800, sens: 5, edpi: 4000, role: "AR", country: "🇺🇸" },
+  { name: "SlasheR", game: "Call of Duty", team: "Free Agent", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 5, edpi: 4000, role: "AR", country: "🇺🇸" },
+  { name: "Envoy", game: "Call of Duty", team: "Free Agent", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 6, edpi: 4800, role: "SMG", country: "🇺🇸" },
+  { name: "Attach", game: "Call of Duty", team: "Free Agent", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 5, edpi: 4000, role: "Flex", country: "🇺🇸" },
+  { name: "Hydra", game: "Call of Duty", team: "Free Agent", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 6, edpi: 4800, role: "SMG", country: "🇫🇷" },
+  { name: "Arcitys", game: "Call of Duty", team: "Free Agent", mouse: "Logitech G Pro Wireless", hz: 1000, dpi: 800, sens: 5, edpi: 4000, role: "AR", country: "🇺🇸" },
+  { name: "iLLeY", game: "Call of Duty", team: "Free Agent", mouse: "Razer DeathAdder V3 Pro", hz: 1000, dpi: 800, sens: 5, edpi: 4000, role: "Flex", country: "🇲🇦" },
+  { name: "HusKerrs", game: "Call of Duty", team: "Luminosity", mouse: "Corsair SABRE RGB Pro", hz: 1000, dpi: 800, sens: 3.6, edpi: 2880, role: "Fragger", country: "🇺🇸" },
+  { name: "TimTheTatman", game: "Call of Duty", team: "Content Creator", mouse: "Razer Viper V3 Pro", hz: 1000, dpi: 800, sens: 6, edpi: 4800, role: "Content", country: "🇺🇸" },
+  { name: "Skyz", game: "Call of Duty", team: "Free Agent", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 5.5, edpi: 4400, role: "AR", country: "🇺🇸" },
+  { name: "jstn", game: "Rocket League", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇺🇸" },
+  { name: "Squishy", game: "Rocket League", team: "Content Creator", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇨🇦" },
+  { name: "Kaydop", game: "Rocket League", team: "Free Agent", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇫🇷" },
+  { name: "GarrettG", game: "Rocket League", team: "Content Creator", mouse: "Logitech G Pro Wireless", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇺🇸" },
+  { name: "Fairy Peak", game: "Rocket League", team: "Free Agent", mouse: "Logitech G Pro Wireless", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇫🇷" },
+  { name: "Turbo", game: "Rocket League", team: "Free Agent", mouse: "Logitech G Pro Wireless", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇳🇱" },
+  { name: "Firstkiller", game: "Rocket League", team: "G2 Esports", mouse: "Finalmouse Ultralight X", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇺🇸" },
+  { name: "Vatira", game: "Rocket League", team: "Karmine Corp", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇫🇷" },
+  { name: "Zen", game: "Rocket League", team: "BDS", mouse: "Razer Viper V2 Pro", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇬🇧" },
+  { name: "M0nkey M00n", game: "Rocket League", team: "BDS", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇫🇷" },
+  { name: "ApparentlyJack", game: "Rocket League", team: "Free Agent", mouse: "Logitech G Pro X Superlight", hz: 1000, dpi: 800, sens: 3, edpi: null, role: "Striker", country: "🇬🇧" },
+
 ];
 
 // Merge: extendedPlayers that don't duplicate proPlayers names
@@ -4847,6 +4943,14 @@ const MouseCard = ({ mouse, onClick, isSelected }) => {
         <div className="h-full rounded-full transition-all duration-700" style={{ width: `${mouse.rating * 10}%`, background: `linear-gradient(to right, ${brandCol}80, ${brandCol})` }} />
       </div>
       <div className="text-right mt-0.5 opacity-40" style={{ fontSize: 9 }}>{mouse.rating}/10</div>
+      <a href={amazonLink(mouse.name)} target="_blank" rel="noopener noreferrer"
+        onClick={e => e.stopPropagation()}
+        className="mt-2 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-bold transition-all opacity-60 group-hover:opacity-100 hover:!opacity-100"
+        style={{ background: `${brandCol}15`, color: brandCol, border: `1px solid ${brandCol}25`, fontSize: 10 }}
+        onMouseEnter={e => { e.currentTarget.style.background = brandCol; e.currentTarget.style.color = "#000"; }}
+        onMouseLeave={e => { e.currentTarget.style.background = `${brandCol}15`; e.currentTarget.style.color = brandCol; }}>
+        {I.cart(12)} {"$"}{mouse.price} — Buy on Amazon
+      </a>
     </div>
   );
 };
@@ -4904,6 +5008,13 @@ export default function EsportsMice() {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [gameFilter, setGameFilter] = useState("All");
   const [playerSort, setPlayerSort] = useState({ key: null, dir: "asc" });
+  const [roleFilter, setRoleFilter] = useState("All");
+  const [mouseFilter, setMouseFilter] = useState("");
+  const [teamFilter, setTeamFilter] = useState("");
+  const [countryFilter, setCountryFilter] = useState("All");
+  const [dpiRange, setDpiRange] = useState([0, 10000]);
+  const [showFilters, setShowFilters] = useState(false);
+  const [profileOnly, setProfileOnly] = useState(false);
   const [rankingSort, setRankingSort] = useState({ key: "proUsage", dir: "desc" });
   const [sensorSort, setSensorSort] = useState({ key: "totalUsage", dir: "desc" });
   const [sensorGameFilter, setSensorGameFilter] = useState("All");
@@ -4920,6 +5031,10 @@ export default function EsportsMice() {
     weightPref: "", connectivity: "", budget: "", shape: "",
   });
   const [quizDone, setQuizDone] = useState(false);
+  const [sensFromGame, setSensFromGame] = useState("cs2");
+  const [sensFromDpi, setSensFromDpi] = useState(800);
+  const [sensFromSens, setSensFromSens] = useState(1.0);
+  const [sensShowPros, setSensShowPros] = useState(false);
 
   useEffect(() => { setTimeout(() => setHeroAnim(true), 100); }, []);
   useEffect(() => {
@@ -5547,68 +5662,20 @@ export default function EsportsMice() {
 
             <SectionTitle color="#d4af37" sub="Select any mouse to see detailed performance radar and specs">Featured Mouse Spotlight</SectionTitle>
               <div className="rounded-2xl p-3 sm:p-5 mb-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
-                {/* ── Desktop: pill buttons (hidden on mobile) ── */}
-                <div className="hidden sm:block">
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {["All", ...new Set(mice.map(m => m.brand))].map(b => (
-                      <button key={b} onClick={() => setFilterBrand(b)}
-                        className="px-2.5 py-1 rounded-full text-xs font-bold transition-all"
-                        style={{
-                          background: filterBrand === b ? (BRAND_COLORS[b] || "#fff") : "#ffffff06",
-                          color: filterBrand === b ? "#000" : "#ffffff30",
-                          border: filterBrand === b ? "none" : "1px solid #ffffff08",
-                          fontSize: 10,
-                        }}>
-                        {b}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {[...mice].filter(m => m.proUsage >= 1).sort((a, b) => b.proUsage - a.proUsage).filter(m => filterBrand === "All" || m.brand === filterBrand).map(m => (
-                      <button key={m.id} onClick={() => setSelectedMouse(m)}
-                        className="px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap hover:scale-[1.03]"
-                        style={{
-                          background: selectedMouse?.id === m.id ? BRAND_COLORS[m.brand] : "#ffffff06",
-                          color: selectedMouse?.id === m.id ? "#000" : "#ffffff40",
-                          border: selectedMouse?.id === m.id ? "none" : "1px solid #ffffff08",
-                          fontSize: 10,
-                        }}>
-                        {m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |Ninjutso |WLMouse |Sony |Zowie )/, "")}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* ── Mobile: dropdown selectors (hidden on desktop) ── */}
-                <div className="sm:hidden flex flex-col gap-2 mb-4">
-                  <div className="flex gap-2">
-                    <div className="flex-1">
-                      <label className="text-xs opacity-30 uppercase tracking-widest mb-1 block">Brand</label>
-                      <select
-                        value={filterBrand}
-                        onChange={e => { setFilterBrand(e.target.value); const first = [...mice].filter(m => m.proUsage >= 1).sort((a,b) => b.proUsage - a.proUsage).find(m => e.target.value === "All" || m.brand === e.target.value); if (first) setSelectedMouse(first); }}
-                        className="w-full rounded-lg px-3 py-2.5 text-sm font-bold appearance-none"
-                        style={{ background: "#ffffff08", color: BRAND_COLORS[filterBrand] || "#fff", border: `1px solid ${BRAND_COLORS[filterBrand] || "#ffffff15"}30`, outline: "none" }}>
-                        {["All", ...new Set(mice.map(m => m.brand))].map(b => (
-                          <option key={b} value={b} style={{ background: "#0a0a0a", color: "#fff" }}>{b}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="flex-[2]">
-                      <label className="text-xs opacity-30 uppercase tracking-widest mb-1 block">Mouse</label>
-                      <select
-                        value={selectedMouse?.id || ""}
-                        onChange={e => { const m = mice.find(mm => mm.id === Number(e.target.value)); if (m) setSelectedMouse(m); }}
-                        className="w-full rounded-lg px-3 py-2.5 text-sm font-bold appearance-none"
-                        style={{ background: "#ffffff08", color: selectedMouse ? BRAND_COLORS[selectedMouse.brand] : "#fff", border: `1px solid ${selectedMouse ? BRAND_COLORS[selectedMouse.brand] : "#ffffff15"}30`, outline: "none" }}>
-                        {[...mice].filter(m => m.proUsage >= 1).sort((a, b) => b.proUsage - a.proUsage).filter(m => filterBrand === "All" || m.brand === filterBrand).map(m => (
-                          <option key={m.id} value={m.id} style={{ background: "#0a0a0a", color: "#fff" }}>
-                            {m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |Ninjutso |WLMouse |Sony |Zowie )/, "")}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
+                {/* ── Mouse Picker: Top 20 mice by pro usage ── */}
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {[...mice].sort((a, b) => b.proUsage - a.proUsage).slice(0, 20).map(m => (
+                    <button key={m.id} onClick={() => setSelectedMouse(m)}
+                      className="px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap hover:scale-[1.03] cursor-pointer"
+                      style={{
+                        background: selectedMouse?.id === m.id ? BRAND_COLORS[m.brand] : "#ffffff06",
+                        color: selectedMouse?.id === m.id ? "#000" : "#ffffff40",
+                        border: selectedMouse?.id === m.id ? "none" : "1px solid #ffffff08",
+                        fontSize: 10,
+                      }}>
+                      {m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |Ninjutso |WLMouse |Sony |Zowie )/, "")}
+                    </button>
+                  ))}
                 </div>
 
                 {selectedMouse && (() => {
@@ -6468,6 +6535,7 @@ export default function EsportsMice() {
                       { key: "price", label: "Price" },
                       { key: "proUsage", label: "Pro %" },
                       { key: "rating", label: "Rating" },
+                      { key: null, label: "Buy" },
                     ].map(h => (
                       <th key={h.label} className={`px-4 py-3 text-left text-xs uppercase tracking-wider font-bold ${h.key ? "cursor-pointer select-none hover:opacity-80" : ""}`}
                         style={{ color: rankingSort.key === h.key ? "#00ff6a" : "#ffffff30" }}
@@ -6507,6 +6575,15 @@ export default function EsportsMice() {
                             </div>
                             <span className="text-xs opacity-50">{m.rating}</span>
                           </div>
+                        </td>
+                        <td className="px-4 py-3" onClick={e => e.stopPropagation()}>
+                          <a href={amazonLink(m.name)} target="_blank" rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap"
+                            style={{ background: `${col}15`, color: col, border: `1px solid ${col}25` }}
+                            onMouseEnter={e => { e.currentTarget.style.background = col; e.currentTarget.style.color = "#000"; }}
+                            onMouseLeave={e => { e.currentTarget.style.background = `${col}15`; e.currentTarget.style.color = col; }}>
+                            {I.cart(12)} {"$"}{m.price}
+                          </a>
                         </td>
                       </tr>
                     );
@@ -6557,7 +6634,17 @@ export default function EsportsMice() {
                     <div className="text-xs uppercase tracking-widest opacity-30 mb-1">{p.role} · {p.team}</div>
                     <h2 className="text-2xl sm:text-4xl font-black mb-1" style={{ fontFamily: "Orbitron", color: gc }}>{p.name}</h2>
                     <div className="text-xs sm:text-sm opacity-50 mb-2 sm:mb-3">{p.fullName} · Age {p.age}</div>
-                    <p className="text-xs sm:text-sm opacity-50 leading-relaxed max-w-2xl">{p.bio}</p>
+                    <p className="text-xs sm:text-sm opacity-50 leading-relaxed max-w-2xl">{(() => {
+                      const mouseName = p.mouse;
+                      const idx = p.bio.indexOf(mouseName);
+                      if (idx === -1) return p.bio;
+                      const before = p.bio.slice(0, idx);
+                      const after = p.bio.slice(idx + mouseName.length);
+                      return <>{before}<a href={amazonLink(mouseName)} target="_blank" rel="noopener noreferrer"
+                        className="font-bold underline decoration-dotted underline-offset-2 transition-all hover:opacity-100"
+                        style={{ color: brandCol, opacity: 0.85 }}
+                        onClick={e => e.stopPropagation()}>{mouseName}</a>{after}</>;
+                    })()}</p>
                     <div className="flex flex-wrap gap-2 sm:gap-3 mt-3 sm:mt-4">
                       <span className="px-3 py-1 rounded-lg text-xs font-bold" style={{ background: `${gc}20`, color: gc }}>{p.game}</span>
                       <span className="px-3 py-1 rounded-lg text-xs font-bold" style={{ background: "#ffffff08", color: "#fff" }}>{p.team}</span>
@@ -6570,6 +6657,22 @@ export default function EsportsMice() {
                     <StatBox label="eDPI" value={p.edpi ?? " - "} color={gc} />
                     <StatBox label="Age" value={p.age} color={gc} />
                   </div>
+                  {/* Get This Setup CTA */}
+                  <a href={amazonLink(p.mouse)} target="_blank" rel="noopener noreferrer"
+                    className="self-end mt-2 flex items-center gap-3 px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl transition-all group/cta"
+                    style={{ background: `linear-gradient(135deg, ${brandCol}12, ${brandCol}06)`, border: `1px solid ${brandCol}30` }}
+                    onMouseEnter={e => { e.currentTarget.style.background = `linear-gradient(135deg, ${brandCol}25, ${brandCol}15)`; e.currentTarget.style.borderColor = `${brandCol}60`; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = `linear-gradient(135deg, ${brandCol}12, ${brandCol}06)`; e.currentTarget.style.borderColor = `${brandCol}30`; }}>
+                    {MOUSE_IMAGE_URLS[p.mouse] ? <img src={MOUSE_IMAGE_URLS[p.mouse]} alt="" className="h-8 w-8 object-contain flex-shrink-0" style={{ filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.4))" }} /> : <span>{I.mouse(20)}</span>}
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs font-bold" style={{ color: brandCol }}>Play like {p.name}</div>
+                      <div className="text-xs opacity-40 truncate">Get the {p.mouse} on Amazon</div>
+                    </div>
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-black flex-shrink-0 transition-all"
+                      style={{ background: brandCol, color: "#222" }}>
+                      <svg width={12} height={12} viewBox="0 0 24 24" fill="none"><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" stroke="#222" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="9" cy="21" r="1.5" fill="#222"/><circle cx="20" cy="21" r="1.5" fill="#222"/></svg> {currentMouseData ? `$${currentMouseData.price}` : "Buy"}
+                    </div>
+                  </a>
                 </div>
               </div>
 
@@ -6642,7 +6745,16 @@ export default function EsportsMice() {
                               <div className="text-sm font-bold" style={{ color: i === 0 ? hCol : "#ffffff60" }}>{mh.mouse}</div>
                               <div className="text-xs opacity-30">{mh.period}</div>
                             </div>
-                            {i === 0 && <span className="text-xs px-2 py-0.5 rounded-full font-bold" style={{ background: `${hCol}20`, color: hCol }}>Current</span>}
+                            {i === 0 ? (
+                              <a href={amazonLink(mh.mouse)} target="_blank" rel="noopener noreferrer"
+                                className="flex items-center gap-1.5 text-xs px-3 py-1 rounded-full font-bold transition-all"
+                                style={{ background: `${hCol}20`, color: hCol, border: `1px solid ${hCol}30` }}
+                                onMouseEnter={e => { e.currentTarget.style.background = hCol; e.currentTarget.style.color = "#000"; }}
+                                onMouseLeave={e => { e.currentTarget.style.background = `${hCol}20`; e.currentTarget.style.color = hCol; }}>
+                                <svg width={10} height={10} viewBox="0 0 24 24" fill="none"><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="9" cy="21" r="1.5" fill="currentColor"/><circle cx="20" cy="21" r="1.5" fill="currentColor"/></svg>
+                                Buy Current{histMouse ? ` — $${histMouse.price}` : ""}
+                              </a>
+                            ) : null}
                           </div>
                         );
                       })}
@@ -6674,8 +6786,21 @@ export default function EsportsMice() {
         {activeTab === "players" && !selectedPlayer && (() => {
           const gameColors = { CS2: "#ff8c00", Valorant: "#ff4655", "League of Legends": "#c89b3c", LoL: "#c89b3c", Fortnite: "#4c7bd9", "Dota 2": "#e74c3c", "R6 Siege": "#4a86c8", "Rocket League": "#1a9fff", "Call of Duty": "#5cb85c", "Overwatch 2": "#f99e1a", Apex: "#dc2626", "Marvel Rivals": "#ed1d24", PUBG: "#f2a900", Deadlock: "#8b5cf6" };
           const allGames = ["All", ...new Set(allPlayers.map(p => p.game))];
+          const allRoles = ["All", ...new Set(allPlayers.map(p => p.role).filter(Boolean))];
+          const allCountries = ["All", ...new Set(allPlayers.map(p => p.country).filter(Boolean)).values()].sort();
+          const activeFilterCount = [gameFilter !== "All", roleFilter !== "All", countryFilter !== "All", mouseFilter, teamFilter, profileOnly, dpiRange[0] > 0 || dpiRange[1] < 10000].filter(Boolean).length;
           const filteredPlayers = allPlayers
             .filter(p => gameFilter === "All" || p.game === gameFilter)
+            .filter(p => roleFilter === "All" || p.role === roleFilter)
+            .filter(p => countryFilter === "All" || p.country === countryFilter)
+            .filter(p => !mouseFilter || p.mouse.toLowerCase().includes(mouseFilter.toLowerCase()))
+            .filter(p => !teamFilter || p.team.toLowerCase().includes(teamFilter.toLowerCase()))
+            .filter(p => !profileOnly || p.hasProfile)
+            .filter(p => {
+              if (dpiRange[0] === 0 && dpiRange[1] >= 10000) return true;
+              const d = p.dpi || 0;
+              return d >= dpiRange[0] && d <= dpiRange[1];
+            })
             .filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.team.toLowerCase().includes(searchQuery.toLowerCase()) || p.mouse.toLowerCase().includes(searchQuery.toLowerCase()));
           const sortedPlayers = [...filteredPlayers].sort((a, b) => {
             if (!playerSort.key) return 0;
@@ -6724,17 +6849,85 @@ export default function EsportsMice() {
                 ));
               })()}
             </div>
-            <div className="flex flex-wrap gap-3 mb-4">
+            {/* Game pill filters */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              {allGames.map(g => {
+                const gc2 = g === "All" ? "#00b4ff" : (gameColors[g] || "#888");
+                const active = gameFilter === g;
+                return (
+                  <button key={g} onClick={() => setGameFilter(g)}
+                    className="px-3 py-1.5 rounded-lg text-xs font-bold transition-all"
+                    style={{ background: active ? `${gc2}25` : "#0a0a0a", color: active ? gc2 : "#ffffff40", border: active ? `1px solid ${gc2}50` : "1px solid #ffffff08" }}>
+                    {g}{g !== "All" && <span className="ml-1 opacity-50">({allPlayers.filter(p => p.game === g).length})</span>}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="flex flex-wrap gap-3 mb-3">
               <input type="text" placeholder="Search player, team, or mouse..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
                 className="px-4 py-2 rounded-lg text-sm outline-none flex-1 min-w-48" style={{ background: "#0a0a0a", border: "1px solid #ffffff15", color: "#fff" }} />
-              <select value={gameFilter} onChange={e => setGameFilter(e.target.value)}
-                className="px-4 py-2 rounded-lg text-sm cursor-pointer" style={{ background: "#0a0a0a", border: "1px solid #ffffff15", color: "#fff" }}>
-                {allGames.map(g => <option key={g} value={g}>{g}</option>)}
-              </select>
+              <button onClick={() => setShowFilters(f => !f)}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all"
+                style={{ background: showFilters || activeFilterCount > 0 ? "#00b4ff15" : "#0a0a0a", border: showFilters || activeFilterCount > 0 ? "1px solid #00b4ff40" : "1px solid #ffffff15", color: showFilters || activeFilterCount > 0 ? "#00b4ff" : "#fff" }}>
+                {I.gear(14)} Filters {activeFilterCount > 0 && <span className="px-1.5 py-0.5 rounded-full text-xs font-black" style={{ background: "#00b4ff", color: "#000", fontSize: 10 }}>{activeFilterCount}</span>}
+              </button>
+              <button onClick={() => setProfileOnly(p => !p)}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all"
+                style={{ background: profileOnly ? "#fbbf2415" : "#0a0a0a", border: profileOnly ? "1px solid #fbbf2440" : "1px solid #ffffff15", color: profileOnly ? "#fbbf24" : "#ffffff60" }}>
+                {I.star(14)} Full Profiles Only
+              </button>
               <div className="flex items-center gap-2 text-xs opacity-40 px-3">
                 <span className="w-2 h-2 rounded-full bg-yellow-400" /> = Full profile available
               </div>
             </div>
+
+            {/* Expanded filters panel */}
+            {showFilters && (
+              <div className="rounded-xl p-4 mb-4 grid grid-cols-2 md:grid-cols-4 gap-4" style={{ background: "#0a0a0a", border: "1px solid #ffffff10" }}>
+                <div>
+                  <div className="text-xs uppercase tracking-widest opacity-30 mb-2">Role</div>
+                  <select value={roleFilter} onChange={e => setRoleFilter(e.target.value)}
+                    className="w-full px-3 py-2 rounded-lg text-sm cursor-pointer" style={{ background: "#111", border: "1px solid #ffffff15", color: "#fff" }}>
+                    {allRoles.map(r => <option key={r} value={r}>{r}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-widest opacity-30 mb-2">Country</div>
+                  <select value={countryFilter} onChange={e => setCountryFilter(e.target.value)}
+                    className="w-full px-3 py-2 rounded-lg text-sm cursor-pointer" style={{ background: "#111", border: "1px solid #ffffff15", color: "#fff" }}>
+                    {allCountries.map(c => <option key={c} value={c}>{c}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-widest opacity-30 mb-2">Mouse</div>
+                  <input type="text" placeholder="e.g. Logitech, Viper..." value={mouseFilter} onChange={e => setMouseFilter(e.target.value)}
+                    className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={{ background: "#111", border: "1px solid #ffffff15", color: "#fff" }} />
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-widest opacity-30 mb-2">Team</div>
+                  <input type="text" placeholder="e.g. Navi, Fnatic..." value={teamFilter} onChange={e => setTeamFilter(e.target.value)}
+                    className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={{ background: "#111", border: "1px solid #ffffff15", color: "#fff" }} />
+                </div>
+                <div className="col-span-2">
+                  <div className="text-xs uppercase tracking-widest opacity-30 mb-2">DPI Range: <span className="font-bold text-white">{dpiRange[0]} – {dpiRange[1] >= 10000 ? "Any" : dpiRange[1]}</span></div>
+                  <div className="flex items-center gap-3">
+                    <input type="range" min={0} max={3200} step={100} value={dpiRange[0]} onChange={e => setDpiRange([Math.min(+e.target.value, dpiRange[1]), dpiRange[1]])}
+                      className="flex-1 accent-blue-400" style={{ height: 4 }} />
+                    <input type="range" min={0} max={10000} step={100} value={dpiRange[1]} onChange={e => setDpiRange([dpiRange[0], Math.max(+e.target.value, dpiRange[0])])}
+                      className="flex-1 accent-blue-400" style={{ height: 4 }} />
+                  </div>
+                  <div className="flex justify-between text-xs opacity-20 mt-1"><span>0</span><span>800</span><span>1600</span><span>3200+</span></div>
+                </div>
+                <div className="col-span-2 flex items-end">
+                  <button onClick={() => { setGameFilter("All"); setRoleFilter("All"); setCountryFilter("All"); setMouseFilter(""); setTeamFilter(""); setDpiRange([0, 10000]); setProfileOnly(false); setSearchQuery(""); }}
+                    className="px-4 py-2 rounded-lg text-sm font-bold transition-all"
+                    style={{ background: "#ffffff08", border: "1px solid #ffffff15", color: "#ffffff60" }}>
+                    ✕ Clear All Filters
+                  </button>
+                </div>
+              </div>
+            )}
             <div className="overflow-x-auto rounded-2xl" style={{ border: "1px solid #ffffff08", maxHeight: 600 }}>
               <table className="w-full text-sm">
                 <thead className="sticky top-0 z-10">
@@ -6775,7 +6968,7 @@ export default function EsportsMice() {
                 </tbody>
               </table>
             </div>
-            <div className="text-center text-xs opacity-20 mt-3">{filteredPlayers.length} players shown · Data sourced from prosettings.net and community research</div>
+            <div className="text-center text-xs opacity-20 mt-3">{filteredPlayers.length} of {allPlayers.length} players shown{activeFilterCount > 0 ? ` · ${activeFilterCount} filter${activeFilterCount > 1 ? "s" : ""} active` : ""} · Data sourced from prosettings.net and community research</div>
 
             <SectionTitle color="#ff4655" sub="Distribution of sensitivity settings across all tracked players">eDPI Distribution by Game</SectionTitle>
             <div className="rounded-xl p-4 mb-4" style={{ background: "#ff465508", border: "1px solid #ff465512" }}>
@@ -7903,15 +8096,28 @@ export default function EsportsMice() {
               return (
               <div>
                 {/* Verdict banner */}
-                <div className="rounded-xl p-4 mb-6 text-center" style={{ background: `${verdictColor}08`, border: `1px solid ${verdictColor}20` }}>
+                <div className="rounded-xl p-5 mb-6 text-center" style={{ background: `${verdictColor}08`, border: `1px solid ${verdictColor}20` }}>
                   <div className="text-xs uppercase tracking-widest opacity-40 mb-1">Spec Comparison Verdict</div>
-                  <div className="text-base sm:text-lg font-black text-center sm:text-left" style={{ color: verdictColor }}>
+                  <div className="text-base sm:text-lg font-black text-center" style={{ color: verdictColor }}>
                     {verdictName ? `${verdictName} wins ${Math.max(wins0, wins1)}-${Math.min(wins0, wins1)}` : `Tied ${wins0}-${wins1}`}
                   </div>
                   <div className="flex justify-center gap-4 mt-2">
                     <span className="text-xs" style={{ color: c0 }}>● {compareList[0].name.replace(/(Logitech |Razer )/, "")}: {wins0} wins</span>
                     <span className="text-xs" style={{ color: c1 }}>● {compareList[1].name.replace(/(Logitech |Razer )/, "")}: {wins1} wins</span>
                   </div>
+                  {verdictName && (() => {
+                    const winnerMouse = wins0 > wins1 ? compareList[0] : compareList[1];
+                    const winnerCol = wins0 > wins1 ? c0 : c1;
+                    return (
+                      <a href={amazonLink(winnerMouse.name)} target="_blank" rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 mt-4 px-6 py-3 rounded-xl text-sm font-black transition-all hover:scale-[1.03]"
+                        style={{ background: winnerCol, color: "#111", boxShadow: `0 0 20px ${winnerCol}30` }}>
+                        {MOUSE_IMAGE_URLS[winnerMouse.name] ? <img src={MOUSE_IMAGE_URLS[winnerMouse.name]} alt="" className="h-6 object-contain" style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))" }} /> : null}
+                        <svg width={14} height={14} viewBox="0 0 24 24" fill="none"><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="9" cy="21" r="1.5" fill="#111"/><circle cx="20" cy="21" r="1.5" fill="#111"/></svg>
+                        Get the Winner — {winnerMouse.name.split(" ").slice(-3).join(" ")} {"$"}{winnerMouse.price}
+                      </a>
+                    );
+                  })()}
                 </div>
 
                 <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid #ffffff08" }}>
@@ -7956,13 +8162,24 @@ export default function EsportsMice() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 mt-6">
-                  {compareList.map((m, idx) => (
-                    <a key={idx} href={amazonLink(m.name)} target="_blank" rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-black transition-all text-center"
-                      style={{ background: BRAND_COLORS[m.brand], color: "#000" }}>
-                      {I.cart(16)} Buy {m.name.split(" ").slice(-2).join(" ")}  -  {"$"}{m.price}
-                    </a>
-                  ))}
+                  {compareList.map((m, idx) => {
+                    const isWinner = (idx === 0 && wins0 > wins1) || (idx === 1 && wins1 > wins0);
+                    const col = BRAND_COLORS[m.brand];
+                    return (
+                      <div key={idx} className="relative">
+                        {isWinner && <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full text-xs font-black z-10" style={{ background: col, color: "#000", fontSize: 9, boxShadow: `0 0 12px ${col}40` }}>⭐ WINNER</div>}
+                        <a href={amazonLink(m.name)} target="_blank" rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-black transition-all text-center hover:scale-[1.02]"
+                          style={isWinner
+                            ? { background: col, color: "#000", boxShadow: `0 0 24px ${col}25` }
+                            : { background: `${col}15`, color: col, border: `1px solid ${col}30` }
+                          }>
+                          <svg width={14} height={14} viewBox="0 0 24 24" fill="none"><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" stroke={isWinner ? "#000" : "currentColor"} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="9" cy="21" r="1.5" fill={isWinner ? "#000" : "currentColor"}/><circle cx="20" cy="21" r="1.5" fill={isWinner ? "#000" : "currentColor"}/></svg>
+                          {isWinner ? "★ " : ""}Buy {m.name.split(" ").slice(-2).join(" ")}  -  {"$"}{m.price}
+                        </a>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )})()}
@@ -8542,6 +8759,257 @@ export default function EsportsMice() {
                 </div>
               </div>
             )}
+
+            {/* ── SENSITIVITY CONVERTER ── */}
+            {(() => {
+              const SENS_GAMES = [
+                { id: "cs2", name: "Counter-Strike 2", img: GAME_IMAGE_URLS["CS2"], yaw: 0.022, defaultSens: 1.0, step: 0.01, note: "In-game Sensitivity" },
+                { id: "val", name: "Valorant", img: GAME_IMAGE_URLS["Valorant"], yaw: 0.07, defaultSens: 0.35, step: 0.001, note: "Sensitivity" },
+                { id: "ow2", name: "Overwatch 2", img: GAME_IMAGE_URLS["Overwatch 2"], yaw: 0.0066, defaultSens: 5, step: 0.1, note: "Sensitivity (1-100)" },
+                { id: "apex", name: "Apex Legends", img: GAME_IMAGE_URLS["Apex"], yaw: 0.022, defaultSens: 1.5, step: 0.1, note: "Mouse Sensitivity" },
+                { id: "fn", name: "Fortnite", img: GAME_IMAGE_URLS["Fortnite"], yaw: 0.005555, defaultSens: 8, step: 0.1, note: "X Axis Sensitivity (%)" },
+                { id: "cod", name: "Call of Duty", img: GAME_IMAGE_URLS["Call of Duty"], yaw: 0.0066, defaultSens: 5, step: 0.1, note: "Mouse Sensitivity" },
+                { id: "r6", name: "Rainbow Six Siege", img: GAME_IMAGE_URLS["R6 Siege"], yaw: 0.00572958, defaultSens: 10, step: 1, note: "Mouse Sensitivity" },
+                { id: "tf2", name: "Team Fortress 2", img: null, yaw: 0.022, defaultSens: 2, step: 0.01, note: "Sensitivity" },
+                { id: "tarkov", name: "Escape from Tarkov", img: null, yaw: 0.022, defaultSens: 0.5, step: 0.01, note: "Mouse Sensitivity" },
+                { id: "deadlock", name: "Deadlock", img: GAME_IMAGE_URLS["Deadlock"], yaw: 0.022, defaultSens: 1.5, step: 0.01, note: "Sensitivity (Source 2)" },
+                { id: "finals", name: "The Finals", img: null, yaw: 0.022, defaultSens: 2, step: 0.01, note: "Mouse Sensitivity" },
+                { id: "marvel", name: "Marvel Rivals", img: GAME_IMAGE_URLS["Marvel Rivals"], yaw: 0.0066, defaultSens: 5, step: 0.1, note: "Mouse Sensitivity" },
+                { id: "pubg", name: "PUBG", img: GAME_IMAGE_URLS["PUBG"], yaw: 0.000440, defaultSens: 50, step: 1, note: "General Sensitivity" },
+                { id: "bf", name: "Battlefield 2042", img: null, yaw: 0.01222, defaultSens: 25, step: 0.5, note: "Soldier Sensitivity (%)" },
+                { id: "destiny2", name: "Destiny 2", img: null, yaw: 0.0066, defaultSens: 5, step: 0.5, note: "Mouse Look Sensitivity" },
+                { id: "halo", name: "Halo Infinite", img: null, yaw: 0.012195, defaultSens: 3, step: 0.1, note: "Mouse Sensitivity" },
+                { id: "quake", name: "Quake Champions", img: null, yaw: 0.022, defaultSens: 3, step: 0.01, note: "Sensitivity" },
+              ];
+
+              const fromGame = SENS_GAMES.find(g => g.id === sensFromGame) || SENS_GAMES[0];
+              const cm360 = (sensFromDpi > 0 && sensFromSens > 0) ? 914.4 / (sensFromDpi * fromGame.yaw * sensFromSens) : 0;
+              const inches360 = cm360 / 2.54;
+              const edpi = sensFromDpi * sensFromSens;
+
+              let speedLabel = "", speedColor = "";
+              if (cm360 > 80) { speedLabel = "Very Slow"; speedColor = "#3b82f6"; }
+              else if (cm360 > 50) { speedLabel = "Slow"; speedColor = "#06b6d4"; }
+              else if (cm360 > 30) { speedLabel = "Medium"; speedColor = "#10b981"; }
+              else if (cm360 > 18) { speedLabel = "Fast"; speedColor = "#f59e0b"; }
+              else if (cm360 > 10) { speedLabel = "Very Fast"; speedColor = "#ef4444"; }
+              else { speedLabel = "Extreme"; speedColor = "#dc2626"; }
+
+              const proMatches = cm360 > 0 ? allPlayers.filter(p => {
+                if (!p.dpi || !p.edpi || p.edpi <= 0) return false;
+                const pSens = p.edpi / p.dpi;
+                const gameYaw = { CS2: 0.022, Valorant: 0.07, "Overwatch 2": 0.0066, Apex: 0.022, "Call of Duty": 0.0066, "R6 Siege": 0.00572958, Fortnite: 0.005555, PUBG: 0.000440, "Marvel Rivals": 0.0066, Deadlock: 0.022 };
+                const yaw = gameYaw[p.game] || 0.022;
+                const proCm360 = 914.4 / (p.dpi * yaw * pSens);
+                return Math.abs(proCm360 - cm360) / cm360 < 0.1;
+              }).slice(0, 8) : [];
+
+              const accentC = "#8b5cf6";
+
+              return (
+              <div className="mt-12">
+                <SectionTitle color={accentC} sub="Convert your sensitivity between any game — supporting 17 titles with cm/360 as the universal reference">Sensitivity Converter</SectionTitle>
+
+                <div className="rounded-2xl overflow-hidden" style={{ border: `1px solid ${accentC}15` }}>
+                  {/* Input Section */}
+                  <div className="p-4 sm:p-6" style={{ background: `linear-gradient(135deg, ${accentC}08, #0a0a0a)` }}>
+                    <div className="text-xs uppercase tracking-widest opacity-30 mb-4">Your Current Settings</div>
+
+                    <div className="mb-4">
+                      <div className="text-xs opacity-40 mb-2">Game</div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {SENS_GAMES.map(g => (
+                          <button key={g.id} onClick={() => { setSensFromGame(g.id); setSensFromSens(g.defaultSens); }}
+                            className="px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap"
+                            style={{
+                              background: sensFromGame === g.id ? accentC : "#ffffff06",
+                              color: sensFromGame === g.id ? "#000" : "#ffffff35",
+                              border: sensFromGame === g.id ? "none" : "1px solid #ffffff08",
+                              fontSize: 10,
+                            }}>
+                            {g.img ? <img src={g.img} alt="" className="inline-block mr-1 rounded-sm" style={{ width: 14, height: 14, objectFit: "contain", verticalAlign: "middle", marginTop: -1 }} /> : null}{g.name}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <div className="text-xs opacity-40 mb-2">DPI</div>
+                        <input type="number" value={sensFromDpi} onChange={e => setSensFromDpi(Number(e.target.value))}
+                          className="w-full rounded-xl px-4 py-3 text-lg font-black text-center"
+                          style={{ background: "#ffffff08", border: `1px solid ${accentC}25`, color: accentC, outline: "none" }} />
+                        <div className="flex flex-wrap gap-1 mt-2 justify-center">
+                          {[400, 800, 1600, 3200].map(d => (
+                            <button key={d} onClick={() => setSensFromDpi(d)}
+                              className="px-2 py-0.5 rounded text-xs cursor-pointer transition-all"
+                              style={{ background: sensFromDpi === d ? `${accentC}30` : "#ffffff06", color: sensFromDpi === d ? accentC : "#ffffff30", fontSize: 9 }}>
+                              {d}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-xs opacity-40 mb-2">{fromGame.note}</div>
+                        <input type="number" value={sensFromSens} onChange={e => setSensFromSens(Number(e.target.value))}
+                          step={fromGame.step}
+                          className="w-full rounded-xl px-4 py-3 text-lg font-black text-center"
+                          style={{ background: "#ffffff08", border: `1px solid ${accentC}25`, color: "#fff", outline: "none" }} />
+                        <div className="text-xs opacity-20 text-center mt-2" style={{ fontSize: 9 }}>eDPI: {edpi.toFixed(1)}</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Universal Metrics */}
+                  {cm360 > 0 && cm360 < 10000 && (
+                    <div className="px-4 sm:px-6 py-4" style={{ background: "#0a0a0a", borderTop: `1px solid ${accentC}10`, borderBottom: `1px solid ${accentC}10` }}>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                        <div className="text-center">
+                          <div className="text-xs opacity-30 mb-1">cm/360°</div>
+                          <div className="text-xl sm:text-2xl font-black" style={{ color: accentC }}>{cm360.toFixed(1)}</div>
+                          <div className="text-xs opacity-20">centimeters</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-xs opacity-30 mb-1">in/360°</div>
+                          <div className="text-xl sm:text-2xl font-black" style={{ color: "#00b4ff" }}>{inches360.toFixed(1)}</div>
+                          <div className="text-xs opacity-20">inches</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-xs opacity-30 mb-1">Speed</div>
+                          <div className="text-xl sm:text-2xl font-black" style={{ color: speedColor }}>{speedLabel}</div>
+                          <div className="text-xs opacity-20">{cm360 > 40 ? "arm aimer" : cm360 > 22 ? "hybrid" : "wrist aimer"}</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-xs opacity-30 mb-1">Mousepad</div>
+                          <div className="text-xl sm:text-2xl font-black" style={{ color: "#f59e0b" }}>{cm360 > 50 ? "XL+" : cm360 > 30 ? "Large" : cm360 > 18 ? "Medium" : "Any"}</div>
+                          <div className="text-xs opacity-20">recommended size</div>
+                        </div>
+                      </div>
+
+                      {/* Swipe distance bar */}
+                      <div className="mt-4">
+                        <div className="text-xs opacity-25 mb-1.5 text-center">Swipe distance for a full 360° turn</div>
+                        <div className="relative h-8 rounded-lg overflow-hidden" style={{ background: "#ffffff06" }}>
+                          <div className="absolute left-0 top-0 h-full rounded-lg transition-all duration-500 flex items-center justify-end pr-2"
+                            style={{ width: `${Math.min(Math.max(cm360 / 100 * 100, 5), 100)}%`, background: `linear-gradient(to right, ${accentC}40, ${accentC})` }}>
+                            <span className="text-xs font-black" style={{ color: "#000" }}>{cm360.toFixed(1)}cm</span>
+                          </div>
+                          {[20, 40, 60, 80].map(mark => (
+                            <div key={mark} className="absolute top-0 h-full flex items-end pb-0.5 justify-center" style={{ left: `${mark}%`, width: 1 }}>
+                              <div className="w-px h-2 bg-white/10" />
+                            </div>
+                          ))}
+                        </div>
+                        <div className="flex justify-between text-xs opacity-15 mt-1 px-1" style={{ fontSize: 8 }}>
+                          <span>0cm (instant)</span>
+                          <span>50cm</span>
+                          <span>100cm+</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Converted Sensitivities */}
+                  {cm360 > 0 && cm360 < 10000 && (
+                    <div className="p-4 sm:p-6" style={{ background: "#050505" }}>
+                      <div className="text-xs uppercase tracking-widest opacity-30 mb-4">Equivalent Sensitivity in Every Game</div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                        {SENS_GAMES.filter(g => g.id !== sensFromGame).map(g => {
+                          const targetSens = 914.4 / (sensFromDpi * g.yaw * cm360);
+                          const targetEdpi = sensFromDpi * targetSens;
+                          const isSameEngine = g.yaw === fromGame.yaw;
+                          const formatted = targetSens < 0.01 ? targetSens.toFixed(4) : targetSens < 1 ? targetSens.toFixed(3) : targetSens < 10 ? targetSens.toFixed(2) : targetSens.toFixed(1);
+                          return (
+                            <div key={g.id} className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all group/sens"
+                              style={{ background: "#ffffff04", border: "1px solid #ffffff08" }}
+                              onMouseEnter={e => { e.currentTarget.style.background = `${accentC}08`; e.currentTarget.style.borderColor = `${accentC}20`; }}
+                              onMouseLeave={e => { e.currentTarget.style.background = "#ffffff04"; e.currentTarget.style.borderColor = "#ffffff08"; }}>
+                              {g.img ? <img src={g.img} alt="" className="flex-shrink-0 rounded-sm" style={{ width: 20, height: 20, objectFit: "contain" }} /> : <span className="flex-shrink-0 w-5 h-5 rounded-sm flex items-center justify-center text-xs" style={{ background: "#ffffff08" }}>{g.name.charAt(0)}</span>}
+                              <div className="flex-1 min-w-0">
+                                <div className="text-xs font-bold truncate" style={{ color: "#ffffffc0" }}>{g.name}</div>
+                                <div className="text-xs opacity-25" style={{ fontSize: 9 }}>{g.note} · eDPI: {targetEdpi.toFixed(1)}</div>
+                              </div>
+                              <div className="text-right flex-shrink-0">
+                                <div className="text-sm font-black" style={{ color: accentC }}>{formatted}</div>
+                                {isSameEngine && <div className="text-xs font-bold" style={{ color: "#10b981", fontSize: 8 }}>Same engine</div>}
+                              </div>
+                              <button onClick={() => { navigator.clipboard?.writeText(formatted); }}
+                                className="opacity-0 group-hover/sens:opacity-40 hover:!opacity-100 transition-all cursor-pointer flex-shrink-0"
+                                title="Copy sensitivity">
+                                <svg width={12} height={12} viewBox="0 0 24 24" fill="none"><rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" strokeWidth="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" strokeWidth="2"/></svg>
+                              </button>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Pro Players with Similar Sensitivity */}
+                  {cm360 > 0 && cm360 < 10000 && (
+                    <div className="p-4 sm:p-6" style={{ background: "#0a0a0a", borderTop: `1px solid ${accentC}10` }}>
+                      <button onClick={() => setSensShowPros(!sensShowPros)}
+                        className="flex items-center gap-2 text-xs uppercase tracking-widest opacity-40 hover:opacity-60 transition-all cursor-pointer mb-3">
+                        <span>{sensShowPros ? "▼" : "▶"} Pro Players with Similar Sensitivity ({proMatches.length} found)</span>
+                      </button>
+                      {sensShowPros && (
+                        <div>
+                          {proMatches.length > 0 ? (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                              {proMatches.map((p, i) => {
+                                const gc = { CS2: "#ff8c00", Valorant: "#ff4655", "Overwatch 2": "#f99e1a", Apex: "#dc2626", "Call of Duty": "#5cb85c", "R6 Siege": "#4a86c8", Fortnite: "#4c7bd9", "Marvel Rivals": "#ed1d24", Deadlock: "#8b5cf6" };
+                                return (
+                                  <button key={i} onClick={() => { const pp = proPlayers.find(pp => pp.name === p.name); if (pp) { setSelectedPlayer(pp); setActiveTab("players"); } }}
+                                    className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-all cursor-pointer"
+                                    style={{ background: "#ffffff04", border: "1px solid #ffffff08" }}
+                                    onMouseEnter={e => { e.currentTarget.style.background = "#ffffff08"; }}
+                                    onMouseLeave={e => { e.currentTarget.style.background = "#ffffff04"; }}>
+                                    <span className="text-lg">{p.country}</span>
+                                    <div className="flex-1 min-w-0">
+                                      <div className="text-sm font-bold">{p.name}</div>
+                                      <div className="text-xs opacity-30">{p.team} · <span style={{ color: gc[p.game] || "#888" }}>{p.game}</span></div>
+                                    </div>
+                                    <div className="text-right flex-shrink-0">
+                                      <div className="text-xs font-bold" style={{ color: accentC }}>{p.dpi} DPI</div>
+                                      <div className="text-xs opacity-30">{p.edpi} eDPI</div>
+                                    </div>
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          ) : (
+                            <div className="text-xs opacity-20 text-center py-4">No pros with a similar sensitivity found in our database. Try adjusting your settings.</div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Quick Reference */}
+                  {cm360 > 0 && cm360 < 10000 && (
+                    <div className="p-4 sm:p-6" style={{ background: "#050505", borderTop: `1px solid ${accentC}10` }}>
+                      <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Sensitivity Ranges by Game Type</div>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
+                          <div className="text-xs font-bold mb-2" style={{ color: "#3b82f6" }}>🎯 Tactical Shooters</div>
+                          <div className="text-xs opacity-40 leading-relaxed">CS2, Valorant, R6 Siege — Pros typically use 25-55 cm/360. Precise aim over flick speed. Your {cm360.toFixed(0)}cm is {cm360 > 55 ? "slower than most" : cm360 > 25 ? "in the sweet spot" : "faster than most"} tactical pros.</div>
+                        </div>
+                        <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
+                          <div className="text-xs font-bold mb-2" style={{ color: "#ef4444" }}>💥 Fast-Paced Shooters</div>
+                          <div className="text-xs opacity-40 leading-relaxed">Apex, OW2, CoD, Fortnite — Pros typically use 18-40 cm/360. More tracking and flicking. Your {cm360.toFixed(0)}cm is {cm360 > 40 ? "slower than most" : cm360 > 18 ? "in the sweet spot" : "faster than most"} arena pros.</div>
+                        </div>
+                        <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
+                          <div className="text-xs font-bold mb-2" style={{ color: "#10b981" }}>📏 The Universal Range</div>
+                          <div className="text-xs opacity-40 leading-relaxed">Most FPS pros across all titles fall between 20-50 cm/360. If you're between 25-40cm, you're in the most popular zone. Experiment ±5cm from your current to find your sweet spot.</div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              );
+            })()}
+
           </div>
           );
         })()}
