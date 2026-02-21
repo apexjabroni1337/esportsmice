@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, LineChart, Line, CartesianGrid, Legend, AreaChart, Area } from "recharts";
-import { Home, Mouse, Trophy, Cpu, Users, Gamepad2, Building2, TrendingUp, GitCompare, Search, X, FlaskConical } from "lucide-react";
+import { Home, Mouse, Trophy, Cpu, Users, Gamepad2, Building2, TrendingUp, GitCompare, Search, X, FlaskConical, Crosshair } from "lucide-react";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -5238,8 +5238,9 @@ export default function EsportsMice() {
     { id: "rankings", label: "Rankings", icon: Trophy, color: "#d4af37" },
     { id: "sensors", label: "Sensors", icon: Cpu, color: "#10b981" },
     { id: "players", label: "Pro Players", icon: Users, color: "#00b4ff" },
-    { id: "games", label: "Games", icon: Gamepad2, color: "#ff4655" },
     { id: "lab", label: "Lab", icon: FlaskConical, color: "#e879f9" },
+    { id: "sensitivity", label: "Sensitivity", icon: Crosshair, color: "#8b5cf6" },
+    { id: "games", label: "Games", icon: Gamepad2, color: "#ff4655" },
     { id: "brands", label: "Brands", icon: Building2, color: "#f59e0b" },
     { id: "trends", label: "Trends", icon: TrendingUp, color: "#f472b6" },
     { id: "compare", label: "Compare", icon: GitCompare, color: "#8b5cf6" },
@@ -8760,256 +8761,255 @@ export default function EsportsMice() {
               </div>
             )}
 
-            {/* ── SENSITIVITY CONVERTER ── */}
-            {(() => {
-              const SENS_GAMES = [
-                { id: "cs2", name: "Counter-Strike 2", img: GAME_IMAGE_URLS["CS2"], yaw: 0.022, defaultSens: 1.0, step: 0.01, note: "In-game Sensitivity" },
-                { id: "val", name: "Valorant", img: GAME_IMAGE_URLS["Valorant"], yaw: 0.07, defaultSens: 0.35, step: 0.001, note: "Sensitivity" },
-                { id: "ow2", name: "Overwatch 2", img: GAME_IMAGE_URLS["Overwatch 2"], yaw: 0.0066, defaultSens: 5, step: 0.1, note: "Sensitivity (1-100)" },
-                { id: "apex", name: "Apex Legends", img: GAME_IMAGE_URLS["Apex"], yaw: 0.022, defaultSens: 1.5, step: 0.1, note: "Mouse Sensitivity" },
-                { id: "fn", name: "Fortnite", img: GAME_IMAGE_URLS["Fortnite"], yaw: 0.005555, defaultSens: 8, step: 0.1, note: "X Axis Sensitivity (%)" },
-                { id: "cod", name: "Call of Duty", img: GAME_IMAGE_URLS["Call of Duty"], yaw: 0.0066, defaultSens: 5, step: 0.1, note: "Mouse Sensitivity" },
-                { id: "r6", name: "Rainbow Six Siege", img: GAME_IMAGE_URLS["R6 Siege"], yaw: 0.00572958, defaultSens: 10, step: 1, note: "Mouse Sensitivity" },
-                { id: "tf2", name: "Team Fortress 2", img: null, yaw: 0.022, defaultSens: 2, step: 0.01, note: "Sensitivity" },
-                { id: "tarkov", name: "Escape from Tarkov", img: null, yaw: 0.022, defaultSens: 0.5, step: 0.01, note: "Mouse Sensitivity" },
-                { id: "deadlock", name: "Deadlock", img: GAME_IMAGE_URLS["Deadlock"], yaw: 0.022, defaultSens: 1.5, step: 0.01, note: "Sensitivity (Source 2)" },
-                { id: "finals", name: "The Finals", img: null, yaw: 0.022, defaultSens: 2, step: 0.01, note: "Mouse Sensitivity" },
-                { id: "marvel", name: "Marvel Rivals", img: GAME_IMAGE_URLS["Marvel Rivals"], yaw: 0.0066, defaultSens: 5, step: 0.1, note: "Mouse Sensitivity" },
-                { id: "pubg", name: "PUBG", img: GAME_IMAGE_URLS["PUBG"], yaw: 0.000440, defaultSens: 50, step: 1, note: "General Sensitivity" },
-                { id: "bf", name: "Battlefield 2042", img: null, yaw: 0.01222, defaultSens: 25, step: 0.5, note: "Soldier Sensitivity (%)" },
-                { id: "destiny2", name: "Destiny 2", img: null, yaw: 0.0066, defaultSens: 5, step: 0.5, note: "Mouse Look Sensitivity" },
-                { id: "halo", name: "Halo Infinite", img: null, yaw: 0.012195, defaultSens: 3, step: 0.1, note: "Mouse Sensitivity" },
-                { id: "quake", name: "Quake Champions", img: null, yaw: 0.022, defaultSens: 3, step: 0.01, note: "Sensitivity" },
-              ];
+          </div>
+          );
+        })()}
 
-              const fromGame = SENS_GAMES.find(g => g.id === sensFromGame) || SENS_GAMES[0];
-              const cm360 = (sensFromDpi > 0 && sensFromSens > 0) ? 914.4 / (sensFromDpi * fromGame.yaw * sensFromSens) : 0;
-              const inches360 = cm360 / 2.54;
-              const edpi = sensFromDpi * sensFromSens;
+        {/* ── SENSITIVITY CONVERTER PAGE ── */}
+        {activeTab === "sensitivity" && (() => {
+          const accentC = "#8b5cf6";
+          const SENS_GAMES = [
+            { id: "cs2", name: "Counter-Strike 2", img: GAME_IMAGE_URLS["CS2"], yaw: 0.022, defaultSens: 1.0, step: 0.01, note: "In-game Sensitivity" },
+            { id: "val", name: "Valorant", img: GAME_IMAGE_URLS["Valorant"], yaw: 0.07, defaultSens: 0.35, step: 0.001, note: "Sensitivity" },
+            { id: "ow2", name: "Overwatch 2", img: GAME_IMAGE_URLS["Overwatch 2"], yaw: 0.0066, defaultSens: 5, step: 0.1, note: "Sensitivity (1-100)" },
+            { id: "apex", name: "Apex Legends", img: GAME_IMAGE_URLS["Apex"], yaw: 0.022, defaultSens: 1.5, step: 0.1, note: "Mouse Sensitivity" },
+            { id: "fn", name: "Fortnite", img: GAME_IMAGE_URLS["Fortnite"], yaw: 0.005555, defaultSens: 8, step: 0.1, note: "X Axis Sensitivity (%)" },
+            { id: "cod", name: "Call of Duty", img: GAME_IMAGE_URLS["Call of Duty"], yaw: 0.0066, defaultSens: 5, step: 0.1, note: "Mouse Sensitivity" },
+            { id: "r6", name: "Rainbow Six Siege", img: GAME_IMAGE_URLS["R6 Siege"], yaw: 0.00572958, defaultSens: 10, step: 1, note: "Mouse Sensitivity" },
+            { id: "tf2", name: "Team Fortress 2", img: null, yaw: 0.022, defaultSens: 2, step: 0.01, note: "Sensitivity" },
+            { id: "tarkov", name: "Escape from Tarkov", img: null, yaw: 0.022, defaultSens: 0.5, step: 0.01, note: "Mouse Sensitivity" },
+            { id: "deadlock", name: "Deadlock", img: GAME_IMAGE_URLS["Deadlock"], yaw: 0.022, defaultSens: 1.5, step: 0.01, note: "Sensitivity (Source 2)" },
+            { id: "finals", name: "The Finals", img: null, yaw: 0.022, defaultSens: 2, step: 0.01, note: "Mouse Sensitivity" },
+            { id: "marvel", name: "Marvel Rivals", img: GAME_IMAGE_URLS["Marvel Rivals"], yaw: 0.0066, defaultSens: 5, step: 0.1, note: "Mouse Sensitivity" },
+            { id: "pubg", name: "PUBG", img: GAME_IMAGE_URLS["PUBG"], yaw: 0.000440, defaultSens: 50, step: 1, note: "General Sensitivity" },
+            { id: "bf", name: "Battlefield 2042", img: null, yaw: 0.01222, defaultSens: 25, step: 0.5, note: "Soldier Sensitivity (%)" },
+            { id: "destiny2", name: "Destiny 2", img: null, yaw: 0.0066, defaultSens: 5, step: 0.5, note: "Mouse Look Sensitivity" },
+            { id: "halo", name: "Halo Infinite", img: null, yaw: 0.012195, defaultSens: 3, step: 0.1, note: "Mouse Sensitivity" },
+            { id: "quake", name: "Quake Champions", img: null, yaw: 0.022, defaultSens: 3, step: 0.01, note: "Sensitivity" },
+          ];
 
-              let speedLabel = "", speedColor = "";
-              if (cm360 > 80) { speedLabel = "Very Slow"; speedColor = "#3b82f6"; }
-              else if (cm360 > 50) { speedLabel = "Slow"; speedColor = "#06b6d4"; }
-              else if (cm360 > 30) { speedLabel = "Medium"; speedColor = "#10b981"; }
-              else if (cm360 > 18) { speedLabel = "Fast"; speedColor = "#f59e0b"; }
-              else if (cm360 > 10) { speedLabel = "Very Fast"; speedColor = "#ef4444"; }
-              else { speedLabel = "Extreme"; speedColor = "#dc2626"; }
+          const fromGame = SENS_GAMES.find(g => g.id === sensFromGame) || SENS_GAMES[0];
+          const cm360 = (sensFromDpi > 0 && sensFromSens > 0) ? 914.4 / (sensFromDpi * fromGame.yaw * sensFromSens) : 0;
+          const inches360 = cm360 / 2.54;
+          const edpi = sensFromDpi * sensFromSens;
 
-              const proMatches = cm360 > 0 ? allPlayers.filter(p => {
-                if (!p.dpi || !p.edpi || p.edpi <= 0) return false;
-                const pSens = p.edpi / p.dpi;
-                const gameYaw = { CS2: 0.022, Valorant: 0.07, "Overwatch 2": 0.0066, Apex: 0.022, "Call of Duty": 0.0066, "R6 Siege": 0.00572958, Fortnite: 0.005555, PUBG: 0.000440, "Marvel Rivals": 0.0066, Deadlock: 0.022 };
-                const yaw = gameYaw[p.game] || 0.022;
-                const proCm360 = 914.4 / (p.dpi * yaw * pSens);
-                return Math.abs(proCm360 - cm360) / cm360 < 0.1;
-              }).slice(0, 8) : [];
+          let speedLabel = "", speedColor = "";
+          if (cm360 > 80) { speedLabel = "Very Slow"; speedColor = "#3b82f6"; }
+          else if (cm360 > 50) { speedLabel = "Slow"; speedColor = "#06b6d4"; }
+          else if (cm360 > 30) { speedLabel = "Medium"; speedColor = "#10b981"; }
+          else if (cm360 > 18) { speedLabel = "Fast"; speedColor = "#f59e0b"; }
+          else if (cm360 > 10) { speedLabel = "Very Fast"; speedColor = "#ef4444"; }
+          else { speedLabel = "Extreme"; speedColor = "#dc2626"; }
 
-              const accentC = "#8b5cf6";
+          const proMatches = cm360 > 0 ? allPlayers.filter(p => {
+            if (!p.dpi || !p.edpi || p.edpi <= 0) return false;
+            const pSens = p.edpi / p.dpi;
+            const gameYaw = { CS2: 0.022, Valorant: 0.07, "Overwatch 2": 0.0066, Apex: 0.022, "Call of Duty": 0.0066, "R6 Siege": 0.00572958, Fortnite: 0.005555, PUBG: 0.000440, "Marvel Rivals": 0.0066, Deadlock: 0.022 };
+            const yaw = gameYaw[p.game] || 0.022;
+            const proCm360 = 914.4 / (p.dpi * yaw * pSens);
+            return Math.abs(proCm360 - cm360) / cm360 < 0.1;
+          }).slice(0, 12) : [];
 
-              return (
-              <div className="mt-12">
-                <SectionTitle color={accentC} sub="Convert your sensitivity between any game — supporting 17 titles with cm/360 as the universal reference">Sensitivity Converter</SectionTitle>
+          return (
+          <div>
+            <SectionTitle color={accentC} sub="Convert your sensitivity between any game — supporting 17 titles with cm/360 as the universal reference">Sensitivity Converter</SectionTitle>
 
-                <div className="rounded-2xl overflow-hidden" style={{ border: `1px solid ${accentC}15` }}>
-                  {/* Input Section */}
-                  <div className="p-4 sm:p-6" style={{ background: `linear-gradient(135deg, ${accentC}08, #0a0a0a)` }}>
-                    <div className="text-xs uppercase tracking-widest opacity-30 mb-4">Your Current Settings</div>
+            <div className="rounded-2xl overflow-hidden" style={{ border: `1px solid ${accentC}15` }}>
+              {/* Input Section */}
+              <div className="p-4 sm:p-6" style={{ background: `linear-gradient(135deg, ${accentC}08, #0a0a0a)` }}>
+                <div className="text-xs uppercase tracking-widest opacity-30 mb-4">Your Current Settings</div>
 
-                    <div className="mb-4">
-                      <div className="text-xs opacity-40 mb-2">Game</div>
-                      <div className="flex flex-wrap gap-1.5">
-                        {SENS_GAMES.map(g => (
-                          <button key={g.id} onClick={() => { setSensFromGame(g.id); setSensFromSens(g.defaultSens); }}
-                            className="px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap"
-                            style={{
-                              background: sensFromGame === g.id ? accentC : "#ffffff06",
-                              color: sensFromGame === g.id ? "#000" : "#ffffff35",
-                              border: sensFromGame === g.id ? "none" : "1px solid #ffffff08",
-                              fontSize: 10,
-                            }}>
-                            {g.img ? <img src={g.img} alt="" className="inline-block mr-1 rounded-sm" style={{ width: 14, height: 14, objectFit: "contain", verticalAlign: "middle", marginTop: -1 }} /> : null}{g.name}
-                          </button>
-                        ))}
-                      </div>
+                <div className="mb-4">
+                  <div className="text-xs opacity-40 mb-2">Game</div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {SENS_GAMES.map(g => (
+                      <button key={g.id} onClick={() => { setSensFromGame(g.id); setSensFromSens(g.defaultSens); }}
+                        className="px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap"
+                        style={{
+                          background: sensFromGame === g.id ? accentC : "#ffffff06",
+                          color: sensFromGame === g.id ? "#000" : "#ffffff35",
+                          border: sensFromGame === g.id ? "none" : "1px solid #ffffff08",
+                          fontSize: 10,
+                        }}>
+                        {g.img ? <img src={g.img} alt="" className="inline-block mr-1 rounded-sm" style={{ width: 14, height: 14, objectFit: "contain", verticalAlign: "middle", marginTop: -1 }} /> : null}{g.name}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <div className="text-xs opacity-40 mb-2">DPI</div>
+                    <input type="number" value={sensFromDpi} onChange={e => setSensFromDpi(Number(e.target.value))}
+                      className="w-full rounded-xl px-4 py-3 text-lg font-black text-center"
+                      style={{ background: "#ffffff08", border: `1px solid ${accentC}25`, color: accentC, outline: "none" }} />
+                    <div className="flex flex-wrap gap-1 mt-2 justify-center">
+                      {[400, 800, 1600, 3200].map(d => (
+                        <button key={d} onClick={() => setSensFromDpi(d)}
+                          className="px-2 py-0.5 rounded text-xs cursor-pointer transition-all"
+                          style={{ background: sensFromDpi === d ? `${accentC}30` : "#ffffff06", color: sensFromDpi === d ? accentC : "#ffffff30", fontSize: 9 }}>
+                          {d}
+                        </button>
+                      ))}
                     </div>
+                  </div>
+                  <div>
+                    <div className="text-xs opacity-40 mb-2">{fromGame.note}</div>
+                    <input type="number" value={sensFromSens} onChange={e => setSensFromSens(Number(e.target.value))}
+                      step={fromGame.step}
+                      className="w-full rounded-xl px-4 py-3 text-lg font-black text-center"
+                      style={{ background: "#ffffff08", border: `1px solid ${accentC}25`, color: "#fff", outline: "none" }} />
+                    <div className="text-xs opacity-20 text-center mt-2" style={{ fontSize: 9 }}>eDPI: {edpi.toFixed(1)}</div>
+                  </div>
+                </div>
+              </div>
 
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <div className="text-xs opacity-40 mb-2">DPI</div>
-                        <input type="number" value={sensFromDpi} onChange={e => setSensFromDpi(Number(e.target.value))}
-                          className="w-full rounded-xl px-4 py-3 text-lg font-black text-center"
-                          style={{ background: "#ffffff08", border: `1px solid ${accentC}25`, color: accentC, outline: "none" }} />
-                        <div className="flex flex-wrap gap-1 mt-2 justify-center">
-                          {[400, 800, 1600, 3200].map(d => (
-                            <button key={d} onClick={() => setSensFromDpi(d)}
-                              className="px-2 py-0.5 rounded text-xs cursor-pointer transition-all"
-                              style={{ background: sensFromDpi === d ? `${accentC}30` : "#ffffff06", color: sensFromDpi === d ? accentC : "#ffffff30", fontSize: 9 }}>
-                              {d}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                      <div>
-                        <div className="text-xs opacity-40 mb-2">{fromGame.note}</div>
-                        <input type="number" value={sensFromSens} onChange={e => setSensFromSens(Number(e.target.value))}
-                          step={fromGame.step}
-                          className="w-full rounded-xl px-4 py-3 text-lg font-black text-center"
-                          style={{ background: "#ffffff08", border: `1px solid ${accentC}25`, color: "#fff", outline: "none" }} />
-                        <div className="text-xs opacity-20 text-center mt-2" style={{ fontSize: 9 }}>eDPI: {edpi.toFixed(1)}</div>
-                      </div>
+              {/* Universal Metrics */}
+              {cm360 > 0 && cm360 < 10000 && (
+                <div className="px-4 sm:px-6 py-4" style={{ background: "#0a0a0a", borderTop: `1px solid ${accentC}10`, borderBottom: `1px solid ${accentC}10` }}>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                    <div className="text-center">
+                      <div className="text-xs opacity-30 mb-1">cm/360°</div>
+                      <div className="text-xl sm:text-2xl font-black" style={{ color: accentC }}>{cm360.toFixed(1)}</div>
+                      <div className="text-xs opacity-20">centimeters</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-xs opacity-30 mb-1">in/360°</div>
+                      <div className="text-xl sm:text-2xl font-black" style={{ color: "#00b4ff" }}>{inches360.toFixed(1)}</div>
+                      <div className="text-xs opacity-20">inches</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-xs opacity-30 mb-1">Speed</div>
+                      <div className="text-xl sm:text-2xl font-black" style={{ color: speedColor }}>{speedLabel}</div>
+                      <div className="text-xs opacity-20">{cm360 > 40 ? "arm aimer" : cm360 > 22 ? "hybrid" : "wrist aimer"}</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-xs opacity-30 mb-1">Mousepad</div>
+                      <div className="text-xl sm:text-2xl font-black" style={{ color: "#f59e0b" }}>{cm360 > 50 ? "XL+" : cm360 > 30 ? "Large" : cm360 > 18 ? "Medium" : "Any"}</div>
+                      <div className="text-xs opacity-20">recommended size</div>
                     </div>
                   </div>
 
-                  {/* Universal Metrics */}
-                  {cm360 > 0 && cm360 < 10000 && (
-                    <div className="px-4 sm:px-6 py-4" style={{ background: "#0a0a0a", borderTop: `1px solid ${accentC}10`, borderBottom: `1px solid ${accentC}10` }}>
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-                        <div className="text-center">
-                          <div className="text-xs opacity-30 mb-1">cm/360°</div>
-                          <div className="text-xl sm:text-2xl font-black" style={{ color: accentC }}>{cm360.toFixed(1)}</div>
-                          <div className="text-xs opacity-20">centimeters</div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-xs opacity-30 mb-1">in/360°</div>
-                          <div className="text-xl sm:text-2xl font-black" style={{ color: "#00b4ff" }}>{inches360.toFixed(1)}</div>
-                          <div className="text-xs opacity-20">inches</div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-xs opacity-30 mb-1">Speed</div>
-                          <div className="text-xl sm:text-2xl font-black" style={{ color: speedColor }}>{speedLabel}</div>
-                          <div className="text-xs opacity-20">{cm360 > 40 ? "arm aimer" : cm360 > 22 ? "hybrid" : "wrist aimer"}</div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-xs opacity-30 mb-1">Mousepad</div>
-                          <div className="text-xl sm:text-2xl font-black" style={{ color: "#f59e0b" }}>{cm360 > 50 ? "XL+" : cm360 > 30 ? "Large" : cm360 > 18 ? "Medium" : "Any"}</div>
-                          <div className="text-xs opacity-20">recommended size</div>
-                        </div>
+                  {/* Swipe distance bar */}
+                  <div className="mt-4">
+                    <div className="text-xs opacity-25 mb-1.5 text-center">Swipe distance for a full 360° turn</div>
+                    <div className="relative h-8 rounded-lg overflow-hidden" style={{ background: "#ffffff06" }}>
+                      <div className="absolute left-0 top-0 h-full rounded-lg transition-all duration-500 flex items-center justify-end pr-2"
+                        style={{ width: `${Math.min(Math.max(cm360 / 100 * 100, 5), 100)}%`, background: `linear-gradient(to right, ${accentC}40, ${accentC})` }}>
+                        <span className="text-xs font-black" style={{ color: "#000" }}>{cm360.toFixed(1)}cm</span>
                       </div>
+                      {[20, 40, 60, 80].map(mark => (
+                        <div key={mark} className="absolute top-0 h-full flex items-end pb-0.5 justify-center" style={{ left: `${mark}%`, width: 1 }}>
+                          <div className="w-px h-2 bg-white/10" />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex justify-between text-xs opacity-15 mt-1 px-1" style={{ fontSize: 8 }}>
+                      <span>0cm (instant)</span>
+                      <span>50cm</span>
+                      <span>100cm+</span>
+                    </div>
+                  </div>
+                </div>
+              )}
 
-                      {/* Swipe distance bar */}
-                      <div className="mt-4">
-                        <div className="text-xs opacity-25 mb-1.5 text-center">Swipe distance for a full 360° turn</div>
-                        <div className="relative h-8 rounded-lg overflow-hidden" style={{ background: "#ffffff06" }}>
-                          <div className="absolute left-0 top-0 h-full rounded-lg transition-all duration-500 flex items-center justify-end pr-2"
-                            style={{ width: `${Math.min(Math.max(cm360 / 100 * 100, 5), 100)}%`, background: `linear-gradient(to right, ${accentC}40, ${accentC})` }}>
-                            <span className="text-xs font-black" style={{ color: "#000" }}>{cm360.toFixed(1)}cm</span>
+              {/* Converted Sensitivities */}
+              {cm360 > 0 && cm360 < 10000 && (
+                <div className="p-4 sm:p-6" style={{ background: "#050505" }}>
+                  <div className="text-xs uppercase tracking-widest opacity-30 mb-4">Equivalent Sensitivity in Every Game</div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                    {SENS_GAMES.filter(g => g.id !== sensFromGame).map(g => {
+                      const targetSens = 914.4 / (sensFromDpi * g.yaw * cm360);
+                      const targetEdpi = sensFromDpi * targetSens;
+                      const isSameEngine = g.yaw === fromGame.yaw;
+                      const formatted = targetSens < 0.01 ? targetSens.toFixed(4) : targetSens < 1 ? targetSens.toFixed(3) : targetSens < 10 ? targetSens.toFixed(2) : targetSens.toFixed(1);
+                      return (
+                        <div key={g.id} className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all group/sens"
+                          style={{ background: "#ffffff04", border: "1px solid #ffffff08" }}
+                          onMouseEnter={e => { e.currentTarget.style.background = `${accentC}08`; e.currentTarget.style.borderColor = `${accentC}20`; }}
+                          onMouseLeave={e => { e.currentTarget.style.background = "#ffffff04"; e.currentTarget.style.borderColor = "#ffffff08"; }}>
+                          {g.img ? <img src={g.img} alt="" className="flex-shrink-0 rounded-sm" style={{ width: 20, height: 20, objectFit: "contain" }} /> : <span className="flex-shrink-0 w-5 h-5 rounded-sm flex items-center justify-center text-xs" style={{ background: "#ffffff08" }}>{g.name.charAt(0)}</span>}
+                          <div className="flex-1 min-w-0">
+                            <div className="text-xs font-bold truncate" style={{ color: "#ffffffc0" }}>{g.name}</div>
+                            <div className="text-xs opacity-25" style={{ fontSize: 9 }}>{g.note} · eDPI: {targetEdpi.toFixed(1)}</div>
                           </div>
-                          {[20, 40, 60, 80].map(mark => (
-                            <div key={mark} className="absolute top-0 h-full flex items-end pb-0.5 justify-center" style={{ left: `${mark}%`, width: 1 }}>
-                              <div className="w-px h-2 bg-white/10" />
-                            </div>
-                          ))}
+                          <div className="text-right flex-shrink-0">
+                            <div className="text-sm font-black" style={{ color: accentC }}>{formatted}</div>
+                            {isSameEngine && <div className="text-xs font-bold" style={{ color: "#10b981", fontSize: 8 }}>Same engine</div>}
+                          </div>
+                          <button onClick={() => { navigator.clipboard?.writeText(formatted); }}
+                            className="opacity-0 group-hover/sens:opacity-40 hover:!opacity-100 transition-all cursor-pointer flex-shrink-0"
+                            title="Copy sensitivity">
+                            <svg width={12} height={12} viewBox="0 0 24 24" fill="none"><rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" strokeWidth="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" strokeWidth="2"/></svg>
+                          </button>
                         </div>
-                        <div className="flex justify-between text-xs opacity-15 mt-1 px-1" style={{ fontSize: 8 }}>
-                          <span>0cm (instant)</span>
-                          <span>50cm</span>
-                          <span>100cm+</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
 
-                  {/* Converted Sensitivities */}
-                  {cm360 > 0 && cm360 < 10000 && (
-                    <div className="p-4 sm:p-6" style={{ background: "#050505" }}>
-                      <div className="text-xs uppercase tracking-widest opacity-30 mb-4">Equivalent Sensitivity in Every Game</div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-                        {SENS_GAMES.filter(g => g.id !== sensFromGame).map(g => {
-                          const targetSens = 914.4 / (sensFromDpi * g.yaw * cm360);
-                          const targetEdpi = sensFromDpi * targetSens;
-                          const isSameEngine = g.yaw === fromGame.yaw;
-                          const formatted = targetSens < 0.01 ? targetSens.toFixed(4) : targetSens < 1 ? targetSens.toFixed(3) : targetSens < 10 ? targetSens.toFixed(2) : targetSens.toFixed(1);
-                          return (
-                            <div key={g.id} className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all group/sens"
-                              style={{ background: "#ffffff04", border: "1px solid #ffffff08" }}
-                              onMouseEnter={e => { e.currentTarget.style.background = `${accentC}08`; e.currentTarget.style.borderColor = `${accentC}20`; }}
-                              onMouseLeave={e => { e.currentTarget.style.background = "#ffffff04"; e.currentTarget.style.borderColor = "#ffffff08"; }}>
-                              {g.img ? <img src={g.img} alt="" className="flex-shrink-0 rounded-sm" style={{ width: 20, height: 20, objectFit: "contain" }} /> : <span className="flex-shrink-0 w-5 h-5 rounded-sm flex items-center justify-center text-xs" style={{ background: "#ffffff08" }}>{g.name.charAt(0)}</span>}
-                              <div className="flex-1 min-w-0">
-                                <div className="text-xs font-bold truncate" style={{ color: "#ffffffc0" }}>{g.name}</div>
-                                <div className="text-xs opacity-25" style={{ fontSize: 9 }}>{g.note} · eDPI: {targetEdpi.toFixed(1)}</div>
-                              </div>
-                              <div className="text-right flex-shrink-0">
-                                <div className="text-sm font-black" style={{ color: accentC }}>{formatted}</div>
-                                {isSameEngine && <div className="text-xs font-bold" style={{ color: "#10b981", fontSize: 8 }}>Same engine</div>}
-                              </div>
-                              <button onClick={() => { navigator.clipboard?.writeText(formatted); }}
-                                className="opacity-0 group-hover/sens:opacity-40 hover:!opacity-100 transition-all cursor-pointer flex-shrink-0"
-                                title="Copy sensitivity">
-                                <svg width={12} height={12} viewBox="0 0 24 24" fill="none"><rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" strokeWidth="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" strokeWidth="2"/></svg>
+              {/* Pro Players with Similar Sensitivity */}
+              {cm360 > 0 && cm360 < 10000 && (
+                <div className="p-4 sm:p-6" style={{ background: "#0a0a0a", borderTop: `1px solid ${accentC}10` }}>
+                  <button onClick={() => setSensShowPros(!sensShowPros)}
+                    className="flex items-center gap-2 text-xs uppercase tracking-widest opacity-40 hover:opacity-60 transition-all cursor-pointer mb-3">
+                    <span>{sensShowPros ? "▼" : "▶"} Pro Players with Similar Sensitivity ({proMatches.length} found)</span>
+                  </button>
+                  {sensShowPros && (
+                    <div>
+                      {proMatches.length > 0 ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                          {proMatches.map((p, i) => {
+                            const gc = { CS2: "#ff8c00", Valorant: "#ff4655", "Overwatch 2": "#f99e1a", Apex: "#dc2626", "Call of Duty": "#5cb85c", "R6 Siege": "#4a86c8", Fortnite: "#4c7bd9", "Marvel Rivals": "#ed1d24", Deadlock: "#8b5cf6" };
+                            return (
+                              <button key={i} onClick={() => { const pp = proPlayers.find(pp => pp.name === p.name); if (pp) { setSelectedPlayer(pp); setActiveTab("players"); } }}
+                                className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-all cursor-pointer"
+                                style={{ background: "#ffffff04", border: "1px solid #ffffff08" }}
+                                onMouseEnter={e => { e.currentTarget.style.background = "#ffffff08"; }}
+                                onMouseLeave={e => { e.currentTarget.style.background = "#ffffff04"; }}>
+                                <span className="text-lg">{p.country}</span>
+                                <div className="flex-1 min-w-0">
+                                  <div className="text-sm font-bold">{p.name}</div>
+                                  <div className="text-xs opacity-30">{p.team} · <span style={{ color: gc[p.game] || "#888" }}>{p.game}</span></div>
+                                </div>
+                                <div className="text-right flex-shrink-0">
+                                  <div className="text-xs font-bold" style={{ color: accentC }}>{p.dpi} DPI</div>
+                                  <div className="text-xs opacity-30">{p.edpi} eDPI</div>
+                                </div>
                               </button>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Pro Players with Similar Sensitivity */}
-                  {cm360 > 0 && cm360 < 10000 && (
-                    <div className="p-4 sm:p-6" style={{ background: "#0a0a0a", borderTop: `1px solid ${accentC}10` }}>
-                      <button onClick={() => setSensShowPros(!sensShowPros)}
-                        className="flex items-center gap-2 text-xs uppercase tracking-widest opacity-40 hover:opacity-60 transition-all cursor-pointer mb-3">
-                        <span>{sensShowPros ? "▼" : "▶"} Pro Players with Similar Sensitivity ({proMatches.length} found)</span>
-                      </button>
-                      {sensShowPros && (
-                        <div>
-                          {proMatches.length > 0 ? (
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                              {proMatches.map((p, i) => {
-                                const gc = { CS2: "#ff8c00", Valorant: "#ff4655", "Overwatch 2": "#f99e1a", Apex: "#dc2626", "Call of Duty": "#5cb85c", "R6 Siege": "#4a86c8", Fortnite: "#4c7bd9", "Marvel Rivals": "#ed1d24", Deadlock: "#8b5cf6" };
-                                return (
-                                  <button key={i} onClick={() => { const pp = proPlayers.find(pp => pp.name === p.name); if (pp) { setSelectedPlayer(pp); setActiveTab("players"); } }}
-                                    className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-all cursor-pointer"
-                                    style={{ background: "#ffffff04", border: "1px solid #ffffff08" }}
-                                    onMouseEnter={e => { e.currentTarget.style.background = "#ffffff08"; }}
-                                    onMouseLeave={e => { e.currentTarget.style.background = "#ffffff04"; }}>
-                                    <span className="text-lg">{p.country}</span>
-                                    <div className="flex-1 min-w-0">
-                                      <div className="text-sm font-bold">{p.name}</div>
-                                      <div className="text-xs opacity-30">{p.team} · <span style={{ color: gc[p.game] || "#888" }}>{p.game}</span></div>
-                                    </div>
-                                    <div className="text-right flex-shrink-0">
-                                      <div className="text-xs font-bold" style={{ color: accentC }}>{p.dpi} DPI</div>
-                                      <div className="text-xs opacity-30">{p.edpi} eDPI</div>
-                                    </div>
-                                  </button>
-                                );
-                              })}
-                            </div>
-                          ) : (
-                            <div className="text-xs opacity-20 text-center py-4">No pros with a similar sensitivity found in our database. Try adjusting your settings.</div>
-                          )}
+                            );
+                          })}
                         </div>
+                      ) : (
+                        <div className="text-xs opacity-20 text-center py-4">No pros with a similar sensitivity found in our database. Try adjusting your settings.</div>
                       )}
                     </div>
                   )}
-
-                  {/* Quick Reference */}
-                  {cm360 > 0 && cm360 < 10000 && (
-                    <div className="p-4 sm:p-6" style={{ background: "#050505", borderTop: `1px solid ${accentC}10` }}>
-                      <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Sensitivity Ranges by Game Type</div>
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                          <div className="text-xs font-bold mb-2" style={{ color: "#3b82f6" }}>🎯 Tactical Shooters</div>
-                          <div className="text-xs opacity-40 leading-relaxed">CS2, Valorant, R6 Siege — Pros typically use 25-55 cm/360. Precise aim over flick speed. Your {cm360.toFixed(0)}cm is {cm360 > 55 ? "slower than most" : cm360 > 25 ? "in the sweet spot" : "faster than most"} tactical pros.</div>
-                        </div>
-                        <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                          <div className="text-xs font-bold mb-2" style={{ color: "#ef4444" }}>💥 Fast-Paced Shooters</div>
-                          <div className="text-xs opacity-40 leading-relaxed">Apex, OW2, CoD, Fortnite — Pros typically use 18-40 cm/360. More tracking and flicking. Your {cm360.toFixed(0)}cm is {cm360 > 40 ? "slower than most" : cm360 > 18 ? "in the sweet spot" : "faster than most"} arena pros.</div>
-                        </div>
-                        <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                          <div className="text-xs font-bold mb-2" style={{ color: "#10b981" }}>📏 The Universal Range</div>
-                          <div className="text-xs opacity-40 leading-relaxed">Most FPS pros across all titles fall between 20-50 cm/360. If you're between 25-40cm, you're in the most popular zone. Experiment ±5cm from your current to find your sweet spot.</div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
-              </div>
-              );
-            })()}
+              )}
 
+              {/* Quick Reference */}
+              {cm360 > 0 && cm360 < 10000 && (
+                <div className="p-4 sm:p-6" style={{ background: "#050505", borderTop: `1px solid ${accentC}10` }}>
+                  <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Sensitivity Ranges by Game Type</div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
+                      <div className="text-xs font-bold mb-2" style={{ color: "#3b82f6" }}>🎯 Tactical Shooters</div>
+                      <div className="text-xs opacity-40 leading-relaxed">CS2, Valorant, R6 Siege — Pros typically use 25-55 cm/360. Precise aim over flick speed. Your {cm360.toFixed(0)}cm is {cm360 > 55 ? "slower than most" : cm360 > 25 ? "in the sweet spot" : "faster than most"} tactical pros.</div>
+                    </div>
+                    <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
+                      <div className="text-xs font-bold mb-2" style={{ color: "#ef4444" }}>💥 Fast-Paced Shooters</div>
+                      <div className="text-xs opacity-40 leading-relaxed">Apex, OW2, CoD, Fortnite — Pros typically use 18-40 cm/360. More tracking and flicking. Your {cm360.toFixed(0)}cm is {cm360 > 40 ? "slower than most" : cm360 > 18 ? "in the sweet spot" : "faster than most"} arena pros.</div>
+                    </div>
+                    <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
+                      <div className="text-xs font-bold mb-2" style={{ color: "#10b981" }}>📏 The Universal Range</div>
+                      <div className="text-xs opacity-40 leading-relaxed">Most FPS pros across all titles fall between 20-50 cm/360. If you're between 25-40cm, you're in the most popular zone. Experiment ±5cm from your current to find your sweet spot.</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
           );
         })()}
