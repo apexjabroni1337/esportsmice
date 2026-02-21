@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, LineChart, Line, CartesianGrid, Legend, AreaChart, Area } from "recharts";
 import { Home, Mouse, Trophy, Cpu, Users, Gamepad2, Building2, TrendingUp, GitCompare, Search, X, FlaskConical, Crosshair } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -5643,18 +5644,18 @@ export default function EsportsMice() {
               const topMouseEntry = Object.entries(mouseCounts).sort((a,b) => b[1]-a[1])[0];
               const allEdpis = allPlayers.filter(p => p.edpi > 0 && p.edpi < 50000).map(p => p.edpi);
               const avgEdpi = allEdpis.length ? Math.round(allEdpis.reduce((a,b) => a+b, 0) / allEdpis.length) : 0;
-              const wirelessCount = allPlayers.filter(p => { const m = mice.find(mm => mm.name === p.mouse || p.mouse.includes(mm.name)); return m?.connectivity === "Wireless"; }).length;
-              const wirelessPct = Math.round(wirelessCount / allPlayers.length * 100);
               const lightest = [...mice].sort((a,b) => a.weight - b.weight)[0];
-              const avgDpi = Math.round(allPlayers.reduce((a,p) => a + p.dpi, 0) / allPlayers.length);
+              const uniqueBrands = new Set(allPlayers.map(p => { const m = mice.find(mm => mm.name === p.mouse || p.mouse.includes(mm.name)); return m?.brand; }).filter(Boolean));
+              const playerWeights = allPlayers.map(p => { const m = mice.find(mm => mm.name === p.mouse || p.mouse.includes(mm.name)); return m?.weight; }).filter(Boolean);
+              const avgProWeight = playerWeights.length ? Math.round(playerWeights.reduce((a,b) => a+b, 0) / playerWeights.length) : 0;
               return (
               <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-3 my-4 sm:my-6 text-center">
                 {[
                   { label: "Most Used Mouse", value: topMouseEntry[0].replace(/(Logitech |Razer )/, ""), sub: `${Math.round(topMouseEntry[1]/allPlayers.length*100)}% of pros`, color: "#00ff6a", icon: "crown" },
                   { label: "Avg Pro eDPI", value: avgEdpi, sub: allEdpis.length + " players tracked", color: "#ff4655", icon: "crosshair" },
-                  { label: "Wireless Adoption", value: `${wirelessPct}%`, sub: "of tracked pros", color: "#00b4ff", icon: "signal" },
+                  { label: "Brands in Pro Use", value: uniqueBrands.size, sub: "competing for pros", color: "#00b4ff", icon: "signal" },
                   { label: "Lightest Mouse", value: `${lightest.weight}g`, sub: lightest.name.replace(/(WLMouse |Finalmouse )/, ""), color: "#f472b6", icon: "wind" },
-                  { label: "Avg Pro DPI", value: avgDpi, sub: "across all games", color: "#d4af37", icon: "gear" },
+                  { label: "Avg Pro Weight", value: `${avgProWeight}g`, sub: "across all pros", color: "#d4af37", icon: "gear" },
                 ].map((card, i) => (
                   <div key={i} className="rounded-xl p-2 sm:p-4 text-center transition-all hover:scale-[1.02]" style={{ background: `${card.color}06`, border: `1px solid ${card.color}12` }}>
                     <div className="mb-1 flex items-center justify-center">{icon(card.icon, 22)}</div>
@@ -9074,6 +9075,7 @@ export default function EsportsMice() {
           </div>
         </div>
       </footer>
+      <Analytics />
     </div>
   );
 }
