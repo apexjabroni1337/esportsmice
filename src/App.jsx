@@ -8571,7 +8571,11 @@ export default function EsportsMice() {
                     </div>
                     <div className="rounded-2xl p-8 sm:p-10 text-center flex flex-col" style={{ background: "#0a0a0a", border: "1px solid #06b6d415" }}>
                       <Layers size={48} style={{ color: "#06b6d4", margin: "0 auto 20px" }} />
-                      <div className="text-xl sm:text-2xl font-black mb-4" style={{ fontFamily: "Orbitron", color: "#06b6d4" }}>Shape Overlay</div>
+                      <div className="text-xl sm:text-2xl font-black mb-2" style={{ fontFamily: "Orbitron", color: "#06b6d4" }}>Shape Overlay</div>
+                      <div className="mb-4 flex flex-wrap gap-1.5 justify-center">
+                        <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: "#06b6d415", color: "#06b6d4", border: "1px solid #06b6d430", fontSize: 10 }}>BETA</span>
+                        <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: "#f59e0b15", color: "#f59e0b", border: "1px solid #f59e0b30", fontSize: 10 }}>🚧 UNDER CONSTRUCTION</span>
+                      </div>
                       <p className="text-sm opacity-40 max-w-lg mx-auto leading-relaxed mb-2">
                         Overlay actual mouse images scaled to real dimensions — instantly see how any two mice compare in size from all {mice.filter(m => MOUSE_DIMS[m.name] && MOUSE_IMAGE_URLS[m.name]).length} mice.
                       </p>
