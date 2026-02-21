@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, LineChart, Line, CartesianGrid, Legend, AreaChart, Area } from "recharts";
 import { Home, Mouse, Trophy, Cpu, Users, Gamepad2, Building2, TrendingUp, GitCompare, Search, X, FlaskConical, Crosshair } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -9074,6 +9075,7 @@ export default function EsportsMice() {
           </div>
         </div>
       </footer>
+      <Analytics />
     </div>
   );
 }
