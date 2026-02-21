@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, LineChart, Line, CartesianGrid, Legend, AreaChart, Area } from "recharts";
 import { Home, Mouse, Trophy, Cpu, Users, Gamepad2, Building2, TrendingUp, GitCompare, Search, X, FlaskConical, Crosshair } from "lucide-react";
-import { Analytics } from "@vercel/analytics/react";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -5655,7 +5654,7 @@ export default function EsportsMice() {
                   { label: "Avg Pro eDPI", value: avgEdpi, sub: allEdpis.length + " players tracked", color: "#ff4655", icon: "crosshair" },
                   { label: "Brands in Pro Use", value: uniqueBrands.size, sub: "competing for pros", color: "#00b4ff", icon: "signal" },
                   { label: "Lightest Mouse", value: `${lightest.weight}g`, sub: lightest.name.replace(/(WLMouse |Finalmouse )/, ""), color: "#f472b6", icon: "wind" },
-                  { label: "Avg Pro Weight", value: `${avgProWeight}g`, sub: "across all pros", color: "#d4af37", icon: "gear" },
+                  { label: "Avg Mouse Weight with Pros", value: `${avgProWeight}g`, sub: "across all pros", color: "#d4af37", icon: "gear" },
                 ].map((card, i) => (
                   <div key={i} className="rounded-xl p-2 sm:p-4 text-center transition-all hover:scale-[1.02]" style={{ background: `${card.color}06`, border: `1px solid ${card.color}12` }}>
                     <div className="mb-1 flex items-center justify-center">{icon(card.icon, 22)}</div>
@@ -7732,7 +7731,8 @@ export default function EsportsMice() {
                           const barW = Math.max(count / maxCount * 100, 4);
                           return (
                             <div key={sensor} className="flex items-center gap-2">
-                              <div className="text-xs font-bold w-20 sm:w-32 truncate" style={{ color: barColors[i] }}>{sensor}</div>
+                              <div className="text-xs font-bold w-20 sm:w-32 truncate cursor-pointer hover:underline" style={{ color: barColors[i] }}
+                                onClick={() => document.getElementById(`sensor-group-${sensor.replace(/\s+/g, "-").toLowerCase()}`)?.scrollIntoView({ behavior: "smooth", block: "start" })}>{sensor}</div>
                               <div className="flex-1 h-6 rounded-md overflow-hidden" style={{ background: "#ffffff06" }}>
                                 <div className="h-full rounded-md flex items-center px-2 transition-all" style={{ width: `${barW}%`, background: `${barColors[i]}25`, borderRight: `2px solid ${barColors[i]}` }}>
                                   <span className="text-xs font-black" style={{ color: barColors[i] }}>{count}</span>
@@ -7827,7 +7827,7 @@ export default function EsportsMice() {
             <SectionTitle color="#00b4ff" sub="Every mouse in our database grouped by sensor">Mice by Sensor</SectionTitle>
             <div className="space-y-4 mb-8">
               {sensorProfiles.sort((a, b) => b.totalUsage - a.totalUsage).map((s, si) => (
-                <div key={s.sensor} className="rounded-xl p-4" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                <div key={s.sensor} id={`sensor-group-${s.sensor.replace(/\s+/g, "-").toLowerCase()}`} className="rounded-xl p-4" style={{ background: "#0a0a0a", border: "1px solid #ffffff08", scrollMarginTop: 70 }}>
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <div className="text-sm font-black" style={{ color: "#10b981" }}>{s.sensor}</div>
@@ -9075,7 +9075,6 @@ export default function EsportsMice() {
           </div>
         </div>
       </footer>
-      <Analytics />
     </div>
   );
 }
