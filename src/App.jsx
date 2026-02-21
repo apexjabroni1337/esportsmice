@@ -394,7 +394,7 @@ const mice = [
   { id: 17, name: "Ninjutso Sora V2", brand: "Ninjutso", weight: 42, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 89, switches: "Kailh GM 8.0", proUsage: 1, rating: 9.0, image: "ninja", color: "#10b981", batteryLife: 55, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
   { id: 18, name: "WLMouse Beast X", brand: "WLMouse", weight: 30, sensor: "PAW3950", dpi: 32000, pollingRate: 8000, shape: "Symmetrical", connectivity: "Wireless", price: 199, switches: "Optical", proUsage: 1, rating: 9.2, image: "dragon", color: "#f59e0b", batteryLife: 70, clicks: "100M", cable: "USB-C", releaseYear: 2025 },
   { id: 20, name: "Razer Viper V3 HyperSpeed", brand: "Razer", weight: 82, sensor: "Focus Pro 35K", dpi: 35000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 99, switches: "Gen-3 Optical", proUsage: 1, rating: 9.3, image: "viper", color: "#00dd55", batteryLife: 280, clicks: "90M", cable: "USB-C", releaseYear: 2024 },
-  { id: 21, name: "Razer DeathAdder V3", brand: "Razer", weight: 59, sensor: "Focus Pro 35K", dpi: 35000, pollingRate: 8000, shape: "Ergonomic", connectivity: "Wired", price: 90, switches: "Gen-3 Optical", proUsage: 1, rating: 9.4, image: "viper", color: "#00ff6a", batteryLife: null, clicks: "90M", cable: "Speedflex", releaseYear: 2023 },
+  { id: 48, name: "Razer DeathAdder V3", brand: "Razer", weight: 59, sensor: "Focus Pro 35K", dpi: 35000, pollingRate: 8000, shape: "Ergonomic", connectivity: "Wired", price: 90, switches: "Gen-3 Optical", proUsage: 1, rating: 9.4, image: "viper", color: "#00ff6a", batteryLife: null, clicks: "90M", cable: "Speedflex", releaseYear: 2023 },
   { id: 22, name: "Logitech G502 X Plus", brand: "Logitech", weight: 106, sensor: "HERO 25K", dpi: 25600, pollingRate: 1000, shape: "Ergonomic", connectivity: "Wireless", price: 160, switches: "Lightforce Hybrid", proUsage: 1, rating: 9.0, image: "crosshair", color: "#00b4ff", batteryLife: 130, clicks: "Hybrid", cable: "USB-C", releaseYear: 2022 },
   { id: 23, name: "Pulsar X2H", brand: "Pulsar", weight: 53, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Ergonomic", connectivity: "Wireless", price: 99, switches: "Kailh GM 8.0", proUsage: 1, rating: 8.8, image: "pulse", color: "#f472b6", batteryLife: 75, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
   { id: 24, name: "Pulsar X2 Mini", brand: "Pulsar", weight: 46, sensor: "PAW3395", dpi: 26000, pollingRate: 4000, shape: "Symmetrical", connectivity: "Wireless", price: 95, switches: "Kailh GM 8.0", proUsage: 1, rating: 8.7, image: "pulse", color: "#f472b6", batteryLife: 70, clicks: "80M", cable: "USB-C", releaseYear: 2024 },
@@ -6608,55 +6608,60 @@ export default function EsportsMice() {
                     ].map(h => (
                       <th key={h.label} className={`px-4 py-3 text-left text-xs uppercase tracking-wider font-bold ${h.key ? "cursor-pointer select-none hover:opacity-80" : ""}`}
                         style={{ color: rankingSort.key === h.key ? "#00ff6a" : "#ffffff30" }}
-                        onClick={() => { if (h.key) setRankingSort(prev => prev.key === h.key ? { key: h.key, dir: prev.dir === "asc" ? "desc" : "asc" } : { key: h.key, dir: typeof sortedMice[0]?.[h.key] === "string" ? "asc" : "desc" }); }}>
+                        onClick={() => { if (h.key) setRankingSort(prev => prev.key === h.key ? { key: h.key, dir: prev.dir === "asc" ? "desc" : "asc" } : { key: h.key, dir: ["name","brand","sensor","shape"].includes(h.key) ? "asc" : "desc" }); }}>
                         {h.label}{rankingSort.key === h.key ? (rankingSort.dir === "asc" ? " ▲" : " ▼") : ""}
                       </th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {[...sortedMice].sort((a, b) => {
-                    if (!rankingSort.key) return 0;
-                    const k = rankingSort.key;
-                    let av = a[k], bv = b[k];
-                    if (typeof av === "string") return rankingSort.dir === "asc" ? av.localeCompare(bv) : bv.localeCompare(av);
-                    return rankingSort.dir === "asc" ? av - bv : bv - av;
-                  }).map((m, i) => {
-                    const col = BRAND_COLORS[m.brand] || "#888";
-                    return (
-                      <tr key={m.id} className="cursor-pointer transition-all" onClick={() => { setSelectedMouse(m); setActiveTab("mouseDetail"); }}
-                        style={{ borderBottom: "1px solid #ffffff05", background: i % 2 === 0 ? "#050505" : "#080808" }}
-                        onMouseEnter={e => e.currentTarget.style.background = `${col}08`}
-                        onMouseLeave={e => e.currentTarget.style.background = i % 2 === 0 ? "#050505" : "#080808"}>
-                        <td className="px-4 py-3 font-black opacity-20">{i + 1}</td>
-                        <td className="px-4 py-3 font-bold" style={{ color: col }}>{MOUSE_IMAGE_URLS[m.name] ? <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="inline h-5 mr-2 object-contain" /> : <span className="mr-2">{m.image}</span>}{m.name}</td>
-                        <td className="px-4 py-3 opacity-50">{m.brand}</td>
-                        <td className="px-4 py-3 font-bold">{m.weight}g</td>
-                        <td className="px-4 py-3 opacity-50 text-xs">{m.sensor}</td>
-                        <td className="px-4 py-3">{m.pollingRate >= 1000 ? `${m.pollingRate / 1000}K` : m.pollingRate}Hz</td>
-                        <td className="px-4 py-3 opacity-50">{m.shape}</td>
-                        <td className="px-4 py-3 font-bold">{"$"}{m.price}</td>
-                        <td className="px-4 py-3 font-black" style={{ color: col }}>{m.proUsage}%</td>
-                        <td className="px-4 py-3">
-                          <div className="flex items-center gap-2">
-                            <div className="w-12 h-1.5 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
-                              <div className="h-full rounded-full" style={{ width: `${m.rating * 10}%`, background: col }} />
+                  {(() => {
+                    const filtered = mice
+                      .filter(m => filterBrand === "All" || m.brand === filterBrand)
+                      .filter(m => m.name.toLowerCase().includes(searchQuery.toLowerCase()) || m.brand.toLowerCase().includes(searchQuery.toLowerCase()));
+                    const k = rankingSort.key || "proUsage";
+                    const dir = rankingSort.dir || "desc";
+                    const sorted = [...filtered].sort((a, b) => {
+                      let av = a[k], bv = b[k];
+                      if (typeof av === "string") return dir === "asc" ? av.localeCompare(bv) : bv.localeCompare(av);
+                      if (av !== bv) return dir === "asc" ? av - bv : bv - av;
+                      return a.id - b.id;
+                    });
+                    return sorted.map((m, i) => {
+                      const col = BRAND_COLORS[m.brand] || "#888";
+                      return (
+                        <tr key={`rank-${m.id}`} className="cursor-pointer transition-colors hover:brightness-125" onClick={() => { setSelectedMouse(m); setActiveTab("mouseDetail"); }}
+                          style={{ borderBottom: "1px solid #ffffff05", background: i % 2 === 0 ? "#050505" : "#080808" }}>
+                          <td className="px-4 py-3 font-black opacity-20">{i + 1}</td>
+                          <td className="px-4 py-3 font-bold" style={{ color: col }}>{MOUSE_IMAGE_URLS[m.name] ? <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="inline h-5 mr-2 object-contain" /> : <span className="mr-2">{m.image}</span>}{m.name}</td>
+                          <td className="px-4 py-3 opacity-50">{m.brand}</td>
+                          <td className="px-4 py-3 font-bold">{m.weight}g</td>
+                          <td className="px-4 py-3 opacity-50 text-xs">{m.sensor}</td>
+                          <td className="px-4 py-3">{m.pollingRate >= 1000 ? `${m.pollingRate / 1000}K` : m.pollingRate}Hz</td>
+                          <td className="px-4 py-3 opacity-50">{m.shape}</td>
+                          <td className="px-4 py-3 font-bold">{"$"}{m.price}</td>
+                          <td className="px-4 py-3 font-black" style={{ color: col }}>{m.proUsage}%</td>
+                          <td className="px-4 py-3">
+                            <div className="flex items-center gap-2">
+                              <div className="w-12 h-1.5 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
+                                <div className="h-full rounded-full" style={{ width: `${m.rating * 10}%`, background: col }} />
+                              </div>
+                              <span className="text-xs opacity-50">{m.rating}</span>
                             </div>
-                            <span className="text-xs opacity-50">{m.rating}</span>
-                          </div>
-                        </td>
-                        <td className="px-4 py-3" onClick={e => e.stopPropagation()}>
-                          <a href={amazonLink(m.name)} target="_blank" rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap"
-                            style={{ background: `${col}15`, color: col, border: `1px solid ${col}25` }}
-                            onMouseEnter={e => { e.currentTarget.style.background = col; e.currentTarget.style.color = "#000"; }}
-                            onMouseLeave={e => { e.currentTarget.style.background = `${col}15`; e.currentTarget.style.color = col; }}>
-                            {I.cart(12)} {"$"}{m.price}
-                          </a>
-                        </td>
-                      </tr>
-                    );
-                  })}
+                          </td>
+                          <td className="px-4 py-3" onClick={e => e.stopPropagation()}>
+                            <a href={amazonLink(m.name)} target="_blank" rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap"
+                              style={{ background: `${col}15`, color: col, border: `1px solid ${col}25` }}
+                              onMouseEnter={e => { e.currentTarget.style.background = col; e.currentTarget.style.color = "#000"; }}
+                              onMouseLeave={e => { e.currentTarget.style.background = `${col}15`; e.currentTarget.style.color = col; }}>
+                              {I.cart(12)} {"$"}{m.price}
+                            </a>
+                          </td>
+                        </tr>
+                      );
+                    });
+                  })()}
                 </tbody>
               </table>
             </div>
