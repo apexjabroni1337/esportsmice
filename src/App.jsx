@@ -5336,7 +5336,7 @@ export default function EsportsMice() {
       {/* ─── GLOBAL SEARCH OVERLAY ─── */}
       {globalSearchOpen && (
         <div onClick={handleSearchBackdropClick} className="fixed inset-0 z-[100] flex items-start justify-center pt-[10vh] sm:pt-[15vh] px-4" style={{ background: "rgba(0,0,0,0.75)", backdropFilter: "blur(8px)" }}>
-          <div ref={globalSearchRef} className="w-full max-w-2xl rounded-2xl overflow-hidden" style={{ background: "#0d0d0d", border: "1px solid #ffffff12", boxShadow: "0 25px 80px rgba(0,0,0,0.8), 0 0 40px rgba(0,255,106,0.05)" }}>
+          <div ref={globalSearchRef} className="w-full max-w-lg rounded-2xl overflow-hidden" style={{ background: "#0d0d0d", border: "1px solid #ffffff12", boxShadow: "0 25px 80px rgba(0,0,0,0.8), 0 0 40px rgba(0,255,106,0.05)" }}>
             {/* Search Input */}
             <div className="flex items-center gap-3 px-5 py-4 border-b" style={{ borderColor: "#ffffff0a" }}>
               <Search size={18} style={{ color: "#00ff6a", flexShrink: 0 }} />
@@ -5701,7 +5701,6 @@ export default function EsportsMice() {
               style={{ background: "#ffffff06", border: "1px solid #ffffff0a" }}>
               <Search size={13} style={{ color: "#00ff6a" }} />
               <span style={{ color: "#ffffff30" }}>Search</span>
-              <kbd className="flex items-center gap-0.5 px-1.5 py-0.5 rounded text-xs ml-1" style={{ background: "#ffffff08", color: "#ffffff25", border: "1px solid #ffffff08", fontSize: 9 }}>⌘K</kbd>
             </button>
           </div>
         </div>
