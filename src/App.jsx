@@ -5609,7 +5609,7 @@ export default function EsportsMice() {
                   </button>
                 )}
                 {newsletterPopup && newsletterStatus !== "success" && (
-                  <div className="absolute top-8 right-0 z-50 rounded-xl p-4 w-64" style={{ background: "#111111", border: "1px solid #00ff6a25", boxShadow: "0 12px 40px rgba(0,0,0,0.9), 0 0 0 1px rgba(0,0,0,0.5)" }}>
+                  <div className="absolute top-8 right-0 z-[60] rounded-xl p-4 w-64" style={{ background: "#111111", border: "1px solid #00ff6a25", boxShadow: "0 12px 40px rgba(0,0,0,0.9), 0 0 0 1px rgba(0,0,0,0.5)" }}>
                     <div className="text-xs font-black mb-1 text-white">Get pro gear updates</div>
                     <div style={{ fontSize: 9 }} className="opacity-30 mb-3">New mice, pro switches, and data insights. No spam.</div>
                     <form className="flex gap-1.5" onSubmit={async e => { e.preventDefault(); setNewsletterStatus("sending"); try { const res = await fetch("https://formspree.io/f/xvzbwrzv", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newsletterEmail }) }); setNewsletterStatus(res.ok ? "success" : "error"); setNewsletterPopup(false); } catch { setNewsletterStatus("error"); } }}>
@@ -9433,6 +9433,28 @@ export default function EsportsMice() {
           );
         })()}
 
+        {/* ── Mini Newsletter CTA ── */}
+        {activeTab !== "overview" && (
+        <div className="flex justify-end mt-10 mb-2">
+        <div className="rounded-lg px-4 py-2.5 flex items-center gap-3 flex-wrap w-fit" style={{ background: "linear-gradient(135deg, #00ff6a06, #00b4ff04)", border: "1px solid #00ff6a10" }}>
+          <span className="text-xs font-black text-white">Stay ahead of the meta</span>
+          <span className="opacity-20 text-xs hidden sm:inline">·</span>
+          <span style={{ fontSize: 10 }} className="opacity-30 hidden sm:inline">Pro gear changes & data insights</span>
+          {newsletterStatus === "success" ? (
+            <span style={{ fontSize: 10, color: "#00ff6a" }} className="font-bold">✓ Subscribed!</span>
+          ) : (
+            <form className="flex gap-1.5" onSubmit={async e => { e.preventDefault(); setNewsletterStatus("sending"); try { const res = await fetch("https://formspree.io/f/xvzbwrzv", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newsletterEmail }) }); setNewsletterStatus(res.ok ? "success" : "error"); } catch { setNewsletterStatus("error"); } }}>
+              <input type="email" required placeholder="your@email.com" value={newsletterEmail} onChange={e => setNewsletterEmail(e.target.value)}
+                className="w-36 px-2.5 py-1 rounded-md outline-none" style={{ background: "#0a0a0a", border: "1px solid #ffffff10", color: "#fff", fontSize: 10 }} />
+              <button type="submit" disabled={newsletterStatus === "sending"} className="px-3 py-1 rounded-md font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000", fontSize: 10 }}>
+                {newsletterStatus === "sending" ? "..." : "Subscribe"}
+              </button>
+            </form>
+          )}
+        </div>
+        </div>
+        )}
+
       </main>
 
       {/* ─── SCROLL TO TOP ─── */}
@@ -9443,26 +9465,6 @@ export default function EsportsMice() {
           ▲
         </button>
       )}
-
-      {/* ─── NEWSLETTER BANNER ─── */}
-      <div className="px-6 py-4" style={{ background: "#030303", borderTop: "1px solid #00ff6a08" }}>
-        <div className="max-w-2xl flex items-center gap-3">
-          <span style={{ fontSize: 10, color: "#00ff6a", letterSpacing: 2 }} className="font-black uppercase flex-shrink-0">Newsletter</span>
-          <span style={{ fontSize: 10 }} className="opacity-20 hidden sm:inline">·</span>
-          <span style={{ fontSize: 10 }} className="opacity-25 flex-shrink-0 hidden sm:inline">Pro gear updates & data insights</span>
-          {newsletterStatus === "success" ? (
-            <span style={{ fontSize: 9, color: "#00ff6a" }} className="font-black">✓ Subscribed</span>
-          ) : (
-            <form className="flex gap-1.5" onSubmit={async e => { e.preventDefault(); setNewsletterStatus("sending"); try { const res = await fetch("https://formspree.io/f/xvzbwrzv", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newsletterEmail }) }); setNewsletterStatus(res.ok ? "success" : "error"); } catch { setNewsletterStatus("error"); } }}>
-              <input type="email" required placeholder="your@email.com" value={newsletterEmail} onChange={e => setNewsletterEmail(e.target.value)}
-                className="w-36 sm:w-44 px-2.5 py-1.5 rounded-md outline-none" style={{ background: "#0a0a0a", border: "1px solid #ffffff10", color: "#fff", fontSize: 10 }} />
-              <button type="submit" disabled={newsletterStatus === "sending"} className="px-3 py-1.5 rounded-md font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000", fontSize: 10 }}>
-                {newsletterStatus === "sending" ? "..." : "Join"}
-              </button>
-            </form>
-          )}
-        </div>
-      </div>
 
       {/* ─── FOOTER ─── */}
       <footer className="border-t py-12 px-6" style={{ borderColor: "#ffffff08", background: "#030303" }}>
@@ -9500,6 +9502,23 @@ export default function EsportsMice() {
                 ))}
               </div>
             </div>
+          </div>
+          {/* Newsletter */}
+          <div className="flex items-center gap-3 mb-8 pb-6 border-b" style={{ borderColor: "#ffffff08" }}>
+            <span style={{ fontSize: 10, color: "#00ff6a", letterSpacing: 2 }} className="font-black uppercase flex-shrink-0">Newsletter</span>
+            <span style={{ fontSize: 10 }} className="opacity-20 hidden sm:inline">·</span>
+            <span style={{ fontSize: 10 }} className="opacity-25 flex-shrink-0 hidden sm:inline">Pro gear updates & data insights</span>
+            {newsletterStatus === "success" ? (
+              <span style={{ fontSize: 9, color: "#00ff6a" }} className="font-black">✓ Subscribed</span>
+            ) : (
+              <form className="flex gap-1.5" onSubmit={async e => { e.preventDefault(); setNewsletterStatus("sending"); try { const res = await fetch("https://formspree.io/f/xvzbwrzv", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newsletterEmail }) }); setNewsletterStatus(res.ok ? "success" : "error"); } catch { setNewsletterStatus("error"); } }}>
+                <input type="email" required placeholder="your@email.com" value={newsletterEmail} onChange={e => setNewsletterEmail(e.target.value)}
+                  className="w-36 sm:w-44 px-2.5 py-1.5 rounded-md outline-none" style={{ background: "#0a0a0a", border: "1px solid #ffffff10", color: "#fff", fontSize: 10 }} />
+                <button type="submit" disabled={newsletterStatus === "sending"} className="px-3 py-1.5 rounded-md font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000", fontSize: 10 }}>
+                  {newsletterStatus === "sending" ? "..." : "Join"}
+                </button>
+              </form>
+            )}
           </div>
           <div className="border-t pt-6 flex justify-between items-center text-xs opacity-20" style={{ borderColor: "#ffffff08" }}>
             <span>© 2026 EsportsMice.com  -  All rights reserved</span>
