@@ -4948,7 +4948,7 @@ const GlowText = ({ children, color = "#00ff6a", size = "text-5xl", className = 
 const StatBox = ({ label, value, unit = "", color = "#00ff6a" }) => (
   <div className="flex flex-col items-center justify-center text-center p-2 sm:p-4 rounded-xl" style={{ background: `${color}08`, border: `1px solid ${color}20` }}>
     <div className="text-xl sm:text-3xl font-black" style={{ color }}>{value}<span className="text-sm sm:text-lg opacity-70">{unit}</span></div>
-    <div className="text-xs uppercase tracking-widest mt-1 opacity-50">{label}</div>
+    <div className="text-sm uppercase tracking-widest mt-1 opacity-50">{label}</div>
   </div>
 );
 
@@ -4959,7 +4959,7 @@ const SectionTitle = ({ children, sub, color = "#00ff6a" }) => (
       <h2 className="text-lg sm:text-2xl lg:text-3xl font-black uppercase tracking-wide text-center" style={{ color }}>{children}</h2>
       <div className="h-px flex-1" style={{ background: `linear-gradient(to left, ${color}, transparent)` }} />
     </div>
-    {sub && <p className="text-center text-xs sm:text-sm opacity-40 tracking-wide px-2">{sub}</p>}
+    {sub && <p className="text-center text-sm sm:text-sm opacity-40 tracking-wide px-2">{sub}</p>}
   </div>
 );
 
@@ -4976,7 +4976,7 @@ const MouseCard = ({ mouse, onClick, isSelected }) => {
         boxShadow: isSelected ? `0 0 40px ${brandCol}20` : "none",
       }}
     >
-      <div className="absolute top-2 right-2 text-xs font-bold px-1.5 py-0.5 rounded-full" style={{ background: `${brandCol}20`, color: brandCol, fontSize: 10 }}>
+      <div className="absolute top-2 right-2 text-sm font-bold px-1.5 py-0.5 rounded-full" style={{ background: `${brandCol}20`, color: brandCol, fontSize: 11 }}>
         #{mice.indexOf(mouse) + 1}
       </div>
       <div className="mb-2 h-14 flex items-center justify-center">
@@ -4988,10 +4988,10 @@ const MouseCard = ({ mouse, onClick, isSelected }) => {
         <span style={{ display: MOUSE_IMAGE_URLS[mouse.name] ? "none" : "flex" }}>{icon(mouse.image, 32)}</span>
       </div>
       <div className="mb-0.5 overflow-hidden">
-        <div className="text-xs sm:text-sm font-bold leading-tight" style={{ color: brandCol, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{mouse.name}</div>
+        <div className="text-sm sm:text-sm font-bold leading-tight" style={{ color: brandCol, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{mouse.name}</div>
       </div>
-      <div className="text-xs opacity-40 mb-2" style={{ fontSize: 10 }}>{mouse.brand}</div>
-      <div className="grid grid-cols-2 gap-1.5 text-xs mt-auto" style={{ fontSize: 10 }}>
+      <div className="text-sm opacity-40 mb-2" style={{ fontSize: 11 }}>{mouse.brand}</div>
+      <div className="grid grid-cols-2 gap-1.5 text-sm mt-auto" style={{ fontSize: 11 }}>
         <div className="flex justify-between"><span className="opacity-40">Weight</span><span className="font-bold">{mouse.weight}g</span></div>
         <div className="flex justify-between"><span className="opacity-40">Poll</span><span className="font-bold">{mouse.pollingRate >= 1000 ? `${mouse.pollingRate / 1000}K` : mouse.pollingRate}Hz</span></div>
         <div className="flex justify-between"><span className="opacity-40">Price</span><span className="font-bold">{"$"}{mouse.price}</span></div>
@@ -5000,11 +5000,11 @@ const MouseCard = ({ mouse, onClick, isSelected }) => {
       <div className="mt-2 h-1 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
         <div className="h-full rounded-full transition-all duration-700" style={{ width: `${mouse.rating * 10}%`, background: `linear-gradient(to right, ${brandCol}80, ${brandCol})` }} />
       </div>
-      <div className="text-right mt-0.5 opacity-40" style={{ fontSize: 9 }}>{mouse.rating}/10</div>
+      <div className="text-right mt-0.5 opacity-40" style={{ fontSize: 10 }}>{mouse.rating}/10</div>
       <a href={amazonLink(mouse.name)} target="_blank" rel="noopener noreferrer"
         onClick={e => e.stopPropagation()}
-        className="mt-2 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-bold transition-all opacity-60 group-hover:opacity-100 hover:!opacity-100"
-        style={{ background: `${brandCol}15`, color: brandCol, border: `1px solid ${brandCol}25`, fontSize: 10 }}
+        className="mt-2 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-sm font-bold transition-all opacity-60 group-hover:opacity-100 hover:!opacity-100"
+        style={{ background: `${brandCol}15`, color: brandCol, border: `1px solid ${brandCol}25`, fontSize: 11 }}
         onMouseEnter={e => { e.currentTarget.style.background = brandCol; e.currentTarget.style.color = "#000"; }}
         onMouseLeave={e => { e.currentTarget.style.background = `${brandCol}15`; e.currentTarget.style.color = brandCol; }}>
         {I.cart(12)} {"$"}{mouse.price} — Buy on Amazon
@@ -5016,7 +5016,7 @@ const MouseCard = ({ mouse, onClick, isSelected }) => {
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-xl p-3 text-xs" style={{ background: "#0a0a0aee", border: "1px solid #ffffff15" }}>
+    <div className="rounded-xl p-3 text-sm" style={{ background: "#0a0a0aee", border: "1px solid #ffffff15" }}>
       <div className="font-bold mb-1 opacity-60">{label}</div>
       {payload.map((p, i) => (
         <div key={i} className="flex gap-2 items-center">
@@ -5355,24 +5355,24 @@ export default function EsportsMice() {
                   <X size={14} style={{ color: "#ffffff40" }} />
                 </button>
               )}
-              <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 rounded text-xs" style={{ background: "#ffffff08", color: "#ffffff30", border: "1px solid #ffffff0a", fontSize: 10 }}>ESC</kbd>
+              <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 rounded text-sm" style={{ background: "#ffffff08", color: "#ffffff30", border: "1px solid #ffffff0a", fontSize: 11 }}>ESC</kbd>
             </div>
 
             {/* Results */}
             <div className="max-h-[60vh] overflow-y-auto" style={{ scrollbarWidth: "thin" }}>
               {globalSearch.length < 2 && (
                 <div className="px-5 py-8 text-center">
-                  <div className="text-xs opacity-20 mb-3">Quick Search</div>
+                  <div className="text-sm opacity-20 mb-3">Quick Search</div>
                   <div className="flex flex-wrap justify-center gap-2">
                     {["Razer Viper V3 Pro", "s1mple", "Valorant", "Logitech", "Zowie"].map(sug => (
                       <button key={sug} onClick={() => setGlobalSearch(sug)}
-                        className="px-3 py-1.5 rounded-lg text-xs transition-all hover:bg-white/10"
+                        className="px-3 py-1.5 rounded-lg text-sm transition-all hover:bg-white/10"
                         style={{ background: "#ffffff06", color: "#ffffff50", border: "1px solid #ffffff08" }}>
                         {sug}
                       </button>
                     ))}
                   </div>
-                  <div className="mt-4 text-xs opacity-15">
+                  <div className="mt-4 text-sm opacity-15">
                     <span className="hidden sm:inline">Press <kbd className="px-1.5 py-0.5 rounded mx-1" style={{ background: "#ffffff08", border: "1px solid #ffffff0a" }}>⌘K</kbd> anytime to search</span>
                   </div>
                 </div>
@@ -5381,7 +5381,7 @@ export default function EsportsMice() {
               {globalSearchNoResults && (
                 <div className="px-5 py-10 text-center">
                   <div className="text-sm opacity-30 mb-1">No results found</div>
-                  <div className="text-xs opacity-15">Try a different search term</div>
+                  <div className="text-sm opacity-15">Try a different search term</div>
                 </div>
               )}
 
@@ -5390,7 +5390,7 @@ export default function EsportsMice() {
                   {/* Mice Results */}
                   {globalSearchResults.mice.length > 0 && (
                     <div className="mb-1">
-                      <div className="px-5 py-2 text-xs uppercase tracking-widest flex items-center gap-2" style={{ color: "#c084fc", opacity: 0.5, fontSize: 10 }}>
+                      <div className="px-5 py-2 text-sm uppercase tracking-widest flex items-center gap-2" style={{ color: "#c084fc", opacity: 0.5, fontSize: 11 }}>
                         <Mouse size={11} /> Mice
                       </div>
                       {globalSearchResults.mice.map(m => {
@@ -5403,14 +5403,14 @@ export default function EsportsMice() {
                             </div>
                             <div className="flex-1 min-w-0">
                               <div className="text-sm font-bold truncate" style={{ color: brandCol }}>{m.name}</div>
-                              <div className="text-xs opacity-30 truncate">{m.brand} · {m.weight}g · {m.sensor} · ${m.price}</div>
+                              <div className="text-sm opacity-30 truncate">{m.brand} · {m.weight}g · {m.sensor} · ${m.price}</div>
                             </div>
                             {m.proUsage > 0 && (
-                              <div className="flex-shrink-0 px-2 py-0.5 rounded text-xs font-bold" style={{ background: "#00ff6a15", color: "#00ff6a", fontSize: 10 }}>
+                              <div className="flex-shrink-0 px-2 py-0.5 rounded text-sm font-bold" style={{ background: "#00ff6a15", color: "#00ff6a", fontSize: 11 }}>
                                 {m.proUsage}% pro
                               </div>
                             )}
-                            <span className="text-xs opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
+                            <span className="text-sm opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
                           </button>
                         );
                       })}
@@ -5420,7 +5420,7 @@ export default function EsportsMice() {
                   {/* Players Results */}
                   {globalSearchResults.players.length > 0 && (
                     <div className="mb-1">
-                      <div className="px-5 py-2 text-xs uppercase tracking-widest flex items-center gap-2" style={{ color: "#00b4ff", opacity: 0.5, fontSize: 10 }}>
+                      <div className="px-5 py-2 text-sm uppercase tracking-widest flex items-center gap-2" style={{ color: "#00b4ff", opacity: 0.5, fontSize: 11 }}>
                         <Users size={11} /> Players
                       </div>
                       {globalSearchResults.players.map((p, i) => {
@@ -5433,15 +5433,15 @@ export default function EsportsMice() {
                               {p.country || <Gamepad2 size={14} style={{ color: "#ffffff40" }} />}
                             </div>
                             <div className="flex-1 min-w-0">
-                              <div className="text-sm font-bold truncate">{p.name} {p.fullName ? <span className="font-normal opacity-30 text-xs">({p.fullName})</span> : null}</div>
-                              <div className="text-xs opacity-30 truncate">{p.team} · <span style={{ color: gCol }}>{p.game}</span> · {p.mouse}</div>
+                              <div className="text-sm font-bold truncate">{p.name} {p.fullName ? <span className="font-normal opacity-30 text-sm">({p.fullName})</span> : null}</div>
+                              <div className="text-sm opacity-30 truncate">{p.team} · <span style={{ color: gCol }}>{p.game}</span> · {p.mouse}</div>
                             </div>
                             {p.hasProfile && (
-                              <div className="flex-shrink-0 px-2 py-0.5 rounded text-xs font-bold" style={{ background: "#00b4ff15", color: "#00b4ff", fontSize: 10 }}>
+                              <div className="flex-shrink-0 px-2 py-0.5 rounded text-sm font-bold" style={{ background: "#00b4ff15", color: "#00b4ff", fontSize: 11 }}>
                                 Profile
                               </div>
                             )}
-                            <span className="text-xs opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
+                            <span className="text-sm opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
                           </button>
                         );
                       })}
@@ -5451,7 +5451,7 @@ export default function EsportsMice() {
                   {/* Teams Results */}
                   {globalSearchResults.teams.length > 0 && (
                     <div className="mb-1">
-                      <div className="px-5 py-2 text-xs uppercase tracking-widest flex items-center gap-2" style={{ color: "#f59e0b", opacity: 0.5, fontSize: 10 }}>
+                      <div className="px-5 py-2 text-sm uppercase tracking-widest flex items-center gap-2" style={{ color: "#f59e0b", opacity: 0.5, fontSize: 11 }}>
                         <Building2 size={11} /> Teams
                       </div>
                       {globalSearchResults.teams.map((t, i) => (
@@ -5462,9 +5462,9 @@ export default function EsportsMice() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="text-sm font-bold truncate">{t.name}</div>
-                            <div className="text-xs opacity-30 truncate">{t.playerCount} players · {t.games.join(", ")}</div>
+                            <div className="text-sm opacity-30 truncate">{t.playerCount} players · {t.games.join(", ")}</div>
                           </div>
-                          <span className="text-xs opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
+                          <span className="text-sm opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
                         </button>
                       ))}
                     </div>
@@ -5473,7 +5473,7 @@ export default function EsportsMice() {
                   {/* Games Results */}
                   {globalSearchResults.games.length > 0 && (
                     <div className="mb-1">
-                      <div className="px-5 py-2 text-xs uppercase tracking-widest flex items-center gap-2" style={{ color: "#ff4655", opacity: 0.5, fontSize: 10 }}>
+                      <div className="px-5 py-2 text-sm uppercase tracking-widest flex items-center gap-2" style={{ color: "#ff4655", opacity: 0.5, fontSize: 11 }}>
                         <Gamepad2 size={11} /> Games
                       </div>
                       {globalSearchResults.games.map((g, i) => (
@@ -5484,9 +5484,9 @@ export default function EsportsMice() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="text-sm font-bold truncate" style={{ color: g.color }}>{g.name}</div>
-                            <div className="text-xs opacity-30 truncate">{g.playerCount} pros tracked</div>
+                            <div className="text-sm opacity-30 truncate">{g.playerCount} pros tracked</div>
                           </div>
-                          <span className="text-xs opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
+                          <span className="text-sm opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
                         </button>
                       ))}
                     </div>
@@ -5495,20 +5495,20 @@ export default function EsportsMice() {
                   {/* Brands Results */}
                   {globalSearchResults.brands.length > 0 && (
                     <div className="mb-1">
-                      <div className="px-5 py-2 text-xs uppercase tracking-widest flex items-center gap-2" style={{ color: "#f59e0b", opacity: 0.5, fontSize: 10 }}>
+                      <div className="px-5 py-2 text-sm uppercase tracking-widest flex items-center gap-2" style={{ color: "#f59e0b", opacity: 0.5, fontSize: 11 }}>
                         <Building2 size={11} /> Brands
                       </div>
                       {globalSearchResults.brands.map((b, i) => (
                         <button key={`${b.name}-${i}`} onClick={() => handleSearchResultClick("brand", b)}
                           className="w-full flex items-center gap-3 px-5 py-2.5 text-left hover:bg-white/5 transition-all group">
                           <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${b.color}15`, border: `1px solid ${b.color}20` }}>
-                            <span className="text-xs font-black" style={{ color: b.color }}>{b.name[0]}</span>
+                            <span className="text-sm font-black" style={{ color: b.color }}>{b.name[0]}</span>
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="text-sm font-bold truncate" style={{ color: b.color }}>{b.name}</div>
-                            <div className="text-xs opacity-30 truncate">{b.mouseCount} mice in database</div>
+                            <div className="text-sm opacity-30 truncate">{b.mouseCount} mice in database</div>
                           </div>
-                          <span className="text-xs opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
+                          <span className="text-sm opacity-0 group-hover:opacity-30 transition-opacity flex-shrink-0">↗</span>
                         </button>
                       ))}
                     </div>
@@ -5519,7 +5519,7 @@ export default function EsportsMice() {
 
             {/* Footer */}
             {globalSearchHasResults && (
-              <div className="px-5 py-2.5 border-t flex items-center justify-between text-xs" style={{ borderColor: "#ffffff08", color: "#ffffff20" }}>
+              <div className="px-5 py-2.5 border-t flex items-center justify-between text-sm" style={{ borderColor: "#ffffff08", color: "#ffffff20" }}>
                 <span>
                   {globalSearchResults.mice.length + globalSearchResults.players.length + globalSearchResults.teams.length + globalSearchResults.games.length + globalSearchResults.brands.length} results
                 </span>
@@ -5536,10 +5536,10 @@ export default function EsportsMice() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="inline-flex">{I.mouse(20)}</span>
-              <span style={{ fontFamily: "Orbitron", fontSize: 10, letterSpacing: 3, color: "#00ff6a" }}>ESPORTSMICE</span>
+              <span style={{ fontFamily: "Orbitron", fontSize: 11, letterSpacing: 3, color: "#00ff6a" }}>ESPORTSMICE</span>
               <span className="mx-2 opacity-20">|</span>
               {(() => { const t = tabs.find(t => t.id === activeTab) || tabs[0]; const Icon = t.icon; return (
-                <span className="flex items-center gap-1.5 text-xs font-bold">
+                <span className="flex items-center gap-1.5 text-sm font-bold">
                   <Icon size={14} strokeWidth={2.5} style={{ color: t.color }} />
                   <span style={{ color: t.color }}>{t.label}</span>
                 </span>
@@ -5564,14 +5564,14 @@ export default function EsportsMice() {
                 const Icon = t.icon;
                 return (
                   <button key={t.id} onClick={() => { setActiveTab(t.id); setMobileMenu(false); if (t.id === "players") setSelectedPlayer(null); if (t.id === "lab") { setQuizStep(0); setQuizDone(false); window.scrollTo({ top: 0, behavior: "smooth" }); } }}
-                    className="px-2 py-2.5 rounded-lg text-xs font-bold transition-all"
+                    className="px-2 py-2.5 rounded-lg text-sm font-bold transition-all"
                     style={{
                       background: isActive ? `${t.color}15` : "#ffffff05",
                       border: isActive ? `1px solid ${t.color}30` : "1px solid transparent",
                     }}>
                     <span className="flex flex-col items-center gap-1">
                       <Icon size={16} strokeWidth={2.5} style={{ color: isActive ? t.color : "#ffffff30" }} />
-                      <span style={{ color: isActive ? t.color : "#ffffff40", fontSize: 10 }}>{t.label}</span>
+                      <span style={{ color: isActive ? t.color : "#ffffff40", fontSize: 11 }}>{t.label}</span>
                     </span>
                   </button>
                 );
@@ -5587,9 +5587,9 @@ export default function EsportsMice() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => { setActiveTab("overview"); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
               <span className="inline-block">{I.mouse(32)}</span>
-              <span style={{ fontFamily: "Orbitron", fontSize: 12, letterSpacing: 4, color: "#00ff6a" }}>ESPORTSMICE<span style={{ fontSize: 9, letterSpacing: 1, opacity: 0.35, color: "#fff", position: "relative", top: 2 }}>.com</span></span>
+              <span style={{ fontFamily: "Orbitron", fontSize: 13, letterSpacing: 4, color: "#00ff6a" }}>ESPORTSMICE<span style={{ fontSize: 10, letterSpacing: 1, opacity: 0.35, color: "#fff", position: "relative", top: 2 }}>.com</span></span>
             </div>
-            <div className="flex items-center gap-4 text-xs">
+            <div className="flex items-center gap-4 text-sm">
               <div className="flex items-center gap-4 opacity-50">
                 <span>{allPlayers.length}+ Pros Tracked</span>
                 <span>·</span>
@@ -5600,26 +5600,26 @@ export default function EsportsMice() {
               <span className="opacity-20">|</span>
               <div className="relative">
                 {newsletterStatus === "success" ? (
-                  <span style={{ fontSize: 10, color: "#00ff6a" }} className="font-bold opacity-100">✓ Subscribed</span>
+                  <span style={{ fontSize: 11, color: "#00ff6a" }} className="font-bold opacity-100">✓ Subscribed</span>
                 ) : (
                   <button onClick={() => setNewsletterPopup(p => !p)}
                     className="px-3 py-1 rounded font-black uppercase tracking-wider transition-all hover:scale-105 opacity-100"
-                    style={{ background: "#00ff6a", color: "#000", fontSize: 9, letterSpacing: 2 }}>
+                    style={{ background: "#00ff6a", color: "#000", fontSize: 10, letterSpacing: 2 }}>
                     Subscribe
                   </button>
                 )}
                 {newsletterPopup && newsletterStatus !== "success" && (
                   <div className="absolute top-8 right-0 z-[60] rounded-xl p-4 w-64" style={{ background: "#111111", border: "1px solid #00ff6a25", boxShadow: "0 12px 40px rgba(0,0,0,0.9), 0 0 0 1px rgba(0,0,0,0.5)" }}>
-                    <div className="text-xs font-black mb-1 text-white">Get pro gear updates</div>
-                    <div style={{ fontSize: 9 }} className="opacity-30 mb-3">New mice, pro switches, and data insights. No spam.</div>
+                    <div className="text-sm font-black mb-1 text-white">Get pro gear updates</div>
+                    <div style={{ fontSize: 10 }} className="opacity-30 mb-3">New mice, pro switches, and data insights. No spam.</div>
                     <form className="flex gap-1.5" onSubmit={async e => { e.preventDefault(); setNewsletterStatus("sending"); try { const res = await fetch("https://formspree.io/f/xvzbwrzv", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newsletterEmail }) }); setNewsletterStatus(res.ok ? "success" : "error"); setNewsletterPopup(false); } catch { setNewsletterStatus("error"); } }}>
                       <input type="email" required placeholder="your@email.com" value={newsletterEmail} onChange={e => setNewsletterEmail(e.target.value)} autoFocus
-                        className="flex-1 px-2.5 py-1.5 rounded outline-none" style={{ background: "#ffffff08", border: "1px solid #ffffff12", color: "#fff", fontSize: 10 }} />
-                      <button type="submit" disabled={newsletterStatus === "sending"} className="px-3 py-1.5 rounded font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000", fontSize: 9 }}>
+                        className="flex-1 px-2.5 py-1.5 rounded outline-none" style={{ background: "#ffffff08", border: "1px solid #ffffff12", color: "#fff", fontSize: 11 }} />
+                      <button type="submit" disabled={newsletterStatus === "sending"} className="px-3 py-1.5 rounded font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000", fontSize: 10 }}>
                         {newsletterStatus === "sending" ? "..." : "Join"}
                       </button>
                     </form>
-                    {newsletterStatus === "error" && <div style={{ fontSize: 9, color: "#ef4444" }} className="mt-1.5">Something went wrong. Try again.</div>}
+                    {newsletterStatus === "error" && <div style={{ fontSize: 10, color: "#ef4444" }} className="mt-1.5">Something went wrong. Try again.</div>}
                   </div>
                 )}
               </div>
@@ -5641,7 +5641,7 @@ export default function EsportsMice() {
 
           <div className="text-center" style={{ transition: "all 1s ease", opacity: heroAnim ? 1 : 0, transform: heroAnim ? "translateY(0)" : "translateY(30px)" }}>
             <div className="mb-3 sm:mb-4">
-              <span className="text-xs uppercase tracking-widest opacity-30">The Definitive Guide to</span>
+              <span className="text-sm uppercase tracking-widest opacity-30">The Definitive Guide to</span>
             </div>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl" style={{ fontFamily: "Orbitron", fontWeight: 900, lineHeight: 1.1, letterSpacing: -1 }}>
               <span style={{ color: "#fff" }}>PRO </span>
@@ -5650,7 +5650,7 @@ export default function EsportsMice() {
               <span style={{ color: "#fff" }}>GAMING </span>
               <span style={{ color: "#00b4ff", textShadow: "0 0 40px #00b4ff30" }}>MICE</span>
             </h1>
-            <p className="mt-3 sm:mt-4 max-w-2xl mx-auto text-xs sm:text-sm opacity-40 leading-relaxed px-2">
+            <p className="mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-sm opacity-40 leading-relaxed px-2">
               Comprehensive data on every mouse used by professional players across CS2, Valorant, League of Legends, Dota 2, Fortnite, Call of Duty, Overwatch 2, Apex Legends, Rainbow Six Siege, and Rocket League. Rankings, specs, comparisons, and settings  -  all in one place.
             </p>
           </div>
@@ -5664,7 +5664,7 @@ export default function EsportsMice() {
             ].map((s, i) => (
               <div key={i} className="text-center" style={{ transition: `all 0.8s ease ${i * 0.15}s`, opacity: heroAnim ? 1 : 0 }}>
                 <div className="text-lg sm:text-2xl font-black" style={{ fontFamily: "Orbitron", color: i % 2 === 0 ? "#00ff6a" : "#00b4ff" }}>{s.val}</div>
-                <div className="text-xs opacity-30 mt-1">{s.label}</div>
+                <div className="text-sm opacity-30 mt-1">{s.label}</div>
               </div>
             ))}
           </div>
@@ -5682,7 +5682,7 @@ export default function EsportsMice() {
               const Icon = t.icon;
               return (
               <button key={t.id} onClick={() => { setActiveTab(t.id); if (t.id === "players") setSelectedPlayer(null); if (t.id === "lab") { setQuizStep(0); setQuizDone(false); window.scrollTo({ top: 0, behavior: "smooth" }); } }}
-                className="px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all duration-200"
+                className="px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-all duration-200"
                 style={{
                   background: isActive ? `${t.color}15` : "transparent",
                   border: isActive ? `1px solid ${t.color}30` : "1px solid transparent",
@@ -5697,7 +5697,7 @@ export default function EsportsMice() {
             })}
             </div>
             <button onClick={() => { setGlobalSearchOpen(true); setTimeout(() => globalSearchInputRef.current?.focus(), 50); }}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs transition-all duration-200 hover:bg-white/5 flex-shrink-0 ml-2"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 hover:bg-white/5 flex-shrink-0 ml-2"
               style={{ background: "#ffffff06", border: "1px solid #ffffff0a" }}>
               <Search size={13} style={{ color: "#00ff6a" }} />
               <span style={{ color: "#ffffff30" }}>Search</span>
@@ -5717,10 +5717,10 @@ export default function EsportsMice() {
               <ResponsiveContainer width="100%" height={280}>
                 <BarChart data={proUsageChart} margin={{ top: 10, right: 30, left: 0, bottom: 60 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#ffffff08" />
-                  <XAxis dataKey="name" tick={{ fill: "#ffffff40", fontSize: 10 }} angle={-35} textAnchor="end" interval={0} />
-                  <YAxis tick={{ fill: "#ffffff40", fontSize: 10 }} unit="%" />
+                  <XAxis dataKey="name" tick={{ fill: "#ffffff40", fontSize: 11 }} angle={-35} textAnchor="end" interval={0} />
+                  <YAxis tick={{ fill: "#ffffff40", fontSize: 11 }} unit="%" />
                   <Tooltip content={<CustomTooltip />} />
-                  <Bar dataKey="usage" radius={[6, 6, 0, 0]} name="Pro Usage" label={{ position: "top", fill: "#ffffff60", fontSize: 10, formatter: (v) => `${v}%` }}>
+                  <Bar dataKey="usage" radius={[6, 6, 0, 0]} name="Pro Usage" label={{ position: "top", fill: "#ffffff60", fontSize: 11, formatter: (v) => `${v}%` }}>
                     {proUsageChart.map((entry, i) => <Cell key={i} fill={entry.fill} fillOpacity={0.8} />)}
                   </Bar>
                 </BarChart>
@@ -5750,8 +5750,8 @@ export default function EsportsMice() {
                   <div key={i} className="rounded-xl p-2 sm:p-4 text-center transition-all hover:scale-[1.02]" style={{ background: `${card.color}06`, border: `1px solid ${card.color}12` }}>
                     <div className="mb-1 flex items-center justify-center">{icon(card.icon, 22)}</div>
                     <div className="text-sm sm:text-lg font-black leading-tight" style={{ color: card.color }}>{card.value}</div>
-                    <div className="text-xs opacity-50 mt-0.5">{card.label}</div>
-                    <div style={{ fontSize: 9 }} className="opacity-25 mt-1">{card.sub}</div>
+                    <div className="text-sm opacity-50 mt-0.5">{card.label}</div>
+                    <div style={{ fontSize: 10 }} className="opacity-25 mt-1">{card.sub}</div>
                   </div>
                 ))}
               </div>
@@ -5764,12 +5764,12 @@ export default function EsportsMice() {
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {[...mice].sort((a, b) => b.proUsage - a.proUsage).slice(0, 20).map(m => (
                     <button key={m.id} onClick={() => setSelectedMouse(m)}
-                      className="px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap hover:scale-[1.03] cursor-pointer"
+                      className="px-2.5 py-1.5 rounded-lg text-sm font-bold transition-all whitespace-nowrap hover:scale-[1.03] cursor-pointer"
                       style={{
                         background: selectedMouse?.id === m.id ? BRAND_COLORS[m.brand] : "#ffffff06",
                         color: selectedMouse?.id === m.id ? "#000" : "#ffffff40",
                         border: selectedMouse?.id === m.id ? "none" : "1px solid #ffffff08",
-                        fontSize: 10,
+                        fontSize: 11,
                       }}>
                       {m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |Ninjutso |WLMouse |Sony |Zowie )/, "")}
                     </button>
@@ -5792,7 +5792,7 @@ export default function EsportsMice() {
                         <span className="inline-block">{icon(selectedMouse.image, 80)}</span>
                       </div>
                       <div className="text-xl font-black mt-2 text-center cursor-pointer hover:underline" style={{ color: brandCol }} onClick={() => setActiveTab("mouseDetail")}>{selectedMouse.name}</div>
-                      <div className="text-xs opacity-40 text-center">{selectedMouse.brand} · {selectedMouse.shape} · {selectedMouse.connectivity}</div>
+                      <div className="text-sm opacity-40 text-center">{selectedMouse.brand} · {selectedMouse.shape} · {selectedMouse.connectivity}</div>
                     </div>
 
                     {/* Center: Radar chart */}
@@ -5800,7 +5800,7 @@ export default function EsportsMice() {
                       <ResponsiveContainer width="100%" height={200}>
                         <RadarChart data={radarData}>
                           <PolarGrid stroke="#ffffff10" />
-                          <PolarAngleAxis dataKey="stat" tick={{ fill: "#ffffff50", fontSize: 10 }} />
+                          <PolarAngleAxis dataKey="stat" tick={{ fill: "#ffffff50", fontSize: 11 }} />
                           <PolarRadiusAxis tick={false} axisLine={false} domain={[0, 100]} />
                           <Radar name={selectedMouse.name} dataKey="value" stroke={brandCol} fill={brandCol} fillOpacity={0.2} strokeWidth={2.5} dot={{ r: 3, fill: brandCol, strokeWidth: 0 }} />
                         </RadarChart>
@@ -5820,7 +5820,7 @@ export default function EsportsMice() {
 
                     {/* Right: Pro users */}
                     <div>
-                      <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Notable Pro Users</div>
+                      <div className="text-sm uppercase tracking-widest opacity-30 mb-3">Notable Pro Users</div>
                       {usedByPros.length > 0 ? (
                         <div className="space-y-2">
                           {usedByPros.slice(0, 3).map((p, i) => {
@@ -5835,18 +5835,18 @@ export default function EsportsMice() {
                                 </div>
                                 <div className="flex-1 min-w-0">
                                   <div className="text-sm font-black">{p.name}</div>
-                                  <div className="text-xs opacity-40">{p.team} · <span style={{ color: gc }}>{p.game}</span> · {p.role}</div>
+                                  <div className="text-sm opacity-40">{p.team} · <span style={{ color: gc }}>{p.game}</span> · {p.role}</div>
                                 </div>
                                 <div className="text-right flex-shrink-0">
-                                  <div className="text-xs font-bold">{p.dpi} DPI</div>
-                                  <div className="text-xs opacity-30">{p.edpi ? `${p.edpi} eDPI` : ""}</div>
+                                  <div className="text-sm font-bold">{p.dpi} DPI</div>
+                                  <div className="text-sm opacity-30">{p.edpi ? `${p.edpi} eDPI` : ""}</div>
                                 </div>
                               </button>
                             );
                           })}
                         </div>
                       ) : (
-                        <div className="text-xs opacity-20 py-8 text-center">No tracked pros currently using this mouse</div>
+                        <div className="text-sm opacity-20 py-8 text-center">No tracked pros currently using this mouse</div>
                       )}
                     </div>
                   </div>
@@ -5877,7 +5877,7 @@ export default function EsportsMice() {
 
                     return (
                       <div className="rounded-xl p-5 mt-4" style={{ background: `${brandCol}05`, border: `1px solid ${brandCol}10` }}>
-                        <div className="text-xs uppercase tracking-widest opacity-30 mb-2">About this mouse</div>
+                        <div className="text-sm uppercase tracking-widest opacity-30 mb-2">About this mouse</div>
                         <p className="text-sm leading-relaxed opacity-60">
                           {parts.map((p, i) => p.highlight ? (
                             <span key={i} className="font-bold opacity-100" style={{ color: brandCol }}>{p.text}</span>
@@ -5925,15 +5925,15 @@ export default function EsportsMice() {
                     const competitors = mice.filter(m => m.id !== selectedMouse.id && m.shape === selectedMouse.shape && m.connectivity === selectedMouse.connectivity)
                       .sort((a, b) => b.proUsage - a.proUsage).slice(0, 3);
 
-                    if (mousePlayers.length === 0) return <div className="mt-4 rounded-lg p-6 text-center text-xs opacity-20" style={{ background: "#ffffff04" }}>No tracked players found for this mouse in our database</div>;
+                    if (mousePlayers.length === 0) return <div className="mt-4 rounded-lg p-6 text-center text-sm opacity-20" style={{ background: "#ffffff04" }}>No tracked players found for this mouse in our database</div>;
 
                     return (
                       <div className="mt-5 rounded-xl overflow-hidden" style={{ border: `1px solid ${brandCol}12` }}>
                         <div className="px-4 py-3 flex items-center gap-2" style={{ background: `${brandCol}08`, borderBottom: `1px solid ${brandCol}10` }}>
                           <span>{I.chart(16)}</span>
-                          <span className="text-xs font-black uppercase tracking-widest" style={{ color: brandCol }}>Deep Dive</span>
-                          <span className="text-xs opacity-30">·</span>
-                          <span className="text-xs opacity-40">{selectedMouse.name} across {totalTracked.toLocaleString()} tracked pros</span>
+                          <span className="text-sm font-black uppercase tracking-widest" style={{ color: brandCol }}>Deep Dive</span>
+                          <span className="text-sm opacity-30">·</span>
+                          <span className="text-sm opacity-40">{selectedMouse.name} across {totalTracked.toLocaleString()} tracked pros</span>
                         </div>
 
                         <div className="p-4" style={{ background: "#0a0a0a" }}>
@@ -5949,7 +5949,7 @@ export default function EsportsMice() {
                               <div key={idx} className="rounded-lg p-2 sm:p-3 text-center" style={{ background: "#ffffff05" }}>
                                 <div className="mb-0.5 flex items-center justify-center">{icon(stat.icon, 22)}</div>
                                 <div className="text-sm sm:text-lg font-black" style={{ color: brandCol }}>{stat.value}</div>
-                                <div style={{ fontSize: 10 }} className="opacity-30">{stat.label}</div>
+                                <div style={{ fontSize: 11 }} className="opacity-30">{stat.label}</div>
                               </div>
                             ))}
                           </div>
@@ -5958,11 +5958,11 @@ export default function EsportsMice() {
                           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
                             {/* Game Popularity */}
                             <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                              <div className="text-xs opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.gamepad(12)}</span>Game Breakdown</div>
+                              <div className="text-sm opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.gamepad(12)}</span>Game Breakdown</div>
                               <div className="space-y-2">
                                 {topGames.slice(0, 5).map(([game, count]) => (
                                   <div key={game}>
-                                    <div className="flex justify-between text-xs mb-0.5">
+                                    <div className="flex justify-between text-sm mb-0.5">
                                       <span className="font-bold" style={{ color: gcols[game] || "#888" }}>{game}</span>
                                       <span className="opacity-50">{count} players · {((count / mousePlayers.length) * 100).toFixed(0)}%</span>
                                     </div>
@@ -5976,41 +5976,41 @@ export default function EsportsMice() {
 
                             {/* DPI + eDPI */}
                             <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                              <div className="text-xs opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.gear(12)}</span>Settings Profile</div>
-                              <div className="text-xs opacity-30 mb-1.5">Most Common DPI</div>
+                              <div className="text-sm opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.gear(12)}</span>Settings Profile</div>
+                              <div className="text-sm opacity-30 mb-1.5">Most Common DPI</div>
                               <div className="space-y-1.5 mb-3">
                                 {topDpi.slice(0, 3).map(([dpi, count]) => (
                                   <div key={dpi} className="flex items-center gap-2">
-                                    <span className="text-xs font-black w-12" style={{ color: brandCol }}>{dpi}</span>
+                                    <span className="text-sm font-black w-12" style={{ color: brandCol }}>{dpi}</span>
                                     <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
                                       <div className="h-full rounded-full" style={{ width: `${(count / topDpi[0][1]) * 100}%`, background: brandCol, opacity: 0.6 }} />
                                     </div>
-                                    <span className="text-xs opacity-40 w-14 text-right">{((count / mousePlayers.length) * 100).toFixed(0)}%</span>
+                                    <span className="text-sm opacity-40 w-14 text-right">{((count / mousePlayers.length) * 100).toFixed(0)}%</span>
                                   </div>
                                 ))}
                               </div>
                               {avgEdpi && (
                                 <div>
-                                  <div className="text-xs opacity-30 mb-1.5">eDPI Range</div>
-                                  <div className="flex items-center gap-1 text-xs">
+                                  <div className="text-sm opacity-30 mb-1.5">eDPI Range</div>
+                                  <div className="flex items-center gap-1 text-sm">
                                     <span className="opacity-50">{minEdpi}</span>
                                     <div className="flex-1 h-2 rounded-full relative overflow-hidden" style={{ background: "#ffffff08" }}>
                                       <div className="absolute h-full rounded-full" style={{ left: `${Math.max(0, ((avgEdpi - minEdpi) / (maxEdpi - minEdpi || 1)) * 100 - 5)}%`, width: "10%", background: brandCol, opacity: 0.8 }} />
                                     </div>
                                     <span className="opacity-50">{maxEdpi}</span>
                                   </div>
-                                  <div className="text-center text-xs mt-1"><span className="font-black" style={{ color: brandCol }}>{avgEdpi}</span> <span className="opacity-30">avg</span></div>
+                                  <div className="text-center text-sm mt-1"><span className="font-black" style={{ color: brandCol }}>{avgEdpi}</span> <span className="opacity-30">avg</span></div>
                                 </div>
                               )}
                             </div>
 
                             {/* Regions + Teams */}
                             <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                              <div className="text-xs opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.globe(12)}</span>Demographics</div>
-                              <div className="text-xs opacity-30 mb-1.5">Top Regions</div>
+                              <div className="text-sm opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.globe(12)}</span>Demographics</div>
+                              <div className="text-sm opacity-30 mb-1.5">Top Regions</div>
                               <div className="flex flex-wrap gap-1.5 mb-3">
                                 {topCountries.map(([flag, count]) => (
-                                  <span key={flag} className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs" style={{ background: `${brandCol}10` }}>
+                                  <span key={flag} className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-sm" style={{ background: `${brandCol}10` }}>
                                     <span>{flag}</span>
                                     <span className="font-bold" style={{ color: brandCol }}>{count}</span>
                                   </span>
@@ -6018,10 +6018,10 @@ export default function EsportsMice() {
                               </div>
                               {topTeams.length > 0 && (
                                 <div>
-                                  <div className="text-xs opacity-30 mb-1.5">Top Teams Using This Mouse</div>
+                                  <div className="text-sm opacity-30 mb-1.5">Top Teams Using This Mouse</div>
                                   <div className="space-y-1.5">
                                     {topTeams.map(([team, count]) => (
-                                      <div key={team} className="flex justify-between items-center text-xs">
+                                      <div key={team} className="flex justify-between items-center text-sm">
                                         <span className="opacity-60 truncate">{team}</span>
                                         <span className="font-black px-2 py-0.5 rounded" style={{ color: brandCol, background: `${brandCol}10` }}>{count}</span>
                                       </div>
@@ -6035,13 +6035,13 @@ export default function EsportsMice() {
                           {/* Competitors row */}
                           {competitors.length > 0 && (
                             <div className="mt-3 rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                              <div className="text-xs opacity-30 mb-2 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.refresh(12)}</span>Similar Mice ({selectedMouse.shape} · {selectedMouse.connectivity})</div>
+                              <div className="text-sm opacity-30 mb-2 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.refresh(12)}</span>Similar Mice ({selectedMouse.shape} · {selectedMouse.connectivity})</div>
                               <div className="flex flex-wrap gap-2">
                                 {competitors.map(c => {
                                   const cc = BRAND_COLORS[c.brand] || "#888";
                                   return (
                                     <button key={c.id} onClick={() => { setSelectedMouse(c); setActiveTab("mouseDetail"); }}
-                                      className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs transition-all hover:scale-105"
+                                      className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all hover:scale-105"
                                       style={{ background: `${cc}08`, border: `1px solid ${cc}15` }}>
                                       {MOUSE_IMAGE_URLS[c.name] ? <img src={MOUSE_IMAGE_URLS[c.name]} alt="" className="h-6 object-contain" /> : <span>{c.image}</span>}
                                       <div>
@@ -6069,22 +6069,22 @@ export default function EsportsMice() {
               <div className="relative z-10">
                 <div className="flex items-center justify-center gap-2 mb-2">
                   {I.mouse(20)}
-                  <span className="text-xs font-black uppercase tracking-widest" style={{ color: "#00ff6a" }}>Newsletter</span>
+                  <span className="text-sm font-black uppercase tracking-widest" style={{ color: "#00ff6a" }}>Newsletter</span>
                 </div>
                 <div className="text-base sm:text-lg font-black text-white mb-1">Stay ahead of the meta</div>
-                <div className="text-xs opacity-30 mb-4 max-w-md mx-auto">Pro gear changes, new mouse releases, and data-driven insights delivered to your inbox. No spam.</div>
+                <div className="text-sm opacity-30 mb-4 max-w-md mx-auto">Pro gear changes, new mouse releases, and data-driven insights delivered to your inbox. No spam.</div>
                 {newsletterStatus === "success" ? (
                   <div className="text-sm font-black" style={{ color: "#00ff6a" }}>✓ You're subscribed!</div>
                 ) : (
                   <form className="flex gap-2 max-w-sm mx-auto" onSubmit={async e => { e.preventDefault(); setNewsletterStatus("sending"); try { const res = await fetch("https://formspree.io/f/xvzbwrzv", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newsletterEmail }) }); setNewsletterStatus(res.ok ? "success" : "error"); } catch { setNewsletterStatus("error"); } }}>
                     <input type="email" required placeholder="your@email.com" value={newsletterEmail} onChange={e => setNewsletterEmail(e.target.value)}
-                      className="flex-1 px-4 py-2.5 rounded-lg text-xs outline-none" style={{ background: "#0a0a0a", border: "1px solid #ffffff15", color: "#fff" }} />
-                    <button type="submit" disabled={newsletterStatus === "sending"} className="px-5 py-2.5 rounded-lg text-xs font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000" }}>
+                      className="flex-1 px-4 py-2.5 rounded-lg text-sm outline-none" style={{ background: "#0a0a0a", border: "1px solid #ffffff15", color: "#fff" }} />
+                    <button type="submit" disabled={newsletterStatus === "sending"} className="px-5 py-2.5 rounded-lg text-sm font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000" }}>
                       {newsletterStatus === "sending" ? "..." : "Subscribe"}
                     </button>
                   </form>
                 )}
-                {newsletterStatus === "error" && <div className="text-xs mt-2" style={{ color: "#ef4444" }}>Something went wrong. Try again.</div>}
+                {newsletterStatus === "error" && <div className="text-sm mt-2" style={{ color: "#ef4444" }}>Something went wrong. Try again.</div>}
               </div>
             </div>
 
@@ -6123,7 +6123,7 @@ export default function EsportsMice() {
                   <ResponsiveContainer width="100%" height={220}>
                     <RadarChart data={radarData}>
                       <PolarGrid stroke="#ffffff10" />
-                      <PolarAngleAxis dataKey="stat" tick={{ fill: "#ffffff50", fontSize: 10 }} />
+                      <PolarAngleAxis dataKey="stat" tick={{ fill: "#ffffff50", fontSize: 11 }} />
                       <PolarRadiusAxis tick={false} axisLine={false} domain={[0, 100]} />
                       <Radar name={selectedMouse.name} dataKey="value" stroke={brandCol} fill={brandCol} fillOpacity={0.2} strokeWidth={2.5} dot={{ r: 3, fill: brandCol, strokeWidth: 0 }} />
                     </RadarChart>
@@ -6143,7 +6143,7 @@ export default function EsportsMice() {
 
                 {/* Right: Pro users */}
                 <div>
-                  <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Notable Pro Users</div>
+                  <div className="text-sm uppercase tracking-widest opacity-30 mb-3">Notable Pro Users</div>
                   {usedByPros.length > 0 ? (
                     <div className="space-y-2">
                       {usedByPros.slice(0, 5).map((p, i) => {
@@ -6158,18 +6158,18 @@ export default function EsportsMice() {
                             </div>
                             <div className="flex-1 min-w-0">
                               <div className="text-sm font-black">{p.name}</div>
-                              <div className="text-xs opacity-40">{p.team} · <span style={{ color: gc }}>{p.game}</span> · {p.role}</div>
+                              <div className="text-sm opacity-40">{p.team} · <span style={{ color: gc }}>{p.game}</span> · {p.role}</div>
                             </div>
                             <div className="text-right flex-shrink-0">
-                              <div className="text-xs font-bold">{p.dpi} DPI</div>
-                              <div className="text-xs opacity-30">{p.edpi ? `${p.edpi} eDPI` : ""}</div>
+                              <div className="text-sm font-bold">{p.dpi} DPI</div>
+                              <div className="text-sm opacity-30">{p.edpi ? `${p.edpi} eDPI` : ""}</div>
                             </div>
                           </button>
                         );
                       })}
                     </div>
                   ) : (
-                    <div className="text-xs opacity-20 py-8 text-center">No tracked pros currently using this mouse</div>
+                    <div className="text-sm opacity-20 py-8 text-center">No tracked pros currently using this mouse</div>
                   )}
                 </div>
               </div>
@@ -6196,7 +6196,7 @@ export default function EsportsMice() {
               }
               return (
                 <div className="rounded-2xl p-6 mb-6" style={{ background: `${brandCol}05`, border: `1px solid ${brandCol}10` }}>
-                  <div className="text-xs uppercase tracking-widest opacity-30 mb-3">About this mouse</div>
+                  <div className="text-sm uppercase tracking-widest opacity-30 mb-3">About this mouse</div>
                   <p className="text-sm leading-relaxed opacity-60">
                     {parts.map((p, i) => p.highlight ? (
                       <span key={i} className="font-bold opacity-100" style={{ color: brandCol }}>{p.text}</span>
@@ -6210,7 +6210,7 @@ export default function EsportsMice() {
 
             {/* ── Full Spec Table ── */}
             <div className="rounded-2xl p-6 mb-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
-              <div className="text-xs uppercase tracking-widest opacity-30 mb-4">Full Specifications</div>
+              <div className="text-sm uppercase tracking-widest opacity-30 mb-4">Full Specifications</div>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                 {[
                   { label: "Brand", value: selectedMouse.brand },
@@ -6225,7 +6225,7 @@ export default function EsportsMice() {
                   { label: "Rating", value: `${selectedMouse.rating}/10` },
                 ].map((spec, idx) => (
                   <div key={idx} className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                    <div className="text-xs opacity-30 mb-1">{spec.label}</div>
+                    <div className="text-sm opacity-30 mb-1">{spec.label}</div>
                     <div className="text-sm font-bold" style={{ color: brandCol }}>{spec.value}</div>
                   </div>
                 ))}
@@ -6261,15 +6261,15 @@ export default function EsportsMice() {
               const competitors = mice.filter(m => m.id !== selectedMouse.id && m.shape === selectedMouse.shape && m.connectivity === selectedMouse.connectivity)
                 .sort((a, b) => b.proUsage - a.proUsage).slice(0, 4);
 
-              if (mousePlayers.length === 0) return <div className="rounded-2xl p-6 text-center text-xs opacity-20 mb-6" style={{ background: "#ffffff04" }}>No tracked players found for this mouse in our database</div>;
+              if (mousePlayers.length === 0) return <div className="rounded-2xl p-6 text-center text-sm opacity-20 mb-6" style={{ background: "#ffffff04" }}>No tracked players found for this mouse in our database</div>;
 
               return (
                 <div className="rounded-2xl overflow-hidden mb-6" style={{ border: `1px solid ${brandCol}12` }}>
                   <div className="px-5 py-4 flex items-center gap-2" style={{ background: `${brandCol}08`, borderBottom: `1px solid ${brandCol}10` }}>
                     <span>{I.chart(16)}</span>
-                    <span className="text-xs font-black uppercase tracking-widest" style={{ color: brandCol }}>Deep Dive</span>
-                    <span className="text-xs opacity-30">·</span>
-                    <span className="text-xs opacity-40">{selectedMouse.name} across {totalTracked.toLocaleString()} tracked pros</span>
+                    <span className="text-sm font-black uppercase tracking-widest" style={{ color: brandCol }}>Deep Dive</span>
+                    <span className="text-sm opacity-30">·</span>
+                    <span className="text-sm opacity-40">{selectedMouse.name} across {totalTracked.toLocaleString()} tracked pros</span>
                   </div>
 
                   <div className="p-5" style={{ background: "#0a0a0a" }}>
@@ -6284,18 +6284,18 @@ export default function EsportsMice() {
                         <div key={idx} className="rounded-lg p-3 text-center" style={{ background: "#ffffff05" }}>
                           <div className="mb-0.5 flex items-center justify-center">{icon(stat.icon, 22)}</div>
                           <div className="text-lg font-black" style={{ color: brandCol }}>{stat.value}</div>
-                          <div style={{ fontSize: 10 }} className="opacity-30">{stat.label}</div>
+                          <div style={{ fontSize: 11 }} className="opacity-30">{stat.label}</div>
                         </div>
                       ))}
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                       <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                        <div className="text-xs opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.gamepad(12)}</span>Game Breakdown</div>
+                        <div className="text-sm opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.gamepad(12)}</span>Game Breakdown</div>
                         <div className="space-y-2">
                           {topGames.slice(0, 5).map(([game, count]) => (
                             <div key={game}>
-                              <div className="flex justify-between text-xs mb-0.5">
+                              <div className="flex justify-between text-sm mb-0.5">
                                 <span className="font-bold" style={{ color: gcols[game] || "#888" }}>{game}</span>
                                 <span className="opacity-50">{count} players · {((count / mousePlayers.length) * 100).toFixed(0)}%</span>
                               </div>
@@ -6308,40 +6308,40 @@ export default function EsportsMice() {
                       </div>
 
                       <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                        <div className="text-xs opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.gear(12)}</span>Settings Profile</div>
-                        <div className="text-xs opacity-30 mb-1.5">Most Common DPI</div>
+                        <div className="text-sm opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.gear(12)}</span>Settings Profile</div>
+                        <div className="text-sm opacity-30 mb-1.5">Most Common DPI</div>
                         <div className="space-y-1.5 mb-3">
                           {topDpi.slice(0, 3).map(([dpi, count]) => (
                             <div key={dpi} className="flex items-center gap-2">
-                              <span className="text-xs font-black w-12" style={{ color: brandCol }}>{dpi}</span>
+                              <span className="text-sm font-black w-12" style={{ color: brandCol }}>{dpi}</span>
                               <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
                                 <div className="h-full rounded-full" style={{ width: `${(count / topDpi[0][1]) * 100}%`, background: brandCol, opacity: 0.6 }} />
                               </div>
-                              <span className="text-xs opacity-40 w-14 text-right">{((count / mousePlayers.length) * 100).toFixed(0)}%</span>
+                              <span className="text-sm opacity-40 w-14 text-right">{((count / mousePlayers.length) * 100).toFixed(0)}%</span>
                             </div>
                           ))}
                         </div>
                         {avgEdpi && (
                           <div>
-                            <div className="text-xs opacity-30 mb-1.5">eDPI Range</div>
-                            <div className="flex items-center gap-1 text-xs">
+                            <div className="text-sm opacity-30 mb-1.5">eDPI Range</div>
+                            <div className="flex items-center gap-1 text-sm">
                               <span className="opacity-50">{minEdpi}</span>
                               <div className="flex-1 h-2 rounded-full relative overflow-hidden" style={{ background: "#ffffff08" }}>
                                 <div className="absolute h-full rounded-full" style={{ left: `${Math.max(0, ((avgEdpi - minEdpi) / (maxEdpi - minEdpi || 1)) * 100 - 5)}%`, width: "10%", background: brandCol, opacity: 0.8 }} />
                               </div>
                               <span className="opacity-50">{maxEdpi}</span>
                             </div>
-                            <div className="text-center text-xs mt-1"><span className="font-black" style={{ color: brandCol }}>{avgEdpi}</span> <span className="opacity-30">avg</span></div>
+                            <div className="text-center text-sm mt-1"><span className="font-black" style={{ color: brandCol }}>{avgEdpi}</span> <span className="opacity-30">avg</span></div>
                           </div>
                         )}
                       </div>
 
                       <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                        <div className="text-xs opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.globe(12)}</span>Demographics</div>
-                        <div className="text-xs opacity-30 mb-1.5">Top Regions</div>
+                        <div className="text-sm opacity-30 mb-2.5 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.globe(12)}</span>Demographics</div>
+                        <div className="text-sm opacity-30 mb-1.5">Top Regions</div>
                         <div className="flex flex-wrap gap-1.5 mb-3">
                           {topCountries.map(([flag, count]) => (
-                            <span key={flag} className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs" style={{ background: `${brandCol}10` }}>
+                            <span key={flag} className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-sm" style={{ background: `${brandCol}10` }}>
                               <span>{flag}</span>
                               <span className="font-bold" style={{ color: brandCol }}>{count}</span>
                             </span>
@@ -6349,10 +6349,10 @@ export default function EsportsMice() {
                         </div>
                         {topTeams.length > 0 && (
                           <div>
-                            <div className="text-xs opacity-30 mb-1.5">Top Teams Using This Mouse</div>
+                            <div className="text-sm opacity-30 mb-1.5">Top Teams Using This Mouse</div>
                             <div className="space-y-1.5">
                               {topTeams.map(([team, count]) => (
-                                <div key={team} className="flex justify-between items-center text-xs">
+                                <div key={team} className="flex justify-between items-center text-sm">
                                   <span className="opacity-60 truncate">{team}</span>
                                   <span className="font-black px-2 py-0.5 rounded" style={{ color: brandCol, background: `${brandCol}10` }}>{count}</span>
                                 </div>
@@ -6366,13 +6366,13 @@ export default function EsportsMice() {
                     {/* Similar Mice */}
                     {competitors.length > 0 && (
                       <div className="mt-4 rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                        <div className="text-xs opacity-30 mb-2 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.refresh(12)}</span>Similar Mice ({selectedMouse.shape} · {selectedMouse.connectivity})</div>
+                        <div className="text-sm opacity-30 mb-2 font-bold uppercase tracking-wider"><span className="inline-flex mr-1 align-middle">{I.refresh(12)}</span>Similar Mice ({selectedMouse.shape} · {selectedMouse.connectivity})</div>
                         <div className="flex flex-wrap gap-2">
                           {competitors.map(c => {
                             const cc = BRAND_COLORS[c.brand] || "#888";
                             return (
                               <button key={c.id} onClick={() => { setSelectedMouse(c); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                                className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs transition-all hover:scale-105"
+                                className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all hover:scale-105"
                                 style={{ background: `${cc}08`, border: `1px solid ${cc}15` }}>
                                 {MOUSE_IMAGE_URLS[c.name] ? <img src={MOUSE_IMAGE_URLS[c.name]} alt="" className="h-6 object-contain" /> : <span>{c.image}</span>}
                                 <div>
@@ -6393,14 +6393,14 @@ export default function EsportsMice() {
             {/* ── All Pro Players Using This Mouse ── */}
             {usedByPros.length > 5 && (
               <div className="rounded-2xl p-6 mb-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
-                <div className="text-xs uppercase tracking-widest opacity-30 mb-4">All Pro Players Using {selectedMouse.name}</div>
+                <div className="text-sm uppercase tracking-widest opacity-30 mb-4">All Pro Players Using {selectedMouse.name}</div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                   {usedByPros.slice(5).map((p, i) => {
                     const gameColors = { CS2: "#ff8c00", Valorant: "#ff4655", "League of Legends": "#c89b3c", LoL: "#c89b3c", Fortnite: "#4c7bd9", "Dota 2": "#e74c3c", "R6 Siege": "#4a86c8", "Call of Duty": "#5cb85c" };
                     const gc = gameColors[p.game] || "#888";
                     return (
                       <button key={i} onClick={() => { const pp = proPlayers.find(pp => pp.name === p.name); if (pp) { setSelectedPlayer(pp); setActiveTab("players"); } }}
-                        className="flex items-center gap-2 p-2 rounded-lg text-left text-xs transition-all hover:scale-[1.01]"
+                        className="flex items-center gap-2 p-2 rounded-lg text-left text-sm transition-all hover:scale-[1.01]"
                         style={{ background: `${gc}06`, border: `1px solid ${gc}10` }}>
                         <span>{p.country}</span>
                         <span className="font-bold">{p.name}</span>
@@ -6433,13 +6433,13 @@ export default function EsportsMice() {
                       {GAME_IMAGE_URLS[g.game] ? <img src={GAME_IMAGE_URLS[g.game]} alt={g.game} className="h-8 w-8 object-contain" /> : <span className="inline-flex justify-center">{icon(g.icon, 32)}</span>}
                       <div className="flex-1">
                         <div className="text-xl font-black" style={{ color: col }}>{g.game}</div>
-                        <div className="text-xs opacity-30">{g.players} pros tracked</div>
+                        <div className="text-sm opacity-30">{g.players} pros tracked</div>
                       </div>
                       <div className="flex gap-3">
                         {[{ label: "Avg Weight", val: `${g.avgWeight}g` }, { label: "Avg DPI", val: g.avgDpi }, { label: "Avg Poll Rate", val: `${g.avgPollRate >= 1000 ? `${(g.avgPollRate/1000).toFixed(1)}K` : g.avgPollRate}Hz` }, { label: "Wireless", val: `${g.wirelessPct}%` }].concat(g.avgEdpi ? [{ label: "Avg eDPI", val: g.avgEdpi }] : []).map((s, si) => (
                           <div key={si} className="text-center px-3 py-2 rounded-lg" style={{ background: `${col}10` }}>
-                            <div className="text-xs font-black" style={{ color: col }}>{s.val}</div>
-                            <div className="text-xs opacity-25" style={{ fontSize: 9 }}>{s.label}</div>
+                            <div className="text-sm font-black" style={{ color: col }}>{s.val}</div>
+                            <div className="text-sm opacity-25" style={{ fontSize: 10 }}>{s.label}</div>
                           </div>
                         ))}
                       </div>
@@ -6447,13 +6447,13 @@ export default function EsportsMice() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5">
                       {/* Left: Top 5 mice with bars */}
                       <div>
-                        <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Top 5 Mice</div>
+                        <div className="text-sm uppercase tracking-widest opacity-30 mb-3">Top 5 Mice</div>
                         <div className="space-y-2">
                           {g.topMice.map((m, mi) => (
                             <div key={mi} className="flex items-center gap-2">
-                              <span className="w-5 text-center text-xs">{medals[mi]}</span>
+                              <span className="w-5 text-center text-sm">{medals[mi]}</span>
                               <div className="flex-1">
-                                <div className="flex justify-between text-xs mb-0.5">
+                                <div className="flex justify-between text-sm mb-0.5">
                                   <span className={mi === 0 ? "font-black" : mi < 3 ? "font-bold" : "opacity-60"}>{m.name}</span>
                                   <span className="font-black" style={{ color: mi === 0 ? col : undefined, opacity: mi === 0 ? 1 : 0.5 }}>{m.pct}%</span>
                                 </div>
@@ -6473,23 +6473,23 @@ export default function EsportsMice() {
                       )}
                       {/* Right: Brand split with bars */}
                       <div>
-                        <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Brand Split</div>
+                        <div className="text-sm uppercase tracking-widest opacity-30 mb-3">Brand Split</div>
                         <div className="space-y-2">
                           {g.topBrands.map((b, bi) => (
                             <div key={bi} className="flex items-center gap-2">
-                              <div className="w-16 text-xs font-bold truncate" style={{ color: BRAND_COLORS[b.name] || "#888" }}>{b.name}</div>
+                              <div className="w-16 text-sm font-bold truncate" style={{ color: BRAND_COLORS[b.name] || "#888" }}>{b.name}</div>
                               <div className="flex-1 h-4 rounded-full overflow-hidden" style={{ background: "#ffffff06" }}>
                                 <div className="h-full rounded-full flex items-center justify-end pr-2 transition-all duration-700" style={{ width: `${b.pct}%`, background: `${BRAND_COLORS[b.name] || "#888"}30` }}>
-                                  <span className="text-xs font-bold" style={{ color: BRAND_COLORS[b.name] || "#888", fontSize: 9 }}>{b.pct}%</span>
+                                  <span className="text-sm font-bold" style={{ color: BRAND_COLORS[b.name] || "#888", fontSize: 10 }}>{b.pct}%</span>
                                 </div>
                               </div>
                             </div>
                           ))}
                           <div className="flex items-center gap-2">
-                            <div className="w-16 text-xs opacity-30">Other</div>
+                            <div className="w-16 text-sm opacity-30">Other</div>
                             <div className="flex-1 h-4 rounded-full overflow-hidden" style={{ background: "#ffffff06" }}>
                               <div className="h-full rounded-full flex items-center justify-end pr-2" style={{ width: `${100 - g.topBrands.reduce((a, b) => a + b.pct, 0)}%`, background: "#ffffff08" }}>
-                                <span className="text-xs opacity-30" style={{ fontSize: 9 }}>{100 - g.topBrands.reduce((a, b) => a + b.pct, 0)}%</span>
+                                <span className="text-sm opacity-30" style={{ fontSize: 10 }}>{100 - g.topBrands.reduce((a, b) => a + b.pct, 0)}%</span>
                               </div>
                             </div>
                           </div>
@@ -6530,42 +6530,42 @@ export default function EsportsMice() {
                               {GAME_IMAGE_URLS[gp.game] ? <img src={GAME_IMAGE_URLS[gp.game]} alt={gp.game} className="h-8 w-8 object-contain" /> : <span className="inline-flex justify-center">{icon(gp.icon, 32)}</span>}
                               <div>
                                 <div className="text-xl font-black" style={{ color: gp.color }}>{gp.game}</div>
-                                <div className="text-xs opacity-30">{gp.players.length} pros sampled</div>
+                                <div className="text-sm opacity-30">{gp.players.length} pros sampled</div>
                               </div>
                             </div>
-                            <p className="text-xs opacity-35 leading-relaxed mb-4">{gp.desc}</p>
+                            <p className="text-sm opacity-35 leading-relaxed mb-4">{gp.desc}</p>
                             <div className="space-y-2">
-                              <div className="flex justify-between text-xs"><span className="opacity-40">Avg DPI</span><span className="font-bold" style={{ color: gp.color }}>{avgDpi}</span></div>
-                              {avgEdpi && <div className="flex justify-between text-xs"><span className="opacity-40">Avg eDPI</span><span className="font-bold" style={{ color: gp.color }}>{avgEdpi}</span></div>}
-                              <div className="flex justify-between text-xs"><span className="opacity-40">Avg Mouse Weight</span><span className="font-bold" style={{ color: gp.color }}>{avgWeight}g</span></div>
-                              {topBrand && <div className="flex justify-between text-xs"><span className="opacity-40">Top Brand</span><span className="font-bold" style={{ color: BRAND_COLORS[topBrand[0]] }}>{topBrand[0]}</span></div>}
+                              <div className="flex justify-between text-sm"><span className="opacity-40">Avg DPI</span><span className="font-bold" style={{ color: gp.color }}>{avgDpi}</span></div>
+                              {avgEdpi && <div className="flex justify-between text-sm"><span className="opacity-40">Avg eDPI</span><span className="font-bold" style={{ color: gp.color }}>{avgEdpi}</span></div>}
+                              <div className="flex justify-between text-sm"><span className="opacity-40">Avg Mouse Weight</span><span className="font-bold" style={{ color: gp.color }}>{avgWeight}g</span></div>
+                              {topBrand && <div className="flex justify-between text-sm"><span className="opacity-40">Top Brand</span><span className="font-bold" style={{ color: BRAND_COLORS[topBrand[0]] }}>{topBrand[0]}</span></div>}
                             </div>
                           </div>
                           <div className="flex-1 space-y-3">
                             <div>
-                              <div className="flex justify-between text-xs mb-1"><span className="opacity-30">Wireless</span><span className="opacity-30">Wired</span></div>
+                              <div className="flex justify-between text-sm mb-1"><span className="opacity-30">Wireless</span><span className="opacity-30">Wired</span></div>
                               <div className="h-5 rounded-full overflow-hidden flex" style={{ background: "#ffffff06" }}>
-                                <div className="h-full rounded-l-full flex items-center justify-center text-xs font-black transition-all duration-700" style={{ width: `${wirelessPct}%`, background: `${gp.color}50`, color: gp.color }}>{wirelessPct}%</div>
-                                <div className="h-full rounded-r-full flex items-center justify-center text-xs font-bold opacity-30" style={{ width: `${100 - wirelessPct}%` }}>{100 - wirelessPct}%</div>
+                                <div className="h-full rounded-l-full flex items-center justify-center text-sm font-black transition-all duration-700" style={{ width: `${wirelessPct}%`, background: `${gp.color}50`, color: gp.color }}>{wirelessPct}%</div>
+                                <div className="h-full rounded-r-full flex items-center justify-center text-sm font-bold opacity-30" style={{ width: `${100 - wirelessPct}%` }}>{100 - wirelessPct}%</div>
                               </div>
                             </div>
                             <div>
-                              <div className="flex justify-between text-xs mb-1"><span className="opacity-30">Symmetrical</span><span className="opacity-30">Ergonomic</span></div>
+                              <div className="flex justify-between text-sm mb-1"><span className="opacity-30">Symmetrical</span><span className="opacity-30">Ergonomic</span></div>
                               <div className="h-5 rounded-full overflow-hidden flex" style={{ background: "#ffffff06" }}>
-                                <div className="h-full rounded-l-full flex items-center justify-center text-xs font-black transition-all duration-700" style={{ width: `${symPct}%`, background: `${gp.color}40`, color: gp.color }}>{symPct}%</div>
-                                <div className="h-full rounded-r-full flex items-center justify-center text-xs font-bold opacity-30" style={{ width: `${100 - symPct}%` }}>{100 - symPct}%</div>
+                                <div className="h-full rounded-l-full flex items-center justify-center text-sm font-black transition-all duration-700" style={{ width: `${symPct}%`, background: `${gp.color}40`, color: gp.color }}>{symPct}%</div>
+                                <div className="h-full rounded-r-full flex items-center justify-center text-sm font-bold opacity-30" style={{ width: `${100 - symPct}%` }}>{100 - symPct}%</div>
                               </div>
                             </div>
                             <div>
-                              <div className="flex justify-between text-xs mb-1"><span className="opacity-30">Ultralight (&lt;50g)</span><span className="opacity-30">Heavy (80g+)</span></div>
+                              <div className="flex justify-between text-sm mb-1"><span className="opacity-30">Ultralight (&lt;50g)</span><span className="opacity-30">Heavy (80g+)</span></div>
                               <div className="h-8 rounded-full relative overflow-hidden" style={{ background: "linear-gradient(to right, #00ff6a15, #ff444415)" }}>
                                 {gp.players.map((p, pi) => {
                                   const m = mice.find(mm => mm.name === p.mouse);
                                   const w = m?.weight || 60;
                                   const pos = Math.min(95, Math.max(5, ((w - 30) / 60) * 100));
                                   return (
-                                    <div key={pi} className="absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold"
-                                      style={{ left: `${pos}%`, transform: `translateX(-50%) translateY(-50%)`, background: gp.color, color: "#000", fontSize: 8, zIndex: 10 - pi, boxShadow: `0 0 8px ${gp.color}60` }}
+                                    <div key={pi} className="absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full flex items-center justify-center text-sm font-bold"
+                                      style={{ left: `${pos}%`, transform: `translateX(-50%) translateY(-50%)`, background: gp.color, color: "#000", fontSize: 9, zIndex: 10 - pi, boxShadow: `0 0 8px ${gp.color}60` }}
                                       title={`${p.name}: ${w}g`}>
                                       {w}
                                     </div>
@@ -6575,14 +6575,14 @@ export default function EsportsMice() {
                             </div>
                             {avgEdpi && (
                               <div>
-                                <div className="flex justify-between text-xs mb-1"><span className="opacity-30">Low eDPI (precise)</span><span className="opacity-30">High eDPI (fast)</span></div>
+                                <div className="flex justify-between text-sm mb-1"><span className="opacity-30">Low eDPI (precise)</span><span className="opacity-30">High eDPI (fast)</span></div>
                                 <div className="h-8 rounded-full relative overflow-hidden" style={{ background: "linear-gradient(to right, #3b82f615, #f59e0b15)" }}>
                                   {gp.players.filter(p => p.edpi).map((p, pi) => {
                                     const maxE = gp.game === "LoL" || gp.game === "Dota 2" ? 25000 : 2000;
                                     const pos = Math.min(95, Math.max(5, (p.edpi / maxE) * 100));
                                     return (
                                       <div key={pi} className="absolute top-1/2 w-5 h-5 rounded-full flex items-center justify-center font-bold"
-                                        style={{ left: `${pos}%`, transform: `translateX(-50%) translateY(-50%)`, background: gp.color, color: "#000", fontSize: 7, zIndex: 10 - pi, boxShadow: `0 0 8px ${gp.color}60` }}
+                                        style={{ left: `${pos}%`, transform: `translateX(-50%) translateY(-50%)`, background: gp.color, color: "#000", fontSize: 8, zIndex: 10 - pi, boxShadow: `0 0 8px ${gp.color}60` }}
                                         title={`${p.name}: ${p.edpi} eDPI`}>
                                         {p.edpi}
                                       </div>
@@ -6593,14 +6593,14 @@ export default function EsportsMice() {
                             )}
                           </div>
                           <div className="lg:w-56 flex-shrink-0">
-                            <div className="text-xs uppercase tracking-widest opacity-20 mb-2">Players ({gp.players.length})</div>
+                            <div className="text-sm uppercase tracking-widest opacity-20 mb-2">Players ({gp.players.length})</div>
                             <div className="flex flex-wrap gap-1 max-h-48 overflow-y-auto pr-1" style={{ scrollbarWidth: "thin", scrollbarColor: `${gp.color}30 transparent` }}>
                               {gp.players.map((p, pi) => (
-                                <button key={pi} className="flex items-center gap-1 px-1.5 py-0.5 rounded text-xs transition-all hover:brightness-150 cursor-pointer"
+                                <button key={pi} className="flex items-center gap-1 px-1.5 py-0.5 rounded text-sm transition-all hover:brightness-150 cursor-pointer"
                                   style={{ background: `${gp.color}10`, border: `1px solid ${gp.color}15` }}
                                   onClick={() => { window.history.pushState({}, "", "#players"); setSelectedPlayer(p); setActiveTab("players"); }}>
-                                  <span style={{ fontSize: 10 }}>{p.country}</span>
-                                  <span className="font-bold truncate" style={{ color: `${gp.color}cc`, maxWidth: 80, fontSize: 10 }}>{p.name}</span>
+                                  <span style={{ fontSize: 11 }}>{p.country}</span>
+                                  <span className="font-bold truncate" style={{ color: `${gp.color}cc`, maxWidth: 80, fontSize: 11 }}>{p.name}</span>
                                 </button>
                               ))}
                             </div>
@@ -6659,7 +6659,7 @@ export default function EsportsMice() {
                       { key: "rating", label: "Rating" },
                       { key: null, label: "Buy" },
                     ].map(h => (
-                      <th key={h.label} className={`px-4 py-3 text-left text-xs uppercase tracking-wider font-bold ${h.key ? "cursor-pointer select-none hover:opacity-80" : ""}`}
+                      <th key={h.label} className={`px-4 py-3 text-left text-sm uppercase tracking-wider font-bold ${h.key ? "cursor-pointer select-none hover:opacity-80" : ""}`}
                         style={{ color: rankingSort.key === h.key ? "#00ff6a" : "#ffffff30" }}
                         onClick={() => { if (h.key) setRankingSort(prev => prev.key === h.key ? { key: h.key, dir: prev.dir === "asc" ? "desc" : "asc" } : { key: h.key, dir: ["name","brand","sensor","shape"].includes(h.key) ? "asc" : "desc" }); }}>
                         {h.label}{rankingSort.key === h.key ? (rankingSort.dir === "asc" ? " ▲" : " ▼") : ""}
@@ -6689,7 +6689,7 @@ export default function EsportsMice() {
                           <td className="px-4 py-3 font-bold" style={{ color: col }}>{MOUSE_IMAGE_URLS[m.name] ? <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="inline h-5 mr-2 object-contain" /> : <span className="mr-2">{m.image}</span>}{m.name}</td>
                           <td className="px-4 py-3 opacity-50">{m.brand}</td>
                           <td className="px-4 py-3 font-bold">{m.weight}g</td>
-                          <td className="px-4 py-3 opacity-50 text-xs">{m.sensor}</td>
+                          <td className="px-4 py-3 opacity-50 text-sm">{m.sensor}</td>
                           <td className="px-4 py-3">{m.pollingRate >= 1000 ? `${m.pollingRate / 1000}K` : m.pollingRate}Hz</td>
                           <td className="px-4 py-3 opacity-50">{m.shape}</td>
                           <td className="px-4 py-3 font-bold">{"$"}{m.price}</td>
@@ -6699,12 +6699,12 @@ export default function EsportsMice() {
                               <div className="w-12 h-1.5 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
                                 <div className="h-full rounded-full" style={{ width: `${m.rating * 10}%`, background: col }} />
                               </div>
-                              <span className="text-xs opacity-50">{m.rating}</span>
+                              <span className="text-sm opacity-50">{m.rating}</span>
                             </div>
                           </td>
                           <td className="px-4 py-3" onClick={e => e.stopPropagation()}>
                             <a href={amazonLink(m.name)} target="_blank" rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap"
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-bold transition-all whitespace-nowrap"
                               style={{ background: `${col}15`, color: col, border: `1px solid ${col}25` }}
                               onMouseEnter={e => { e.currentTarget.style.background = col; e.currentTarget.style.color = "#000"; }}
                               onMouseLeave={e => { e.currentTarget.style.background = `${col}15`; e.currentTarget.style.color = col; }}>
@@ -6758,10 +6758,10 @@ export default function EsportsMice() {
                 <div className="flex flex-col gap-3 sm:gap-6 items-start">
                   <div className="text-4xl sm:text-6xl">{p.country}</div>
                   <div className="flex-1 w-full">
-                    <div className="text-xs uppercase tracking-widest opacity-30 mb-1">{p.role} · {p.team}</div>
+                    <div className="text-sm uppercase tracking-widest opacity-30 mb-1">{p.role} · {p.team}</div>
                     <h2 className="text-2xl sm:text-4xl font-black mb-1" style={{ fontFamily: "Orbitron", color: gc }}>{p.name}</h2>
-                    <div className="text-xs sm:text-sm opacity-50 mb-2 sm:mb-3">{p.fullName} · Age {p.age}</div>
-                    <p className="text-xs sm:text-sm opacity-50 leading-relaxed max-w-2xl">{(() => {
+                    <div className="text-sm sm:text-sm opacity-50 mb-2 sm:mb-3">{p.fullName} · Age {p.age}</div>
+                    <p className="text-sm sm:text-sm opacity-50 leading-relaxed max-w-2xl">{(() => {
                       const mouseName = p.mouse;
                       const idx = p.bio.indexOf(mouseName);
                       if (idx === -1) return p.bio;
@@ -6773,9 +6773,9 @@ export default function EsportsMice() {
                         onClick={e => e.stopPropagation()}>{mouseName}</a>{after}</>;
                     })()}</p>
                     <div className="flex flex-wrap gap-2 sm:gap-3 mt-3 sm:mt-4">
-                      <span className="px-3 py-1 rounded-lg text-xs font-bold" style={{ background: `${gc}20`, color: gc }}>{p.game}</span>
-                      <span className="px-3 py-1 rounded-lg text-xs font-bold" style={{ background: "#ffffff08", color: "#fff" }}>{p.team}</span>
-                      <span className="px-3 py-1 rounded-lg text-xs font-bold" style={{ background: "#ffffff08", color: "#fff" }}>{p.role}</span>
+                      <span className="px-3 py-1 rounded-lg text-sm font-bold" style={{ background: `${gc}20`, color: gc }}>{p.game}</span>
+                      <span className="px-3 py-1 rounded-lg text-sm font-bold" style={{ background: "#ffffff08", color: "#fff" }}>{p.team}</span>
+                      <span className="px-3 py-1 rounded-lg text-sm font-bold" style={{ background: "#ffffff08", color: "#fff" }}>{p.role}</span>
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-3 min-w-48">
@@ -6792,10 +6792,10 @@ export default function EsportsMice() {
                     onMouseLeave={e => { e.currentTarget.style.background = `linear-gradient(135deg, ${brandCol}12, ${brandCol}06)`; e.currentTarget.style.borderColor = `${brandCol}30`; }}>
                     {MOUSE_IMAGE_URLS[p.mouse] ? <img src={MOUSE_IMAGE_URLS[p.mouse]} alt="" className="h-8 w-8 object-contain flex-shrink-0" style={{ filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.4))" }} /> : <span>{I.mouse(20)}</span>}
                     <div className="flex-1 min-w-0">
-                      <div className="text-xs font-bold" style={{ color: brandCol }}>Play like {p.name}</div>
-                      <div className="text-xs opacity-40 truncate">Get the {p.mouse} on Amazon</div>
+                      <div className="text-sm font-bold" style={{ color: brandCol }}>Play like {p.name}</div>
+                      <div className="text-sm opacity-40 truncate">Get the {p.mouse} on Amazon</div>
                     </div>
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-black flex-shrink-0 transition-all"
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-black flex-shrink-0 transition-all"
                       style={{ background: brandCol, color: "#222" }}>
                       <svg width={12} height={12} viewBox="0 0 24 24" fill="none"><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" stroke="#222" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="9" cy="21" r="1.5" fill="#222"/><circle cx="20" cy="21" r="1.5" fill="#222"/></svg> {currentMouseData ? `$${currentMouseData.price}` : "Buy"}
                     </div>
@@ -6805,7 +6805,7 @@ export default function EsportsMice() {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 <div className="rounded-2xl p-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
-                  <div className="text-xs uppercase tracking-widest opacity-30 mb-4"><span className="inline-flex mr-1.5 align-middle">{I.trophy(14)}</span>Top Achievements</div>
+                  <div className="text-sm uppercase tracking-widest opacity-30 mb-4"><span className="inline-flex mr-1.5 align-middle">{I.trophy(14)}</span>Top Achievements</div>
                   <div className="space-y-2">
                     {p.achievements.map((a, i) => (
                       <div key={i} className="flex items-start gap-3 p-3 rounded-xl" style={{ background: i < 3 ? `${gc}08` : "#ffffff04", border: i < 3 ? `1px solid ${gc}15` : "1px solid #ffffff06" }}>
@@ -6820,30 +6820,30 @@ export default function EsportsMice() {
                 <div className="space-y-6">
                   {/* Current Mouse */}
                   <div className="rounded-2xl p-6" style={{ background: `${brandCol}08`, border: `1px solid ${brandCol}20` }}>
-                    <div className="text-xs uppercase tracking-widest opacity-30 mb-4"><span className="inline-flex mr-1.5 align-middle">{I.mouse(14)}</span>Current Mouse</div>
+                    <div className="text-sm uppercase tracking-widest opacity-30 mb-4"><span className="inline-flex mr-1.5 align-middle">{I.mouse(14)}</span>Current Mouse</div>
                     <div className="flex items-center gap-4 mb-4">
                       {MOUSE_IMAGE_URLS[p.mouse] ? <img src={MOUSE_IMAGE_URLS[p.mouse]} alt={p.mouse} className="h-14 w-14 object-contain object-center" style={{ filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.4))" }} /> : <span className="inline-block">{icon(currentMouseData?.image || "mouse", 40)}</span>}
                       <div>
                         <div className="text-xl font-black" style={{ color: brandCol }}>{p.mouse}</div>
-                        <div className="text-xs opacity-40">{currentMouseData?.brand} · {currentMouseData?.weight}g · {currentMouseData?.shape} · {currentMouseData?.connectivity}</div>
+                        <div className="text-sm opacity-40">{currentMouseData?.brand} · {currentMouseData?.weight}g · {currentMouseData?.shape} · {currentMouseData?.connectivity}</div>
                       </div>
                     </div>
                     {currentMouseData && (
                       <div className="grid grid-cols-4 gap-3 mb-4">
                         <div className="text-center p-2 rounded-lg" style={{ background: "#ffffff06" }}>
-                          <div className="text-xs opacity-30">Weight</div>
+                          <div className="text-sm opacity-30">Weight</div>
                           <div className="text-sm font-bold" style={{ color: brandCol }}>{currentMouseData.weight}g</div>
                         </div>
                         <div className="text-center p-2 rounded-lg" style={{ background: "#ffffff06" }}>
-                          <div className="text-xs opacity-30">Sensor</div>
-                          <div className="text-xs font-bold" style={{ color: brandCol }}>{currentMouseData.sensor}</div>
+                          <div className="text-sm opacity-30">Sensor</div>
+                          <div className="text-sm font-bold" style={{ color: brandCol }}>{currentMouseData.sensor}</div>
                         </div>
                         <div className="text-center p-2 rounded-lg" style={{ background: "#ffffff06" }}>
-                          <div className="text-xs opacity-30">Poll Rate</div>
+                          <div className="text-sm opacity-30">Poll Rate</div>
                           <div className="text-sm font-bold" style={{ color: brandCol }}>{currentMouseData.pollingRate >= 1000 ? `${currentMouseData.pollingRate/1000}K` : currentMouseData.pollingRate}Hz</div>
                         </div>
                         <div className="text-center p-2 rounded-lg" style={{ background: "#ffffff06" }}>
-                          <div className="text-xs opacity-30">Price</div>
+                          <div className="text-sm opacity-30">Price</div>
                           <div className="text-sm font-bold" style={{ color: brandCol }}>{"$"}{currentMouseData.price}</div>
                         </div>
                       </div>
@@ -6857,7 +6857,7 @@ export default function EsportsMice() {
 
                   {/* Mouse History Timeline */}
                   <div className="rounded-2xl p-6" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
-                    <div className="text-xs uppercase tracking-widest opacity-30 mb-4"><span className="inline-flex mr-1.5 align-middle">{I.refresh(14)}</span>Mouse History</div>
+                    <div className="text-sm uppercase tracking-widest opacity-30 mb-4"><span className="inline-flex mr-1.5 align-middle">{I.refresh(14)}</span>Mouse History</div>
                     <div className="space-y-0">
                       {p.mouseHistory.map((mh, i) => {
                         const histMouse = mice.find(m => m.name === mh.mouse);
@@ -6870,11 +6870,11 @@ export default function EsportsMice() {
                             </div>
                             <div className="flex-1 py-2">
                               <div className="text-sm font-bold" style={{ color: i === 0 ? hCol : "#ffffff60" }}>{mh.mouse}</div>
-                              <div className="text-xs opacity-30">{mh.period}</div>
+                              <div className="text-sm opacity-30">{mh.period}</div>
                             </div>
                             {i === 0 ? (
                               <a href={amazonLink(mh.mouse)} target="_blank" rel="noopener noreferrer"
-                                className="flex items-center gap-1.5 text-xs px-3 py-1 rounded-full font-bold transition-all"
+                                className="flex items-center gap-1.5 text-sm px-3 py-1 rounded-full font-bold transition-all"
                                 style={{ background: `${hCol}20`, color: hCol, border: `1px solid ${hCol}30` }}
                                 onMouseEnter={e => { e.currentTarget.style.background = hCol; e.currentTarget.style.color = "#000"; }}
                                 onMouseLeave={e => { e.currentTarget.style.background = `${hCol}20`; e.currentTarget.style.color = hCol; }}>
@@ -6892,7 +6892,7 @@ export default function EsportsMice() {
 
               {/* Other players from same game */}
               <div className="mt-8">
-                <div className="text-xs uppercase tracking-widest opacity-30 mb-4">Other {p.game} Players</div>
+                <div className="text-sm uppercase tracking-widest opacity-30 mb-4">Other {p.game} Players</div>
                 <div className="flex flex-wrap gap-3">
                   {proPlayers.filter(op => op.game === p.game && op.name !== p.name).map((op, i) => (
                     <button key={i} onClick={() => { window.history.pushState({}, "", "#players"); setSelectedPlayer(op); }}
@@ -6971,7 +6971,7 @@ export default function EsportsMice() {
                 ].map((s, i) => (
                   <div key={i} className="rounded-xl p-3 text-center" style={{ background: `${s.color}06`, border: `1px solid ${s.color}10` }}>
                     <div className="text-sm font-black" style={{ color: s.color }}>{s.value}</div>
-                    <div style={{ fontSize: 10 }} className="opacity-30 mt-0.5">{s.label}</div>
+                    <div style={{ fontSize: 11 }} className="opacity-30 mt-0.5">{s.label}</div>
                   </div>
                 ));
               })()}
@@ -6983,7 +6983,7 @@ export default function EsportsMice() {
                 const active = gameFilter === g;
                 return (
                   <button key={g} onClick={() => setGameFilter(g)}
-                    className="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5"
+                    className="px-3 py-1.5 rounded-lg text-sm font-bold transition-all flex items-center gap-1.5"
                     style={{ background: active ? `${gc2}25` : "#0a0a0a", color: active ? gc2 : "#ffffff40", border: active ? `1px solid ${gc2}50` : "1px solid #ffffff08" }}>
                     {g !== "All" && GAME_IMAGE_URLS[g] && <img src={GAME_IMAGE_URLS[g]} alt={g} className="w-4 h-4 object-contain" />}
                     {g}{g !== "All" && <span className="ml-1 opacity-50">({allPlayers.filter(p => p.game === g).length})</span>}
@@ -6998,14 +6998,14 @@ export default function EsportsMice() {
               <button onClick={() => setShowFilters(f => !f)}
                 className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all"
                 style={{ background: showFilters || activeFilterCount > 0 ? "#00b4ff15" : "#0a0a0a", border: showFilters || activeFilterCount > 0 ? "1px solid #00b4ff40" : "1px solid #ffffff15", color: showFilters || activeFilterCount > 0 ? "#00b4ff" : "#fff" }}>
-                {I.gear(14)} Filters {activeFilterCount > 0 && <span className="px-1.5 py-0.5 rounded-full text-xs font-black" style={{ background: "#00b4ff", color: "#000", fontSize: 10 }}>{activeFilterCount}</span>}
+                {I.gear(14)} Filters {activeFilterCount > 0 && <span className="px-1.5 py-0.5 rounded-full text-sm font-black" style={{ background: "#00b4ff", color: "#000", fontSize: 11 }}>{activeFilterCount}</span>}
               </button>
               <button onClick={() => setProfileOnly(p => !p)}
                 className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all"
                 style={{ background: profileOnly ? "#fbbf2415" : "#0a0a0a", border: profileOnly ? "1px solid #fbbf2440" : "1px solid #ffffff15", color: profileOnly ? "#fbbf24" : "#ffffff60" }}>
                 {I.star(14)} Full Profiles Only
               </button>
-              <div className="flex items-center gap-2 text-xs opacity-70 px-3">
+              <div className="flex items-center gap-2 text-sm opacity-70 px-3">
                 {I.star(16)} = Full profile available
               </div>
             </div>
@@ -7014,38 +7014,38 @@ export default function EsportsMice() {
             {showFilters && (
               <div className="rounded-xl p-4 mb-4 grid grid-cols-2 md:grid-cols-4 gap-4" style={{ background: "#0a0a0a", border: "1px solid #ffffff10" }}>
                 <div>
-                  <div className="text-xs uppercase tracking-widest opacity-30 mb-2">Role</div>
+                  <div className="text-sm uppercase tracking-widest opacity-30 mb-2">Role</div>
                   <select value={roleFilter} onChange={e => setRoleFilter(e.target.value)}
                     className="w-full px-3 py-2 rounded-lg text-sm cursor-pointer" style={{ background: "#111", border: "1px solid #ffffff15", color: "#fff" }}>
                     {allRoles.map(r => <option key={r} value={r}>{r}</option>)}
                   </select>
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-widest opacity-30 mb-2">Country</div>
+                  <div className="text-sm uppercase tracking-widest opacity-30 mb-2">Country</div>
                   <select value={countryFilter} onChange={e => setCountryFilter(e.target.value)}
                     className="w-full px-3 py-2 rounded-lg text-sm cursor-pointer" style={{ background: "#111", border: "1px solid #ffffff15", color: "#fff" }}>
                     {allCountries.map(c => <option key={c} value={c}>{c}</option>)}
                   </select>
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-widest opacity-30 mb-2">Mouse</div>
+                  <div className="text-sm uppercase tracking-widest opacity-30 mb-2">Mouse</div>
                   <input type="text" placeholder="e.g. Logitech, Viper..." value={mouseFilter} onChange={e => setMouseFilter(e.target.value)}
                     className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={{ background: "#111", border: "1px solid #ffffff15", color: "#fff" }} />
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-widest opacity-30 mb-2">Team</div>
+                  <div className="text-sm uppercase tracking-widest opacity-30 mb-2">Team</div>
                   <input type="text" placeholder="e.g. Navi, Fnatic..." value={teamFilter} onChange={e => setTeamFilter(e.target.value)}
                     className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={{ background: "#111", border: "1px solid #ffffff15", color: "#fff" }} />
                 </div>
                 <div className="col-span-2">
-                  <div className="text-xs uppercase tracking-widest opacity-30 mb-2">DPI Range: <span className="font-bold text-white">{dpiRange[0]} – {dpiRange[1] >= 10000 ? "Any" : dpiRange[1]}</span></div>
+                  <div className="text-sm uppercase tracking-widest opacity-30 mb-2">DPI Range: <span className="font-bold text-white">{dpiRange[0]} – {dpiRange[1] >= 10000 ? "Any" : dpiRange[1]}</span></div>
                   <div className="flex items-center gap-3">
                     <input type="range" min={0} max={3200} step={100} value={dpiRange[0]} onChange={e => setDpiRange([Math.min(+e.target.value, dpiRange[1]), dpiRange[1]])}
                       className="flex-1 accent-blue-400" style={{ height: 4 }} />
                     <input type="range" min={0} max={10000} step={100} value={dpiRange[1]} onChange={e => setDpiRange([dpiRange[0], Math.max(+e.target.value, dpiRange[0])])}
                       className="flex-1 accent-blue-400" style={{ height: 4 }} />
                   </div>
-                  <div className="flex justify-between text-xs opacity-20 mt-1"><span>0</span><span>800</span><span>1600</span><span>3200+</span></div>
+                  <div className="flex justify-between text-sm opacity-20 mt-1"><span>0</span><span>800</span><span>1600</span><span>3200+</span></div>
                 </div>
                 <div className="col-span-2 flex items-end">
                   <button onClick={() => { setGameFilter("All"); setRoleFilter("All"); setCountryFilter("All"); setMouseFilter(""); setTeamFilter(""); setDpiRange([0, 10000]); setProfileOnly(false); setSearchQuery(""); }}
@@ -7061,7 +7061,7 @@ export default function EsportsMice() {
                 <thead className="sticky top-0 z-10">
                   <tr style={{ background: "#0a0a0a" }}>
                     {sortHeaders.map(h => (
-                      <th key={h.label || "_star"} className={`px-3 py-3 text-left text-xs uppercase tracking-wider font-bold ${h.key ? "cursor-pointer select-none hover:opacity-80" : ""}`}
+                      <th key={h.label || "_star"} className={`px-3 py-3 text-left text-sm uppercase tracking-wider font-bold ${h.key ? "cursor-pointer select-none hover:opacity-80" : ""}`}
                         style={{ color: playerSort.key === h.key ? "#00b4ff" : "#ffffff30" }}
                         onClick={() => { if (h.key) setPlayerSort(prev => prev.key === h.key ? { key: h.key, dir: prev.dir === "asc" ? "desc" : "asc" } : { key: h.key, dir: "asc" }); }}>
                         {h.label}{playerSort.key === h.key ? (playerSort.dir === "asc" ? " ▲" : " ▼") : ""}
@@ -7084,23 +7084,23 @@ export default function EsportsMice() {
                         <td className="px-3 py-2.5 font-bold text-white whitespace-nowrap">{p.country} {p.name}</td>
                         <td className="px-3 py-2.5 font-bold whitespace-nowrap" style={{ color: gc }}>{p.game}</td>
                         <td className="px-3 py-2.5 opacity-50 whitespace-nowrap">{p.team}</td>
-                        <td className="px-3 py-2.5 text-xs whitespace-nowrap" style={{ color: "#ffffff80" }}>{p.mouse}</td>
-                        <td className="px-3 py-2.5 text-xs">{p.hz ? `${p.hz >= 1000 ? `${p.hz/1000}K` : p.hz}` : " - "}</td>
+                        <td className="px-3 py-2.5 text-sm whitespace-nowrap" style={{ color: "#ffffff80" }}>{p.mouse}</td>
+                        <td className="px-3 py-2.5 text-sm">{p.hz ? `${p.hz >= 1000 ? `${p.hz/1000}K` : p.hz}` : " - "}</td>
                         <td className="px-3 py-2.5">{p.dpi}</td>
                         <td className="px-3 py-2.5">{p.sens ?? " - "}</td>
                         <td className="px-3 py-2.5 font-bold" style={{ color: p.edpi ? (p.edpi < 400 ? "#ff4444" : p.edpi < 1000 ? "#ffaa00" : p.edpi < 5000 ? "#44ff44" : "#44ddff") : "#666" }}>{p.edpi ?? " - "}</td>
-                        <td className="px-3 py-2.5 opacity-50 text-xs">{p.role}</td>
+                        <td className="px-3 py-2.5 opacity-50 text-sm">{p.role}</td>
                       </tr>
                     );
                   })}
                 </tbody>
               </table>
             </div>
-            <div className="text-center text-xs opacity-20 mt-3">{filteredPlayers.length} of {allPlayers.length} players shown{activeFilterCount > 0 ? ` · ${activeFilterCount} filter${activeFilterCount > 1 ? "s" : ""} active` : ""} · Data sourced from prosettings.net and community research</div>
+            <div className="text-center text-sm opacity-20 mt-3">{filteredPlayers.length} of {allPlayers.length} players shown{activeFilterCount > 0 ? ` · ${activeFilterCount} filter${activeFilterCount > 1 ? "s" : ""} active` : ""} · Data sourced from prosettings.net and community research</div>
 
             <SectionTitle color="#ff4655" sub="Distribution of sensitivity settings across all tracked players">eDPI Distribution by Game</SectionTitle>
             <div className="rounded-xl p-4 mb-4" style={{ background: "#ff465508", border: "1px solid #ff465512" }}>
-              <div className="text-xs opacity-50 leading-relaxed">
+              <div className="text-sm opacity-50 leading-relaxed">
                 <span className="font-bold" style={{ color: "#ff4655" }}>Sample Size Notice:</span> These distributions are based on our database of <span className="font-bold text-white">{allPlayers.filter(p => p.edpi).length}</span> players with confirmed eDPI data out of <span className="font-bold text-white">{allPlayers.length}</span> total tracked players. Games with fewer than 3 players with eDPI data are excluded. PUBG uses a unique sensitivity system and does not have standardized eDPI values. Larger samples produce more reliable distributions.
               </div>
             </div>
@@ -7128,9 +7128,9 @@ export default function EsportsMice() {
                   <div className="rounded-2xl p-5 md:col-span-2" style={{ background: "#0a0a0a", border: "1px solid #ffffff15" }}>
                     <div className="flex items-center justify-between mb-1">
                       <div className="text-base sm:text-lg font-black text-center sm:text-left" style={{ color: "#f472b6" }}><span className="inline-flex mr-1.5 align-middle">{I.globe(20)}</span>All Games  -  Overall eDPI Distribution</div>
-                      <div className="px-2.5 py-1 rounded text-xs font-bold" style={{ background: "#f472b615", color: "#f472b6" }}>n = {total}</div>
+                      <div className="px-2.5 py-1 rounded text-sm font-bold" style={{ background: "#f472b615", color: "#f472b6" }}>n = {total}</div>
                     </div>
-                    <div className="flex gap-5 mb-3 text-xs opacity-40">
+                    <div className="flex gap-5 mb-3 text-sm opacity-40">
                       <span>Mean: <span className="font-bold text-white">{avgEdpi}</span></span>
                       <span>Median: <span className="font-bold text-white">{medianEdpi}</span></span>
                       <span>Min: <span className="font-bold text-white">{minEdpi}</span></span>
@@ -7139,8 +7139,8 @@ export default function EsportsMice() {
                     <ResponsiveContainer width="100%" height={220}>
                       <BarChart data={ranges}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#ffffff06" />
-                        <XAxis dataKey="range" tick={{ fill: "#ffffff40", fontSize: 10 }} />
-                        <YAxis tick={{ fill: "#ffffff40", fontSize: 10 }} />
+                        <XAxis dataKey="range" tick={{ fill: "#ffffff40", fontSize: 11 }} />
+                        <YAxis tick={{ fill: "#ffffff40", fontSize: 11 }} />
                         <Bar dataKey="count" radius={[4, 4, 0, 0]} fillOpacity={0.8} name="Players">
                           {ranges.map((r, ri) => <Cell key={ri} fill={r.count === Math.max(...ranges.map(x => x.count)) ? "#f472b6" : "#f472b640"} />)}
                         </Bar>
@@ -7149,7 +7149,7 @@ export default function EsportsMice() {
                     </ResponsiveContainer>
                     <div className="flex flex-wrap gap-3 mt-2">
                       {ranges.map((r, ri) => (
-                        <div key={ri} className="text-xs opacity-30">
+                        <div key={ri} className="text-sm opacity-30">
                           {r.range}: <span className="font-bold" style={{ color: r.count === Math.max(...ranges.map(x => x.count)) ? "#f472b6" : "#ffffff60" }}>{Math.round((r.count / total) * 100)}%</span> <span className="opacity-50">({r.count})</span>
                         </div>
                       ))}
@@ -7191,24 +7191,24 @@ export default function EsportsMice() {
                           {GAME_IMAGE_URLS[game] && <img src={GAME_IMAGE_URLS[game]} alt={game} className="w-5 h-5 object-contain inline-block" />}
                           {game}
                         </div>
-                        <div className="px-2 py-0.5 rounded text-xs font-bold" style={{ background: `${gc}15`, color: gc }}>n = {total}</div>
+                        <div className="px-2 py-0.5 rounded text-sm font-bold" style={{ background: `${gc}15`, color: gc }}>n = {total}</div>
                       </div>
-                      <div className="flex gap-4 mb-3 text-xs opacity-40">
+                      <div className="flex gap-4 mb-3 text-sm opacity-40">
                         <span>Avg: <span className="font-bold text-white">{avgEdpi}</span></span>
                         <span>Min: <span className="font-bold text-white">{minEdpi}</span></span>
                         <span>Max: <span className="font-bold text-white">{maxEdpi}</span></span>
                       </div>
                       <ResponsiveContainer width="100%" height={180}>
                         <BarChart data={ranges}>
-                          <XAxis dataKey="range" tick={{ fill: "#ffffff40", fontSize: 10 }} />
-                          <YAxis tick={{ fill: "#ffffff40", fontSize: 10 }} />
+                          <XAxis dataKey="range" tick={{ fill: "#ffffff40", fontSize: 11 }} />
+                          <YAxis tick={{ fill: "#ffffff40", fontSize: 11 }} />
                           <Bar dataKey="count" fill={gc} radius={[4, 4, 0, 0]} fillOpacity={0.7} name="Players" />
                           <Tooltip content={<CustomTooltip />} />
                         </BarChart>
                       </ResponsiveContainer>
                       <div className="flex flex-wrap gap-2 mt-2">
                         {ranges.map((r, ri) => (
-                          <div key={ri} className="text-xs opacity-30">
+                          <div key={ri} className="text-sm opacity-30">
                             {r.range}: <span className="font-bold" style={{ color: r.count === Math.max(...ranges.map(x => x.count)) ? gc : "#ffffff60" }}>{total > 0 ? Math.round((r.count / total) * 100) : 0}%</span>
                           </div>
                         ))}
@@ -7271,14 +7271,14 @@ export default function EsportsMice() {
                       {BRAND_IMAGE_URLS[brand.name] ? <img src={BRAND_IMAGE_URLS[brand.name]} alt={brand.name} className="h-10 w-10 object-contain" /> : <span className="inline-flex justify-center">{icon(brand.icon, 40)}</span>}
                       <div className="flex-1">
                         <div className="text-2xl font-black" style={{ color: col }}>{brand.name}</div>
-                        <div className="text-xs opacity-30">{totalUsage}% total pro usage · {brandMice.length} model{brandMice.length !== 1 ? "s" : ""} in database</div>
+                        <div className="text-sm opacity-30">{totalUsage}% total pro usage · {brandMice.length} model{brandMice.length !== 1 ? "s" : ""} in database</div>
                       </div>
                       <div className="flex gap-2">
                         {brand.flagships.map((f, j) => {
                           const fl = f.toLowerCase();
                           const matchedMouse = mice.find(m => m.name.toLowerCase().endsWith(fl)) || mice.find(m => m.name.toLowerCase().includes(fl));
                           return (
-                            <span key={j} className="px-2.5 py-1 rounded-full text-xs font-bold cursor-pointer transition-all hover:scale-105 hover:brightness-125"
+                            <span key={j} className="px-2.5 py-1 rounded-full text-sm font-bold cursor-pointer transition-all hover:scale-105 hover:brightness-125"
                               style={{ background: `${col}15`, color: col }}
                               onClick={() => { if (matchedMouse) { setSelectedMouse(matchedMouse); setActiveTab("mice"); window.scrollTo({ top: 0, behavior: "smooth" }); } }}>
                               {f}
@@ -7289,12 +7289,12 @@ export default function EsportsMice() {
                     </div>
                     <p className="text-sm opacity-45 leading-relaxed mb-5">{brand.desc}</p>
                     <div className="rounded-xl p-4" style={{ background: `${col}08`, border: `1px solid ${col}10` }}>
-                      <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Key Achievements</div>
+                      <div className="text-sm uppercase tracking-widest opacity-30 mb-3">Key Achievements</div>
                       <div className="space-y-2">
                         {brand.achievements.map((a, j) => (
                           <div key={j} className="flex items-start gap-2">
-                            <span className="text-xs mt-0.5">{j === 0 ? I.trophy(14) : j === 1 ? I.star(14) : I.crosshair(14)}</span>
-                            <span className="text-xs leading-relaxed" style={{ color: j === 0 ? col : "#ffffffa0" }}>{a}</span>
+                            <span className="text-sm mt-0.5">{j === 0 ? I.trophy(14) : j === 1 ? I.star(14) : I.crosshair(14)}</span>
+                            <span className="text-sm leading-relaxed" style={{ color: j === 0 ? col : "#ffffffa0" }}>{a}</span>
                           </div>
                         ))}
                       </div>
@@ -7311,7 +7311,7 @@ export default function EsportsMice() {
                       return (
                         <div className="flex items-center gap-2 mt-4 flex-wrap">
                           <style>{`@keyframes brandPulse { 0%,100% { opacity:.35 } 50% { opacity:.7 } } @keyframes slideIn { from { opacity:0; transform:translateX(-8px) } to { opacity:1; transform:translateX(0) } }`}</style>
-                          <span style={{ fontSize: 9, animation: "brandPulse 2s ease-in-out infinite" }} className="uppercase tracking-widest font-bold" ><span style={{ color: col }}>▸</span> <span className="opacity-40">Shop top picks</span></span>
+                          <span style={{ fontSize: 10, animation: "brandPulse 2s ease-in-out infinite" }} className="uppercase tracking-widest font-bold" ><span style={{ color: col }}>▸</span> <span className="opacity-40">Shop top picks</span></span>
                           {top3.map((m, mi) => {
                             const imgUrl = MOUSE_IMAGE_URLS[m.name];
                             return (
@@ -7319,9 +7319,9 @@ export default function EsportsMice() {
                                 className="group inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full transition-all duration-300 hover:scale-105 hover:brightness-125"
                                 style={{ background: `${col}08`, border: `1px solid ${col}12`, animation: `slideIn 0.4s ease-out ${mi * 0.1}s both` }}>
                                 {imgUrl ? <img src={imgUrl} alt="" className="h-6 w-8 object-contain transition-transform duration-300 group-hover:scale-125" style={{ filter: `drop-shadow(0 1px 4px ${col}40)` }} /> : <span className="opacity-30">{I.mouse(14)}</span>}
-                                <span style={{ fontSize: 9, color: col }} className="font-bold whitespace-nowrap">{m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |Ninjutso |WLMouse |Zowie |Vaxee |HyperX |G-Wolves |Sony |LGG )/, "")}</span>
-                                <span style={{ fontSize: 8 }} className="opacity-30">${m.price}</span>
-                                <span style={{ fontSize: 8, color: col }} className="opacity-0 group-hover:opacity-70 transition-opacity duration-200">→</span>
+                                <span style={{ fontSize: 10, color: col }} className="font-bold whitespace-nowrap">{m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |Ninjutso |WLMouse |Zowie |Vaxee |HyperX |G-Wolves |Sony |LGG )/, "")}</span>
+                                <span style={{ fontSize: 9 }} className="opacity-30">${m.price}</span>
+                                <span style={{ fontSize: 9, color: col }} className="opacity-0 group-hover:opacity-70 transition-opacity duration-200">→</span>
                               </a>
                             );
                           })}
@@ -7356,8 +7356,8 @@ export default function EsportsMice() {
                       </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" stroke="#ffffff08" />
-                    <XAxis dataKey="year" tick={{ fill: "#ffffff40", fontSize: 10 }} />
-                    <YAxis tick={{ fill: "#ffffff40", fontSize: 10 }} unit="g" />
+                    <XAxis dataKey="year" tick={{ fill: "#ffffff40", fontSize: 11 }} />
+                    <YAxis tick={{ fill: "#ffffff40", fontSize: 11 }} unit="g" />
                     <Tooltip content={<CustomTooltip />} />
                     <Area type="monotone" dataKey="avgWeight" stroke="#f472b6" fill="url(#wg1)" strokeWidth={2} name="Avg Weight" />
                     <Area type="monotone" dataKey="lightest" stroke="#00ff6a" fill="url(#wg2)" strokeWidth={2} name="Lightest" strokeDasharray="5 5" />
@@ -7370,10 +7370,10 @@ export default function EsportsMice() {
                 <ResponsiveContainer width="100%" height={280}>
                   <LineChart data={pollingTrend}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#ffffff08" />
-                    <XAxis dataKey="year" tick={{ fill: "#ffffff40", fontSize: 10 }} />
-                    <YAxis tick={{ fill: "#ffffff40", fontSize: 10 }} />
+                    <XAxis dataKey="year" tick={{ fill: "#ffffff40", fontSize: 11 }} />
+                    <YAxis tick={{ fill: "#ffffff40", fontSize: 11 }} />
                     <Tooltip content={<CustomTooltip />} />
-                    <Legend wrapperStyle={{ fontSize: 10, opacity: 0.5 }} />
+                    <Legend wrapperStyle={{ fontSize: 11, opacity: 0.5 }} />
                     <Line type="monotone" dataKey="max" stroke="#00ff6a" strokeWidth={2} dot={{ r: 3, fill: "#00ff6a" }} name="Max Available" />
                     <Line type="monotone" dataKey="avg" stroke="#00b4ff" strokeWidth={2} dot={{ r: 3, fill: "#00b4ff" }} name="Average" />
                   </LineChart>
@@ -7430,8 +7430,8 @@ export default function EsportsMice() {
                     <ResponsiveContainer width="100%" height={280}>
                       <BarChart data={data}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#ffffff08" />
-                        <XAxis dataKey="range" tick={{ fill: "#ffffff40", fontSize: 10 }} />
-                        <YAxis tick={{ fill: "#ffffff40", fontSize: 10 }} />
+                        <XAxis dataKey="range" tick={{ fill: "#ffffff40", fontSize: 11 }} />
+                        <YAxis tick={{ fill: "#ffffff40", fontSize: 11 }} />
                         <Tooltip content={<CustomTooltip />} />
                         <Bar dataKey="players" radius={[6, 6, 0, 0]} name="Players">
                           {data.map((d, i) => <Cell key={i} fill={d.fill} fillOpacity={0.7} />)}
@@ -7459,10 +7459,10 @@ export default function EsportsMice() {
                       </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" stroke="#ffffff08" />
-                    <XAxis dataKey="year" tick={{ fill: "#ffffff40", fontSize: 10 }} />
-                    <YAxis tick={{ fill: "#ffffff40", fontSize: 10 }} unit="%" domain={[0, 100]} />
+                    <XAxis dataKey="year" tick={{ fill: "#ffffff40", fontSize: 11 }} />
+                    <YAxis tick={{ fill: "#ffffff40", fontSize: 11 }} unit="%" domain={[0, 100]} />
                     <Tooltip content={<CustomTooltip />} />
-                    <Legend wrapperStyle={{ fontSize: 10, opacity: 0.5 }} />
+                    <Legend wrapperStyle={{ fontSize: 11, opacity: 0.5 }} />
                     <Area type="monotone" dataKey="wireless" stroke="#00ff6a" fill="url(#wlg1)" strokeWidth={2} name="Wireless %" />
                     <Area type="monotone" dataKey="wired" stroke="#ff3c3c" fill="url(#wlg2)" strokeWidth={2} name="Wired %" strokeDasharray="5 5" />
                   </AreaChart>
@@ -7474,10 +7474,10 @@ export default function EsportsMice() {
                 <ResponsiveContainer width="100%" height={280}>
                   <LineChart data={priceTrend}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#ffffff08" />
-                    <XAxis dataKey="year" tick={{ fill: "#ffffff40", fontSize: 10 }} />
-                    <YAxis tick={{ fill: "#ffffff40", fontSize: 10 }} unit="$" />
+                    <XAxis dataKey="year" tick={{ fill: "#ffffff40", fontSize: 11 }} />
+                    <YAxis tick={{ fill: "#ffffff40", fontSize: 11 }} unit="$" />
                     <Tooltip content={<CustomTooltip />} />
-                    <Legend wrapperStyle={{ fontSize: 10, opacity: 0.5 }} />
+                    <Legend wrapperStyle={{ fontSize: 11, opacity: 0.5 }} />
                     <Line type="monotone" dataKey="flagship" stroke="#d4af37" strokeWidth={2} dot={{ r: 3, fill: "#d4af37" }} name="Flagship" />
                     <Line type="monotone" dataKey="avg" stroke="#00b4ff" strokeWidth={2} dot={{ r: 3, fill: "#00b4ff" }} name="Average" />
                     <Line type="monotone" dataKey="budget" stroke="#10b981" strokeWidth={2} dot={{ r: 3, fill: "#10b981" }} name="Budget" strokeDasharray="5 5" />
@@ -7502,9 +7502,9 @@ export default function EsportsMice() {
                 })()
               ].map((s, i) => (
                 <div key={i} className="rounded-2xl p-5 text-center" style={{ background: `${s.color}06`, border: `1px solid ${s.color}15` }}>
-                  <div className="text-xs uppercase tracking-widest opacity-30 mb-2">{s.label}</div>
+                  <div className="text-sm uppercase tracking-widest opacity-30 mb-2">{s.label}</div>
                   <div className="text-sm font-black" style={{ color: s.color }}>{s.value}</div>
-                  <div className="text-xs opacity-40 mt-1">{s.sub}</div>
+                  <div className="text-sm opacity-40 mt-1">{s.sub}</div>
                 </div>
               ))}
             </div>
@@ -7547,7 +7547,7 @@ export default function EsportsMice() {
                     <thead>
                       <tr style={{ background: "#0a0a0a" }}>
                         {headers.map(h => (
-                          <th key={h} className="px-4 py-3 text-xs uppercase tracking-widest font-bold text-left" style={{ color: "#ffffff30" }}>{h}</th>
+                          <th key={h} className="px-4 py-3 text-sm uppercase tracking-widest font-bold text-left" style={{ color: "#ffffff30" }}>{h}</th>
                         ))}
                       </tr>
                     </thead>
@@ -7588,7 +7588,7 @@ export default function EsportsMice() {
                         const pct = Math.round(count / mice.length * 100);
                         return (
                           <div key={i}>
-                            <div className="flex justify-between text-xs mb-1">
+                            <div className="flex justify-between text-sm mb-1">
                               <span className="font-bold" style={{ color: t.color }}>{t.label}</span>
                               <span className="opacity-50">{count} mice ({pct}%)</span>
                             </div>
@@ -7614,7 +7614,7 @@ export default function EsportsMice() {
                     <div className="space-y-3">
                       {top5.map(([sensor, count], i) => (
                         <div key={sensor}>
-                          <div className="flex justify-between text-xs mb-1">
+                          <div className="flex justify-between text-sm mb-1">
                             <span className="font-bold" style={{ color: colors[i] }}>{sensor}</span>
                             <span className="opacity-50">{count} mice</span>
                           </div>
@@ -7645,7 +7645,7 @@ export default function EsportsMice() {
                         const pct = Math.round(count / mice.length * 100);
                         return (
                           <div key={i}>
-                            <div className="flex justify-between text-xs mb-1">
+                            <div className="flex justify-between text-sm mb-1">
                               <span className="font-bold" style={{ color: c.color }}>{c.label}</span>
                               <span className="opacity-50">{count} ({pct}%)</span>
                             </div>
@@ -7671,8 +7671,8 @@ export default function EsportsMice() {
                   fill: { CS2: "#ff8c00", Valorant: "#ff4655", Apex: "#dc2626", "R6 Siege": "#4a86c8", "Overwatch 2": "#f99e1a", "Marvel Rivals": "#ed1d24", Deadlock: "#8b5cf6", "Call of Duty": "#5cb85c" }[g.game] || "#888"
                 }))} margin={{ top: 10, right: 30, left: 0, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#ffffff08" />
-                  <XAxis dataKey="game" tick={{ fill: "#ffffff40", fontSize: 10 }} />
-                  <YAxis tick={{ fill: "#ffffff40", fontSize: 10 }} />
+                  <XAxis dataKey="game" tick={{ fill: "#ffffff40", fontSize: 11 }} />
+                  <YAxis tick={{ fill: "#ffffff40", fontSize: 11 }} />
                   <Tooltip content={<CustomTooltip />} />
                   <Bar dataKey="avgEdpi" name="Avg eDPI" radius={[6, 6, 0, 0]}>
                     {gameBreakdown.filter(g => g.avgEdpi && g.players >= 10).map((g, i) => (
@@ -7681,7 +7681,7 @@ export default function EsportsMice() {
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
-              <div className="text-xs text-center opacity-25 mt-2">Games with fewer than 10 tracked players or no eDPI data excluded</div>
+              <div className="text-sm text-center opacity-25 mt-2">Games with fewer than 10 tracked players or no eDPI data excluded</div>
             </div>
           </div>
         )}
@@ -7762,13 +7762,13 @@ export default function EsportsMice() {
             <SectionTitle color="#10b981" sub="Comprehensive breakdown of every sensor powering pro esports mice">Mouse Sensor Analytics</SectionTitle>
 
             {/* Top sensor highlight */}
-            <div className="rounded-2xl p-6 mb-6" style={{ background: "#10b98108", border: "1px solid #10b98115" }}>
-              <div className="flex items-center gap-4 mb-4">
-                <img src="/images/mice/focus-pro-35k.png" alt="Focus Pro 35K" className="h-12 object-contain" style={{ filter: "drop-shadow(0 4px 12px rgba(16,185,129,0.3))" }} />
+            <div className="rounded-2xl p-4 mb-4" style={{ background: "#10b98108", border: "1px solid #10b98115" }}>
+              <div className="flex items-center gap-4">
+                <img src="/images/mice/focus-pro-35k.png" alt="Focus Pro 35K" className="h-10 object-contain" style={{ filter: "drop-shadow(0 4px 12px rgba(16,185,129,0.3))" }} />
                 <div>
-                  <div className="text-xs uppercase tracking-widest opacity-30 text-center sm:text-left">Most Popular Sensor in Esports</div>
-                  <div className="text-2xl font-black" style={{ color: "#10b981" }}>{topSensor?.sensor}</div>
-                  <div className="text-xs opacity-40">{topSensor?.totalUsage}% combined pro usage · Found in {topSensor?.mouseCount} mouse model{topSensor?.mouseCount !== 1 ? "s" : ""} · Used by {topSensor?.brandList}</div>
+                  <div className="text-sm uppercase tracking-widest opacity-30">Most Popular Sensor in Esports</div>
+                  <div className="text-xl font-black" style={{ color: "#10b981" }}>{topSensor?.sensor}</div>
+                  <div className="text-sm opacity-40">Powering the Viper V3 Pro, DeathAdder V3, and more — the sensor behind the most tournament wins in 2024-2025</div>
                 </div>
               </div>
             </div>
@@ -7787,16 +7787,33 @@ export default function EsportsMice() {
                   "OWL Eye": "/images/sensors/owl-eye.png",
                   "HERO 25K": "/images/sensors/hero-25k.png",
                 };
+                const sensorDescs = {
+                  "Focus Pro 35K": "Razer's flagship optical sensor co-developed with PixArt, powering the Viper V3 Pro and DeathAdder V3 Pro. It tracks at 35,000 DPI with zero smoothing or acceleration, and supports native 8KHz polling — a first for any production sensor at launch. Its asymmetric cut-off distance lets pros tune lift-off independently from landing, a feature competitive players swear by. The Focus Pro 35K is the sensor that dethroned Logitech's HERO dominance and redefined what pros expect from tracking hardware.",
+                  "HERO 2": "Logitech's second-generation in-house sensor, designed from the ground up at their Swiss R&D lab. HERO 2 powers the G Pro X Superlight 2 and Superstrike, delivering 44,000 DPI with sub-micron precision and roughly 10x the power efficiency of its predecessor. It introduced frame-rate-aware tracking that dynamically adjusts processing to match your monitor's refresh rate. Paired with Lightspeed wireless, it's the sensor behind more major tournament wins than any other in 2023-2024.",
+                  "HERO 25K": "The original HERO sensor that launched Logitech's four-year reign over professional esports. Found in the legendary G Pro X Superlight, it delivered 25,600 DPI with zero smoothing, filtering, or acceleration — a marketing claim Logitech backed with an open invitation for independent lab testing. Its power efficiency was so extreme it enabled the Superlight's 70-hour battery life at just 63 grams. Though now succeeded by HERO 2, it still commands significant pro usage from players who refuse to abandon the original Superlight's feel.",
+                  "PAW3395": "PixArt's workhorse sensor that democratized flagship-tier tracking for the entire industry. At 26,000 DPI with 650 IPS max tracking speed, it brought near-identical real-world performance to every mid-range and premium mouse outside the Razer/Logitech ecosystem. Zowie, Vaxee, Pulsar, Lamzu, and dozens of others built their wireless lineups around this chip. The PAW3395 proved that sensor technology had reached a plateau where the differences between \"good\" and \"best\" were imperceptible to human reflexes, shifting the competitive advantage back to shape and weight.",
+                };
                 const sensorImg = sensorImageMap[s.sensor];
+                const sensorDesc = sensorDescs[s.sensor];
                 return (
                   <div key={i} className="rounded-xl p-4" style={{ background: `${colors[i]}08`, border: `1px solid ${colors[i]}12` }}>
-                    <div className="text-xs opacity-30 mb-1 text-center">#{i + 1} Most Used</div>
+                    <div className="text-sm opacity-30 mb-1 text-center">#{i + 1} Most Used</div>
                     <div className="text-sm font-black mb-2 text-center" style={{ color: colors[i] }}>{s.sensor}</div>
                     {sensorImg && <div className="flex justify-center mb-2"><img src={sensorImg} alt={s.sensor} className="h-24 sm:h-32 object-contain" style={{ filter: `drop-shadow(0 4px 12px ${colors[i]}30)` }} /></div>}
                     <div className="text-xl sm:text-2xl font-black text-center">{s.totalUsage}%</div>
-                    <div className="text-xs opacity-40 mt-1">{s.mouseCount} mice use this sensor:</div>
-                    <div className="text-xs opacity-50 mt-0.5 leading-relaxed">{s.mice.map(m => m.name.replace(m.brand + " ", "")).join(", ")}</div>
-                    <div className="text-xs font-bold mt-1.5" style={{ color: colors[i] }}>{s.playerCount} pro players</div>
+                    <div className="text-sm opacity-30 text-center mt-1">of pros use this sensor</div>
+                    {sensorDesc && <p className="text-sm opacity-35 mt-3 leading-relaxed">{sensorDesc}</p>}
+                    <div className="text-sm opacity-40 mt-3">{s.mouseCount} mice use this sensor:</div>
+                    <div className="flex flex-wrap gap-1.5 mt-1.5">
+                      {s.mice.map(m => (
+                        <button key={m.id} onClick={() => { setSelectedMouse(m); setActiveTab("mouseDetail"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                          className="px-2 py-1 rounded-md text-sm transition-all hover:scale-105 cursor-pointer"
+                          style={{ background: `${colors[i]}15`, border: `1px solid ${colors[i]}20`, color: colors[i], fontSize: 11 }}>
+                          {m.name.replace(m.brand + " ", "")}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="text-sm font-bold mt-1.5" style={{ color: colors[i] }}>{s.playerCount} pro players</div>
                   </div>
                 );
               })}
@@ -7849,46 +7866,46 @@ export default function EsportsMice() {
 
               return (
                 <div className="rounded-2xl p-5 mb-6" style={{ background: "#ffffff03", border: "1px solid #ffffff08" }}>
-                  <div className="text-xs uppercase tracking-widest opacity-30 mb-4 font-bold text-center sm:text-left">Sensor Popularity Across {totalMatched.toLocaleString()} Matched Pro Players</div>
+                  <div className="text-sm uppercase tracking-widest opacity-30 mb-4 font-bold text-center sm:text-left">Sensor Popularity Across {totalMatched.toLocaleString()} Matched Pro Players</div>
 
                   {/* Summary stat pills */}
                   <div className="flex flex-wrap gap-2 mb-5 justify-center sm:justify-start">
                     <div className="rounded-lg px-3 py-2" style={{ background: "#10b98110" }}>
-                      <span className="text-xs opacity-40">Top sensor: </span>
-                      <span className="text-xs font-black" style={{ color: "#10b981" }}>{top10[0]?.[0]} ({topSensorPct}%)</span>
+                      <span className="text-sm opacity-40">Top sensor: </span>
+                      <span className="text-sm font-black" style={{ color: "#10b981" }}>{top10[0]?.[0]} ({topSensorPct}%)</span>
                     </div>
                     <div className="rounded-lg px-3 py-2" style={{ background: "#00b4ff10" }}>
-                      <span className="text-xs opacity-40">Top 3 concentration: </span>
-                      <span className="text-xs font-black" style={{ color: "#00b4ff" }}>{top3Pct}%</span>
+                      <span className="text-sm opacity-40">Top 3 concentration: </span>
+                      <span className="text-sm font-black" style={{ color: "#00b4ff" }}>{top3Pct}%</span>
                     </div>
                     <div className="rounded-lg px-3 py-2" style={{ background: "#f59e0b10" }}>
-                      <span className="text-xs opacity-40">Unique sensors tracked: </span>
-                      <span className="text-xs font-black" style={{ color: "#f59e0b" }}>{uniqueSensors}</span>
+                      <span className="text-sm opacity-40">Unique sensors tracked: </span>
+                      <span className="text-sm font-black" style={{ color: "#f59e0b" }}>{uniqueSensors}</span>
                     </div>
                     <div className="rounded-lg px-3 py-2" style={{ background: "#a78bfa10" }}>
-                      <span className="text-xs opacity-40">Players on proprietary sensors: </span>
-                      <span className="text-xs font-black" style={{ color: "#a78bfa" }}>{sensorCounts["Custom"] || sensorCounts["Custom Sony"] || 0}</span>
+                      <span className="text-sm opacity-40">Players on proprietary sensors: </span>
+                      <span className="text-sm font-black" style={{ color: "#a78bfa" }}>{sensorCounts["Custom"] || sensorCounts["Custom Sony"] || 0}</span>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5">
                     {/* Left: Bar chart */}
                     <div>
-                      <div className="text-xs opacity-30 mb-3 font-bold uppercase tracking-wider">Top 10 Sensors by Player Count</div>
+                      <div className="text-sm opacity-30 mb-3 font-bold uppercase tracking-wider">Top 10 Sensors by Player Count</div>
                       <div className="space-y-2">
                         {top10.map(([sensor, count], i) => {
                           const pct = Math.round(count / totalMatched * 100);
                           const barW = Math.max(count / maxCount * 100, 4);
                           return (
                             <div key={sensor} className="flex items-center gap-2">
-                              <div className="text-xs font-bold w-20 sm:w-32 truncate cursor-pointer hover:underline" style={{ color: barColors[i] }}
+                              <div className="text-sm font-bold w-20 sm:w-32 truncate cursor-pointer hover:underline" style={{ color: barColors[i] }}
                                 onClick={() => document.getElementById(`sensor-group-${sensor.replace(/\s+/g, "-").toLowerCase()}`)?.scrollIntoView({ behavior: "smooth", block: "start" })}>{sensor}</div>
                               <div className="flex-1 h-6 rounded-md overflow-hidden" style={{ background: "#ffffff06" }}>
                                 <div className="h-full rounded-md flex items-center px-2 transition-all" style={{ width: `${barW}%`, background: `${barColors[i]}25`, borderRight: `2px solid ${barColors[i]}` }}>
-                                  <span className="text-xs font-black" style={{ color: barColors[i] }}>{count}</span>
+                                  <span className="text-sm font-black" style={{ color: barColors[i] }}>{count}</span>
                                 </div>
                               </div>
-                              <div className="text-xs opacity-30 w-10 text-right">{pct}%</div>
+                              <div className="text-sm opacity-30 w-10 text-right">{pct}%</div>
                             </div>
                           );
                         })}
@@ -7897,7 +7914,7 @@ export default function EsportsMice() {
 
                     {/* Right: Game breakdown for top 5 sensors */}
                     <div>
-                      <div className="text-xs opacity-30 mb-3 font-bold uppercase tracking-wider">Top 5 Sensors — Game Distribution</div>
+                      <div className="text-sm opacity-30 mb-3 font-bold uppercase tracking-wider">Top 5 Sensors — Game Distribution</div>
                       <div className="space-y-3">
                         {topSensorNames.map((sn, si) => {
                           const games = Object.entries(sensorGameBreakdown[sn]).sort((a, b) => b[1] - a[1]);
@@ -7905,8 +7922,8 @@ export default function EsportsMice() {
                           return (
                             <div key={sn}>
                               <div className="flex items-center gap-2 mb-1">
-                                <span className="text-xs font-black" style={{ color: barColors[si] }}>{sn}</span>
-                                <span className="text-xs opacity-20">({total} players)</span>
+                                <span className="text-sm font-black" style={{ color: barColors[si] }}>{sn}</span>
+                                <span className="text-sm opacity-20">({total} players)</span>
                               </div>
                               {/* Stacked bar */}
                               <div className="flex h-5 rounded-md overflow-hidden" style={{ background: "#ffffff06" }}>
@@ -7915,7 +7932,7 @@ export default function EsportsMice() {
                                   return (
                                     <div key={game} className="h-full flex items-center justify-center relative group" style={{ width: `${w}%`, background: `${gameBarColors[game] || "#666"}40` }}
                                       title={`${game}: ${cnt} players (${Math.round(cnt/total*100)}%)`}>
-                                      {w > 8 && <span style={{ fontSize: 9 }} className="font-bold opacity-70">{game}</span>}
+                                      {w > 8 && <span style={{ fontSize: 10 }} className="font-bold opacity-70">{game}</span>}
                                     </div>
                                   );
                                 })}
@@ -7923,7 +7940,7 @@ export default function EsportsMice() {
                               {/* Legend */}
                               <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1">
                                 {games.slice(0, 5).map(([game, cnt]) => (
-                                  <span key={game} style={{ fontSize: 9 }} className="opacity-40">
+                                  <span key={game} style={{ fontSize: 10 }} className="opacity-40">
                                     <span style={{ color: gameBarColors[game] || "#666" }}>●</span> {game} {Math.round(cnt/total*100)}%
                                   </span>
                                 ))}
@@ -7939,13 +7956,13 @@ export default function EsportsMice() {
             })()}
 
             {/* Sensor table */}
-            <div className="text-xs uppercase tracking-widest opacity-30 mb-3 mt-8">All Sensors  -  Click Headers to Sort</div>
+            <div className="text-sm uppercase tracking-widest opacity-30 mb-3 mt-8">All Sensors  -  Click Headers to Sort</div>
             <div className="overflow-x-auto rounded-2xl mb-8" style={{ border: "1px solid #ffffff08" }}>
               <table className="w-full text-sm">
                 <thead>
                   <tr style={{ background: "#0a0a0a" }}>
                     {sensorHeaders.map(h => (
-                      <th key={h.label} className="px-4 py-3 text-left text-xs uppercase tracking-wider font-bold cursor-pointer select-none hover:opacity-80"
+                      <th key={h.label} className="px-4 py-3 text-left text-sm uppercase tracking-wider font-bold cursor-pointer select-none hover:opacity-80"
                         style={{ color: sensorSort.key === h.key ? "#10b981" : "#ffffff30" }}
                         onClick={() => setSensorSort(prev => prev.key === h.key ? { key: h.key, dir: prev.dir === "asc" ? "desc" : "asc" } : { key: h.key, dir: typeof sensorProfiles[0]?.[h.key] === "string" ? "asc" : "desc" })}>
                         {h.label}{sensorSort.key === h.key ? (sensorSort.dir === "asc" ? " ▲" : " ▼") : ""}
@@ -7962,8 +7979,8 @@ export default function EsportsMice() {
                         onClick={() => document.getElementById(`sensor-group-${s.sensor.replace(/\s+/g, "-").toLowerCase()}`)?.scrollIntoView({ behavior: "smooth", block: "start" })}>{s.sensor}</td>
                       <td className="px-4 py-3 font-bold">{s.mouseCount}</td>
                       <td className="px-4 py-3 font-black">{s.totalUsage}%</td>
-                      <td className="px-4 py-3 text-xs opacity-50">{s.brandList}</td>
-                      <td className="px-4 py-3 text-xs">{s.topMouse}</td>
+                      <td className="px-4 py-3 text-sm opacity-50">{s.brandList}</td>
+                      <td className="px-4 py-3 text-sm">{s.topMouse}</td>
                       <td className="px-4 py-3">{s.avgDpi >= 1000 ? `${(s.avgDpi/1000).toFixed(0)}K` : s.avgDpi}</td>
                       <td className="px-4 py-3">{s.avgPolling >= 1000 ? `${(s.avgPolling/1000).toFixed(1)}K` : s.avgPolling}Hz</td>
                       <td className="px-4 py-3">{s.avgWeight}g</td>
@@ -7982,14 +7999,14 @@ export default function EsportsMice() {
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <div className="text-sm font-black" style={{ color: "#10b981" }}>{s.sensor}</div>
-                      <div className="text-xs opacity-30">{s.totalUsage}% pro usage</div>
+                      <div className="text-sm opacity-30">{s.totalUsage}% pro usage</div>
                     </div>
-                    <div className="text-xs opacity-30">{s.mouseCount} model{s.mouseCount !== 1 ? "s" : ""}</div>
+                    <div className="text-sm opacity-30">{s.mouseCount} model{s.mouseCount !== 1 ? "s" : ""}</div>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {s.mice.sort((a, b) => b.proUsage - a.proUsage).map((m, mi) => (
                       <button key={mi} onClick={() => { setSelectedMouse(m); setActiveTab("mouseDetail"); }}
-                        className="px-3 py-1.5 rounded-lg text-xs font-bold cursor-pointer transition-all hover:scale-105"
+                        className="px-3 py-1.5 rounded-lg text-sm font-bold cursor-pointer transition-all hover:scale-105"
                         style={{ background: `${BRAND_COLORS[m.brand]}12`, border: `1px solid ${BRAND_COLORS[m.brand]}20`, color: BRAND_COLORS[m.brand] }}>
                         {MOUSE_IMAGE_URLS[m.name] ? <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="inline h-4 mr-1 object-contain" /> : m.image} {m.name} <span className="opacity-40">({m.proUsage}%)</span>
                       </button>
@@ -8004,7 +8021,7 @@ export default function EsportsMice() {
             <div className="flex flex-wrap gap-1.5 mb-4">
               {allGamesForSensor.map(g => (
                 <button key={g} onClick={() => setSensorGameFilter(g)}
-                  className="px-3 py-1 rounded-full text-xs font-bold transition-all flex items-center gap-1.5"
+                  className="px-3 py-1 rounded-full text-sm font-bold transition-all flex items-center gap-1.5"
                   style={{
                     background: sensorGameFilter === g ? (gameColors[g] || "#10b981") : "#ffffff06",
                     color: sensorGameFilter === g ? "#000" : "#ffffff40",
@@ -8026,11 +8043,11 @@ export default function EsportsMice() {
                     <div className="space-y-2">
                       {entries.slice(0, 5).map(([sensor, count], ei) => (
                         <div key={sensor} className="flex items-center gap-2">
-                          <div className="w-28 text-xs font-bold truncate" style={{ color: ei === 0 ? gc : "#ffffff60" }}>{sensor}</div>
+                          <div className="w-28 text-sm font-bold truncate" style={{ color: ei === 0 ? gc : "#ffffff60" }}>{sensor}</div>
                           <div className="flex-1 h-3 rounded-full overflow-hidden" style={{ background: "#ffffff06" }}>
                             <div className="h-full rounded-full transition-all duration-700" style={{ width: `${(count / entries[0][1]) * 100}%`, background: ei === 0 ? gc : `${gc}40` }} />
                           </div>
-                          <div className="text-xs font-bold w-12 text-right" style={{ color: ei === 0 ? gc : "#ffffff40" }}>{Math.round((count / total) * 100)}%</div>
+                          <div className="text-sm font-bold w-12 text-right" style={{ color: ei === 0 ? gc : "#ffffff40" }}>{Math.round((count / total) * 100)}%</div>
                         </div>
                       ))}
                     </div>
@@ -8043,15 +8060,15 @@ export default function EsportsMice() {
             <SectionTitle color="#c084fc" sub="Technical specifications compared across all sensors">Sensor Spec Comparison</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="rounded-xl p-5" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
-                <div className="text-xs uppercase tracking-widest opacity-30 mb-4">Max DPI by Sensor</div>
+                <div className="text-sm uppercase tracking-widest opacity-30 mb-4">Max DPI by Sensor</div>
                 <div className="space-y-2">
                   {sensorProfiles.sort((a, b) => b.avgDpi - a.avgDpi).map((s, i) => (
                     <div key={s.sensor} className="flex items-center gap-2">
-                      <div className="w-28 text-xs font-bold truncate">{s.sensor}</div>
+                      <div className="w-28 text-sm font-bold truncate">{s.sensor}</div>
                       <div className="flex-1 h-4 rounded-full overflow-hidden" style={{ background: "#ffffff06" }}>
                         <div className="h-full rounded-full flex items-center justify-end pr-2 transition-all duration-700"
                           style={{ width: `${(s.avgDpi / 44000) * 100}%`, background: i === 0 ? "#c084fc30" : "#ffffff08" }}>
-                          <span className="text-xs font-bold" style={{ color: i === 0 ? "#c084fc" : "#ffffff40", fontSize: 9 }}>{s.avgDpi >= 1000 ? `${(s.avgDpi/1000).toFixed(0)}K` : s.avgDpi}</span>
+                          <span className="text-sm font-bold" style={{ color: i === 0 ? "#c084fc" : "#ffffff40", fontSize: 10 }}>{s.avgDpi >= 1000 ? `${(s.avgDpi/1000).toFixed(0)}K` : s.avgDpi}</span>
                         </div>
                       </div>
                     </div>
@@ -8059,15 +8076,15 @@ export default function EsportsMice() {
                 </div>
               </div>
               <div className="rounded-xl p-5" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
-                <div className="text-xs uppercase tracking-widest opacity-30 mb-4">Avg Polling Rate by Sensor</div>
+                <div className="text-sm uppercase tracking-widest opacity-30 mb-4">Avg Polling Rate by Sensor</div>
                 <div className="space-y-2">
                   {sensorProfiles.sort((a, b) => b.avgPolling - a.avgPolling).map((s, i) => (
                     <div key={s.sensor} className="flex items-center gap-2">
-                      <div className="w-28 text-xs font-bold truncate">{s.sensor}</div>
+                      <div className="w-28 text-sm font-bold truncate">{s.sensor}</div>
                       <div className="flex-1 h-4 rounded-full overflow-hidden" style={{ background: "#ffffff06" }}>
                         <div className="h-full rounded-full flex items-center justify-end pr-2 transition-all duration-700"
                           style={{ width: `${(s.avgPolling / 8000) * 100}%`, background: i === 0 ? "#10b98130" : "#ffffff08" }}>
-                          <span className="text-xs font-bold" style={{ color: i === 0 ? "#10b981" : "#ffffff40", fontSize: 9 }}>{s.avgPolling >= 1000 ? `${(s.avgPolling/1000).toFixed(1)}K` : s.avgPolling}Hz</span>
+                          <span className="text-sm font-bold" style={{ color: i === 0 ? "#10b981" : "#ffffff40", fontSize: 10 }}>{s.avgPolling >= 1000 ? `${(s.avgPolling/1000).toFixed(1)}K` : s.avgPolling}Hz</span>
                         </div>
                       </div>
                     </div>
@@ -8080,7 +8097,7 @@ export default function EsportsMice() {
             <SectionTitle color="#f59e0b" sub="Select two sensors to compare specs, usage, and popularity head-to-head">Sensor vs Sensor Comparison</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div>
-                <div className="text-xs uppercase tracking-widest opacity-30 mb-2">Sensor A</div>
+                <div className="text-sm uppercase tracking-widest opacity-30 mb-2">Sensor A</div>
                 <select value={compareSensor1 || ""} onChange={e => setCompareSensor1(e.target.value || null)}
                   className="w-full px-4 py-3 rounded-xl text-sm cursor-pointer font-bold"
                   style={{ background: "#0a0a0a", border: `1px solid ${compareSensor1 ? "#f59e0b30" : "#ffffff15"}`, color: compareSensor1 ? "#f59e0b" : "#fff" }}>
@@ -8091,7 +8108,7 @@ export default function EsportsMice() {
                 </select>
               </div>
               <div>
-                <div className="text-xs uppercase tracking-widest opacity-30 mb-2">Sensor B</div>
+                <div className="text-sm uppercase tracking-widest opacity-30 mb-2">Sensor B</div>
                 <select value={compareSensor2 || ""} onChange={e => setCompareSensor2(e.target.value || null)}
                   className="w-full px-4 py-3 rounded-xl text-sm cursor-pointer font-bold"
                   style={{ background: "#0a0a0a", border: `1px solid ${compareSensor2 ? "#00b4ff30" : "#ffffff15"}`, color: compareSensor2 ? "#00b4ff" : "#fff" }}>
@@ -8125,18 +8142,18 @@ export default function EsportsMice() {
                   <div className="grid grid-cols-3" style={{ background: "#0a0a0a" }}>
                     <div className="p-4 text-center">
                       <div className="text-base sm:text-lg font-black text-center sm:text-left" style={{ color: c1 }}>{s1.sensor}</div>
-                      <div className="text-xs opacity-30">{s1.brandList}</div>
+                      <div className="text-sm opacity-30">{s1.brandList}</div>
                       <div className="text-2xl font-black mt-1" style={{ color: s1Wins > s2Wins ? c1 : "#ffffff20" }}>{s1Wins}</div>
-                      <div className="text-xs opacity-20">wins</div>
+                      <div className="text-sm opacity-20">wins</div>
                     </div>
                     <div className="p-4 flex flex-col items-center justify-center">
                       <div className="text-xl font-black opacity-20">VS</div>
                     </div>
                     <div className="p-4 text-center">
                       <div className="text-base sm:text-lg font-black text-center sm:text-left" style={{ color: c2 }}>{s2.sensor}</div>
-                      <div className="text-xs opacity-30">{s2.brandList}</div>
+                      <div className="text-sm opacity-30">{s2.brandList}</div>
                       <div className="text-2xl font-black mt-1" style={{ color: s2Wins > s1Wins ? c2 : "#ffffff20" }}>{s2Wins}</div>
-                      <div className="text-xs opacity-20">wins</div>
+                      <div className="text-sm opacity-20">wins</div>
                     </div>
                   </div>
                   {compareRows.map((row, ri) => {
@@ -8145,10 +8162,10 @@ export default function EsportsMice() {
                       <div key={ri} className="grid grid-cols-3" style={{ background: ri % 2 === 0 ? "#050505" : "#080808", borderTop: "1px solid #ffffff05" }}>
                         <div className="p-3 text-center">
                           <span className="text-sm font-bold" style={{ color: winner === "s1" ? c1 : "#ffffff60" }}>{row.v1}</span>
-                          {winner === "s1" && <span className="ml-1 text-xs" style={{ color: c1 }}><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg></span>}
+                          {winner === "s1" && <span className="ml-1 text-sm" style={{ color: c1 }}><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg></span>}
                         </div>
                         <div className="p-3 text-center">
-                          <span className="text-xs uppercase tracking-wider opacity-30">{row.label}</span>
+                          <span className="text-sm uppercase tracking-wider opacity-30">{row.label}</span>
                           {row.higher !== "none" && row.n1 !== row.n2 && (
                             <div className="flex items-center gap-1 justify-center mt-1">
                               <div className="h-1.5 rounded-full" style={{ width: `${Math.min((row.n1 / Math.max(row.n1, row.n2)) * 40, 40)}px`, background: winner === "s1" ? c1 : `${c1}40` }} />
@@ -8157,7 +8174,7 @@ export default function EsportsMice() {
                           )}
                         </div>
                         <div className="p-3 text-center">
-                          {winner === "s2" && <span className="mr-1 text-xs" style={{ color: c2 }}><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg></span>}
+                          {winner === "s2" && <span className="mr-1 text-sm" style={{ color: c2 }}><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg></span>}
                           <span className="text-sm font-bold" style={{ color: winner === "s2" ? c2 : "#ffffff60" }}>{row.v2}</span>
                         </div>
                       </div>
@@ -8165,21 +8182,21 @@ export default function EsportsMice() {
                   })}
                   <div className="grid grid-cols-2" style={{ background: "#0a0a0a", borderTop: "1px solid #ffffff08" }}>
                     <div className="p-4">
-                      <div className="text-xs uppercase tracking-widest opacity-20 mb-2">Mice with {s1.sensor}</div>
+                      <div className="text-sm uppercase tracking-widest opacity-20 mb-2">Mice with {s1.sensor}</div>
                       <div className="flex flex-wrap gap-1.5">
                         {s1.mice.sort((a, b) => b.proUsage - a.proUsage).map((m, mi) => (
                           <button key={mi} onClick={() => { setSelectedMouse(m); setActiveTab("mouseDetail"); }}
-                            className="px-2 py-1 rounded text-xs font-bold cursor-pointer transition-all hover:scale-105"
+                            className="px-2 py-1 rounded text-sm font-bold cursor-pointer transition-all hover:scale-105"
                             style={{ background: `${c1}12`, color: c1 }}>{MOUSE_IMAGE_URLS[m.name] ? <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="inline h-4 mr-1 object-contain" /> : m.image} {m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |WLMouse |Zowie )/, "")}</button>
                         ))}
                       </div>
                     </div>
                     <div className="p-4">
-                      <div className="text-xs uppercase tracking-widest opacity-20 mb-2">Mice with {s2.sensor}</div>
+                      <div className="text-sm uppercase tracking-widest opacity-20 mb-2">Mice with {s2.sensor}</div>
                       <div className="flex flex-wrap gap-1.5">
                         {s2.mice.sort((a, b) => b.proUsage - a.proUsage).map((m, mi) => (
                           <button key={mi} onClick={() => { setSelectedMouse(m); setActiveTab("mouseDetail"); }}
-                            className="px-2 py-1 rounded text-xs font-bold cursor-pointer transition-all hover:scale-105"
+                            className="px-2 py-1 rounded text-sm font-bold cursor-pointer transition-all hover:scale-105"
                             style={{ background: `${c2}12`, color: c2 }}>{MOUSE_IMAGE_URLS[m.name] ? <img src={MOUSE_IMAGE_URLS[m.name]} alt="" className="inline h-4 mr-1 object-contain" /> : m.image} {m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |WLMouse |Zowie )/, "")}</button>
                         ))}
                       </div>
@@ -8221,7 +8238,7 @@ export default function EsportsMice() {
                     <div className="rounded-2xl p-5 text-center" style={{ background: `${BRAND_COLORS[compareList[idx].brand]}08`, border: `1px solid ${BRAND_COLORS[compareList[idx].brand]}20` }}>
                       {MOUSE_IMAGE_URLS[compareList[idx].name] ? <img src={MOUSE_IMAGE_URLS[compareList[idx].name]} alt={compareList[idx].name} className="h-16 w-full mx-auto mb-3 object-contain object-center" style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.5))" }} /> : <span className="text-5xl block mb-3">{compareList[idx].image}</span>}
                       <div className="text-xl font-black" style={{ color: BRAND_COLORS[compareList[idx].brand] }}>{compareList[idx].name}</div>
-                      <div className="text-xs opacity-30 mt-1">{compareList[idx].brand}</div>
+                      <div className="text-sm opacity-30 mt-1">{compareList[idx].brand}</div>
                     </div>
                   )}
                 </div>
@@ -8257,13 +8274,13 @@ export default function EsportsMice() {
               <div>
                 {/* Verdict banner */}
                 <div className="rounded-xl p-5 mb-6 text-center" style={{ background: `${verdictColor}08`, border: `1px solid ${verdictColor}20` }}>
-                  <div className="text-xs uppercase tracking-widest opacity-40 mb-1">Spec Comparison Verdict</div>
+                  <div className="text-sm uppercase tracking-widest opacity-40 mb-1">Spec Comparison Verdict</div>
                   <div className="text-base sm:text-lg font-black text-center" style={{ color: verdictColor }}>
                     {verdictName ? `${verdictName} wins ${Math.max(wins0, wins1)}-${Math.min(wins0, wins1)}` : `Tied ${wins0}-${wins1}`}
                   </div>
                   <div className="flex justify-center gap-4 mt-2">
-                    <span className="text-xs" style={{ color: c0 }}>● {compareList[0].name.replace(/(Logitech |Razer )/, "")}: {wins0} wins</span>
-                    <span className="text-xs" style={{ color: c1 }}>● {compareList[1].name.replace(/(Logitech |Razer )/, "")}: {wins1} wins</span>
+                    <span className="text-sm" style={{ color: c0 }}>● {compareList[0].name.replace(/(Logitech |Razer )/, "")}: {wins0} wins</span>
+                    <span className="text-sm" style={{ color: c1 }}>● {compareList[1].name.replace(/(Logitech |Razer )/, "")}: {wins1} wins</span>
                   </div>
                   {verdictName && (() => {
                     const winnerMouse = wins0 > wins1 ? compareList[0] : compareList[1];
@@ -8291,7 +8308,7 @@ export default function EsportsMice() {
                         <div className="px-4 py-3 text-right font-bold text-sm" style={{ color: winner === 0 ? c0 : "#ffffff80" }}>
                           {spec.prefix}{v0}{typeof v0 === "number" ? spec.unit : ""} {winner === 0 && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style={{display:"inline"}}><path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>}
                         </div>
-                        <div className="px-4 py-3 text-center text-xs uppercase tracking-widest opacity-30">{spec.label}</div>
+                        <div className="px-4 py-3 text-center text-sm uppercase tracking-widest opacity-30">{spec.label}</div>
                         <div className="px-4 py-3 text-left font-bold text-sm" style={{ color: winner === 1 ? c1 : "#ffffff80" }}>
                           {winner === 1 && <><svg width="12" height="12" viewBox="0 0 24 24" fill="none" style={{display:"inline",verticalAlign:"middle"}}><path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>{" "}</>}{spec.prefix}{v1}{typeof v1 === "number" ? spec.unit : ""}
                         </div>
@@ -8312,11 +8329,11 @@ export default function EsportsMice() {
                       { stat: "Value", a: Math.max(0, 100 - (compareList[0].price / 2)), b: Math.max(0, 100 - (compareList[1].price / 2)) },
                     ]}>
                       <PolarGrid stroke="#ffffff10" />
-                      <PolarAngleAxis dataKey="stat" tick={{ fill: "#ffffff40", fontSize: 10 }} />
+                      <PolarAngleAxis dataKey="stat" tick={{ fill: "#ffffff40", fontSize: 11 }} />
                       <PolarRadiusAxis tick={false} axisLine={false} domain={[0, 100]} />
                       <Radar name={compareList[0].name} dataKey="a" stroke={BRAND_COLORS[compareList[0].brand]} fill={BRAND_COLORS[compareList[0].brand]} fillOpacity={0.15} strokeWidth={2} />
                       <Radar name={compareList[1].name} dataKey="b" stroke={BRAND_COLORS[compareList[1].brand]} fill={BRAND_COLORS[compareList[1].brand]} fillOpacity={0.15} strokeWidth={2} />
-                      <Legend wrapperStyle={{ fontSize: 10 }} />
+                      <Legend wrapperStyle={{ fontSize: 11 }} />
                     </RadarChart>
                   </ResponsiveContainer>
                 </div>
@@ -8327,7 +8344,7 @@ export default function EsportsMice() {
                     const col = BRAND_COLORS[m.brand];
                     return (
                       <div key={idx} className="relative">
-                        {isWinner && <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full text-xs font-black z-10" style={{ background: col, color: "#000", fontSize: 9, boxShadow: `0 0 12px ${col}40` }}>⭐ WINNER</div>}
+                        {isWinner && <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full text-sm font-black z-10" style={{ background: col, color: "#000", fontSize: 10, boxShadow: `0 0 12px ${col}40` }}>⭐ WINNER</div>}
                         <a href={amazonLink(m.name)} target="_blank" rel="noopener noreferrer"
                           className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-black transition-all text-center hover:scale-[1.02]"
                           style={isWinner
@@ -8529,8 +8546,8 @@ export default function EsportsMice() {
                 {quizStep > 0 && (
                   <div className="mb-6">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs opacity-30">Step {quizStep} of {totalSteps - 1}</span>
-                      <span className="text-xs opacity-30">{stepLabels[quizStep]}</span>
+                      <span className="text-sm opacity-30">Step {quizStep} of {totalSteps - 1}</span>
+                      <span className="text-sm opacity-30">{stepLabels[quizStep]}</span>
                     </div>
                     <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
                       <div className="h-full rounded-full transition-all duration-500" style={{ width: `${(quizStep / (totalSteps - 1)) * 100}%`, background: `linear-gradient(to right, ${accent}, #a855f7)` }} />
@@ -8547,7 +8564,7 @@ export default function EsportsMice() {
                       <p className="text-sm opacity-40 max-w-lg mx-auto leading-relaxed mb-2">
                         This quiz analyzes your hand measurements, grip style, gaming preferences, and priorities to recommend mice from our database of {mice.length} models — cross-referenced with data from {allPlayers.length}+ pro players.
                       </p>
-                      <p className="text-xs opacity-25 mb-4">Takes about 2 minutes. Your answers aren't stored anywhere.</p>
+                      <p className="text-sm opacity-25 mb-4">Takes about 2 minutes. Your answers aren't stored anywhere.</p>
                       <div className="flex-1" />
                       <button onClick={nextStep}
                         className="px-8 py-3 rounded-xl font-black text-sm transition-all hover:scale-105"
@@ -8561,7 +8578,7 @@ export default function EsportsMice() {
                       <p className="text-sm opacity-40 max-w-lg mx-auto leading-relaxed mb-2">
                         Put any two mice head-to-head with detailed spec breakdowns, radar charts, pro usage stats, and side-by-side shape analysis.
                       </p>
-                      <p className="text-xs opacity-25 mb-4">Pick two mice and see exactly how they differ.</p>
+                      <p className="text-sm opacity-25 mb-4">Pick two mice and see exactly how they differ.</p>
                       <div className="flex-1" />
                       <button onClick={() => { setActiveTab("compare"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                         className="px-8 py-3 rounded-xl font-black text-sm transition-all hover:scale-105"
@@ -8573,13 +8590,13 @@ export default function EsportsMice() {
                       <Layers size={48} style={{ color: "#06b6d4", margin: "0 auto 20px" }} />
                       <div className="text-xl sm:text-2xl font-black mb-2" style={{ fontFamily: "Orbitron", color: "#06b6d4" }}>Shape Overlay</div>
                       <div className="mb-4 flex flex-wrap gap-1.5 justify-center">
-                        <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: "#06b6d415", color: "#06b6d4", border: "1px solid #06b6d430", fontSize: 10 }}>BETA</span>
-                        <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: "#f59e0b15", color: "#f59e0b", border: "1px solid #f59e0b30", fontSize: 10 }}>🚧 UNDER CONSTRUCTION</span>
+                        <span className="text-sm font-bold px-2 py-0.5 rounded-full" style={{ background: "#06b6d415", color: "#06b6d4", border: "1px solid #06b6d430", fontSize: 11 }}>BETA</span>
+                        <span className="text-sm font-bold px-2 py-0.5 rounded-full" style={{ background: "#f59e0b15", color: "#f59e0b", border: "1px solid #f59e0b30", fontSize: 11 }}>🚧 UNDER CONSTRUCTION</span>
                       </div>
                       <p className="text-sm opacity-40 max-w-lg mx-auto leading-relaxed mb-2">
                         Overlay actual mouse images scaled to real dimensions — instantly see how any two mice compare in size from all {mice.filter(m => MOUSE_DIMS[m.name] && MOUSE_IMAGE_URLS[m.name]).length} mice.
                       </p>
-                      <p className="text-xs opacity-25 mb-4">See exactly how two mice compare in shape.</p>
+                      <p className="text-sm opacity-25 mb-4">See exactly how two mice compare in shape.</p>
                       <div className="flex-1" />
                       <button onClick={() => { setActiveTab("shapes"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                         className="px-8 py-3 rounded-xl font-black text-sm transition-all hover:scale-105"
@@ -8594,7 +8611,7 @@ export default function EsportsMice() {
                 {quizStep === 1 && (
                   <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
                     <div className="text-xl font-black mb-1" style={{ color: accent }}>What's your hand size?</div>
-                    <p className="text-xs opacity-30 mb-6">Measure from the base of your palm to the tip of your middle finger (length), and across your knuckles (width).</p>
+                    <p className="text-sm opacity-30 mb-6">Measure from the base of your palm to the tip of your middle finger (length), and across your knuckles (width).</p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                       {/* Visual guide */}
@@ -8617,23 +8634,23 @@ export default function EsportsMice() {
                       {/* Inputs */}
                       <div className="flex flex-col gap-4 justify-center">
                         <div>
-                          <label className="text-xs opacity-40 mb-1.5 block">Hand Length (cm)</label>
+                          <label className="text-sm opacity-40 mb-1.5 block">Hand Length (cm)</label>
                           <input type="text" inputMode="decimal" placeholder="e.g. 18.5"
                             value={quizAnswers.handLength} onChange={e => setAnswer("handLength", e.target.value.replace(/[^0-9.]/g, ""))}
                             className="w-full px-4 py-3 rounded-xl text-sm bg-transparent outline-none"
                             style={{ border: `1px solid ${quizAnswers.handLength ? accent + "60" : "#ffffff15"}`, color: "#fff" }} />
-                          <div className="text-xs opacity-20 mt-1">Average male: 18-20cm · Average female: 16-18cm</div>
+                          <div className="text-sm opacity-20 mt-1">Average male: 18-20cm · Average female: 16-18cm</div>
                         </div>
                         <div>
-                          <label className="text-xs opacity-40 mb-1.5 block">Hand Width (cm)</label>
+                          <label className="text-sm opacity-40 mb-1.5 block">Hand Width (cm)</label>
                           <input type="text" inputMode="decimal" placeholder="e.g. 9.5"
                             value={quizAnswers.handWidth} onChange={e => setAnswer("handWidth", e.target.value.replace(/[^0-9.]/g, ""))}
                             className="w-full px-4 py-3 rounded-xl text-sm bg-transparent outline-none"
                             style={{ border: `1px solid ${quizAnswers.handWidth ? accent + "60" : "#ffffff15"}`, color: "#fff" }} />
-                          <div className="text-xs opacity-20 mt-1">Average male: 9-10cm · Average female: 7.5-9cm</div>
+                          <div className="text-sm opacity-20 mt-1">Average male: 9-10cm · Average female: 7.5-9cm</div>
                         </div>
                         {quizAnswers.handLength && quizAnswers.handWidth && (
-                          <div className="rounded-lg px-3 py-2 text-xs" style={{ background: `${accent}10`, border: `1px solid ${accent}20` }}>
+                          <div className="rounded-lg px-3 py-2 text-sm" style={{ background: `${accent}10`, border: `1px solid ${accent}20` }}>
                             <span style={{ color: accent }}>
                               {parseFloat(quizAnswers.handLength) * parseFloat(quizAnswers.handWidth) < 150 ? "Small" :
                                parseFloat(quizAnswers.handLength) * parseFloat(quizAnswers.handWidth) < 175 ? "Medium" :
@@ -8651,7 +8668,7 @@ export default function EsportsMice() {
                 {quizStep === 2 && (
                   <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
                     <div className="text-xl font-black mb-1" style={{ color: accent }}>How do you grip your mouse?</div>
-                    <p className="text-xs opacity-30 mb-6">Pick the style that best describes how you naturally hold your mouse.</p>
+                    <p className="text-sm opacity-30 mb-6">Pick the style that best describes how you naturally hold your mouse.</p>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {[
                         { id: "palm", label: "Palm Grip", desc: "Entire hand rests flat on the mouse. Maximum contact area and comfort. Best for long sessions and arm aiming.", icon: "🖐️", tips: "Full hand contact · Relaxed · Arm aimer" },
@@ -8662,8 +8679,8 @@ export default function EsportsMice() {
                           <div className="text-center">
                             <div className="text-3xl mb-3">{g.icon}</div>
                             <div className="text-sm font-black mb-2" style={{ color: quizAnswers.grip === g.id ? accent : "#fff" }}>{g.label}</div>
-                            <div className="text-xs opacity-40 leading-relaxed mb-3">{g.desc}</div>
-                            <div className="text-xs px-2 py-1 rounded-lg inline-block" style={{ background: "#ffffff06", color: "#ffffff40", fontSize: 10 }}>{g.tips}</div>
+                            <div className="text-sm opacity-40 leading-relaxed mb-3">{g.desc}</div>
+                            <div className="text-sm px-2 py-1 rounded-lg inline-block" style={{ background: "#ffffff06", color: "#ffffff40", fontSize: 11 }}>{g.tips}</div>
                           </div>
                         </OptionButton>
                       ))}
@@ -8675,7 +8692,7 @@ export default function EsportsMice() {
                 {quizStep === 3 && (
                   <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
                     <div className="text-xl font-black mb-1" style={{ color: accent }}>What games do you play?</div>
-                    <p className="text-xs opacity-30 mb-6">Select all that apply. This helps us match mice that pros use in your games.</p>
+                    <p className="text-sm opacity-30 mb-6">Select all that apply. This helps us match mice that pros use in your games.</p>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                       {[
                         { id: "CS2", label: "Counter-Strike 2", color: "#ff8c00" },
@@ -8695,14 +8712,14 @@ export default function EsportsMice() {
                           <div className="flex items-center gap-2">
                             {GAME_IMAGE_URLS[g.id] && <img src={GAME_IMAGE_URLS[g.id]} alt={g.label} className="w-5 h-5 object-contain" />}
                             <div>
-                              <div className="text-xs font-bold" style={{ color: quizAnswers.games.includes(g.id) ? g.color : "#ffffff80" }}>{g.label}</div>
+                              <div className="text-sm font-bold" style={{ color: quizAnswers.games.includes(g.id) ? g.color : "#ffffff80" }}>{g.label}</div>
                             </div>
                           </div>
                         </OptionButton>
                       ))}
                     </div>
                     {quizAnswers.games.length > 0 && (
-                      <div className="mt-4 text-xs opacity-30">{quizAnswers.games.length} game{quizAnswers.games.length !== 1 ? "s" : ""} selected</div>
+                      <div className="mt-4 text-sm opacity-30">{quizAnswers.games.length} game{quizAnswers.games.length !== 1 ? "s" : ""} selected</div>
                     )}
                   </div>
                 )}
@@ -8711,7 +8728,7 @@ export default function EsportsMice() {
                 {quizStep === 4 && (
                   <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
                     <div className="text-xl font-black mb-1" style={{ color: accent }}>What matters most to you?</div>
-                    <p className="text-xs opacity-30 mb-6">Select up to 3 priorities. This shapes how we rank your recommendations.</p>
+                    <p className="text-sm opacity-30 mb-6">Select up to 3 priorities. This shapes how we rank your recommendations.</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {[
                         { id: "weight", label: "Lightweight", desc: "Lighter = faster flicks and less fatigue", icon: "⚡" },
@@ -8727,13 +8744,13 @@ export default function EsportsMice() {
                             <span className="text-xl">{p.icon}</span>
                             <div>
                               <div className="text-sm font-bold" style={{ color: quizAnswers.priorities.includes(p.id) ? accent : "#fff" }}>{p.label}</div>
-                              <div className="text-xs opacity-40">{p.desc}</div>
+                              <div className="text-sm opacity-40">{p.desc}</div>
                             </div>
                           </div>
                         </OptionButton>
                       ))}
                     </div>
-                    <div className="mt-3 text-xs opacity-25">{quizAnswers.priorities.length}/3 selected</div>
+                    <div className="mt-3 text-sm opacity-25">{quizAnswers.priorities.length}/3 selected</div>
                   </div>
                 )}
 
@@ -8741,7 +8758,7 @@ export default function EsportsMice() {
                 {quizStep === 5 && (
                   <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
                     <div className="text-xl font-black mb-1" style={{ color: accent }}>Weight preference?</div>
-                    <p className="text-xs opacity-30 mb-6">How heavy do you like your mouse to feel?</p>
+                    <p className="text-sm opacity-30 mb-6">How heavy do you like your mouse to feel?</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {[
                         { id: "ultralight", label: "Ultralight", range: "Under 50g", desc: "Like holding almost nothing. Maximum flick speed.", example: "Beast X, UltralightX, Pulsar X2F" },
@@ -8751,9 +8768,9 @@ export default function EsportsMice() {
                       ].map(w => (
                         <OptionButton key={w.id} selected={quizAnswers.weightPref === w.id} onClick={() => setAnswer("weightPref", w.id)} large>
                           <div className="text-sm font-black mb-1" style={{ color: quizAnswers.weightPref === w.id ? accent : "#fff" }}>{w.label}</div>
-                          <div className="text-xs font-bold mb-1" style={{ color: accent, opacity: 0.6 }}>{w.range}</div>
-                          <div className="text-xs opacity-40 mb-2">{w.desc}</div>
-                          <div className="text-xs opacity-20" style={{ fontSize: 10 }}>e.g. {w.example}</div>
+                          <div className="text-sm font-bold mb-1" style={{ color: accent, opacity: 0.6 }}>{w.range}</div>
+                          <div className="text-sm opacity-40 mb-2">{w.desc}</div>
+                          <div className="text-sm opacity-20" style={{ fontSize: 11 }}>e.g. {w.example}</div>
                         </OptionButton>
                       ))}
                     </div>
@@ -8764,7 +8781,7 @@ export default function EsportsMice() {
                 {quizStep === 6 && (
                   <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
                     <div className="text-xl font-black mb-1" style={{ color: accent }}>Shape preference?</div>
-                    <p className="text-xs opacity-30 mb-6">Ergonomic mice are contoured for your right hand. Symmetrical mice work for any hand.</p>
+                    <p className="text-sm opacity-30 mb-6">Ergonomic mice are contoured for your right hand. Symmetrical mice work for any hand.</p>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {[
                         { id: "ergonomic", label: "Ergonomic", desc: "Right-hand contoured. Natural resting position. Great for palm grip and long sessions.", icon: "🤚" },
@@ -8775,7 +8792,7 @@ export default function EsportsMice() {
                           <div className="text-center">
                             <div className="text-2xl mb-2">{s.icon}</div>
                             <div className="text-sm font-black mb-2" style={{ color: quizAnswers.shape === s.id ? accent : "#fff" }}>{s.label}</div>
-                            <div className="text-xs opacity-40 leading-relaxed">{s.desc}</div>
+                            <div className="text-sm opacity-40 leading-relaxed">{s.desc}</div>
                           </div>
                         </OptionButton>
                       ))}
@@ -8787,7 +8804,7 @@ export default function EsportsMice() {
                 {quizStep === 7 && (
                   <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
                     <div className="text-xl font-black mb-1" style={{ color: accent }}>Wired or wireless?</div>
-                    <p className="text-xs opacity-30 mb-6">Modern wireless mice have zero perceptible latency difference vs wired. 98% of pros use wireless.</p>
+                    <p className="text-sm opacity-30 mb-6">Modern wireless mice have zero perceptible latency difference vs wired. 98% of pros use wireless.</p>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {[
                         { id: "wireless", label: "Wireless Only", desc: "No cable drag. Freedom of movement. The pro standard.", icon: "📡" },
@@ -8798,7 +8815,7 @@ export default function EsportsMice() {
                           <div className="text-center">
                             <div className="text-2xl mb-2">{c.icon}</div>
                             <div className="text-sm font-black mb-2" style={{ color: quizAnswers.connectivity === c.id ? accent : "#fff" }}>{c.label}</div>
-                            <div className="text-xs opacity-40 leading-relaxed">{c.desc}</div>
+                            <div className="text-sm opacity-40 leading-relaxed">{c.desc}</div>
                           </div>
                         </OptionButton>
                       ))}
@@ -8810,7 +8827,7 @@ export default function EsportsMice() {
                 {quizStep === 8 && (
                   <div className="rounded-2xl p-6 sm:p-8" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
                     <div className="text-xl font-black mb-1" style={{ color: accent }}>What's your budget?</div>
-                    <p className="text-xs opacity-30 mb-6">There are excellent mice at every price point.</p>
+                    <p className="text-sm opacity-30 mb-6">There are excellent mice at every price point.</p>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                       {[
                         { id: "under80", label: "Under $80", desc: "Budget-friendly", color: "#10b981" },
@@ -8821,7 +8838,7 @@ export default function EsportsMice() {
                         <OptionButton key={b.id} selected={quizAnswers.budget === b.id} onClick={() => setAnswer("budget", b.id)} color={b.color} large>
                           <div className="text-center">
                             <div className="text-sm font-black mb-1" style={{ color: quizAnswers.budget === b.id ? b.color : "#fff" }}>{b.label}</div>
-                            <div className="text-xs opacity-40">{b.desc}</div>
+                            <div className="text-sm opacity-40">{b.desc}</div>
                           </div>
                         </OptionButton>
                       ))}
@@ -8833,12 +8850,12 @@ export default function EsportsMice() {
                 {quizStep > 0 && (
                   <div className="flex justify-between mt-6">
                     <button onClick={() => setQuizStep(prev => prev - 1)}
-                      className="px-5 py-2.5 rounded-xl text-xs font-bold transition-all hover:bg-white/5"
+                      className="px-5 py-2.5 rounded-xl text-sm font-bold transition-all hover:bg-white/5"
                       style={{ background: "#ffffff08", border: "1px solid #ffffff10" }}>
                       ← Back
                     </button>
                     <button onClick={nextStep} disabled={!canProceed()}
-                      className="px-6 py-2.5 rounded-xl text-xs font-black transition-all hover:scale-105 disabled:opacity-20 disabled:hover:scale-100"
+                      className="px-6 py-2.5 rounded-xl text-sm font-black transition-all hover:scale-105 disabled:opacity-20 disabled:hover:scale-100"
                       style={{ background: canProceed() ? accent : "#ffffff10", color: canProceed() ? "#000" : "#fff" }}>
                       {quizStep === 8 ? "See My Results →" : "Next →"}
                     </button>
@@ -8851,18 +8868,18 @@ export default function EsportsMice() {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
                   <div>
                     <div className="text-xl font-black" style={{ color: accent }}>Your Top Mice</div>
-                    <div className="text-xs opacity-30 mt-1">
+                    <div className="text-sm opacity-30 mt-1">
                       Based on {quizAnswers.grip} grip · {quizAnswers.handLength}×{quizAnswers.handWidth}cm hands · {quizAnswers.games.join(", ")} · {quizAnswers.weightPref} weight · {quizAnswers.budget === "nolimit" ? "no budget limit" : quizAnswers.budget}
                     </div>
                   </div>
                   <div className="flex gap-2 flex-shrink-0">
                     <button onClick={() => { setQuizDone(false); setQuizStep(0); setQuizAnswers({ handLength: "", handWidth: "", grip: "", games: [], priorities: [], weightPref: "", connectivity: "", budget: "", shape: "" }); }}
-                      className="px-4 py-2 rounded-lg text-xs font-bold transition-all hover:bg-white/5"
+                      className="px-4 py-2 rounded-lg text-sm font-bold transition-all hover:bg-white/5"
                       style={{ background: "#ffffff08", border: "1px solid #ffffff10" }}>
                       ↺ Retake Quiz
                     </button>
                     <button onClick={() => { setQuizDone(false); setQuizStep(0); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                      className="px-4 py-2 rounded-lg text-xs font-bold transition-all hover:bg-white/5"
+                      className="px-4 py-2 rounded-lg text-sm font-bold transition-all hover:bg-white/5"
                       style={{ background: `${accent}10`, border: `1px solid ${accent}30`, color: accent }}>
                       ← Back to Lab
                     </button>
@@ -8912,11 +8929,11 @@ export default function EsportsMice() {
                             <div className="flex items-start justify-between gap-3 mb-2">
                               <div>
                                 <div className="text-base sm:text-lg font-black" style={{ color: brandCol }}>{m.name}</div>
-                                <div className="text-xs opacity-40">{m.brand} · {m.weight}g · {m.shape} · {m.connectivity} · ${m.price}</div>
+                                <div className="text-sm opacity-40">{m.brand} · {m.weight}g · {m.shape} · {m.connectivity} · ${m.price}</div>
                               </div>
                               <div className="flex-shrink-0 text-right">
                                 <div className="text-lg font-black" style={{ color: matchPct >= 90 ? "#00ff6a" : matchPct >= 75 ? "#f59e0b" : "#ffffff60" }}>{matchPct}%</div>
-                                <div className="text-xs opacity-25">match</div>
+                                <div className="text-sm opacity-25">match</div>
                               </div>
                             </div>
 
@@ -8930,7 +8947,7 @@ export default function EsportsMice() {
                             {r.reasons.length > 0 && (
                               <div className="flex flex-wrap gap-1.5">
                                 {r.reasons.map((reason, ri) => (
-                                  <span key={ri} className="px-2 py-1 rounded-lg text-xs" style={{ background: `${brandCol}10`, color: brandCol, fontSize: 10 }}>
+                                  <span key={ri} className="px-2 py-1 rounded-lg text-sm" style={{ background: `${brandCol}10`, color: brandCol, fontSize: 11 }}>
                                     {reason}
                                   </span>
                                 ))}
@@ -8965,10 +8982,10 @@ export default function EsportsMice() {
                 ].map((item, i) => (
                   <div key={i} className="rounded-2xl p-6 text-center relative overflow-hidden transition-all hover:scale-[1.02]"
                     style={{ background: "#0a0a0a", border: `1px solid ${accent}15` }}>
-                    <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-xs font-black" style={{ background: `${accent}20`, color: accent, fontSize: 9 }}>COMING SOON</div>
+                    <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-sm font-black" style={{ background: `${accent}20`, color: accent, fontSize: 10 }}>COMING SOON</div>
                     <div className="mb-3 flex justify-center opacity-60">{item.icon}</div>
                     <div className="text-sm font-black mb-2" style={{ color: `${accent}90` }}>{item.title}</div>
-                    <div className="text-xs opacity-30 leading-relaxed">{item.desc}</div>
+                    <div className="text-sm opacity-30 leading-relaxed">{item.desc}</div>
                     <div className="mt-4 h-1 rounded-full mx-auto" style={{ width: 40, background: `${accent}20` }} />
                   </div>
                 ))}
@@ -9025,14 +9042,14 @@ export default function EsportsMice() {
                         { mouse: mB, set: setShapeMouseB, col: colB, label: "Mouse B" },
                       ].map(({ mouse, set, col, label }) => (
                         <div key={label} className="rounded-xl p-4" style={{ background: "#0a0a0a", border: `1px solid ${col}15` }}>
-                          <div className="text-xs font-bold mb-2" style={{ color: col }}>{label}</div>
+                          <div className="text-sm font-bold mb-2" style={{ color: col }}>{label}</div>
                           <select value={mouse?.id || ""} onChange={e => { const m = mice.find(x => x.id === parseInt(e.target.value)); if (m && MOUSE_DIMS[m.name] && MOUSE_IMAGE_URLS[m.name]) set(m); }}
                             className="w-full px-3 py-2.5 rounded-lg text-sm cursor-pointer" style={{ background: "#0f0f0f", border: `1px solid ${col}25`, color: "#fff" }}>
                             {sortedMiceWithDims.map(m => <option key={m.id} value={m.id}>{m.name}</option>)}
                           </select>
                           <div className="flex items-center gap-3 mt-3">
                             {MOUSE_IMAGE_URLS[mouse.name] && <img src={MOUSE_IMAGE_URLS[mouse.name]} alt="" className="h-10 object-contain" style={{ filter: `drop-shadow(0 2px 8px ${col}30)` }} />}
-                            <div className="flex flex-wrap gap-2 text-xs opacity-50">
+                            <div className="flex flex-wrap gap-2 text-sm opacity-50">
                               <span>{MOUSE_DIMS[mouse.name]?.[0]}mm L</span>
                               <span>×</span>
                               <span>{MOUSE_DIMS[mouse.name]?.[1]}mm W</span>
@@ -9055,7 +9072,7 @@ export default function EsportsMice() {
                         { id: "side", label: "Side by Side" },
                       ].map(v => (
                         <button key={v.id} onClick={() => setShapeView(v.id)}
-                          className="px-4 py-2 rounded-lg text-xs font-bold transition-all"
+                          className="px-4 py-2 rounded-lg text-sm font-bold transition-all"
                           style={{ background: shapeView === v.id ? "#06b6d420" : "#ffffff05", border: `1px solid ${shapeView === v.id ? "#06b6d4" : "#ffffff10"}`, color: shapeView === v.id ? "#06b6d4" : "#ffffff40" }}>
                           {v.label}
                         </button>
@@ -9094,16 +9111,16 @@ export default function EsportsMice() {
                               filter: `drop-shadow(0 0 12px ${colA}40)`,
                             }} />
                           {/* Dimension labels */}
-                          <div style={{ position: "absolute", top: 8, left: 8, fontSize: 10, fontFamily: "monospace", color: colA, opacity: 0.7 }}>
+                          <div style={{ position: "absolute", top: 8, left: 8, fontSize: 11, fontFamily: "monospace", color: colA, opacity: 0.7 }}>
                             {dA[0]}mm × {dA[1]}mm
                           </div>
-                          <div style={{ position: "absolute", top: 8, right: 8, fontSize: 10, fontFamily: "monospace", color: colB, opacity: 0.7 }}>
+                          <div style={{ position: "absolute", top: 8, right: 8, fontSize: 11, fontFamily: "monospace", color: colB, opacity: 0.7 }}>
                             {dB[0]}mm × {dB[1]}mm
                           </div>
                           {/* Scale bar */}
                           <div style={{ position: "absolute", bottom: 10, left: 12, display: "flex", alignItems: "center", gap: 6 }}>
                             <div style={{ width: 10 * pxPerMm, height: 2, background: "#ffffff30", borderRadius: 1 }} />
-                            <span style={{ fontSize: 9, fontFamily: "monospace", color: "#ffffff30" }}>10mm</span>
+                            <span style={{ fontSize: 10, fontFamily: "monospace", color: "#ffffff30" }}>10mm</span>
                           </div>
                         </div>
                       ) : (
@@ -9117,8 +9134,8 @@ export default function EsportsMice() {
                               <img src={MOUSE_IMAGE_URLS[m.name]} alt={m.name}
                                 style={{ width: imgW, height: imgH, objectFit: "contain", position: "relative", zIndex: 1, filter: `drop-shadow(0 0 12px ${col}30)` }} />
                               <div style={{ position: "absolute", top: 10, left: 0, right: 0, textAlign: "center", zIndex: 2 }}>
-                                <div style={{ fontSize: 11, fontFamily: "monospace", fontWeight: "bold", color: col }}>{m.name.replace(m.brand + " ", "")}</div>
-                                <div style={{ fontSize: 9, fontFamily: "monospace", color: "#ffffff40", marginTop: 2 }}>{d[0]} × {d[1]} × {d[2]}mm · {m.weight}g</div>
+                                <div style={{ fontSize: 12, fontFamily: "monospace", fontWeight: "bold", color: col }}>{m.name.replace(m.brand + " ", "")}</div>
+                                <div style={{ fontSize: 10, fontFamily: "monospace", color: "#ffffff40", marginTop: 2 }}>{d[0]} × {d[1]} × {d[2]}mm · {m.weight}g</div>
                               </div>
                             </div>
                           ))}
@@ -9135,13 +9152,13 @@ export default function EsportsMice() {
                         { label: "Weight", valA: mA.weight, valB: mB.weight, unit: "g", diff: diffWt },
                       ].map((s, i) => (
                         <div key={i} className="rounded-xl p-4 text-center" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
-                          <div className="text-xs uppercase tracking-widest opacity-20 mb-2">{s.label}</div>
+                          <div className="text-sm uppercase tracking-widest opacity-20 mb-2">{s.label}</div>
                           <div className="flex items-center justify-center gap-3 mb-1">
                             <span className="text-sm font-black" style={{ color: colA }}>{s.valA}{s.unit}</span>
-                            <span className="text-xs opacity-20">vs</span>
+                            <span className="text-sm opacity-20">vs</span>
                             <span className="text-sm font-black" style={{ color: colB }}>{s.valB}{s.unit}</span>
                           </div>
-                          <div className="text-xs font-bold" style={{ color: s.diff > 0 ? "#f59e0b" : "#10b981" }}>
+                          <div className="text-sm font-bold" style={{ color: s.diff > 0 ? "#f59e0b" : "#10b981" }}>
                             {s.diff > 0 ? `Δ ${s.diff}${s.unit}` : "Identical"}
                           </div>
                           <div className="flex items-center gap-1 mt-2">
@@ -9157,7 +9174,7 @@ export default function EsportsMice() {
                     </div>
 
                     {/* Legend */}
-                    <div className="flex items-center justify-center gap-6 mt-5 text-xs">
+                    <div className="flex items-center justify-center gap-6 mt-5 text-sm">
                       <div className="flex items-center gap-2">
                         <div className="w-5 h-1.5 rounded-full" style={{ background: colA }} />
                         <span style={{ color: colA }} className="font-bold">{mA.name.replace(mA.brand + " ", "")}</span>
@@ -9170,8 +9187,8 @@ export default function EsportsMice() {
 
                     {/* Quick size guide */}
                     <div className="rounded-xl p-4 mt-6" style={{ background: "#06b6d406", border: "1px solid #06b6d410" }}>
-                      <div className="text-xs uppercase tracking-widest opacity-30 mb-3 font-bold">Quick Size Reference</div>
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                      <div className="text-sm uppercase tracking-widest opacity-30 mb-3 font-bold">Quick Size Reference</div>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
                         <div><span className="opacity-30">Small:</span> <span className="opacity-60">&lt;118mm L, &lt;60mm W</span></div>
                         <div><span className="opacity-30">Medium:</span> <span className="opacity-60">118-125mm L, 60-65mm W</span></div>
                         <div><span className="opacity-30">Large:</span> <span className="opacity-60">&gt;125mm L, &gt;65mm W</span></div>
@@ -9236,19 +9253,19 @@ export default function EsportsMice() {
             <div className="rounded-2xl overflow-hidden" style={{ border: `1px solid ${accentC}15` }}>
               {/* Input Section */}
               <div className="p-4 sm:p-6" style={{ background: `linear-gradient(135deg, ${accentC}08, #0a0a0a)` }}>
-                <div className="text-xs uppercase tracking-widest opacity-30 mb-4">Your Current Settings</div>
+                <div className="text-sm uppercase tracking-widest opacity-30 mb-4">Your Current Settings</div>
 
                 <div className="mb-4">
-                  <div className="text-xs opacity-40 mb-2">Game</div>
+                  <div className="text-sm opacity-40 mb-2">Game</div>
                   <div className="flex flex-wrap gap-1.5">
                     {SENS_GAMES.map(g => (
                       <button key={g.id} onClick={() => { setSensFromGame(g.id); setSensFromSens(g.defaultSens); }}
-                        className="px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap"
+                        className="px-2.5 py-1.5 rounded-lg text-sm font-bold transition-all cursor-pointer whitespace-nowrap"
                         style={{
                           background: sensFromGame === g.id ? accentC : "#ffffff06",
                           color: sensFromGame === g.id ? "#000" : "#ffffff35",
                           border: sensFromGame === g.id ? "none" : "1px solid #ffffff08",
-                          fontSize: 10,
+                          fontSize: 11,
                         }}>
                         {g.img ? <img src={g.img} alt="" className="inline-block mr-1 rounded-sm" style={{ width: 14, height: 14, objectFit: "contain", verticalAlign: "middle", marginTop: -1 }} /> : null}{g.name}
                       </button>
@@ -9258,27 +9275,27 @@ export default function EsportsMice() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <div className="text-xs opacity-40 mb-2">DPI</div>
+                    <div className="text-sm opacity-40 mb-2">DPI</div>
                     <input type="number" value={sensFromDpi} onChange={e => setSensFromDpi(Number(e.target.value))}
                       className="w-full rounded-xl px-4 py-3 text-lg font-black text-center"
                       style={{ background: "#ffffff08", border: `1px solid ${accentC}25`, color: accentC, outline: "none" }} />
                     <div className="flex flex-wrap gap-1 mt-2 justify-center">
                       {[400, 800, 1600, 3200].map(d => (
                         <button key={d} onClick={() => setSensFromDpi(d)}
-                          className="px-2 py-0.5 rounded text-xs cursor-pointer transition-all"
-                          style={{ background: sensFromDpi === d ? `${accentC}30` : "#ffffff06", color: sensFromDpi === d ? accentC : "#ffffff30", fontSize: 9 }}>
+                          className="px-2 py-0.5 rounded text-sm cursor-pointer transition-all"
+                          style={{ background: sensFromDpi === d ? `${accentC}30` : "#ffffff06", color: sensFromDpi === d ? accentC : "#ffffff30", fontSize: 10 }}>
                           {d}
                         </button>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <div className="text-xs opacity-40 mb-2">{fromGame.note}</div>
+                    <div className="text-sm opacity-40 mb-2">{fromGame.note}</div>
                     <input type="number" value={sensFromSens} onChange={e => setSensFromSens(Number(e.target.value))}
                       step={fromGame.step}
                       className="w-full rounded-xl px-4 py-3 text-lg font-black text-center"
                       style={{ background: "#ffffff08", border: `1px solid ${accentC}25`, color: "#fff", outline: "none" }} />
-                    <div className="text-xs opacity-20 text-center mt-2" style={{ fontSize: 9 }}>eDPI: {edpi.toFixed(1)}</div>
+                    <div className="text-sm opacity-20 text-center mt-2" style={{ fontSize: 10 }}>eDPI: {edpi.toFixed(1)}</div>
                   </div>
                 </div>
               </div>
@@ -9288,34 +9305,34 @@ export default function EsportsMice() {
                 <div className="px-4 sm:px-6 py-4" style={{ background: "#0a0a0a", borderTop: `1px solid ${accentC}10`, borderBottom: `1px solid ${accentC}10` }}>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
                     <div className="text-center">
-                      <div className="text-xs opacity-30 mb-1">cm/360°</div>
+                      <div className="text-sm opacity-30 mb-1">cm/360°</div>
                       <div className="text-xl sm:text-2xl font-black" style={{ color: accentC }}>{cm360.toFixed(1)}</div>
-                      <div className="text-xs opacity-20">centimeters</div>
+                      <div className="text-sm opacity-20">centimeters</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-xs opacity-30 mb-1">in/360°</div>
+                      <div className="text-sm opacity-30 mb-1">in/360°</div>
                       <div className="text-xl sm:text-2xl font-black" style={{ color: "#00b4ff" }}>{inches360.toFixed(1)}</div>
-                      <div className="text-xs opacity-20">inches</div>
+                      <div className="text-sm opacity-20">inches</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-xs opacity-30 mb-1">Speed</div>
+                      <div className="text-sm opacity-30 mb-1">Speed</div>
                       <div className="text-xl sm:text-2xl font-black" style={{ color: speedColor }}>{speedLabel}</div>
-                      <div className="text-xs opacity-20">{cm360 > 40 ? "arm aimer" : cm360 > 22 ? "hybrid" : "wrist aimer"}</div>
+                      <div className="text-sm opacity-20">{cm360 > 40 ? "arm aimer" : cm360 > 22 ? "hybrid" : "wrist aimer"}</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-xs opacity-30 mb-1">Mousepad</div>
+                      <div className="text-sm opacity-30 mb-1">Mousepad</div>
                       <div className="text-xl sm:text-2xl font-black" style={{ color: "#f59e0b" }}>{cm360 > 50 ? "XL+" : cm360 > 30 ? "Large" : cm360 > 18 ? "Medium" : "Any"}</div>
-                      <div className="text-xs opacity-20">recommended size</div>
+                      <div className="text-sm opacity-20">recommended size</div>
                     </div>
                   </div>
 
                   {/* Swipe distance bar */}
                   <div className="mt-4">
-                    <div className="text-xs opacity-25 mb-1.5 text-center">Swipe distance for a full 360° turn</div>
+                    <div className="text-sm opacity-25 mb-1.5 text-center">Swipe distance for a full 360° turn</div>
                     <div className="relative h-8 rounded-lg overflow-hidden" style={{ background: "#ffffff06" }}>
                       <div className="absolute left-0 top-0 h-full rounded-lg transition-all duration-500 flex items-center justify-end pr-2"
                         style={{ width: `${Math.min(Math.max(cm360 / 100 * 100, 5), 100)}%`, background: `linear-gradient(to right, ${accentC}40, ${accentC})` }}>
-                        <span className="text-xs font-black" style={{ color: "#000" }}>{cm360.toFixed(1)}cm</span>
+                        <span className="text-sm font-black" style={{ color: "#000" }}>{cm360.toFixed(1)}cm</span>
                       </div>
                       {[20, 40, 60, 80].map(mark => (
                         <div key={mark} className="absolute top-0 h-full flex items-end pb-0.5 justify-center" style={{ left: `${mark}%`, width: 1 }}>
@@ -9323,7 +9340,7 @@ export default function EsportsMice() {
                         </div>
                       ))}
                     </div>
-                    <div className="flex justify-between text-xs opacity-15 mt-1 px-1" style={{ fontSize: 8 }}>
+                    <div className="flex justify-between text-sm opacity-15 mt-1 px-1" style={{ fontSize: 9 }}>
                       <span>0cm (instant)</span>
                       <span>50cm</span>
                       <span>100cm+</span>
@@ -9335,7 +9352,7 @@ export default function EsportsMice() {
               {/* Converted Sensitivities */}
               {cm360 > 0 && cm360 < 10000 && (
                 <div className="p-4 sm:p-6" style={{ background: "#050505" }}>
-                  <div className="text-xs uppercase tracking-widest opacity-30 mb-4">Equivalent Sensitivity in Every Game</div>
+                  <div className="text-sm uppercase tracking-widest opacity-30 mb-4">Equivalent Sensitivity in Every Game</div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                     {SENS_GAMES.filter(g => g.id !== sensFromGame).map(g => {
                       const targetSens = 914.4 / (sensFromDpi * g.yaw * cm360);
@@ -9347,14 +9364,14 @@ export default function EsportsMice() {
                           style={{ background: "#ffffff04", border: "1px solid #ffffff08" }}
                           onMouseEnter={e => { e.currentTarget.style.background = `${accentC}08`; e.currentTarget.style.borderColor = `${accentC}20`; }}
                           onMouseLeave={e => { e.currentTarget.style.background = "#ffffff04"; e.currentTarget.style.borderColor = "#ffffff08"; }}>
-                          {g.img ? <img src={g.img} alt="" className="flex-shrink-0 rounded-sm" style={{ width: 20, height: 20, objectFit: "contain" }} /> : <span className="flex-shrink-0 w-5 h-5 rounded-sm flex items-center justify-center text-xs" style={{ background: "#ffffff08" }}>{g.name.charAt(0)}</span>}
+                          {g.img ? <img src={g.img} alt="" className="flex-shrink-0 rounded-sm" style={{ width: 20, height: 20, objectFit: "contain" }} /> : <span className="flex-shrink-0 w-5 h-5 rounded-sm flex items-center justify-center text-sm" style={{ background: "#ffffff08" }}>{g.name.charAt(0)}</span>}
                           <div className="flex-1 min-w-0">
-                            <div className="text-xs font-bold truncate" style={{ color: "#ffffffc0" }}>{g.name}</div>
-                            <div className="text-xs opacity-25" style={{ fontSize: 9 }}>{g.note} · eDPI: {targetEdpi.toFixed(1)}</div>
+                            <div className="text-sm font-bold truncate" style={{ color: "#ffffffc0" }}>{g.name}</div>
+                            <div className="text-sm opacity-25" style={{ fontSize: 10 }}>{g.note} · eDPI: {targetEdpi.toFixed(1)}</div>
                           </div>
                           <div className="text-right flex-shrink-0">
                             <div className="text-sm font-black" style={{ color: accentC }}>{formatted}</div>
-                            {isSameEngine && <div className="text-xs font-bold" style={{ color: "#10b981", fontSize: 8 }}>Same engine</div>}
+                            {isSameEngine && <div className="text-sm font-bold" style={{ color: "#10b981", fontSize: 9 }}>Same engine</div>}
                           </div>
                           <button onClick={() => { navigator.clipboard?.writeText(formatted); }}
                             className="opacity-0 group-hover/sens:opacity-40 hover:!opacity-100 transition-all cursor-pointer flex-shrink-0"
@@ -9372,7 +9389,7 @@ export default function EsportsMice() {
               {cm360 > 0 && cm360 < 10000 && (
                 <div className="p-4 sm:p-6" style={{ background: "#0a0a0a", borderTop: `1px solid ${accentC}10` }}>
                   <button onClick={() => setSensShowPros(!sensShowPros)}
-                    className="flex items-center gap-2 text-xs uppercase tracking-widest opacity-40 hover:opacity-60 transition-all cursor-pointer mb-3">
+                    className="flex items-center gap-2 text-sm uppercase tracking-widest opacity-40 hover:opacity-60 transition-all cursor-pointer mb-3">
                     <span>{sensShowPros ? "▼" : "▶"} Pro Players with Similar Sensitivity ({proMatches.length} found)</span>
                   </button>
                   {sensShowPros && (
@@ -9390,18 +9407,18 @@ export default function EsportsMice() {
                                 <span className="text-lg">{p.country}</span>
                                 <div className="flex-1 min-w-0">
                                   <div className="text-sm font-bold">{p.name}</div>
-                                  <div className="text-xs opacity-30">{p.team} · <span style={{ color: gc[p.game] || "#888" }}>{p.game}</span></div>
+                                  <div className="text-sm opacity-30">{p.team} · <span style={{ color: gc[p.game] || "#888" }}>{p.game}</span></div>
                                 </div>
                                 <div className="text-right flex-shrink-0">
-                                  <div className="text-xs font-bold" style={{ color: accentC }}>{p.dpi} DPI</div>
-                                  <div className="text-xs opacity-30">{p.edpi} eDPI</div>
+                                  <div className="text-sm font-bold" style={{ color: accentC }}>{p.dpi} DPI</div>
+                                  <div className="text-sm opacity-30">{p.edpi} eDPI</div>
                                 </div>
                               </button>
                             );
                           })}
                         </div>
                       ) : (
-                        <div className="text-xs opacity-20 text-center py-4">No pros with a similar sensitivity found in our database. Try adjusting your settings.</div>
+                        <div className="text-sm opacity-20 text-center py-4">No pros with a similar sensitivity found in our database. Try adjusting your settings.</div>
                       )}
                     </div>
                   )}
@@ -9411,19 +9428,19 @@ export default function EsportsMice() {
               {/* Quick Reference */}
               {cm360 > 0 && cm360 < 10000 && (
                 <div className="p-4 sm:p-6" style={{ background: "#050505", borderTop: `1px solid ${accentC}10` }}>
-                  <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Sensitivity Ranges by Game Type</div>
+                  <div className="text-sm uppercase tracking-widest opacity-30 mb-3">Sensitivity Ranges by Game Type</div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                      <div className="text-xs font-bold mb-2" style={{ color: "#3b82f6" }}>🎯 Tactical Shooters</div>
-                      <div className="text-xs opacity-40 leading-relaxed">CS2, Valorant, R6 Siege — Pros typically use 25-55 cm/360. Precise aim over flick speed. Your {cm360.toFixed(0)}cm is {cm360 > 55 ? "slower than most" : cm360 > 25 ? "in the sweet spot" : "faster than most"} tactical pros.</div>
+                      <div className="text-sm font-bold mb-2" style={{ color: "#3b82f6" }}>🎯 Tactical Shooters</div>
+                      <div className="text-sm opacity-40 leading-relaxed">CS2, Valorant, R6 Siege — Pros typically use 25-55 cm/360. Precise aim over flick speed. Your {cm360.toFixed(0)}cm is {cm360 > 55 ? "slower than most" : cm360 > 25 ? "in the sweet spot" : "faster than most"} tactical pros.</div>
                     </div>
                     <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                      <div className="text-xs font-bold mb-2" style={{ color: "#ef4444" }}>💥 Fast-Paced Shooters</div>
-                      <div className="text-xs opacity-40 leading-relaxed">Apex, OW2, CoD, Fortnite — Pros typically use 18-40 cm/360. More tracking and flicking. Your {cm360.toFixed(0)}cm is {cm360 > 40 ? "slower than most" : cm360 > 18 ? "in the sweet spot" : "faster than most"} arena pros.</div>
+                      <div className="text-sm font-bold mb-2" style={{ color: "#ef4444" }}>💥 Fast-Paced Shooters</div>
+                      <div className="text-sm opacity-40 leading-relaxed">Apex, OW2, CoD, Fortnite — Pros typically use 18-40 cm/360. More tracking and flicking. Your {cm360.toFixed(0)}cm is {cm360 > 40 ? "slower than most" : cm360 > 18 ? "in the sweet spot" : "faster than most"} arena pros.</div>
                     </div>
                     <div className="rounded-lg p-3" style={{ background: "#ffffff04" }}>
-                      <div className="text-xs font-bold mb-2" style={{ color: "#10b981" }}>📏 The Universal Range</div>
-                      <div className="text-xs opacity-40 leading-relaxed">Most FPS pros across all titles fall between 20-50 cm/360. If you're between 25-40cm, you're in the most popular zone. Experiment ±5cm from your current to find your sweet spot.</div>
+                      <div className="text-sm font-bold mb-2" style={{ color: "#10b981" }}>📏 The Universal Range</div>
+                      <div className="text-sm opacity-40 leading-relaxed">Most FPS pros across all titles fall between 20-50 cm/360. If you're between 25-40cm, you're in the most popular zone. Experiment ±5cm from your current to find your sweet spot.</div>
                     </div>
                   </div>
                 </div>
@@ -9437,16 +9454,16 @@ export default function EsportsMice() {
         {activeTab !== "overview" && (
         <div className="flex justify-end mt-10 mb-2">
         <div className="rounded-lg px-4 py-2.5 flex items-center gap-3 flex-wrap w-fit" style={{ background: "linear-gradient(135deg, #00ff6a06, #00b4ff04)", border: "1px solid #00ff6a10" }}>
-          <span className="text-xs font-black text-white">Stay ahead of the meta</span>
-          <span className="opacity-20 text-xs hidden sm:inline">·</span>
-          <span style={{ fontSize: 10 }} className="opacity-30 hidden sm:inline">Pro gear changes & data insights</span>
+          <span className="text-sm font-black text-white">Stay ahead of the meta</span>
+          <span className="opacity-20 text-sm hidden sm:inline">·</span>
+          <span style={{ fontSize: 11 }} className="opacity-30 hidden sm:inline">Pro gear changes & data insights</span>
           {newsletterStatus === "success" ? (
-            <span style={{ fontSize: 10, color: "#00ff6a" }} className="font-bold">✓ Subscribed!</span>
+            <span style={{ fontSize: 11, color: "#00ff6a" }} className="font-bold">✓ Subscribed!</span>
           ) : (
             <form className="flex gap-1.5" onSubmit={async e => { e.preventDefault(); setNewsletterStatus("sending"); try { const res = await fetch("https://formspree.io/f/xvzbwrzv", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newsletterEmail }) }); setNewsletterStatus(res.ok ? "success" : "error"); } catch { setNewsletterStatus("error"); } }}>
               <input type="email" required placeholder="your@email.com" value={newsletterEmail} onChange={e => setNewsletterEmail(e.target.value)}
-                className="w-36 px-2.5 py-1 rounded-md outline-none" style={{ background: "#0a0a0a", border: "1px solid #ffffff10", color: "#fff", fontSize: 10 }} />
-              <button type="submit" disabled={newsletterStatus === "sending"} className="px-3 py-1 rounded-md font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000", fontSize: 10 }}>
+                className="w-36 px-2.5 py-1 rounded-md outline-none" style={{ background: "#0a0a0a", border: "1px solid #ffffff10", color: "#fff", fontSize: 11 }} />
+              <button type="submit" disabled={newsletterStatus === "sending"} className="px-3 py-1 rounded-md font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000", fontSize: 11 }}>
                 {newsletterStatus === "sending" ? "..." : "Subscribe"}
               </button>
             </form>
@@ -9473,13 +9490,13 @@ export default function EsportsMice() {
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <span className="inline-block">{I.mouse(24)}</span>
-                <span style={{ fontFamily: "Orbitron", fontSize: 12, letterSpacing: 4, color: "#00ff6a" }}>ESPORTSMICE</span>
+                <span style={{ fontFamily: "Orbitron", fontSize: 13, letterSpacing: 4, color: "#00ff6a" }}>ESPORTSMICE</span>
               </div>
-              <p className="text-xs opacity-30 leading-relaxed">{`The definitive resource for professional esports mice. Data from ${allPlayers.length}+ pro players across ${new Set(allPlayers.map(p=>p.game)).size} major competitive titles.`}</p>
+              <p className="text-sm opacity-30 leading-relaxed">{`The definitive resource for professional esports mice. Data from ${allPlayers.length}+ pro players across ${new Set(allPlayers.map(p=>p.game)).size} major competitive titles.`}</p>
             </div>
             <div>
-              <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Games</div>
-              <div className="space-y-2 text-xs">
+              <div className="text-sm uppercase tracking-widest opacity-30 mb-3">Games</div>
+              <div className="space-y-2 text-sm">
                 {["Counter-Strike 2", "Valorant", "League of Legends", "Dota 2", "Fortnite", "Call of Duty", "Overwatch 2", "Apex Legends", "R6 Siege", "Rocket League", "Marvel Rivals", "PUBG", "Deadlock"].map(g => {
                   const gameColors = { "Counter-Strike 2": "#ff8c00", Valorant: "#ff4655", "League of Legends": "#c89b3c", LoL: "#c89b3c", "Dota 2": "#e74c3c", Fortnite: "#4c7bd9", "Call of Duty": "#5cb85c", "Overwatch 2": "#f99e1a", "Apex Legends": "#dc2626", "R6 Siege": "#4a86c8", "Rocket League": "#1a9fff", "Marvel Rivals": "#ed1d24", PUBG: "#f2a900", Deadlock: "#8b5cf6" };
                   return <div key={g} className="cursor-pointer hover:opacity-80 transition-all" style={{ color: gameColors[g] || "#888" }} onClick={() => setActiveTab("games")}>{g}</div>;
@@ -9487,16 +9504,16 @@ export default function EsportsMice() {
               </div>
             </div>
             <div>
-              <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Top Brands</div>
-              <div className="space-y-2 text-xs">
+              <div className="text-sm uppercase tracking-widest opacity-30 mb-3">Top Brands</div>
+              <div className="space-y-2 text-sm">
                 {["Razer", "Logitech", "Zowie", "Finalmouse", "Lamzu", "Pulsar"].map(b => (
                   <div key={b} className="cursor-pointer hover:opacity-80 transition-all" style={{ color: BRAND_COLORS[b] }} onClick={() => setActiveTab("brands")}>{b}</div>
                 ))}
               </div>
             </div>
             <div>
-              <div className="text-xs uppercase tracking-widest opacity-30 mb-3">Resources</div>
-              <div className="space-y-2 text-xs">
+              <div className="text-sm uppercase tracking-widest opacity-30 mb-3">Resources</div>
+              <div className="space-y-2 text-sm">
                 {[{ label: "Mouse Rankings", tab: "rankings" }, { label: "Pro Settings DB", tab: "players" }, { label: "Comparison Tool", tab: "compare" }, { label: "Brand Profiles", tab: "brands" }, { label: "Weight Trends", tab: "trends" }, { label: "All Mice", tab: "mice" }].map(r => (
                   <div key={r.label} className="cursor-pointer hover:opacity-80 transition-all opacity-50 hover:opacity-70" onClick={() => setActiveTab(r.tab)}>{r.label}</div>
                 ))}
@@ -9505,22 +9522,22 @@ export default function EsportsMice() {
           </div>
           {/* Newsletter */}
           <div className="flex items-center gap-3 mb-8 pb-6 border-b" style={{ borderColor: "#ffffff08" }}>
-            <span style={{ fontSize: 10, color: "#00ff6a", letterSpacing: 2 }} className="font-black uppercase flex-shrink-0">Newsletter</span>
-            <span style={{ fontSize: 10 }} className="opacity-20 hidden sm:inline">·</span>
-            <span style={{ fontSize: 10 }} className="opacity-25 flex-shrink-0 hidden sm:inline">Pro gear updates & data insights</span>
+            <span style={{ fontSize: 11, color: "#00ff6a", letterSpacing: 2 }} className="font-black uppercase flex-shrink-0">Newsletter</span>
+            <span style={{ fontSize: 11 }} className="opacity-20 hidden sm:inline">·</span>
+            <span style={{ fontSize: 11 }} className="opacity-25 flex-shrink-0 hidden sm:inline">Pro gear updates & data insights</span>
             {newsletterStatus === "success" ? (
-              <span style={{ fontSize: 9, color: "#00ff6a" }} className="font-black">✓ Subscribed</span>
+              <span style={{ fontSize: 10, color: "#00ff6a" }} className="font-black">✓ Subscribed</span>
             ) : (
               <form className="flex gap-1.5" onSubmit={async e => { e.preventDefault(); setNewsletterStatus("sending"); try { const res = await fetch("https://formspree.io/f/xvzbwrzv", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newsletterEmail }) }); setNewsletterStatus(res.ok ? "success" : "error"); } catch { setNewsletterStatus("error"); } }}>
                 <input type="email" required placeholder="your@email.com" value={newsletterEmail} onChange={e => setNewsletterEmail(e.target.value)}
-                  className="w-36 sm:w-44 px-2.5 py-1.5 rounded-md outline-none" style={{ background: "#0a0a0a", border: "1px solid #ffffff10", color: "#fff", fontSize: 10 }} />
-                <button type="submit" disabled={newsletterStatus === "sending"} className="px-3 py-1.5 rounded-md font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000", fontSize: 10 }}>
+                  className="w-36 sm:w-44 px-2.5 py-1.5 rounded-md outline-none" style={{ background: "#0a0a0a", border: "1px solid #ffffff10", color: "#fff", fontSize: 11 }} />
+                <button type="submit" disabled={newsletterStatus === "sending"} className="px-3 py-1.5 rounded-md font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000", fontSize: 11 }}>
                   {newsletterStatus === "sending" ? "..." : "Join"}
                 </button>
               </form>
             )}
           </div>
-          <div className="border-t pt-6 flex justify-between items-center text-xs opacity-20" style={{ borderColor: "#ffffff08" }}>
+          <div className="border-t pt-6 flex justify-between items-center text-sm opacity-20" style={{ borderColor: "#ffffff08" }}>
             <span>© 2026 EsportsMice.com  -  All rights reserved</span>
             <span>As an Amazon Associate, EsportsMice earns from qualifying purchases</span>
           </div>
