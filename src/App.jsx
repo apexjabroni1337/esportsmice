@@ -305,6 +305,13 @@ const GAME_IMAGE_URLS = {
   "Deadlock": "/images/games/deadlock.png",
   "Call of Duty": "/images/games/call-of-duty.png",
   "Rocket League": "/images/games/rocket-league.png",
+  "Team Fortress 2": "/images/games/tf2.png",
+  "Escape from Tarkov": "/images/games/escape-from-tarkov.png",
+  "The Finals": "/images/games/the-finals.png",
+  "Battlefield 2042": "/images/games/battlefield-2042.png",
+  "Destiny 2": "/images/games/destiny-2.png",
+  "Halo Infinite": "/images/games/halo-infinite.png",
+  "Quake Champions": "/images/games/quake-champions.png",
 };
 
 const GAME_DESCRIPTIONS = {
@@ -6863,8 +6870,9 @@ export default function EsportsMice() {
                 const active = gameFilter === g;
                 return (
                   <button key={g} onClick={() => setGameFilter(g)}
-                    className="px-3 py-1.5 rounded-lg text-xs font-bold transition-all"
+                    className="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5"
                     style={{ background: active ? `${gc2}25` : "#0a0a0a", color: active ? gc2 : "#ffffff40", border: active ? `1px solid ${gc2}50` : "1px solid #ffffff08" }}>
+                    {g !== "All" && GAME_IMAGE_URLS[g] && <img src={GAME_IMAGE_URLS[g]} alt={g} className="w-4 h-4 object-contain" />}
                     {g}{g !== "All" && <span className="ml-1 opacity-50">({allPlayers.filter(p => p.game === g).length})</span>}
                   </button>
                 );
@@ -7178,6 +7186,35 @@ export default function EsportsMice() {
                         ))}
                       </div>
                     </div>
+
+                    {/* Top 3 Mice — compact animated strip */}
+                    {(() => {
+                      let top3 = [...brandMice].sort((a, b) => b.proUsage - a.proUsage).slice(0, 3);
+                      if (brand.name === "Pulsar" && !top3.find(m => m.name.includes("ZywOo"))) {
+                        const zywoo = brandMice.find(m => m.name.includes("ZywOo"));
+                        if (zywoo) { top3 = [top3[0], top3[1], zywoo]; }
+                      }
+                      if (top3.length === 0) return null;
+                      return (
+                        <div className="flex items-center gap-2 mt-4 flex-wrap">
+                          <style>{`@keyframes brandPulse { 0%,100% { opacity:.35 } 50% { opacity:.7 } } @keyframes slideIn { from { opacity:0; transform:translateX(-8px) } to { opacity:1; transform:translateX(0) } }`}</style>
+                          <span style={{ fontSize: 9, animation: "brandPulse 2s ease-in-out infinite" }} className="uppercase tracking-widest font-bold" ><span style={{ color: col }}>▸</span> <span className="opacity-40">Shop top picks</span></span>
+                          {top3.map((m, mi) => {
+                            const imgUrl = MOUSE_IMAGE_URLS[m.name];
+                            return (
+                              <a key={mi} href={amazonLink(m.name)} target="_blank" rel="noopener noreferrer"
+                                className="group inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full transition-all duration-300 hover:scale-105 hover:brightness-125"
+                                style={{ background: `${col}08`, border: `1px solid ${col}12`, animation: `slideIn 0.4s ease-out ${mi * 0.1}s both` }}>
+                                {imgUrl ? <img src={imgUrl} alt="" className="h-6 w-8 object-contain transition-transform duration-300 group-hover:scale-125" style={{ filter: `drop-shadow(0 1px 4px ${col}40)` }} /> : <span className="opacity-30">{I.mouse(14)}</span>}
+                                <span style={{ fontSize: 9, color: col }} className="font-bold whitespace-nowrap">{m.name.replace(/(Logitech |Razer |Finalmouse |Lamzu |Pulsar |SteelSeries |Corsair |Endgame Gear |ASUS |Ninjutso |WLMouse |Zowie |Vaxee |HyperX |G-Wolves |Sony |LGG )/, "")}</span>
+                                <span style={{ fontSize: 8 }} className="opacity-30">${m.price}</span>
+                                <span style={{ fontSize: 8, color: col }} className="opacity-0 group-hover:opacity-70 transition-opacity duration-200">→</span>
+                              </a>
+                            );
+                          })}
+                        </div>
+                      );
+                    })()}
                   </div>
                 );
               })}
@@ -7853,12 +7890,13 @@ export default function EsportsMice() {
             <div className="flex flex-wrap gap-1.5 mb-4">
               {allGamesForSensor.map(g => (
                 <button key={g} onClick={() => setSensorGameFilter(g)}
-                  className="px-3 py-1 rounded-full text-xs font-bold transition-all"
+                  className="px-3 py-1 rounded-full text-xs font-bold transition-all flex items-center gap-1.5"
                   style={{
                     background: sensorGameFilter === g ? (gameColors[g] || "#10b981") : "#ffffff06",
                     color: sensorGameFilter === g ? "#000" : "#ffffff40",
                     border: sensorGameFilter === g ? "none" : "1px solid #ffffff08",
                   }}>
+                  {g !== "All" && GAME_IMAGE_URLS[g] && <img src={GAME_IMAGE_URLS[g]} alt={g} className="w-4 h-4 object-contain" />}
                   {g}
                 </button>
               ))}
@@ -7870,7 +7908,7 @@ export default function EsportsMice() {
                 const total = entries.reduce((a, e) => a + e[1], 0);
                 return (
                   <div key={game} className="rounded-xl p-4" style={{ background: `${gc}06`, border: `1px solid ${gc}12` }}>
-                    <div className="text-sm font-black mb-3" style={{ color: gc }}>{game}</div>
+                    <div className="text-sm font-black mb-3 flex items-center gap-2" style={{ color: gc }}>{GAME_IMAGE_URLS[game] && <img src={GAME_IMAGE_URLS[game]} alt={game} className="w-5 h-5 object-contain" />}{game}</div>
                     <div className="space-y-2">
                       {entries.slice(0, 5).map(([sensor, count], ei) => (
                         <div key={sensor} className="flex items-center gap-2">
@@ -8768,6 +8806,27 @@ export default function EsportsMice() {
               </div>
             )}
 
+            {/* Coming Soon Teasers */}
+            <div className="mt-10">
+              <SectionTitle color={accent} sub="New lab experiments dropping soon">Coming Soon</SectionTitle>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  { icon: I.crosshair(32), title: "Aim Style Analyzer", desc: "Answer questions about how you aim — tracking, flicking, micro-adjustments — and we'll profile your style and suggest optimal sensitivity ranges and mice." },
+                  { icon: I.gear(32), title: "Shape Comparator 3D", desc: "Overlay any two mouse shapes side-by-side with interactive 3D models. See exactly how dimensions, humps, and curves differ before you buy." },
+                  { icon: I.bolt(32), title: "Pro Config Simulator", desc: "Pick any pro player from our database and simulate their full setup — DPI, sensitivity, polling rate, and mouse — applied to your favorite game." },
+                ].map((item, i) => (
+                  <div key={i} className="rounded-2xl p-6 text-center relative overflow-hidden transition-all hover:scale-[1.02]"
+                    style={{ background: "#0a0a0a", border: `1px solid ${accent}15` }}>
+                    <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-xs font-black" style={{ background: `${accent}20`, color: accent, fontSize: 9 }}>COMING SOON</div>
+                    <div className="mb-3 flex justify-center opacity-60">{item.icon}</div>
+                    <div className="text-sm font-black mb-2" style={{ color: `${accent}90` }}>{item.title}</div>
+                    <div className="text-xs opacity-30 leading-relaxed">{item.desc}</div>
+                    <div className="mt-4 h-1 rounded-full mx-auto" style={{ width: 40, background: `${accent}20` }} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
           );
         })()}
@@ -8783,16 +8842,16 @@ export default function EsportsMice() {
             { id: "fn", name: "Fortnite", img: GAME_IMAGE_URLS["Fortnite"], yaw: 0.005555, defaultSens: 8, step: 0.1, note: "X Axis Sensitivity (%)" },
             { id: "cod", name: "Call of Duty", img: GAME_IMAGE_URLS["Call of Duty"], yaw: 0.0066, defaultSens: 5, step: 0.1, note: "Mouse Sensitivity" },
             { id: "r6", name: "Rainbow Six Siege", img: GAME_IMAGE_URLS["R6 Siege"], yaw: 0.00572958, defaultSens: 10, step: 1, note: "Mouse Sensitivity" },
-            { id: "tf2", name: "Team Fortress 2", img: null, yaw: 0.022, defaultSens: 2, step: 0.01, note: "Sensitivity" },
-            { id: "tarkov", name: "Escape from Tarkov", img: null, yaw: 0.022, defaultSens: 0.5, step: 0.01, note: "Mouse Sensitivity" },
+            { id: "tf2", name: "Team Fortress 2", img: GAME_IMAGE_URLS["Team Fortress 2"], yaw: 0.022, defaultSens: 2, step: 0.01, note: "Sensitivity" },
+            { id: "tarkov", name: "Escape from Tarkov", img: GAME_IMAGE_URLS["Escape from Tarkov"], yaw: 0.022, defaultSens: 0.5, step: 0.01, note: "Mouse Sensitivity" },
             { id: "deadlock", name: "Deadlock", img: GAME_IMAGE_URLS["Deadlock"], yaw: 0.022, defaultSens: 1.5, step: 0.01, note: "Sensitivity (Source 2)" },
-            { id: "finals", name: "The Finals", img: null, yaw: 0.022, defaultSens: 2, step: 0.01, note: "Mouse Sensitivity" },
+            { id: "finals", name: "The Finals", img: GAME_IMAGE_URLS["The Finals"], yaw: 0.022, defaultSens: 2, step: 0.01, note: "Mouse Sensitivity" },
             { id: "marvel", name: "Marvel Rivals", img: GAME_IMAGE_URLS["Marvel Rivals"], yaw: 0.0066, defaultSens: 5, step: 0.1, note: "Mouse Sensitivity" },
             { id: "pubg", name: "PUBG", img: GAME_IMAGE_URLS["PUBG"], yaw: 0.000440, defaultSens: 50, step: 1, note: "General Sensitivity" },
-            { id: "bf", name: "Battlefield 2042", img: null, yaw: 0.01222, defaultSens: 25, step: 0.5, note: "Soldier Sensitivity (%)" },
-            { id: "destiny2", name: "Destiny 2", img: null, yaw: 0.0066, defaultSens: 5, step: 0.5, note: "Mouse Look Sensitivity" },
-            { id: "halo", name: "Halo Infinite", img: null, yaw: 0.012195, defaultSens: 3, step: 0.1, note: "Mouse Sensitivity" },
-            { id: "quake", name: "Quake Champions", img: null, yaw: 0.022, defaultSens: 3, step: 0.01, note: "Sensitivity" },
+            { id: "bf", name: "Battlefield 2042", img: GAME_IMAGE_URLS["Battlefield 2042"], yaw: 0.01222, defaultSens: 25, step: 0.5, note: "Soldier Sensitivity (%)" },
+            { id: "destiny2", name: "Destiny 2", img: GAME_IMAGE_URLS["Destiny 2"], yaw: 0.0066, defaultSens: 5, step: 0.5, note: "Mouse Look Sensitivity" },
+            { id: "halo", name: "Halo Infinite", img: GAME_IMAGE_URLS["Halo Infinite"], yaw: 0.012195, defaultSens: 3, step: 0.1, note: "Mouse Sensitivity" },
+            { id: "quake", name: "Quake Champions", img: GAME_IMAGE_URLS["Quake Champions"], yaw: 0.022, defaultSens: 3, step: 0.01, note: "Sensitivity" },
           ];
 
           const fromGame = SENS_GAMES.find(g => g.id === sensFromGame) || SENS_GAMES[0];
