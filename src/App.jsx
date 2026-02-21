@@ -5042,6 +5042,9 @@ export default function EsportsMice() {
   const [sensFromDpi, setSensFromDpi] = useState(800);
   const [sensFromSens, setSensFromSens] = useState(1.0);
   const [sensShowPros, setSensShowPros] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterStatus, setNewsletterStatus] = useState(null);
+  const [newsletterPopup, setNewsletterPopup] = useState(false);
 
   useEffect(() => { setTimeout(() => setHeroAnim(true), 100); }, []);
   useEffect(() => {
@@ -5532,12 +5535,40 @@ export default function EsportsMice() {
               <span className="inline-block">{I.mouse(32)}</span>
               <span style={{ fontFamily: "Orbitron", fontSize: 12, letterSpacing: 4, color: "#00ff6a" }}>ESPORTSMICE<span style={{ fontSize: 9, letterSpacing: 1, opacity: 0.35, color: "#fff", position: "relative", top: 2 }}>.com</span></span>
             </div>
-            <div className="flex gap-4 text-xs opacity-40">
-              <span>{allPlayers.length}+ Pros Tracked</span>
-              <span>·</span>
-              <span>{new Set(mice.map(m => m.brand)).size}+ Mouse Brands</span>
-              <span>·</span>
-              <span>{new Set(allPlayers.map(p=>p.game)).size} Major Games</span>
+            <div className="flex items-center gap-4 text-xs">
+              <div className="flex items-center gap-4 opacity-50">
+                <span>{allPlayers.length}+ Pros Tracked</span>
+                <span>·</span>
+                <span>{new Set(mice.map(m => m.brand)).size}+ Mouse Brands</span>
+                <span>·</span>
+                <span>{new Set(allPlayers.map(p=>p.game)).size} Major Games</span>
+              </div>
+              <span className="opacity-20">|</span>
+              <div className="relative">
+                {newsletterStatus === "success" ? (
+                  <span style={{ fontSize: 10, color: "#00ff6a" }} className="font-bold opacity-100">✓ Subscribed</span>
+                ) : (
+                  <button onClick={() => setNewsletterPopup(p => !p)}
+                    className="px-3 py-1 rounded font-black uppercase tracking-wider transition-all hover:scale-105 opacity-100"
+                    style={{ background: "#00ff6a", color: "#000", fontSize: 9, letterSpacing: 2 }}>
+                    Subscribe
+                  </button>
+                )}
+                {newsletterPopup && newsletterStatus !== "success" && (
+                  <div className="absolute top-8 right-0 z-50 rounded-xl p-4 w-64" style={{ background: "#111111", border: "1px solid #00ff6a25", boxShadow: "0 12px 40px rgba(0,0,0,0.9), 0 0 0 1px rgba(0,0,0,0.5)" }}>
+                    <div className="text-xs font-black mb-1 text-white">Get pro gear updates</div>
+                    <div style={{ fontSize: 9 }} className="opacity-30 mb-3">New mice, pro switches, and data insights. No spam.</div>
+                    <form className="flex gap-1.5" onSubmit={async e => { e.preventDefault(); setNewsletterStatus("sending"); try { const res = await fetch("https://formspree.io/f/xvzbwrzv", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newsletterEmail }) }); setNewsletterStatus(res.ok ? "success" : "error"); setNewsletterPopup(false); } catch { setNewsletterStatus("error"); } }}>
+                      <input type="email" required placeholder="your@email.com" value={newsletterEmail} onChange={e => setNewsletterEmail(e.target.value)} autoFocus
+                        className="flex-1 px-2.5 py-1.5 rounded outline-none" style={{ background: "#ffffff08", border: "1px solid #ffffff12", color: "#fff", fontSize: 10 }} />
+                      <button type="submit" disabled={newsletterStatus === "sending"} className="px-3 py-1.5 rounded font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000", fontSize: 9 }}>
+                        {newsletterStatus === "sending" ? "..." : "Join"}
+                      </button>
+                    </form>
+                    {newsletterStatus === "error" && <div style={{ fontSize: 9, color: "#ef4444" }} className="mt-1.5">Something went wrong. Try again.</div>}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -5979,6 +6010,30 @@ export default function EsportsMice() {
                 })()}
               </div>
 
+
+            {/* Newsletter CTA */}
+            <div className="rounded-2xl p-5 sm:p-8 mt-8 mb-2 text-center relative overflow-hidden" style={{ background: "linear-gradient(135deg, #00ff6a08, #00b4ff06)", border: "1px solid #00ff6a12" }}>
+              <div className="relative z-10">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  {I.mouse(20)}
+                  <span className="text-xs font-black uppercase tracking-widest" style={{ color: "#00ff6a" }}>Newsletter</span>
+                </div>
+                <div className="text-base sm:text-lg font-black text-white mb-1">Stay ahead of the meta</div>
+                <div className="text-xs opacity-30 mb-4 max-w-md mx-auto">Pro gear changes, new mouse releases, and data-driven insights delivered to your inbox. No spam.</div>
+                {newsletterStatus === "success" ? (
+                  <div className="text-sm font-black" style={{ color: "#00ff6a" }}>✓ You're subscribed!</div>
+                ) : (
+                  <form className="flex gap-2 max-w-sm mx-auto" onSubmit={async e => { e.preventDefault(); setNewsletterStatus("sending"); try { const res = await fetch("https://formspree.io/f/xvzbwrzv", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newsletterEmail }) }); setNewsletterStatus(res.ok ? "success" : "error"); } catch { setNewsletterStatus("error"); } }}>
+                    <input type="email" required placeholder="your@email.com" value={newsletterEmail} onChange={e => setNewsletterEmail(e.target.value)}
+                      className="flex-1 px-4 py-2.5 rounded-lg text-xs outline-none" style={{ background: "#0a0a0a", border: "1px solid #ffffff15", color: "#fff" }} />
+                    <button type="submit" disabled={newsletterStatus === "sending"} className="px-5 py-2.5 rounded-lg text-xs font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000" }}>
+                      {newsletterStatus === "sending" ? "..." : "Subscribe"}
+                    </button>
+                  </form>
+                )}
+                {newsletterStatus === "error" && <div className="text-xs mt-2" style={{ color: "#ef4444" }}>Something went wrong. Try again.</div>}
+              </div>
+            </div>
 
           </div>
         )}
@@ -6892,8 +6947,8 @@ export default function EsportsMice() {
                 style={{ background: profileOnly ? "#fbbf2415" : "#0a0a0a", border: profileOnly ? "1px solid #fbbf2440" : "1px solid #ffffff15", color: profileOnly ? "#fbbf24" : "#ffffff60" }}>
                 {I.star(14)} Full Profiles Only
               </button>
-              <div className="flex items-center gap-2 text-xs opacity-40 px-3">
-                <span className="w-2 h-2 rounded-full bg-yellow-400" /> = Full profile available
+              <div className="flex items-center gap-2 text-xs opacity-70 px-3">
+                {I.star(16)} = Full profile available
               </div>
             </div>
 
@@ -7845,7 +7900,8 @@ export default function EsportsMice() {
                     <tr key={s.sensor} style={{ borderBottom: "1px solid #ffffff05", background: i % 2 === 0 ? "#050505" : "#080808" }}
                       onMouseEnter={e => e.currentTarget.style.background = "#10b98108"}
                       onMouseLeave={e => e.currentTarget.style.background = i % 2 === 0 ? "#050505" : "#080808"}>
-                      <td className="px-4 py-3 font-black" style={{ color: "#10b981" }}>{s.sensor}</td>
+                      <td className="px-4 py-3 font-black cursor-pointer hover:underline" style={{ color: "#10b981" }}
+                        onClick={() => document.getElementById(`sensor-group-${s.sensor.replace(/\s+/g, "-").toLowerCase()}`)?.scrollIntoView({ behavior: "smooth", block: "start" })}>{s.sensor}</td>
                       <td className="px-4 py-3 font-bold">{s.mouseCount}</td>
                       <td className="px-4 py-3 font-black">{s.totalUsage}%</td>
                       <td className="px-4 py-3 text-xs opacity-50">{s.brandList}</td>
@@ -9090,6 +9146,26 @@ export default function EsportsMice() {
           ▲
         </button>
       )}
+
+      {/* ─── NEWSLETTER BANNER ─── */}
+      <div className="px-6 py-4" style={{ background: "#030303", borderTop: "1px solid #00ff6a08" }}>
+        <div className="max-w-2xl flex items-center gap-3">
+          <span style={{ fontSize: 10, color: "#00ff6a", letterSpacing: 2 }} className="font-black uppercase flex-shrink-0">Newsletter</span>
+          <span style={{ fontSize: 10 }} className="opacity-20 hidden sm:inline">·</span>
+          <span style={{ fontSize: 10 }} className="opacity-25 flex-shrink-0 hidden sm:inline">Pro gear updates & data insights</span>
+          {newsletterStatus === "success" ? (
+            <span style={{ fontSize: 9, color: "#00ff6a" }} className="font-black">✓ Subscribed</span>
+          ) : (
+            <form className="flex gap-1.5" onSubmit={async e => { e.preventDefault(); setNewsletterStatus("sending"); try { const res = await fetch("https://formspree.io/f/xvzbwrzv", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newsletterEmail }) }); setNewsletterStatus(res.ok ? "success" : "error"); } catch { setNewsletterStatus("error"); } }}>
+              <input type="email" required placeholder="your@email.com" value={newsletterEmail} onChange={e => setNewsletterEmail(e.target.value)}
+                className="w-36 sm:w-44 px-2.5 py-1.5 rounded-md outline-none" style={{ background: "#0a0a0a", border: "1px solid #ffffff10", color: "#fff", fontSize: 10 }} />
+              <button type="submit" disabled={newsletterStatus === "sending"} className="px-3 py-1.5 rounded-md font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000", fontSize: 10 }}>
+                {newsletterStatus === "sending" ? "..." : "Join"}
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
 
       {/* ─── FOOTER ─── */}
       <footer className="border-t py-12 px-6" style={{ borderColor: "#ffffff08", background: "#030303" }}>
