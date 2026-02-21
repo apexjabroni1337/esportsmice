@@ -4990,8 +4990,8 @@ const MouseCard = ({ mouse, onClick, isSelected }) => {
       <div className="mb-0.5 overflow-hidden">
         <div className="text-sm sm:text-sm font-bold leading-tight" style={{ color: brandCol, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{mouse.name}</div>
       </div>
-      <div className="text-sm opacity-40 mb-2" style={{ fontSize: 11 }}>{mouse.brand}</div>
-      <div className="grid grid-cols-2 gap-1.5 text-sm mt-auto" style={{ fontSize: 11 }}>
+      <div className="text-sm opacity-40 mb-2" style={{ fontSize: 13 }}>{mouse.brand}</div>
+      <div className="grid grid-cols-2 gap-1.5 text-sm mt-auto" style={{ fontSize: 13 }}>
         <div className="flex justify-between"><span className="opacity-40">Weight</span><span className="font-bold">{mouse.weight}g</span></div>
         <div className="flex justify-between"><span className="opacity-40">Poll</span><span className="font-bold">{mouse.pollingRate >= 1000 ? `${mouse.pollingRate / 1000}K` : mouse.pollingRate}Hz</span></div>
         <div className="flex justify-between"><span className="opacity-40">Price</span><span className="font-bold">{"$"}{mouse.price}</span></div>
@@ -5000,11 +5000,11 @@ const MouseCard = ({ mouse, onClick, isSelected }) => {
       <div className="mt-2 h-1 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
         <div className="h-full rounded-full transition-all duration-700" style={{ width: `${mouse.rating * 10}%`, background: `linear-gradient(to right, ${brandCol}80, ${brandCol})` }} />
       </div>
-      <div className="text-right mt-0.5 opacity-40" style={{ fontSize: 10 }}>{mouse.rating}/10</div>
+      <div className="text-right mt-0.5 opacity-40" style={{ fontSize: 12 }}>{mouse.rating}/10</div>
       <a href={amazonLink(mouse.name)} target="_blank" rel="noopener noreferrer"
         onClick={e => e.stopPropagation()}
         className="mt-2 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-sm font-bold transition-all opacity-60 group-hover:opacity-100 hover:!opacity-100"
-        style={{ background: `${brandCol}15`, color: brandCol, border: `1px solid ${brandCol}25`, fontSize: 11 }}
+        style={{ background: `${brandCol}15`, color: brandCol, border: `1px solid ${brandCol}25`, fontSize: 13 }}
         onMouseEnter={e => { e.currentTarget.style.background = brandCol; e.currentTarget.style.color = "#000"; }}
         onMouseLeave={e => { e.currentTarget.style.background = `${brandCol}15`; e.currentTarget.style.color = brandCol; }}>
         {I.cart(12)} {"$"}{mouse.price} — Buy on Amazon
@@ -5530,6 +5530,29 @@ export default function EsportsMice() {
         </div>
       )}
 
+      {/* ─── NEWSLETTER MODAL ─── */}
+      {newsletterPopup && newsletterStatus !== "success" && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center px-4" style={{ background: "rgba(0,0,0,0.75)", backdropFilter: "blur(8px)" }} onClick={() => setNewsletterPopup(false)}>
+          <div className="w-full max-w-sm rounded-2xl p-6 text-center" style={{ background: "#0d0d0d", border: "1px solid #00ff6a15", boxShadow: "0 25px 80px rgba(0,0,0,0.8), 0 0 40px rgba(0,255,106,0.08)" }} onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <span style={{ color: "#00ff6a", fontSize: 20 }}>📬</span>
+              <span className="text-sm font-black uppercase tracking-widest" style={{ color: "#00ff6a" }}>Newsletter</span>
+            </div>
+            <div className="text-lg font-black text-white mb-1">Stay ahead of the meta</div>
+            <div className="text-sm opacity-30 mb-5">Pro gear changes, new mouse releases, and data-driven insights. No spam.</div>
+            <form className="flex gap-2" onSubmit={async e => { e.preventDefault(); setNewsletterStatus("sending"); try { const res = await fetch("https://formspree.io/f/xvzbwrzv", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newsletterEmail }) }); setNewsletterStatus(res.ok ? "success" : "error"); setNewsletterPopup(false); } catch { setNewsletterStatus("error"); } }}>
+              <input type="email" required placeholder="your@email.com" value={newsletterEmail} onChange={e => setNewsletterEmail(e.target.value)} autoFocus
+                className="flex-1 px-4 py-2.5 rounded-lg text-sm outline-none" style={{ background: "#0a0a0a", border: "1px solid #ffffff15", color: "#fff" }} />
+              <button type="submit" disabled={newsletterStatus === "sending"} className="px-5 py-2.5 rounded-lg text-sm font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000" }}>
+                {newsletterStatus === "sending" ? "..." : "Subscribe"}
+              </button>
+            </form>
+            {newsletterStatus === "error" && <div className="text-sm mt-2" style={{ color: "#ef4444" }}>Something went wrong. Try again.</div>}
+            <button onClick={() => setNewsletterPopup(false)} className="text-sm opacity-20 hover:opacity-50 mt-4 transition-all">Close</button>
+          </div>
+        </div>
+      )}
+
       {/* ─── MOBILE NAV (above hero, only on mobile) ─── */}
       <nav className="md:hidden sticky top-0 z-50 border-b" style={{ background: "#050505ee", borderColor: "#ffffff0a", backdropFilter: "blur(20px)" }}>
         <div className="px-4 py-2">
@@ -5582,7 +5605,7 @@ export default function EsportsMice() {
       </nav>
 
       {/* ─── LOGO BAR (desktop, all tabs) ─── */}
-      <div className="hidden md:block" style={{ background: "#050505" }}>
+      <div className="hidden md:block relative z-[70]" style={{ background: "#050505" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-5 pb-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => { setActiveTab("overview"); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
@@ -5598,29 +5621,21 @@ export default function EsportsMice() {
                 <span>{new Set(allPlayers.map(p=>p.game)).size} Major Games</span>
               </div>
               <span className="opacity-20">|</span>
-              <div className="relative">
+              <button onClick={() => { setGlobalSearchOpen(true); setTimeout(() => globalSearchInputRef.current?.focus(), 50); }}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 hover:bg-white/5 flex-shrink-0"
+                style={{ background: "#ffffff06", border: "1px solid #ffffff0a" }}>
+                <Search size={13} style={{ color: "#00ff6a" }} />
+                <span style={{ color: "#ffffff30" }}>Search</span>
+              </button>
+              <div>
                 {newsletterStatus === "success" ? (
                   <span style={{ fontSize: 11, color: "#00ff6a" }} className="font-bold opacity-100">✓ Subscribed</span>
                 ) : (
-                  <button onClick={() => setNewsletterPopup(p => !p)}
+                  <button onClick={() => setNewsletterPopup(true)}
                     className="px-3 py-1 rounded font-black uppercase tracking-wider transition-all hover:scale-105 opacity-100"
                     style={{ background: "#00ff6a", color: "#000", fontSize: 10, letterSpacing: 2 }}>
                     Subscribe
                   </button>
-                )}
-                {newsletterPopup && newsletterStatus !== "success" && (
-                  <div className="absolute top-8 right-0 z-[60] rounded-xl p-4 w-64" style={{ background: "#111111", border: "1px solid #00ff6a25", boxShadow: "0 12px 40px rgba(0,0,0,0.9), 0 0 0 1px rgba(0,0,0,0.5)" }}>
-                    <div className="text-sm font-black mb-1 text-white">Get pro gear updates</div>
-                    <div style={{ fontSize: 10 }} className="opacity-30 mb-3">New mice, pro switches, and data insights. No spam.</div>
-                    <form className="flex gap-1.5" onSubmit={async e => { e.preventDefault(); setNewsletterStatus("sending"); try { const res = await fetch("https://formspree.io/f/xvzbwrzv", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newsletterEmail }) }); setNewsletterStatus(res.ok ? "success" : "error"); setNewsletterPopup(false); } catch { setNewsletterStatus("error"); } }}>
-                      <input type="email" required placeholder="your@email.com" value={newsletterEmail} onChange={e => setNewsletterEmail(e.target.value)} autoFocus
-                        className="flex-1 px-2.5 py-1.5 rounded outline-none" style={{ background: "#ffffff08", border: "1px solid #ffffff12", color: "#fff", fontSize: 11 }} />
-                      <button type="submit" disabled={newsletterStatus === "sending"} className="px-3 py-1.5 rounded font-black transition-all hover:scale-105 disabled:opacity-50" style={{ background: "#00ff6a", color: "#000", fontSize: 10 }}>
-                        {newsletterStatus === "sending" ? "..." : "Join"}
-                      </button>
-                    </form>
-                    {newsletterStatus === "error" && <div style={{ fontSize: 10, color: "#ef4444" }} className="mt-1.5">Something went wrong. Try again.</div>}
-                  </div>
                 )}
               </div>
             </div>
@@ -5696,12 +5711,6 @@ export default function EsportsMice() {
               );
             })}
             </div>
-            <button onClick={() => { setGlobalSearchOpen(true); setTimeout(() => globalSearchInputRef.current?.focus(), 50); }}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-all duration-200 hover:bg-white/5 flex-shrink-0 ml-2"
-              style={{ background: "#ffffff06", border: "1px solid #ffffff0a" }}>
-              <Search size={13} style={{ color: "#00ff6a" }} />
-              <span style={{ color: "#ffffff30" }}>Search</span>
-            </button>
           </div>
         </div>
       </nav>
@@ -5949,7 +5958,7 @@ export default function EsportsMice() {
                               <div key={idx} className="rounded-lg p-2 sm:p-3 text-center" style={{ background: "#ffffff05" }}>
                                 <div className="mb-0.5 flex items-center justify-center">{icon(stat.icon, 22)}</div>
                                 <div className="text-sm sm:text-lg font-black" style={{ color: brandCol }}>{stat.value}</div>
-                                <div style={{ fontSize: 11 }} className="opacity-30">{stat.label}</div>
+                                <div style={{ fontSize: 13 }} className="opacity-30">{stat.label}</div>
                               </div>
                             ))}
                           </div>
@@ -6284,7 +6293,7 @@ export default function EsportsMice() {
                         <div key={idx} className="rounded-lg p-3 text-center" style={{ background: "#ffffff05" }}>
                           <div className="mb-0.5 flex items-center justify-center">{icon(stat.icon, 22)}</div>
                           <div className="text-lg font-black" style={{ color: brandCol }}>{stat.value}</div>
-                          <div style={{ fontSize: 11 }} className="opacity-30">{stat.label}</div>
+                          <div style={{ fontSize: 13 }} className="opacity-30">{stat.label}</div>
                         </div>
                       ))}
                     </div>
@@ -7922,17 +7931,17 @@ export default function EsportsMice() {
                           return (
                             <div key={sn}>
                               <div className="flex items-center gap-2 mb-1">
-                                <span className="text-sm font-black" style={{ color: barColors[si] }}>{sn}</span>
-                                <span className="text-sm opacity-20">({total} players)</span>
+                                <span className="text-base font-black" style={{ color: barColors[si] }}>{sn}</span>
+                                <span className="text-base opacity-20">({total} players)</span>
                               </div>
                               {/* Stacked bar */}
-                              <div className="flex h-5 rounded-md overflow-hidden" style={{ background: "#ffffff06" }}>
+                              <div className="flex h-6 rounded-md overflow-hidden" style={{ background: "#ffffff06" }}>
                                 {games.map(([game, cnt]) => {
                                   const w = Math.max(cnt / total * 100, 2);
                                   return (
                                     <div key={game} className="h-full flex items-center justify-center relative group" style={{ width: `${w}%`, background: `${gameBarColors[game] || "#666"}40` }}
                                       title={`${game}: ${cnt} players (${Math.round(cnt/total*100)}%)`}>
-                                      {w > 8 && <span style={{ fontSize: 10 }} className="font-bold opacity-70">{game}</span>}
+                                      {w > 8 && <span style={{ fontSize: 11 }} className="font-bold opacity-70">{game}</span>}
                                     </div>
                                   );
                                 })}
@@ -7940,7 +7949,7 @@ export default function EsportsMice() {
                               {/* Legend */}
                               <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1">
                                 {games.slice(0, 5).map(([game, cnt]) => (
-                                  <span key={game} style={{ fontSize: 10 }} className="opacity-40">
+                                  <span key={game} style={{ fontSize: 11 }} className="opacity-40">
                                     <span style={{ color: gameBarColors[game] || "#666" }}>●</span> {game} {Math.round(cnt/total*100)}%
                                   </span>
                                 ))}
@@ -8598,11 +8607,11 @@ export default function EsportsMice() {
                       </p>
                       <p className="text-sm opacity-25 mb-4">See exactly how two mice compare in shape.</p>
                       <div className="flex-1" />
-                      <button onClick={() => { setActiveTab("shapes"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                        className="px-8 py-3 rounded-xl font-black text-sm transition-all hover:scale-105"
-                        style={{ background: "#06b6d4", color: "#000" }}>
-                        Open Shape Tool →
-                      </button>
+                      <div className="px-8 py-3 rounded-xl font-black text-sm text-center"
+                        style={{ background: "#06b6d420", color: "#06b6d450", border: "1px solid #06b6d420", cursor: "not-allowed" }}>
+                        🚧 Under Construction
+                      </div>
+                      <div className="text-sm opacity-30 mt-2 text-center"><button onClick={() => setNewsletterPopup(true)} className="underline font-bold transition-all hover:opacity-100" style={{ color: "#00ff6a", opacity: 1, cursor: "pointer" }}>Subscribe to our newsletter</button> for updates</div>
                     </div>
                   </div>
                 )}
