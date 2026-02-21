@@ -5517,6 +5517,25 @@ export default function EsportsMice() {
         </div>
       </nav>
 
+      {/* ─── LOGO BAR (desktop, all tabs) ─── */}
+      <div className="hidden md:block" style={{ background: "#050505" }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-5 pb-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 cursor-pointer" onClick={() => { setActiveTab("overview"); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+              <span className="inline-block">{I.mouse(32)}</span>
+              <span style={{ fontFamily: "Orbitron", fontSize: 12, letterSpacing: 4, color: "#00ff6a" }}>ESPORTSMICE<span style={{ fontSize: 9, letterSpacing: 1, opacity: 0.35, color: "#fff", position: "relative", top: 2 }}>.com</span></span>
+            </div>
+            <div className="flex gap-4 text-xs opacity-40">
+              <span>{allPlayers.length}+ Pros Tracked</span>
+              <span>·</span>
+              <span>{new Set(mice.map(m => m.brand)).size}+ Mouse Brands</span>
+              <span>·</span>
+              <span>{new Set(allPlayers.map(p=>p.game)).size} Major Games</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* ─── HERO (overview only) ─── */}
       {activeTab === "overview" && (
       <header className="relative overflow-hidden" style={{ minHeight: "auto" }}>
@@ -5526,20 +5545,7 @@ export default function EsportsMice() {
         <div className="absolute inset-0" style={{
           backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 49px, #ffffff03 50px), repeating-linear-gradient(90deg, transparent, transparent 49px, #ffffff03 50px)`,
         }} />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-10 pb-6 sm:pb-8">
-          <div className="flex items-center justify-between mb-4 sm:mb-8">
-            <div className="flex items-center gap-2">
-              <span className="inline-block">{I.mouse(32)}</span>
-              <span style={{ fontFamily: "Orbitron", fontSize: 12, letterSpacing: 4, color: "#00ff6a" }}>ESPORTSMICE<span style={{ fontSize: 9, letterSpacing: 1, opacity: 0.35, color: "#fff", position: "relative", top: 2 }}>.com</span></span>
-            </div>
-            <div className="hidden sm:flex gap-4 text-xs opacity-40">
-              <span>{allPlayers.length}+ Pros Tracked</span>
-              <span>·</span>
-              <span>{new Set(mice.map(m => m.brand)).size}+ Mouse Brands</span>
-              <span>·</span>
-              <span>{new Set(allPlayers.map(p=>p.game)).size} Major Games</span>
-            </div>
-          </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-4 sm:pt-6 pb-6 sm:pb-8">
 
           <div className="text-center" style={{ transition: "all 1s ease", opacity: heroAnim ? 1 : 0, transform: heroAnim ? "translateY(0)" : "translateY(30px)" }}>
             <div className="mb-3 sm:mb-4">
