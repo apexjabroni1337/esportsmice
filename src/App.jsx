@@ -7739,7 +7739,7 @@ export default function EsportsMice() {
                   <div key={i} className="rounded-xl p-4" style={{ background: `${colors[i]}08`, border: `1px solid ${colors[i]}12` }}>
                     <div className="text-xs opacity-30 mb-1 text-center">#{i + 1} Most Used</div>
                     <div className="text-sm font-black mb-2 text-center" style={{ color: colors[i] }}>{s.sensor}</div>
-                    {sensorImg && <div className="flex justify-center mb-2"><img src={sensorImg} alt={s.sensor} className="h-16 sm:h-20 object-contain" style={{ filter: `drop-shadow(0 4px 12px ${colors[i]}30)` }} /></div>}
+                    {sensorImg && <div className="flex justify-center mb-2"><img src={sensorImg} alt={s.sensor} className="h-24 sm:h-32 object-contain" style={{ filter: `drop-shadow(0 4px 12px ${colors[i]}30)` }} /></div>}
                     <div className="text-xl sm:text-2xl font-black text-center">{s.totalUsage}%</div>
                     <div className="text-xs opacity-40 mt-1">{s.mouseCount} mice use this sensor:</div>
                     <div className="text-xs opacity-50 mt-0.5 leading-relaxed">{s.mice.map(m => m.name.replace(m.brand + " ", "")).join(", ")}</div>
