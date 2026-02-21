@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, LineChart, Line, CartesianGrid, Legend, AreaChart, Area } from "recharts";
-import { Home, Mouse, Trophy, Cpu, Users, Gamepad2, Building2, TrendingUp, GitCompare, Search, X, FlaskConical, Crosshair } from "lucide-react";
+import { Home, Mouse, Trophy, Cpu, Users, Gamepad2, Building2, TrendingUp, GitCompare, Search, X, FlaskConical, Crosshair, Layers } from "lucide-react";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -27,6 +27,57 @@ const BRAND_COLORS = {
   "G-Wolves": "#a78bfa",
   LGG: "#ef4444",
   HyperX: "#ff4500",
+};
+
+// Real mouse dimensions in mm: [length, width, height, humpPosition 0-1 (0=front,1=back)]
+const MOUSE_DIMS = {
+  "Razer Viper V3 Pro": [126.8, 63.9, 39.9, 0.45],
+  "Logitech G Pro X Superlight 2": [125.0, 63.5, 40.0, 0.50],
+  "Logitech G Pro X2 Superstrike": [125.0, 63.5, 40.0, 0.50],
+  "Logitech G Pro X Superlight": [125.0, 63.5, 40.0, 0.50],
+  "Zowie EC2-CW": [120.0, 64.0, 40.0, 0.60],
+  "Razer DeathAdder V3 Pro": [128.3, 67.8, 43.7, 0.55],
+  "Finalmouse UltralightX": [122.0, 63.2, 37.6, 0.42],
+  "Finalmouse Starlight-12": [121.0, 56.7, 36.7, 0.45],
+  "Lamzu Maya X": [121.0, 62.0, 38.5, 0.48],
+  "Lamzu Atlantis Mini": [117.1, 63.0, 38.0, 0.48],
+  "Pulsar X2F": [120.2, 63.0, 38.2, 0.40],
+  "Vaxee Outset AX": [123.5, 66.2, 42.5, 0.60],
+  "SteelSeries Aerox 5 Wireless": [128.8, 68.2, 42.1, 0.55],
+  "Zowie EC2-DW": [120.0, 64.0, 40.0, 0.60],
+  "Endgame Gear OP1 8K": [123.5, 62.5, 38.5, 0.45],
+  "ASUS ROG Harpe Ace Extreme": [127.0, 63.8, 39.5, 0.47],
+  "Corsair M75 Air": [125.5, 64.0, 39.2, 0.48],
+  "Ninjutso Sora V2": [121.5, 62.8, 37.5, 0.45],
+  "WLMouse Beast X": [121.0, 62.0, 37.0, 0.44],
+  "Razer Viper V3 HyperSpeed": [127.0, 63.5, 39.6, 0.45],
+  "Razer DeathAdder V3": [128.3, 67.8, 44.8, 0.55],
+  "Logitech G502 X Plus": [131.4, 79.2, 41.1, 0.50],
+  "Pulsar X2H": [122.4, 64.2, 39.8, 0.55],
+  "Pulsar X2 Mini": [116.5, 60.0, 37.2, 0.45],
+  "Zowie FK2-CW": [124.0, 63.6, 36.0, 0.42],
+  "Zowie ZA13-C": [120.0, 58.0, 39.0, 0.65],
+  "Lamzu Inca": [120.5, 63.0, 40.0, 0.55],
+  "Vaxee XE Wireless": [122.0, 66.0, 39.5, 0.50],
+  "Vaxee NP-01S Wireless": [121.0, 62.5, 38.8, 0.52],
+  "Finalmouse ULX Prophecy": [121.6, 63.0, 37.0, 0.42],
+  "SteelSeries Prime Wireless": [125.3, 59.4, 40.4, 0.52],
+  "Corsair M75 Wireless": [125.5, 66.0, 40.0, 0.50],
+  "Razer Basilisk V3 Pro": [130.0, 75.4, 42.5, 0.50],
+  "Endgame Gear XM2w": [122.2, 66.0, 38.2, 0.48],
+  "WLMouse Beast X Mini": [117.0, 60.0, 36.0, 0.44],
+  "G-Wolves HTS Plus 4K": [122.0, 63.5, 38.0, 0.45],
+  "Lethal Gaming Gear LA-2": [123.0, 63.0, 38.0, 0.46],
+  "ASUS ROG Gladius III": [126.0, 68.0, 44.0, 0.55],
+  "HyperX Pulsefire Haste 2": [124.2, 66.8, 38.8, 0.50],
+  "Razer DeathAdder V4 Pro": [127.5, 67.2, 42.5, 0.55],
+  "Vaxee E1 Wireless": [126.0, 64.0, 40.0, 0.48],
+  "Zowie FK2-DW": [124.0, 63.6, 36.0, 0.42],
+  "Zowie U2-DW": [120.0, 60.0, 38.0, 0.45],
+  "Zowie EC1-CW": [128.0, 69.0, 43.0, 0.60],
+  "Pulsar Xlite V3 Es": [122.4, 66.5, 42.2, 0.58],
+  "Logitech G Pro X Superlight 2 Dex": [125.0, 67.5, 43.0, 0.55],
+  "Pulsar ZywOo Chosen Mouse": [122.4, 64.2, 39.8, 0.50],
 };
 
 const MOUSE_IMAGE_URLS = {
@@ -5045,6 +5096,10 @@ export default function EsportsMice() {
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterStatus, setNewsletterStatus] = useState(null);
   const [newsletterPopup, setNewsletterPopup] = useState(false);
+  const [shapeMouseA, setShapeMouseA] = useState(null);
+  const [shapeMouseB, setShapeMouseB] = useState(null);
+  const [shapeView, setShapeView] = useState("overlay"); // overlay | side
+  const [shapeAngle, setShapeAngle] = useState("top"); // top | profile
 
   useEffect(() => { setTimeout(() => setHeroAnim(true), 100); }, []);
   useEffect(() => {
@@ -5248,12 +5303,11 @@ export default function EsportsMice() {
     { id: "rankings", label: "Rankings", icon: Trophy, color: "#d4af37" },
     { id: "sensors", label: "Sensors", icon: Cpu, color: "#10b981" },
     { id: "players", label: "Pro Players", icon: Users, color: "#00b4ff" },
-    { id: "lab", label: "Lab", icon: FlaskConical, color: "#e879f9" },
+    { id: "lab", label: "Lab", icon: FlaskConical, color: "#f59e0b" },
     { id: "sensitivity", label: "Sensitivity", icon: Crosshair, color: "#8b5cf6" },
     { id: "games", label: "Games", icon: Gamepad2, color: "#ff4655" },
-    { id: "brands", label: "Brands", icon: Building2, color: "#f59e0b" },
+    { id: "brands", label: "Brands", icon: Building2, color: "#e879f9" },
     { id: "trends", label: "Trends", icon: TrendingUp, color: "#f472b6" },
-    { id: "compare", label: "Compare", icon: GitCompare, color: "#8b5cf6" },
   ];
 
   const allBrands = ["All", ...new Set(mice.map(m => m.brand))];
@@ -7172,7 +7226,7 @@ export default function EsportsMice() {
         {/* ── BRANDS TAB ── */}
         {activeTab === "brands" && (
           <div>
-            <SectionTitle color="#d4af37" sub="From industry giants to boutique innovators  -  the companies shaping competitive gaming">Mouse Manufacturer Profiles</SectionTitle>
+            <SectionTitle color="#e879f9" sub="From industry giants to boutique innovators  -  the companies shaping competitive gaming">Mouse Manufacturer Profiles</SectionTitle>
             <div className="space-y-5">
               {[
                 { name: "Razer", icon: "viper", desc: "Razer is the undisputed king of esports peripherals in 2025-2026, commanding over 34% of the professional mouse market  -  a number that's even more impressive when you consider that Logitech held that throne unchallenged for nearly four years before Razer dethroned them. Founded in 2005 in San Francisco by Min-Liang Tan and Robert Krakoff, Razer grew from a niche gaming startup into a $2 billion global empire. The Razer DeathAdder, first released in 2006, became arguably the most popular gaming mouse shape ever made  -  its ergonomic right-hand design has been iterated on for nearly 20 years and cloned by dozens of competitors. Ask any mouse enthusiast to name the most influential mouse shapes of all time, and the DeathAdder will be in the top three alongside the IntelliMouse Explorer 3.0 and the original Logitech G Pro Wireless. The Viper line, launched in 2019, marked Razer's pivot toward symmetrical ultralight designs that would eventually conquer the FPS scene. But it was the Viper V3 Pro in 2024 that changed everything  -  at 54g with the Focus Pro 35K sensor, 8KHz polling, and Gen-3 optical switches, it became the single most-used mouse in professional esports almost overnight. The optical switch technology deserves special mention: when Razer introduced it with the original Viper in 2019, the industry was skeptical. Optical switches use an infrared light beam to register clicks instead of metal contact points, completely eliminating the debounce delay that plagued mechanical switches. Every major manufacturer has since scrambled to develop their own optical or hybrid solution, but Razer got there first and has had six years to refine the technology. The V3 Pro isn't just popular because of sponsorship deals  -  pros genuinely choose it because it combines the lowest click latency, best weight-to-rigidity ratio, and most refined shape in the ultralight symmetrical category.",
@@ -7457,7 +7511,7 @@ export default function EsportsMice() {
             </div>
 
             {/* ── Brand Dominance Race ── */}
-            <SectionTitle color="#d4af37" sub="How the top brands stack up across every major metric">Brand Performance Scorecard</SectionTitle>
+            <SectionTitle color="#e879f9" sub="How the top brands stack up across every major metric">Brand Performance Scorecard</SectionTitle>
             <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid #ffffff08" }}>
               {(() => {
                 const topBrandNames = ["Razer", "Logitech", "Zowie", "Vaxee", "Finalmouse", "Pulsar", "Lamzu"];
@@ -8450,7 +8504,7 @@ export default function EsportsMice() {
 
           const maxScore = quizDone ? Math.max(...getResults().map(r => r.score)) : 0;
 
-          const accent = "#e879f9";
+          const accent = "#f59e0b";
           const stepLabels = ["Welcome", "Hand Size", "Grip Style", "Games", "Priorities", "Weight", "Shape", "Connection", "Budget"];
           const totalSteps = 9;
 
@@ -8468,10 +8522,10 @@ export default function EsportsMice() {
 
           return (
           <div>
-            <SectionTitle color={accent} sub="Answer a few questions and we'll find your perfect mouse">Mouse Finder Quiz</SectionTitle>
+            <SectionTitle color={accent} sub={`Unique tools to help you get the most out of your mouse — powered by data from ${allPlayers.length}+ pro players`}>The Lab</SectionTitle>
 
             {!quizDone ? (
-              <div className="max-w-2xl mx-auto">
+              <div className={quizStep === 0 ? "max-w-4xl mx-auto" : "max-w-2xl mx-auto"}>
                 {/* Progress bar */}
                 {quizStep > 0 && (
                   <div className="mb-6">
@@ -8487,18 +8541,49 @@ export default function EsportsMice() {
 
                 {/* Step 0: Intro */}
                 {quizStep === 0 && (
-                  <div className="rounded-2xl p-8 sm:p-10 text-center" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
-                    <FlaskConical size={48} style={{ color: accent, margin: "0 auto 20px" }} />
-                    <div className="text-2xl sm:text-3xl font-black mb-4" style={{ fontFamily: "Orbitron", color: accent }}>Find Your Perfect Mouse</div>
-                    <p className="text-sm opacity-40 max-w-lg mx-auto leading-relaxed mb-2">
-                      This quiz analyzes your hand measurements, grip style, gaming preferences, and priorities to recommend mice from our database of {mice.length} models — cross-referenced with data from {allPlayers.length}+ pro players.
-                    </p>
-                    <p className="text-xs opacity-25 mb-8">Takes about 2 minutes. Your answers aren't stored anywhere.</p>
-                    <button onClick={nextStep}
-                      className="px-8 py-3 rounded-xl font-black text-sm transition-all hover:scale-105"
-                      style={{ background: accent, color: "#000" }}>
-                      Start Quiz →
-                    </button>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="rounded-2xl p-8 sm:p-10 text-center flex flex-col" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                      <FlaskConical size={48} style={{ color: accent, margin: "0 auto 20px" }} />
+                      <div className="text-xl sm:text-2xl font-black mb-4" style={{ fontFamily: "Orbitron", color: accent }}>Find Your Perfect Mouse</div>
+                      <p className="text-sm opacity-40 max-w-lg mx-auto leading-relaxed mb-2">
+                        This quiz analyzes your hand measurements, grip style, gaming preferences, and priorities to recommend mice from our database of {mice.length} models — cross-referenced with data from {allPlayers.length}+ pro players.
+                      </p>
+                      <p className="text-xs opacity-25 mb-4">Takes about 2 minutes. Your answers aren't stored anywhere.</p>
+                      <div className="flex-1" />
+                      <button onClick={nextStep}
+                        className="px-8 py-3 rounded-xl font-black text-sm transition-all hover:scale-105"
+                        style={{ background: accent, color: "#000" }}>
+                        Start Quiz →
+                      </button>
+                    </div>
+                    <div className="rounded-2xl p-8 sm:p-10 text-center relative overflow-hidden flex flex-col" style={{ background: "#0a0a0a", border: "1px solid #8b5cf615" }}>
+                      <div className="flex justify-center mb-5">{I.gear(48)}</div>
+                      <div className="text-xl sm:text-2xl font-black mb-4" style={{ fontFamily: "Orbitron", color: "#8b5cf6" }}>Compare Mice</div>
+                      <p className="text-sm opacity-40 max-w-lg mx-auto leading-relaxed mb-2">
+                        Put any two mice head-to-head with detailed spec breakdowns, radar charts, pro usage stats, and side-by-side shape analysis.
+                      </p>
+                      <p className="text-xs opacity-25 mb-4">Pick two mice and see exactly how they differ.</p>
+                      <div className="flex-1" />
+                      <button onClick={() => { setActiveTab("compare"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                        className="px-8 py-3 rounded-xl font-black text-sm transition-all hover:scale-105"
+                        style={{ background: "#8b5cf6", color: "#000" }}>
+                        Compare Mice →
+                      </button>
+                    </div>
+                    <div className="rounded-2xl p-8 sm:p-10 text-center flex flex-col" style={{ background: "#0a0a0a", border: "1px solid #06b6d415" }}>
+                      <Layers size={48} style={{ color: "#06b6d4", margin: "0 auto 20px" }} />
+                      <div className="text-xl sm:text-2xl font-black mb-4" style={{ fontFamily: "Orbitron", color: "#06b6d4" }}>Shape Overlay</div>
+                      <p className="text-sm opacity-40 max-w-lg mx-auto leading-relaxed mb-2">
+                        Overlay actual mouse images scaled to real dimensions — instantly see how any two mice compare in size from all {mice.filter(m => MOUSE_DIMS[m.name] && MOUSE_IMAGE_URLS[m.name]).length} mice.
+                      </p>
+                      <p className="text-xs opacity-25 mb-4">See exactly how two mice compare in shape.</p>
+                      <div className="flex-1" />
+                      <button onClick={() => { setActiveTab("shapes"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                        className="px-8 py-3 rounded-xl font-black text-sm transition-all hover:scale-105"
+                        style={{ background: "#06b6d4", color: "#000" }}>
+                        Open Shape Tool →
+                      </button>
+                    </div>
                   </div>
                 )}
 
@@ -8870,10 +8955,9 @@ export default function EsportsMice() {
             {/* Coming Soon Teasers */}
             <div className="mt-10">
               <SectionTitle color={accent} sub="New lab experiments dropping soon">Coming Soon</SectionTitle>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   { icon: I.crosshair(32), title: "Aim Style Analyzer", desc: "Answer questions about how you aim — tracking, flicking, micro-adjustments — and we'll profile your style and suggest optimal sensitivity ranges and mice." },
-                  { icon: I.gear(32), title: "Shape Comparator 3D", desc: "Overlay any two mouse shapes side-by-side with interactive 3D models. See exactly how dimensions, humps, and curves differ before you buy." },
                   { icon: I.bolt(32), title: "Pro Config Simulator", desc: "Pick any pro player from our database and simulate their full setup — DPI, sensitivity, polling rate, and mouse — applied to your favorite game." },
                 ].map((item, i) => (
                   <div key={i} className="rounded-2xl p-6 text-center relative overflow-hidden transition-all hover:scale-[1.02]"
@@ -8891,6 +8975,211 @@ export default function EsportsMice() {
           </div>
           );
         })()}
+
+        {/* ── SHAPES TAB ── */}
+        {activeTab === "shapes" && (
+          <div>
+            <SectionTitle color="#06b6d4" sub="Select two mice and overlay their actual images — scaled to real dimensions for true size comparison">Mouse Shape Overlay</SectionTitle>
+
+            {(() => {
+                const miceWithDims = mice.filter(m => MOUSE_DIMS[m.name] && MOUSE_IMAGE_URLS[m.name]);
+                const mA = shapeMouseA || miceWithDims[0];
+                const mB = shapeMouseB || miceWithDims[1];
+                const dA = MOUSE_DIMS[mA?.name];
+                const dB = MOUSE_DIMS[mB?.name];
+                if (!dA || !dB) return null;
+
+                const colA = BRAND_COLORS[mA.brand] || "#00ff6a";
+                const colB_raw = BRAND_COLORS[mB.brand] || "#8b5cf6";
+                const altColors = ["#8b5cf6", "#f59e0b", "#06b6d4", "#f472b6", "#00ff6a"];
+                const colB = (mA.brand === mB.brand || colA === colB_raw) 
+                  ? altColors.find(c => c !== colA) || "#8b5cf6"
+                  : colB_raw;
+
+                const diffL = Math.abs(dA[0] - dB[0]).toFixed(1);
+                const diffW = Math.abs(dA[1] - dB[1]).toFixed(1);
+                const diffH = Math.abs(dA[2] - dB[2]).toFixed(1);
+                const diffWt = Math.abs(mA.weight - mB.weight).toFixed(0);
+
+                const sortedMiceWithDims = [...miceWithDims].sort((a, b) => a.name.localeCompare(b.name));
+
+                // Scale: pixels per mm. Images are scaled so their width matches real mm width.
+                const pxPerMm = 4;
+                const imgWA = dA[1] * pxPerMm;
+                const imgHA = dA[0] * pxPerMm; // length = image height (top-down view)
+                const imgWB = dB[1] * pxPerMm;
+                const imgHB = dB[0] * pxPerMm;
+
+                const containerW = Math.max(imgWA, imgWB) + 60;
+                const containerH = Math.max(imgHA, imgHB) + 40;
+
+                return (
+                  <div>
+                    {/* Mouse selectors */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                      {[
+                        { mouse: mA, set: setShapeMouseA, col: colA, label: "Mouse A" },
+                        { mouse: mB, set: setShapeMouseB, col: colB, label: "Mouse B" },
+                      ].map(({ mouse, set, col, label }) => (
+                        <div key={label} className="rounded-xl p-4" style={{ background: "#0a0a0a", border: `1px solid ${col}15` }}>
+                          <div className="text-xs font-bold mb-2" style={{ color: col }}>{label}</div>
+                          <select value={mouse?.id || ""} onChange={e => { const m = mice.find(x => x.id === parseInt(e.target.value)); if (m && MOUSE_DIMS[m.name] && MOUSE_IMAGE_URLS[m.name]) set(m); }}
+                            className="w-full px-3 py-2.5 rounded-lg text-sm cursor-pointer" style={{ background: "#0f0f0f", border: `1px solid ${col}25`, color: "#fff" }}>
+                            {sortedMiceWithDims.map(m => <option key={m.id} value={m.id}>{m.name}</option>)}
+                          </select>
+                          <div className="flex items-center gap-3 mt-3">
+                            {MOUSE_IMAGE_URLS[mouse.name] && <img src={MOUSE_IMAGE_URLS[mouse.name]} alt="" className="h-10 object-contain" style={{ filter: `drop-shadow(0 2px 8px ${col}30)` }} />}
+                            <div className="flex flex-wrap gap-2 text-xs opacity-50">
+                              <span>{MOUSE_DIMS[mouse.name]?.[0]}mm L</span>
+                              <span>×</span>
+                              <span>{MOUSE_DIMS[mouse.name]?.[1]}mm W</span>
+                              <span>×</span>
+                              <span>{MOUSE_DIMS[mouse.name]?.[2]}mm H</span>
+                              <span>·</span>
+                              <span className="font-bold">{mouse.weight}g</span>
+                              <span>·</span>
+                              <span>{mouse.shape}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* View controls */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {[
+                        { id: "overlay", label: "Overlay" },
+                        { id: "side", label: "Side by Side" },
+                      ].map(v => (
+                        <button key={v.id} onClick={() => setShapeView(v.id)}
+                          className="px-4 py-2 rounded-lg text-xs font-bold transition-all"
+                          style={{ background: shapeView === v.id ? "#06b6d420" : "#ffffff05", border: `1px solid ${shapeView === v.id ? "#06b6d4" : "#ffffff10"}`, color: shapeView === v.id ? "#06b6d4" : "#ffffff40" }}>
+                          {v.label}
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Image Overlay Visualization */}
+                    <div className="rounded-2xl overflow-hidden relative" style={{ background: "#060606", border: "1px solid #ffffff08" }}>
+                      {shapeView === "overlay" ? (
+                        <div style={{ position: "relative", width: "100%", maxWidth: containerW, height: containerH, margin: "0 auto" }}>
+                          {/* Grid background */}
+                          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(#ffffff06 1px, transparent 1px), linear-gradient(90deg, #ffffff06 1px, transparent 1px)", backgroundSize: `${10 * pxPerMm}px ${10 * pxPerMm}px` }} />
+                          {/* Center crosshair */}
+                          <div style={{ position: "absolute", left: "50%", top: 0, bottom: 0, width: 1, background: "#ffffff08" }} />
+                          <div style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 1, background: "#ffffff08" }} />
+                          {/* Mouse B (behind) */}
+                          <img src={MOUSE_IMAGE_URLS[mB.name]} alt={mB.name}
+                            style={{
+                              position: "absolute",
+                              left: "50%", top: "50%",
+                              width: imgWB, height: imgHB,
+                              transform: "translate(-50%, -50%)",
+                              objectFit: "contain",
+                              opacity: 0.45,
+                              filter: `drop-shadow(0 0 12px ${colB}40)`,
+                            }} />
+                          {/* Mouse A (front) */}
+                          <img src={MOUSE_IMAGE_URLS[mA.name]} alt={mA.name}
+                            style={{
+                              position: "absolute",
+                              left: "50%", top: "50%",
+                              width: imgWA, height: imgHA,
+                              transform: "translate(-50%, -50%)",
+                              objectFit: "contain",
+                              opacity: 0.65,
+                              filter: `drop-shadow(0 0 12px ${colA}40)`,
+                            }} />
+                          {/* Dimension labels */}
+                          <div style={{ position: "absolute", top: 8, left: 8, fontSize: 10, fontFamily: "monospace", color: colA, opacity: 0.7 }}>
+                            {dA[0]}mm × {dA[1]}mm
+                          </div>
+                          <div style={{ position: "absolute", top: 8, right: 8, fontSize: 10, fontFamily: "monospace", color: colB, opacity: 0.7 }}>
+                            {dB[0]}mm × {dB[1]}mm
+                          </div>
+                          {/* Scale bar */}
+                          <div style={{ position: "absolute", bottom: 10, left: 12, display: "flex", alignItems: "center", gap: 6 }}>
+                            <div style={{ width: 10 * pxPerMm, height: 2, background: "#ffffff30", borderRadius: 1 }} />
+                            <span style={{ fontSize: 9, fontFamily: "monospace", color: "#ffffff30" }}>10mm</span>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="grid grid-cols-2 gap-0">
+                          {[
+                            { m: mA, d: dA, col: colA, imgW: imgWA, imgH: imgHA },
+                            { m: mB, d: dB, col: colB, imgW: imgWB, imgH: imgHB },
+                          ].map(({ m, d, col, imgW, imgH }, idx) => (
+                            <div key={idx} style={{ position: "relative", height: containerH, borderRight: idx === 0 ? "1px solid #ffffff08" : "none", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                              <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(#ffffff06 1px, transparent 1px), linear-gradient(90deg, #ffffff06 1px, transparent 1px)", backgroundSize: `${10 * pxPerMm}px ${10 * pxPerMm}px` }} />
+                              <img src={MOUSE_IMAGE_URLS[m.name]} alt={m.name}
+                                style={{ width: imgW, height: imgH, objectFit: "contain", position: "relative", zIndex: 1, filter: `drop-shadow(0 0 12px ${col}30)` }} />
+                              <div style={{ position: "absolute", top: 10, left: 0, right: 0, textAlign: "center", zIndex: 2 }}>
+                                <div style={{ fontSize: 11, fontFamily: "monospace", fontWeight: "bold", color: col }}>{m.name.replace(m.brand + " ", "")}</div>
+                                <div style={{ fontSize: 9, fontFamily: "monospace", color: "#ffffff40", marginTop: 2 }}>{d[0]} × {d[1]} × {d[2]}mm · {m.weight}g</div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Difference Stats */}
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
+                      {[
+                        { label: "Length", valA: dA[0], valB: dB[0], unit: "mm", diff: diffL },
+                        { label: "Width", valA: dA[1], valB: dB[1], unit: "mm", diff: diffW },
+                        { label: "Height", valA: dA[2], valB: dB[2], unit: "mm", diff: diffH },
+                        { label: "Weight", valA: mA.weight, valB: mB.weight, unit: "g", diff: diffWt },
+                      ].map((s, i) => (
+                        <div key={i} className="rounded-xl p-4 text-center" style={{ background: "#0a0a0a", border: "1px solid #ffffff08" }}>
+                          <div className="text-xs uppercase tracking-widest opacity-20 mb-2">{s.label}</div>
+                          <div className="flex items-center justify-center gap-3 mb-1">
+                            <span className="text-sm font-black" style={{ color: colA }}>{s.valA}{s.unit}</span>
+                            <span className="text-xs opacity-20">vs</span>
+                            <span className="text-sm font-black" style={{ color: colB }}>{s.valB}{s.unit}</span>
+                          </div>
+                          <div className="text-xs font-bold" style={{ color: s.diff > 0 ? "#f59e0b" : "#10b981" }}>
+                            {s.diff > 0 ? `Δ ${s.diff}${s.unit}` : "Identical"}
+                          </div>
+                          <div className="flex items-center gap-1 mt-2">
+                            <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
+                              <div className="h-full rounded-full" style={{ width: `${(s.valA / Math.max(s.valA, s.valB)) * 100}%`, background: colA }} />
+                            </div>
+                            <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: "#ffffff08" }}>
+                              <div className="h-full rounded-full" style={{ width: `${(s.valB / Math.max(s.valA, s.valB)) * 100}%`, background: colB }} />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Legend */}
+                    <div className="flex items-center justify-center gap-6 mt-5 text-xs">
+                      <div className="flex items-center gap-2">
+                        <div className="w-5 h-1.5 rounded-full" style={{ background: colA }} />
+                        <span style={{ color: colA }} className="font-bold">{mA.name.replace(mA.brand + " ", "")}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-5 h-1.5 rounded-full" style={{ background: colB }} />
+                        <span style={{ color: colB }} className="font-bold">{mB.name.replace(mB.brand + " ", "")}</span>
+                      </div>
+                    </div>
+
+                    {/* Quick size guide */}
+                    <div className="rounded-xl p-4 mt-6" style={{ background: "#06b6d406", border: "1px solid #06b6d410" }}>
+                      <div className="text-xs uppercase tracking-widest opacity-30 mb-3 font-bold">Quick Size Reference</div>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                        <div><span className="opacity-30">Small:</span> <span className="opacity-60">&lt;118mm L, &lt;60mm W</span></div>
+                        <div><span className="opacity-30">Medium:</span> <span className="opacity-60">118-125mm L, 60-65mm W</span></div>
+                        <div><span className="opacity-30">Large:</span> <span className="opacity-60">&gt;125mm L, &gt;65mm W</span></div>
+                        <div><span className="opacity-30">Low profile:</span> <span className="opacity-60">&lt;38mm H</span></div>
+                      </div>
+                    </div>
+                  </div>
+                );
+            })()}
+          </div>
+        )}
 
         {/* ── SENSITIVITY CONVERTER PAGE ── */}
         {activeTab === "sensitivity" && (() => {
