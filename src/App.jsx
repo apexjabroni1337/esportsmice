@@ -5075,6 +5075,7 @@ export default function EsportsMice() {
   const [profileOnly, setProfileOnly] = useState(false);
   const [rankingSort, setRankingSort] = useState({ key: "proUsage", dir: "desc" });
   const [sensorSort, setSensorSort] = useState({ key: "totalUsage", dir: "desc" });
+  const [brandScoreSort, setBrandScoreSort] = useState({ key: "proShare", dir: "desc" });
   const [sensorGameFilter, setSensorGameFilter] = useState("All");
   const [compareSensor1, setCompareSensor1] = useState(null);
   const [compareSensor2, setCompareSensor2] = useState(null);
@@ -5102,6 +5103,15 @@ export default function EsportsMice() {
   const [shapeAngle, setShapeAngle] = useState("top"); // top | profile
 
   useEffect(() => { setTimeout(() => setHeroAnim(true), 100); }, []);
+
+  // Vercel Analytics
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "/_vercel/insights/script.js";
+    script.defer = true;
+    document.head.appendChild(script);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => setShowScrollTop(window.scrollY > 600);
     window.addEventListener("scroll", handleScroll);
@@ -5613,7 +5623,7 @@ export default function EsportsMice() {
               <span style={{ fontFamily: "Orbitron", fontSize: 14, letterSpacing: 4, color: "#00ff6a" }}>ESPORTSMICE<span style={{ fontSize: 11, letterSpacing: 1, opacity: 0.9, color: "#fff", position: "relative", top: 2 }}>.com</span></span>
             </div>
             <div className="flex items-center gap-4 text-sm">
-              <div className="flex items-center gap-4 opacity-70">
+              <div className="flex items-center gap-4 opacity-45">
                 <span>{allPlayers.length}+ Pros Tracked</span>
                 <span>·</span>
                 <span>{new Set(mice.map(m => m.brand)).size}+ Mouse Brands</span>
@@ -5656,7 +5666,7 @@ export default function EsportsMice() {
 
           <div className="text-center" style={{ transition: "all 1s ease", opacity: heroAnim ? 1 : 0, transform: heroAnim ? "translateY(0)" : "translateY(30px)" }}>
             <div className="mb-3 sm:mb-4">
-              <span className="text-sm uppercase tracking-widest opacity-30">The Definitive Guide to</span>
+              <span className="text-base uppercase tracking-widest opacity-60" style={{ color: "#ffffff", textShadow: "0 0 20px #ffffff30" }}>The Definitive Guide to</span>
             </div>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl" style={{ fontFamily: "Orbitron", fontWeight: 900, lineHeight: 1.1, letterSpacing: -1 }}>
               <span style={{ color: "#fff" }}>PRO </span>
@@ -5679,7 +5689,7 @@ export default function EsportsMice() {
             ].map((s, i) => (
               <div key={i} className="text-center" style={{ transition: `all 0.8s ease ${i * 0.15}s`, opacity: heroAnim ? 1 : 0 }}>
                 <div className="text-lg sm:text-2xl font-black" style={{ fontFamily: "Orbitron", color: i % 2 === 0 ? "#00ff6a" : "#00b4ff" }}>{s.val}</div>
-                <div className="text-sm opacity-30 mt-1">{s.label}</div>
+                <div className="text-base text-white opacity-90 mt-1">{s.label}</div>
               </div>
             ))}
           </div>
@@ -5776,7 +5786,7 @@ export default function EsportsMice() {
                       className="px-2.5 py-1.5 rounded-lg text-sm font-bold transition-all whitespace-nowrap hover:scale-[1.03] cursor-pointer"
                       style={{
                         background: selectedMouse?.id === m.id ? BRAND_COLORS[m.brand] : "#ffffff06",
-                        color: selectedMouse?.id === m.id ? "#000" : "#ffffff40",
+                        color: selectedMouse?.id === m.id ? "#000" : "#ffffffaa",
                         border: selectedMouse?.id === m.id ? "none" : "1px solid #ffffff08",
                         fontSize: 11,
                       }}>
@@ -6456,7 +6466,7 @@ export default function EsportsMice() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5">
                       {/* Left: Top 5 mice with bars */}
                       <div>
-                        <div className="text-sm uppercase tracking-widest opacity-30 mb-3">Top 5 Mice</div>
+                        <div className="text-sm uppercase tracking-widest opacity-90 mb-3 text-white">Top 5 Mice</div>
                         <div className="space-y-2">
                           {g.topMice.map((m, mi) => (
                             <div key={mi} className="flex items-center gap-2">
@@ -6482,7 +6492,7 @@ export default function EsportsMice() {
                       )}
                       {/* Right: Brand split with bars */}
                       <div>
-                        <div className="text-sm uppercase tracking-widest opacity-30 mb-3">Brand Split</div>
+                        <div className="text-sm uppercase tracking-widest opacity-90 mb-3 text-white">Brand Split</div>
                         <div className="space-y-2">
                           {g.topBrands.map((b, bi) => (
                             <div key={bi} className="flex items-center gap-2">
@@ -6513,12 +6523,12 @@ export default function EsportsMice() {
             <SectionTitle color="#c084fc" sub="How mouse preferences differ across esports  -  weight, sensitivity, and brand loyalty visualized">Game × Mouse DNA</SectionTitle>
             {(() => {
               const gameProfiles = [
-                { game: "CS2", color: "#ff8c00", icon: "crosshair", players: proPlayers.filter(p => p.game === "CS2"), desc: "Low sens, precision-first. Pros favor safe shapes and proven wireless tech." },
-                { game: "Valorant", color: "#ff4655", icon: "crosshair", players: proPlayers.filter(p => p.game === "Valorant"), desc: "Ultra-low eDPI kings. Massive arm movements, ultralight mice dominate." },
-                { game: "LoL", color: "#c89b3c", icon: "crown", players: allPlayers.filter(p => p.game === "LoL"), desc: "High DPI, fast cursor. Ergonomic shapes preferred for long sessions." },
-                { game: "Dota 2", color: "#e74c3c", icon: "shield", players: proPlayers.filter(p => p.game === "Dota 2"), desc: "Comfort over weight. Moderate sensitivity, ergonomic mice popular." },
-                { game: "Call of Duty", color: "#5cb85c", icon: "crosshair", players: proPlayers.filter(p => p.game === "Call of Duty"), desc: "Medium-high sens for fast tracking. Lightweight wireless is standard." },
-                { game: "R6 Siege", color: "#4a86c8", icon: "shield", players: proPlayers.filter(p => p.game === "R6 Siege"), desc: "Precision angles meet fast peeks. Mid-range eDPI, reliable shapes." },
+                { game: "CS2", color: "#ff8c00", icon: "crosshair", players: proPlayers.filter(p => p.game === "CS2"), desc: "Counter-Strike 2 is the most conservative esport when it comes to mouse changes — pros here stick with what works, sometimes for years on end. Low sensitivity is the standard, with most players running sub-900 eDPI and making wide arm sweeps for precise crosshair placement. The Superlight shape family has dominated CS2 for half a decade, and Razer's Viper V3 Pro is the only mouse to seriously challenge that reign. Wireless adoption is near-universal, but many players still run 1KHz polling, trusting muscle memory over spec sheets. Zowie maintains a loyal following among veterans who refuse to abandon shapes they've used since the CS:GO era." },
+                { game: "Valorant", color: "#ff4655", icon: "crosshair", players: proPlayers.filter(p => p.game === "Valorant"), desc: "Valorant has the lowest average eDPI of any major esport, with duelists routinely playing below 200 eDPI — meaning a full 180-degree turn requires lifting and reswiping the entire mousepad. This extreme low-sens meta makes ultralight weight the single most important mouse spec in competitive Valorant. Razer dominates with over 50% brand share, driven almost entirely by the Viper V3 Pro's 54g weight and 8KHz polling. The game's pixel-perfect crosshair placement and one-tap headshot meta reward mice that minimize friction and maximize flick consistency. Valorant pros are also among the fastest to adopt new technology, with 8KHz polling rates spreading through the scene faster than any other title." },
+                { game: "LoL", color: "#c89b3c", icon: "crown", players: allPlayers.filter(p => p.game === "LoL"), desc: "League of Legends pros run the highest DPI of any esport, often 1400+ DPI, because the game demands rapid cursor movement across a large map with frequent clicks on minions, abilities, and champions. Unlike FPS titles, raw aiming precision matters less than click speed and cursor acceleration control. Logitech dominates with over 60% brand share — the G Pro X Superlight family is the default choice, valued for its reliability and comfortable shape during 12+ hour practice days. Ergonomic mice see more usage here than in any FPS title, as comfort during marathon ranked sessions directly impacts performance. Wireless adoption is lower than FPS games, partly because many Korean and Chinese pros still prefer the psychological certainty of a wired connection." },
+                { game: "Dota 2", color: "#e74c3c", icon: "shield", players: proPlayers.filter(p => p.game === "Dota 2"), desc: "Dota 2's mouse landscape looks radically different from every other esport — comfort and durability trump weight and polling rate entirely. Razer's ergonomic DeathAdder family has an outsized presence here, with nearly half of all pros choosing Razer mice. Wireless adoption is the lowest of any tracked title at just 28%, reflecting a playerbase that sees no competitive benefit in cutting the cord for a game without flick aiming. DPI settings tend to be moderate around 800, with pros prioritizing precise map clicks and item management over raw cursor speed. Many Dota 2 pros have used the same mouse model for 3-5 years, making this the most gear-conservative scene outside of CS2." },
+                { game: "Call of Duty", color: "#5cb85c", icon: "crosshair", players: proPlayers.filter(p => p.game === "Call of Duty"), desc: "Call of Duty pros run significantly higher eDPI than tactical shooter players, averaging over 4,000 eDPI — reflecting a game where fast target tracking and snap-aiming matter more than pixel-perfect crosshair holds. Every tracked CoD pro uses wireless, and the average polling rate of 4KHz is among the highest in esports. The scene is split almost entirely between Razer and Logitech, with the Viper V3 Pro commanding 50% usage alone. CoD's fast time-to-kill and constant movement reward lightweight mice that enable rapid 180-degree flicks and smooth tracking through chaotic gunfights." },
+                { game: "R6 Siege", color: "#4a86c8", icon: "shield", players: proPlayers.filter(p => p.game === "R6 Siege"), desc: "Rainbow Six Siege occupies a unique middle ground — it demands the angle-holding precision of CS2 combined with the fast peeks and vertical aiming of more dynamic shooters. Pros run moderate eDPI around 163, lower than most FPS titles but higher than the extreme lows of Valorant. The mouse market is evenly split between Razer and Logitech, with Zowie maintaining a 10% foothold among players who value the EC and FK shapes for their consistency. Siege pros tend to be early adopters of technology, with 69% on wireless and many running high polling rates. The game's destructible environments and unique angles mean players need mice that perform equally well for precise pixel peeks and rapid room-clearing flicks." },
               ];
               return (
                 <div className="space-y-4">
@@ -6542,7 +6552,7 @@ export default function EsportsMice() {
                                 <div className="text-sm opacity-30">{gp.players.length} pros sampled</div>
                               </div>
                             </div>
-                            <p className="text-sm opacity-35 leading-relaxed mb-4">{gp.desc}</p>
+                            <p className="text-sm opacity-65 leading-relaxed mb-4">{gp.desc}</p>
                             <div className="space-y-2">
                               <div className="flex justify-between text-sm"><span className="opacity-85">Avg DPI</span><span className="font-bold" style={{ color: gp.color }}>{avgDpi}</span></div>
                               {avgEdpi && <div className="flex justify-between text-sm"><span className="opacity-85">Avg eDPI</span><span className="font-bold" style={{ color: gp.color }}>{avgEdpi}</span></div>}
@@ -6993,7 +7003,7 @@ export default function EsportsMice() {
                 return (
                   <button key={g} onClick={() => setGameFilter(g)}
                     className="px-3 py-1.5 rounded-lg text-sm font-bold transition-all flex items-center gap-1.5"
-                    style={{ background: active ? `${gc2}25` : "#0a0a0a", color: active ? gc2 : "#ffffff40", border: active ? `1px solid ${gc2}50` : "1px solid #ffffff08" }}>
+                    style={{ background: active ? `${gc2}25` : "#0a0a0a", color: active ? gc2 : "#ffffffaa", border: active ? `1px solid ${gc2}50` : "1px solid #ffffff08" }}>
                     {g !== "All" && GAME_IMAGE_URLS[g] && <img src={GAME_IMAGE_URLS[g]} alt={g} className="w-4 h-4 object-contain" />}
                     {g}{g !== "All" && <span className="ml-1 opacity-50">({allPlayers.filter(p => p.game === g).length})</span>}
                   </button>
@@ -7071,7 +7081,7 @@ export default function EsportsMice() {
                   <tr style={{ background: "#0a0a0a" }}>
                     {sortHeaders.map(h => (
                       <th key={h.label || "_star"} className={`px-3 py-3 text-left text-sm uppercase tracking-wider font-bold ${h.key ? "cursor-pointer select-none hover:opacity-80" : ""}`}
-                        style={{ color: playerSort.key === h.key ? "#00b4ff" : "#ffffff30" }}
+                        style={{ color: playerSort.key === h.key ? "#00b4ff" : "#ffffff60" }}
                         onClick={() => { if (h.key) setPlayerSort(prev => prev.key === h.key ? { key: h.key, dir: prev.dir === "asc" ? "desc" : "asc" } : { key: h.key, dir: "asc" }); }}>
                         {h.label}{playerSort.key === h.key ? (playerSort.dir === "asc" ? " ▲" : " ▼") : ""}
                       </th>
@@ -7296,7 +7306,7 @@ export default function EsportsMice() {
                         })}
                       </div>
                     </div>
-                    <p className="text-sm opacity-45 leading-relaxed mb-5">{brand.desc}</p>
+                    <p className="text-sm opacity-75 leading-relaxed mb-5">{brand.desc}</p>
                     <div className="rounded-xl p-4" style={{ background: `${col}08`, border: `1px solid ${col}10` }}>
                       <div className="text-sm uppercase tracking-widest opacity-30 mb-3">Key Achievements</div>
                       <div className="space-y-2">
@@ -7549,19 +7559,38 @@ export default function EsportsMice() {
                   const mouseCount = brandMice.length;
                   return { brand, avgWeight, avgPrice, maxPoll, proShare, avgRating, mouseCount };
                 });
-                const headers = ["Brand", "Models", "Pro Share", "Avg Weight", "Avg Price", "Max Poll", "Avg Rating"];
+                const headers = [
+                  { label: "Brand", key: "brand" },
+                  { label: "Models", key: "mouseCount" },
+                  { label: "Pro Share", key: "proShare" },
+                  { label: "Avg Weight", key: "avgWeight" },
+                  { label: "Avg Price", key: "avgPrice" },
+                  { label: "Max Poll", key: "maxPoll" },
+                  { label: "Avg Rating", key: "avgRating" },
+                ];
+                const sorted = [...brandStats].sort((a, b) => {
+                  const key = brandScoreSort.key;
+                  const dir = brandScoreSort.dir === "asc" ? 1 : -1;
+                  if (key === "brand") return dir * a.brand.localeCompare(b.brand);
+                  if (key === "avgRating") return dir * (parseFloat(a[key]) - parseFloat(b[key]));
+                  return dir * (a[key] - b[key]);
+                });
                 return (
                   <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
                       <tr style={{ background: "#0a0a0a" }}>
                         {headers.map(h => (
-                          <th key={h} className="px-4 py-3 text-sm uppercase tracking-widest font-bold text-left" style={{ color: "#ffffff30" }}>{h}</th>
+                          <th key={h.label} className="px-4 py-3 text-sm uppercase tracking-widest font-bold text-left cursor-pointer select-none hover:opacity-80"
+                            style={{ color: brandScoreSort.key === h.key ? "#e879f9" : "#ffffff50" }}
+                            onClick={() => setBrandScoreSort(prev => prev.key === h.key ? { key: h.key, dir: prev.dir === "asc" ? "desc" : "asc" } : { key: h.key, dir: h.key === "brand" ? "asc" : "desc" })}>
+                            {h.label}{brandScoreSort.key === h.key ? (brandScoreSort.dir === "asc" ? " ▲" : " ▼") : ""}
+                          </th>
                         ))}
                       </tr>
                     </thead>
                     <tbody>
-                      {brandStats.map((b, i) => (
+                      {sorted.map((b, i) => (
                         <tr key={b.brand} style={{ background: i % 2 === 0 ? "#050505" : "#080808", borderBottom: "1px solid #ffffff05" }}>
                           <td className="px-4 py-3 font-black" style={{ color: BRAND_COLORS[b.brand] }}>{b.brand}</td>
                           <td className="px-4 py-3 opacity-60">{b.mouseCount}</td>
@@ -7875,7 +7904,7 @@ export default function EsportsMice() {
 
               return (
                 <div className="rounded-2xl p-5 mb-6" style={{ background: "#ffffff03", border: "1px solid #ffffff08" }}>
-                  <div className="text-sm uppercase tracking-widest opacity-30 mb-4 font-bold text-center sm:text-left">Sensor Popularity Across {totalMatched.toLocaleString()} Matched Pro Players</div>
+                  <div className="text-sm uppercase tracking-widest opacity-70 mb-4 font-bold text-center sm:text-left">Sensor Popularity Across {totalMatched.toLocaleString()} Matched Pro Players</div>
 
                   {/* Summary stat pills */}
                   <div className="flex flex-wrap gap-2 mb-5 justify-center sm:justify-start">
@@ -7965,7 +7994,7 @@ export default function EsportsMice() {
             })()}
 
             {/* Sensor table */}
-            <div className="text-sm uppercase tracking-widest opacity-30 mb-3 mt-8">All Sensors  -  Click Headers to Sort</div>
+            <div className="text-sm uppercase tracking-widest opacity-70 mb-3 mt-8">All Sensors  -  Click Headers to Sort</div>
             <div className="overflow-x-auto rounded-2xl mb-8" style={{ border: "1px solid #ffffff08" }}>
               <table className="w-full text-sm">
                 <thead>
@@ -8008,9 +8037,9 @@ export default function EsportsMice() {
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <div className="text-sm font-black" style={{ color: "#10b981" }}>{s.sensor}</div>
-                      <div className="text-sm opacity-30">{s.totalUsage}% pro usage</div>
+                      <div className="text-sm opacity-70">{s.totalUsage}% pro usage</div>
                     </div>
-                    <div className="text-sm opacity-30">{s.mouseCount} model{s.mouseCount !== 1 ? "s" : ""}</div>
+                    <div className="text-sm opacity-70">{s.mouseCount} model{s.mouseCount !== 1 ? "s" : ""}</div>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {s.mice.sort((a, b) => b.proUsage - a.proUsage).map((m, mi) => (
@@ -8033,7 +8062,7 @@ export default function EsportsMice() {
                   className="px-3 py-1 rounded-full text-sm font-bold transition-all flex items-center gap-1.5"
                   style={{
                     background: sensorGameFilter === g ? (gameColors[g] || "#10b981") : "#ffffff06",
-                    color: sensorGameFilter === g ? "#000" : "#ffffff40",
+                    color: sensorGameFilter === g ? "#000" : "#ffffffaa",
                     border: sensorGameFilter === g ? "none" : "1px solid #ffffff08",
                   }}>
                   {g !== "All" && GAME_IMAGE_URLS[g] && <img src={GAME_IMAGE_URLS[g]} alt={g} className="w-4 h-4 object-contain" />}
@@ -9272,7 +9301,7 @@ export default function EsportsMice() {
                         className="px-2.5 py-1.5 rounded-lg text-sm font-bold transition-all cursor-pointer whitespace-nowrap"
                         style={{
                           background: sensFromGame === g.id ? accentC : "#ffffff06",
-                          color: sensFromGame === g.id ? "#000" : "#ffffff35",
+                          color: sensFromGame === g.id ? "#000" : "#ffffffaa",
                           border: sensFromGame === g.id ? "none" : "1px solid #ffffff08",
                           fontSize: 11,
                         }}>
@@ -9292,7 +9321,7 @@ export default function EsportsMice() {
                       {[400, 800, 1600, 3200].map(d => (
                         <button key={d} onClick={() => setSensFromDpi(d)}
                           className="px-2 py-0.5 rounded text-sm cursor-pointer transition-all"
-                          style={{ background: sensFromDpi === d ? `${accentC}30` : "#ffffff06", color: sensFromDpi === d ? accentC : "#ffffff30", fontSize: 10 }}>
+                          style={{ background: sensFromDpi === d ? `${accentC}30` : "#ffffff06", color: sensFromDpi === d ? accentC : "#ffffff80", fontSize: 10 }}>
                           {d}
                         </button>
                       ))}
@@ -9314,30 +9343,30 @@ export default function EsportsMice() {
                 <div className="px-4 sm:px-6 py-4" style={{ background: "#0a0a0a", borderTop: `1px solid ${accentC}10`, borderBottom: `1px solid ${accentC}10` }}>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
                     <div className="text-center">
-                      <div className="text-sm opacity-30 mb-1">cm/360°</div>
+                      <div className="text-sm opacity-60 mb-1">cm/360°</div>
                       <div className="text-xl sm:text-2xl font-black" style={{ color: accentC }}>{cm360.toFixed(1)}</div>
-                      <div className="text-sm opacity-20">centimeters</div>
+                      <div className="text-sm opacity-50">centimeters</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-sm opacity-30 mb-1">in/360°</div>
+                      <div className="text-sm opacity-60 mb-1">in/360°</div>
                       <div className="text-xl sm:text-2xl font-black" style={{ color: "#00b4ff" }}>{inches360.toFixed(1)}</div>
-                      <div className="text-sm opacity-20">inches</div>
+                      <div className="text-sm opacity-50">inches</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-sm opacity-30 mb-1">Speed</div>
+                      <div className="text-sm opacity-60 mb-1">Speed</div>
                       <div className="text-xl sm:text-2xl font-black" style={{ color: speedColor }}>{speedLabel}</div>
-                      <div className="text-sm opacity-20">{cm360 > 40 ? "arm aimer" : cm360 > 22 ? "hybrid" : "wrist aimer"}</div>
+                      <div className="text-sm opacity-50">{cm360 > 40 ? "arm aimer" : cm360 > 22 ? "hybrid" : "wrist aimer"}</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-sm opacity-30 mb-1">Mousepad</div>
+                      <div className="text-sm opacity-60 mb-1">Mousepad</div>
                       <div className="text-xl sm:text-2xl font-black" style={{ color: "#f59e0b" }}>{cm360 > 50 ? "XL+" : cm360 > 30 ? "Large" : cm360 > 18 ? "Medium" : "Any"}</div>
-                      <div className="text-sm opacity-20">recommended size</div>
+                      <div className="text-sm opacity-50">recommended size</div>
                     </div>
                   </div>
 
                   {/* Swipe distance bar */}
                   <div className="mt-4">
-                    <div className="text-sm opacity-25 mb-1.5 text-center">Swipe distance for a full 360° turn</div>
+                    <div className="text-sm opacity-55 mb-1.5 text-center">Swipe distance for a full 360° turn</div>
                     <div className="relative h-8 rounded-lg overflow-hidden" style={{ background: "#ffffff06" }}>
                       <div className="absolute left-0 top-0 h-full rounded-lg transition-all duration-500 flex items-center justify-end pr-2"
                         style={{ width: `${Math.min(Math.max(cm360 / 100 * 100, 5), 100)}%`, background: `linear-gradient(to right, ${accentC}40, ${accentC})` }}>
@@ -9349,7 +9378,7 @@ export default function EsportsMice() {
                         </div>
                       ))}
                     </div>
-                    <div className="flex justify-between text-sm opacity-15 mt-1 px-1" style={{ fontSize: 9 }}>
+                    <div className="flex justify-between text-sm opacity-40 mt-1 px-1" style={{ fontSize: 9 }}>
                       <span>0cm (instant)</span>
                       <span>50cm</span>
                       <span>100cm+</span>
@@ -9361,7 +9390,7 @@ export default function EsportsMice() {
               {/* Converted Sensitivities */}
               {cm360 > 0 && cm360 < 10000 && (
                 <div className="p-4 sm:p-6" style={{ background: "#050505" }}>
-                  <div className="text-sm uppercase tracking-widest opacity-30 mb-4">Equivalent Sensitivity in Every Game</div>
+                  <div className="text-sm uppercase tracking-widest opacity-60 mb-4">Equivalent Sensitivity in Every Game</div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                     {SENS_GAMES.filter(g => g.id !== sensFromGame).map(g => {
                       const targetSens = 914.4 / (sensFromDpi * g.yaw * cm360);
